@@ -206,10 +206,10 @@ class TigerTracePipeline:
             )
 
             decision = enroll_res["decision"]
-            assigned_id = enroll_res.get("assigned_tiger_id") or enroll_res.get("suggested_tiger_id")
+            assigned_id = enroll_res.get("assigned_tiger_id") or enroll_res.get("suggested_tiger_id") or "UNMATCHED"
             conf = enroll_res.get("confidence", 0.0)
 
-            print(f"  [RE-ID {decision.upper():20}] {raw_rec['filename']:30} -> Assigned: {assigned_id:15} (Score: {conf:.2f})")
+            print(f"  [RE-ID {decision.upper():20}] {raw_rec['filename']:30} -> Assigned: {str(assigned_id):15} (Score: {conf:.2f})")
             
             reid_results.append({
                 "sighting_id": sighting_id,

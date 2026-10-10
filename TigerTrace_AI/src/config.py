@@ -31,3 +31,9 @@ SMS_ALERT_TYPE_ALIASES = {
     "VILLAGE_DISPERSAL": "village_proximity",
     "village_proximity": "village_proximity",
 }
+
+# Re-ID Similarity Matching & Enrollment Thresholds
+REID_HIGH_CONFIDENCE_THRESHOLD = float(os.getenv("REID_HIGH_CONFIDENCE_THRESHOLD", "0.50"))
+REID_LOW_CONFIDENCE_THRESHOLD = float(os.getenv("REID_LOW_CONFIDENCE_THRESHOLD", "0.35"))
+REID_DUPLICATE_CHECK_THRESHOLD = float(os.getenv("REID_DUPLICATE_CHECK_THRESHOLD", "0.30"))
+REID_MODEL_VERSION = os.getenv("REID_MODEL_VERSION", "hotspotter_sift_v1+resnet50_v1")

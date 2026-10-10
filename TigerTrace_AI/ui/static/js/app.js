@@ -244,7 +244,7 @@ function showProcessingSummary(report) {
     results.forEach(r => {
       const isHigh = r.confidence >= 0.70;
       const confPct = Math.round(r.confidence * 100);
-      const isAuto = r.decision === 'auto_matched';
+      const isAuto = r.decision === 'auto_matched' || r.decision === 'matched';
       html += `
         <div class="sighting-card" style="background:linear-gradient(145deg, #0e1e16 0%, #07130c 100%); border:1.5px solid rgba(46, 204, 113, 0.35); border-radius:14px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.6);">
           <div class="sighting-thumb-wrapper" style="position:relative; width:100%; height:180px; background:#000;">
