@@ -1,0 +1,159 @@
+{
+  "report_name": "ATRW Pilot Isolated Ingestion and Enrollment Safety Test Report",
+  "timestamp_utc": "2026-10-10 07:06:40 UTC",
+  "manifest_path": "data/staging/atrw_pilot/atrw_pilot_manifest.csv",
+  "manifest_records_count": 13,
+  "production_safety_invariants": {
+    "prod_database_path": "TigerTrace_AI/data/database/tigertrace.db",
+    "prod_database_hash_before": "72857a2627a34439708e2664e3457c4226e4bc6b82f684d0aff722907a3722ba",
+    "prod_database_hash_after": "72857a2627a34439708e2664e3457c4226e4bc6b82f684d0aff722907a3722ba",
+    "prod_database_mutated": false,
+    "canonical_manifest_path": "data/manifests/dataset_manifest.csv",
+    "canonical_manifest_hash_before": "c0a1589a08d8c8584725738f1c67c1b0ff76c9897b4b49fd6247de49691ec922",
+    "canonical_manifest_hash_after": "c0a1589a08d8c8584725738f1c67c1b0ff76c9897b4b49fd6247de49691ec922",
+    "canonical_manifest_mutated": false
+  },
+  "scenarios_tested": [
+    {
+      "scenario_id": "scenario_01",
+      "name": "Valid approved image proceeds to feature extraction",
+      "status": "PASSED",
+      "details": "All 13 approved pilot crops verified for checksums, paths, and mappings; extraction yielded (384, 384, 3) crop."
+    },
+    {
+      "scenario_id": "scenario_02",
+      "name": "Missing image or mismatched checksum is rejected",
+      "status": "PASSED",
+      "details": "Mismatched SHA-256 and nonexistent image path rejected prior to feature extraction without DB writes."
+    },
+    {
+      "scenario_id": "scenario_03",
+      "name": "Repeated exact image hash is flagged as a duplicate",
+      "status": "PASSED",
+      "details": "Exact SHA-256 duplicate flagged before ingestion without mutating database."
+    },
+    {
+      "scenario_id": "scenario_04",
+      "name": "Similarity ambiguity routes to human review",
+      "status": "PASSED",
+      "details": "Score 0.42 classified as review_required; sighting marked pending_review and staged in review_queue."
+    },
+    {
+      "scenario_id": "scenario_05",
+      "name": "Empty catalogue does not automatically confirm a new identity",
+      "status": "PASSED",
+      "details": "Empty catalogue returned new_identity_candidate staged in review_queue with zero auto-enrollment."
+    },
+    {
+      "scenario_id": "scenario_06",
+      "name": "Potential duplicate blocks new-identity approval unless audited override",
+      "status": "PASSED",
+      "details": "Approval halted when duplicate detected (score=0.65 >= 0.30); enrollment only permitted via explicit audited force=True."
+    },
+    {
+      "scenario_id": "scenario_07",
+      "name": "Failed feature extraction does not create or approve an identity",
+      "status": "PASSED",
+      "details": "Corrupt crop safely classified as unknown/unreadable; tigers catalogue remained empty."
+    },
+    {
+      "scenario_id": "scenario_08",
+      "name": "Unassigned manifest split does not silently become train/test data",
+      "status": "PASSED",
+      "details": "All 13 pilot manifest records confirmed with split='unassigned'; 0 train/test/val leakage."
+    }
+  ],
+  "structured_audit_events": [
+    {
+      "scenario_id": "scenario_01",
+      "input_sample_id": "atrw_pilot_0001",
+      "source_identity_id": "tiger_001 (ATRW 153)",
+      "decision_state": "PROCEEDED_TO_FEATURE_EXTRACTION",
+      "reason": "valid_checksum_and_verified_review_status",
+      "sandbox_db_mutated": false,
+      "production_db_mutated": false,
+      "production_manifest_mutated": false
+    },
+    {
+      "scenario_id": "scenario_02",
+      "input_sample_id": "atrw_pilot_0001",
+      "source_identity_id": "tiger_001 (ATRW 153)",
+      "decision_state": "INGESTION_REJECTED",
+      "reason": "checksum_mismatch_detected_at_preflight",
+      "sandbox_db_mutated": false,
+      "production_db_mutated": false,
+      "production_manifest_mutated": false
+    },
+    {
+      "scenario_id": "scenario_03",
+      "input_sample_id": "atrw_pilot_0001",
+      "source_identity_id": "tiger_001 (ATRW 153)",
+      "decision_state": "FLAGGED_DUPLICATE",
+      "reason": "exact_sha256_hash_collision_in_stream",
+      "sandbox_db_mutated": false,
+      "production_db_mutated": false,
+      "production_manifest_mutated": false
+    },
+    {
+      "scenario_id": "scenario_04",
+      "input_sample_id": "atrw_pilot_0001",
+      "source_identity_id": "tiger_001 (ATRW 153)",
+      "decision_state": "REVIEW_REQUIRED",
+      "reason": "ambiguous_score_0.42_in_review_band",
+      "sandbox_db_mutated": true,
+      "production_db_mutated": false,
+      "production_manifest_mutated": false
+    },
+    {
+      "scenario_id": "scenario_05",
+      "input_sample_id": "atrw_pilot_0001",
+      "source_identity_id": "tiger_001 (ATRW 153)",
+      "decision_state": "NEW_IDENTITY_CANDIDATE_PENDING",
+      "reason": "empty_catalogue_requires_explicit_approval",
+      "sandbox_db_mutated": true,
+      "production_db_mutated": false,
+      "production_manifest_mutated": false
+    },
+    {
+      "scenario_id": "scenario_06",
+      "input_sample_id": "atrw_pilot_0001",
+      "source_identity_id": "tiger_001 (ATRW 153)",
+      "decision_state": "APPROVAL_BLOCKED_DUPLICATE_FLAGGED",
+      "reason": "score_0.65_ge_thresh_0.30",
+      "sandbox_db_mutated": false,
+      "production_db_mutated": false,
+      "production_manifest_mutated": false
+    },
+    {
+      "scenario_id": "scenario_06_override",
+      "input_sample_id": "atrw_pilot_0001",
+      "source_identity_id": "tiger_001 (ATRW 153)",
+      "decision_state": "APPROVAL_CONFIRMED_AUDITED_OVERRIDE",
+      "reason": "audited_biologist_override_with_documented_verification",
+      "sandbox_db_mutated": true,
+      "production_db_mutated": false,
+      "production_manifest_mutated": false
+    },
+    {
+      "scenario_id": "scenario_07",
+      "input_sample_id": "SYNTH_CORRUPT_CROP",
+      "source_identity_id": "synthetic_fixture",
+      "decision_state": "UNKNOWN_FEATURE_EXTRACTION_FAILED",
+      "reason": "corrupt_or_unreadable_image",
+      "sandbox_db_mutated": true,
+      "production_db_mutated": false,
+      "production_manifest_mutated": false
+    },
+    {
+      "scenario_id": "scenario_08",
+      "input_sample_id": "ALL_13_PILOT_SAMPLES",
+      "source_identity_id": "ALL_PILOT_IDENTITIES",
+      "decision_state": "SPLIT_PRESERVED_UNASSIGNED",
+      "reason": "unpartitioned_isolated_smoke_test_state",
+      "sandbox_db_mutated": false,
+      "production_db_mutated": false,
+      "production_manifest_mutated": false
+    }
+  ],
+  "overall_safety_status": "PASSED_STRICT_ISOLATION"
+}
