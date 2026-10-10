@@ -1,0 +1,108 @@
+{
+  "report_name": "ATRW Pilot Re-ID Matcher Audit Results",
+  "timestamp_utc": "2026-10-10 07:45:31 UTC",
+  "total_approved_images": 13,
+  "total_pairwise_comparisons": 78,
+  "evaluation_partitions": {
+    "genuine_same_flank_pairs": {
+      "count": 16,
+      "combined_score": {
+        "min": 0.4218,
+        "mean": 0.6045,
+        "median": 0.5129,
+        "max": 0.994,
+        "std": 0.2227
+      },
+      "sift_score": {
+        "min": 0.0,
+        "mean": 0.3583,
+        "median": 0.2,
+        "max": 1.0,
+        "std": 0.3785
+      },
+      "cosine_score": {
+        "min": 0.8247,
+        "mean": 0.9053,
+        "median": 0.8925,
+        "max": 0.9867,
+        "std": 0.0447
+      }
+    },
+    "impostor_same_flank_pairs": {
+      "count": 20,
+      "combined_score": {
+        "min": 0.3496,
+        "mean": 0.4519,
+        "median": 0.4472,
+        "max": 0.5423,
+        "std": 0.0482
+      },
+      "sift_score": {
+        "min": 0.0,
+        "mean": 0.1033,
+        "median": 0.1,
+        "max": 0.2333,
+        "std": 0.0674
+      },
+      "cosine_score": {
+        "min": 0.7734,
+        "mean": 0.878,
+        "median": 0.891,
+        "max": 0.9455,
+        "std": 0.0556
+      }
+    },
+    "cross_flank_incompatible_pairs": {
+      "count": 42,
+      "combined_score": {
+        "min": 0.3588,
+        "mean": 0.4679,
+        "median": 0.4567,
+        "max": 0.8039,
+        "std": 0.081
+      },
+      "sift_score": {
+        "min": 0.0,
+        "mean": 0.1413,
+        "median": 0.1167,
+        "max": 0.7,
+        "std": 0.1382
+      },
+      "cosine_score": {
+        "min": 0.7566,
+        "mean": 0.8671,
+        "median": 0.8743,
+        "max": 0.9308,
+        "std": 0.0454
+      }
+    }
+  },
+  "per_individual_genuine_summary": {
+    "tiger_001_left_flank": {
+      "pair_count": 6,
+      "combined_mean": 0.4961,
+      "note": "4 distinct images across variable backgrounds; moderate SIFT matches"
+    },
+    "tiger_002_right_flank": {
+      "pair_count": 1,
+      "combined_mean": 0.5244,
+      "note": "2 distinct walking frames along fence enclosure"
+    },
+    "tiger_003_right_flank": {
+      "pair_count": 6,
+      "combined_mean": 0.5322,
+      "note": "Mix of 2 correlated frames (score 0.95) and 4 independent encounters (scores 0.40 - 0.48)"
+    },
+    "tiger_005_left_flank": {
+      "pair_count": 3,
+      "combined_mean": 0.9924,
+      "note": "Burst sequence tracklet frames; highly correlated (scores 0.99+)"
+    }
+  },
+  "key_scientific_findings": {
+    "burst_inflation_detected": true,
+    "flank_compatibility_gap_detected": true,
+    "deep_embedding_impostor_floor": 0.878,
+    "rank_metrics_supported": false
+  }
+}
