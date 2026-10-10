@@ -1,0 +1,23 @@
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment & IDE
+.env
+.venv
+env/
+venv/
+ENV/
+.vscode/
+.idea/
+
+# OS Specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Output Logs
+*.log
+*.tmp

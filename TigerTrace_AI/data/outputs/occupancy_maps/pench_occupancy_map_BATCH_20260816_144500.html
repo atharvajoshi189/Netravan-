@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7cee7083a477eb8ec81bcfa5af237f61 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_7cee7083a477eb8ec81bcfa5af237f61" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7cee7083a477eb8ec81bcfa5af237f61 = L.map(
+                "map_7cee7083a477eb8ec81bcfa5af237f61",
+                {
+                    center: [21.735, 79.305],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_7cee7083a477eb8ec81bcfa5af237f61);
+
+            
+
+        
+    
+            var tile_layer_ba76469342aaebcbc1980c9055b25f88 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ba76469342aaebcbc1980c9055b25f88.addTo(map_7cee7083a477eb8ec81bcfa5af237f61);
+        
+    
+            var tile_layer_59d9106e3b8acf112592d27417b2f80b = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri World Imagery",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_59d9106e3b8acf112592d27417b2f80b.addTo(map_7cee7083a477eb8ec81bcfa5af237f61);
+        
+    
+            var feature_group_0a87c2ea65adb43163682c07a32e7cf3 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var polygon_6bda7aba5ae240dda6b65559d8eebe11 = L.polygon(
+                [[21.61, 79.18], [21.66, 79.16], [21.74, 79.18], [21.82, 79.22], [21.87, 79.31], [21.86, 79.43], [21.78, 79.45], [21.68, 79.39], [21.62, 79.35], [21.61, 79.18]],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f9e79f", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_0a87c2ea65adb43163682c07a32e7cf3);
+        
+    
+        var popup_865e42e09aee5c58d614dee99e5ae463 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_73d9f8835ca4037a110d642ae5cc1dca = $(`<div id="html_73d9f8835ca4037a110d642ae5cc1dca" style="width: 100.0%; height: 100.0%;"><b>Pench Buffer Zone</b><br>Multiple-use outer management corridor</div>`)[0];
+                popup_865e42e09aee5c58d614dee99e5ae463.setContent(html_73d9f8835ca4037a110d642ae5cc1dca);
+            
+        
+
+        polygon_6bda7aba5ae240dda6b65559d8eebe11.bindPopup(popup_865e42e09aee5c58d614dee99e5ae463)
+        ;
+
+        
+    
+    
+            var polygon_31e4c5fedb598c8bd8d0c95856798e3b = L.polygon(
+                [[21.65, 79.22], [21.67, 79.205], [21.72, 79.215], [21.76, 79.25], [21.785, 79.3], [21.77, 79.345], [21.73, 79.33], [21.69, 79.31], [21.66, 79.28], [21.65, 79.22]],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0a87c2ea65adb43163682c07a32e7cf3);
+        
+    
+        var popup_97a52f7019115bdac501745c94ee835b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d59d418846a3ee028c87bdef73b0fdb4 = $(`<div id="html_d59d418846a3ee028c87bdef73b0fdb4" style="width: 100.0%; height: 100.0%;"><b>Pench Critical Tiger Habitat (Core Zone)</b><br>Strictly protected inviolate area (411 sq km)</div>`)[0];
+                popup_97a52f7019115bdac501745c94ee835b.setContent(html_d59d418846a3ee028c87bdef73b0fdb4);
+            
+        
+
+        polygon_31e4c5fedb598c8bd8d0c95856798e3b.bindPopup(popup_97a52f7019115bdac501745c94ee835b)
+        ;
+
+        
+    
+    
+            feature_group_0a87c2ea65adb43163682c07a32e7cf3.addTo(map_7cee7083a477eb8ec81bcfa5af237f61);
+        
+    
+            var feature_group_74b6f3e7e0384eff3c020dc1d08facd6 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_eddb6bf66350c32a4793232216f8bb86 = L.circle(
+                [21.675, 79.245],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": "4, 4", "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.12, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1500, "stroke": true, "weight": 1}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var marker_f95b6abfdc5182cbc5913b3d192affb9 = L.marker(
+                [21.675, 79.245],
+                {
+}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var icon_d05cd8142d9855096d7bf85305201951 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f1a97760e18d5c474ea9474e85cfb432 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b741a17340539b2dfc1db03d80f97bc3 = $(`<div id="html_b741a17340539b2dfc1db03d80f97bc3" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 200px;'>                     <h4 style='margin:0; color:#c0392b;'>Turia Village</h4>                     <p style='margin:4px 0;'><b>Conflict Risk:</b> <span style='color:#e74c3c; font-weight:bold;'>HIGH</span></p>                     <p style='font-size:12px; color:#555;'>Border village near Turia Gate; high cattle grazing and tiger movement.</p>                 </div>                 </div>`)[0];
+                popup_f1a97760e18d5c474ea9474e85cfb432.setContent(html_b741a17340539b2dfc1db03d80f97bc3);
+            
+        
+
+        marker_f95b6abfdc5182cbc5913b3d192affb9.bindPopup(popup_f1a97760e18d5c474ea9474e85cfb432)
+        ;
+
+        
+    
+    
+            marker_f95b6abfdc5182cbc5913b3d192affb9.bindTooltip(
+                `<div>
+                     <b>Turia Village</b> (Risk: HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f95b6abfdc5182cbc5913b3d192affb9.setIcon(icon_d05cd8142d9855096d7bf85305201951);
+            
+    
+            var circle_35677a7332885ce131006d2c030ff8b6 = L.circle(
+                [21.795, 79.375],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": "4, 4", "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.12, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1500, "stroke": true, "weight": 1}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var marker_bf0239d88682d3b3ee3d66ff7bb37393 = L.marker(
+                [21.795, 79.375],
+                {
+}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var icon_68de4673326d38b556d003899af5d702 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c16ad6349eeb13b024810994772b48ed = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3883fde2d89421059ea5079579eb0382 = $(`<div id="html_3883fde2d89421059ea5079579eb0382" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 200px;'>                     <h4 style='margin:0; color:#c0392b;'>Khawasa Village</h4>                     <p style='margin:4px 0;'><b>Conflict Risk:</b> <span style='color:#e74c3c; font-weight:bold;'>HIGH</span></p>                     <p style='font-size:12px; color:#555;'>Highway-adjacent market village on NH-44 corridor; high sub-adult dispersal.</p>                 </div>                 </div>`)[0];
+                popup_c16ad6349eeb13b024810994772b48ed.setContent(html_3883fde2d89421059ea5079579eb0382);
+            
+        
+
+        marker_bf0239d88682d3b3ee3d66ff7bb37393.bindPopup(popup_c16ad6349eeb13b024810994772b48ed)
+        ;
+
+        
+    
+    
+            marker_bf0239d88682d3b3ee3d66ff7bb37393.bindTooltip(
+                `<div>
+                     <b>Khawasa Village</b> (Risk: HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bf0239d88682d3b3ee3d66ff7bb37393.setIcon(icon_68de4673326d38b556d003899af5d702);
+            
+    
+            var circle_85ce3ad2970cf242679773f2218a07c8 = L.circle(
+                [21.668, 79.262],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": "4, 4", "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.12, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1500, "stroke": true, "weight": 1}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var marker_37fc78e9cd87bf4c2480e59a687269e1 = L.marker(
+                [21.668, 79.262],
+                {
+}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var icon_b26f154164a0da336aa79511cbe524a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6e8ceaea1b7a6e88decc494b15baea88 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a2a38081244bcceec856a1dfed98ce44 = $(`<div id="html_a2a38081244bcceec856a1dfed98ce44" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 200px;'>                     <h4 style='margin:0; color:#c0392b;'>Awarghani Village</h4>                     <p style='margin:4px 0;'><b>Conflict Risk:</b> <span style='color:#f39c12; font-weight:bold;'>MEDIUM</span></p>                     <p style='font-size:12px; color:#555;'>Agricultural buffer village frequently visited by resident tigress Collarwali/Patdev.</p>                 </div>                 </div>`)[0];
+                popup_6e8ceaea1b7a6e88decc494b15baea88.setContent(html_a2a38081244bcceec856a1dfed98ce44);
+            
+        
+
+        marker_37fc78e9cd87bf4c2480e59a687269e1.bindPopup(popup_6e8ceaea1b7a6e88decc494b15baea88)
+        ;
+
+        
+    
+    
+            marker_37fc78e9cd87bf4c2480e59a687269e1.bindTooltip(
+                `<div>
+                     <b>Awarghani Village</b> (Risk: MEDIUM)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_37fc78e9cd87bf4c2480e59a687269e1.setIcon(icon_b26f154164a0da336aa79511cbe524a9);
+            
+    
+            var circle_ccc4cdc88e8db2d54203b62ef83c3933 = L.circle(
+                [21.69, 79.23],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": "4, 4", "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.12, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1500, "stroke": true, "weight": 1}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var marker_92f8d03df6a7c9befb9a5b8eda428b3f = L.marker(
+                [21.69, 79.23],
+                {
+}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var icon_0ff8dafbc17526ed9de7bbd8749cb3a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_53eb885f91505ba8bc501faa66b3866c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_059389e3ae23af0423b9fd048f8c1484 = $(`<div id="html_059389e3ae23af0423b9fd048f8c1484" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 200px;'>                     <h4 style='margin:0; color:#c0392b;'>Kohka Village</h4>                     <p style='margin:4px 0;'><b>Conflict Risk:</b> <span style='color:#f39c12; font-weight:bold;'>MEDIUM</span></p>                     <p style='font-size:12px; color:#555;'>Western buffer village near waterbody fringes.</p>                 </div>                 </div>`)[0];
+                popup_53eb885f91505ba8bc501faa66b3866c.setContent(html_059389e3ae23af0423b9fd048f8c1484);
+            
+        
+
+        marker_92f8d03df6a7c9befb9a5b8eda428b3f.bindPopup(popup_53eb885f91505ba8bc501faa66b3866c)
+        ;
+
+        
+    
+    
+            marker_92f8d03df6a7c9befb9a5b8eda428b3f.bindTooltip(
+                `<div>
+                     <b>Kohka Village</b> (Risk: MEDIUM)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_92f8d03df6a7c9befb9a5b8eda428b3f.setIcon(icon_0ff8dafbc17526ed9de7bbd8749cb3a1);
+            
+    
+            var circle_f674c8e1ca3585217fbf3ef8884f9343 = L.circle(
+                [21.748, 79.275],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": "4, 4", "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.12, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1500, "stroke": true, "weight": 1}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var marker_741db2dccf0b8d9d619479ff186784d5 = L.marker(
+                [21.748, 79.275],
+                {
+}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var icon_71d1daae91b0d783e7018d378ac2d38d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_49e61b35e3514bddc76b3ff490e90118 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74dd3bd968ab7d7c3c374e2444b6f8b5 = $(`<div id="html_74dd3bd968ab7d7c3c374e2444b6f8b5" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 200px;'>                     <h4 style='margin:0; color:#c0392b;'>Karmajhiri Village</h4>                     <p style='margin:4px 0;'><b>Conflict Risk:</b> <span style='color:#f39c12; font-weight:bold;'>MEDIUM</span></p>                     <p style='font-size:12px; color:#555;'>Central entry gate settlement adjacent to core forest.</p>                 </div>                 </div>`)[0];
+                popup_49e61b35e3514bddc76b3ff490e90118.setContent(html_74dd3bd968ab7d7c3c374e2444b6f8b5);
+            
+        
+
+        marker_741db2dccf0b8d9d619479ff186784d5.bindPopup(popup_49e61b35e3514bddc76b3ff490e90118)
+        ;
+
+        
+    
+    
+            marker_741db2dccf0b8d9d619479ff186784d5.bindTooltip(
+                `<div>
+                     <b>Karmajhiri Village</b> (Risk: MEDIUM)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_741db2dccf0b8d9d619479ff186784d5.setIcon(icon_71d1daae91b0d783e7018d378ac2d38d);
+            
+    
+            var circle_b9c1cab00cb9a6ae226a13c21b8b785e = L.circle(
+                [21.855, 79.445],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": "4, 4", "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.12, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1500, "stroke": true, "weight": 1}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var marker_126d81d06775b34adc4b27bfc955adef = L.marker(
+                [21.855, 79.445],
+                {
+}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var icon_4745bd133dad190f2adccface3aeedeb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eb5e78c3228105bb74ec6ff5a59359be = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6557e30d07712c75d7a54d80796f9aca = $(`<div id="html_6557e30d07712c75d7a54d80796f9aca" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 200px;'>                     <h4 style='margin:0; color:#c0392b;'>Rukhad Village</h4>                     <p style='margin:4px 0;'><b>Conflict Risk:</b> <span style='color:#e74c3c; font-weight:bold;'>CRITICAL</span></p>                     <p style='font-size:12px; color:#555;'>Northern corridor connecting Pench to Kanha; dispersing male tiger corridor.</p>                 </div>                 </div>`)[0];
+                popup_eb5e78c3228105bb74ec6ff5a59359be.setContent(html_6557e30d07712c75d7a54d80796f9aca);
+            
+        
+
+        marker_126d81d06775b34adc4b27bfc955adef.bindPopup(popup_eb5e78c3228105bb74ec6ff5a59359be)
+        ;
+
+        
+    
+    
+            marker_126d81d06775b34adc4b27bfc955adef.bindTooltip(
+                `<div>
+                     <b>Rukhad Village</b> (Risk: CRITICAL)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_126d81d06775b34adc4b27bfc955adef.setIcon(icon_4745bd133dad190f2adccface3aeedeb);
+            
+    
+            var circle_fde633302a3b74ee88307f99c82ed6a5 = L.circle(
+                [21.79, 79.41],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": "4, 4", "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.12, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1500, "stroke": true, "weight": 1}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var marker_0c2231b9d0341ca50998672a75a6da97 = L.marker(
+                [21.79, 79.41],
+                {
+}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var icon_cddd6a3b862f79237cefd70ac5244960 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eced3345194a8fa7ab78a8489cfa59a7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8f19ddec8bbc192fafd3bdbf999289bd = $(`<div id="html_8f19ddec8bbc192fafd3bdbf999289bd" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 200px;'>                     <h4 style='margin:0; color:#c0392b;'>Dhawalpur Village</h4>                     <p style='margin:4px 0;'><b>Conflict Risk:</b> <span style='color:#e74c3c; font-weight:bold;'>HIGH</span></p>                     <p style='font-size:12px; color:#555;'>Eastern buffer settlement prone to livestock depredation.</p>                 </div>                 </div>`)[0];
+                popup_eced3345194a8fa7ab78a8489cfa59a7.setContent(html_8f19ddec8bbc192fafd3bdbf999289bd);
+            
+        
+
+        marker_0c2231b9d0341ca50998672a75a6da97.bindPopup(popup_eced3345194a8fa7ab78a8489cfa59a7)
+        ;
+
+        
+    
+    
+            marker_0c2231b9d0341ca50998672a75a6da97.bindTooltip(
+                `<div>
+                     <b>Dhawalpur Village</b> (Risk: HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0c2231b9d0341ca50998672a75a6da97.setIcon(icon_cddd6a3b862f79237cefd70ac5244960);
+            
+    
+            var circle_f7925f2749e1140c2731523bacc147a9 = L.circle(
+                [21.765, 79.33],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": "4, 4", "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.12, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1500, "stroke": true, "weight": 1}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var marker_16b245953811393f07e7bfc49655f10a = L.marker(
+                [21.765, 79.33],
+                {
+}
+            ).addTo(feature_group_74b6f3e7e0384eff3c020dc1d08facd6);
+        
+    
+            var icon_b8f9254904908f272d026f35c7b84801 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_995559d12519eca0a2da3fceea7406d4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3c9ccd7d02e93a2d6bf7793117556e8c = $(`<div id="html_3c9ccd7d02e93a2d6bf7793117556e8c" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 200px;'>                     <h4 style='margin:0; color:#c0392b;'>Jamtara Village</h4>                     <p style='margin:4px 0;'><b>Conflict Risk:</b> <span style='color:#f39c12; font-weight:bold;'>MEDIUM</span></p>                     <p style='font-size:12px; color:#555;'>Northern buffer zone near Chhindwara border.</p>                 </div>                 </div>`)[0];
+                popup_995559d12519eca0a2da3fceea7406d4.setContent(html_3c9ccd7d02e93a2d6bf7793117556e8c);
+            
+        
+
+        marker_16b245953811393f07e7bfc49655f10a.bindPopup(popup_995559d12519eca0a2da3fceea7406d4)
+        ;
+
+        
+    
+    
+            marker_16b245953811393f07e7bfc49655f10a.bindTooltip(
+                `<div>
+                     <b>Jamtara Village</b> (Risk: MEDIUM)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_16b245953811393f07e7bfc49655f10a.setIcon(icon_b8f9254904908f272d026f35c7b84801);
+            
+    
+            feature_group_74b6f3e7e0384eff3c020dc1d08facd6.addTo(map_7cee7083a477eb8ec81bcfa5af237f61);
+        
+    
+            var feature_group_63af2efe0b593612bf8e2844b751ab36 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_92088d367cd57127dc5d4fff59dab491 = L.circleMarker(
+                [21.6845, 79.2561],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_927532f5948378536e33b4f1412f5e08 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d11deb08f3ae9ea9bb83f09538e29901 = $(`<div id="html_d11deb08f3ae9ea9bb83f09538e29901" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_01<br>                 <b>Grid ID:</b> GRID_A1<br>                 <b>Range:</b> Turia<br>                 <b>Zone:</b> CORE<br>                 <b>Model:</b> Cuddeback_X6<br>                 <b>GPS:</b> 21.6845°N, 79.2561°E                 </div>`)[0];
+                popup_927532f5948378536e33b4f1412f5e08.setContent(html_d11deb08f3ae9ea9bb83f09538e29901);
+            
+        
+
+        circle_marker_92088d367cd57127dc5d4fff59dab491.bindPopup(popup_927532f5948378536e33b4f1412f5e08)
+        ;
+
+        
+    
+    
+            circle_marker_92088d367cd57127dc5d4fff59dab491.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_01 (Turia - CORE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7c7b4870e880a1392868558f9aca24ec = L.circleMarker(
+                [21.695, 79.278],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_91ea830b25a16660a4d06d3f12758344 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b80f1596273d690df6ae13641a132588 = $(`<div id="html_b80f1596273d690df6ae13641a132588" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_02<br>                 <b>Grid ID:</b> GRID_A2<br>                 <b>Range:</b> Turia<br>                 <b>Zone:</b> CORE<br>                 <b>Model:</b> Cuddeback_X6<br>                 <b>GPS:</b> 21.6950°N, 79.2780°E                 </div>`)[0];
+                popup_91ea830b25a16660a4d06d3f12758344.setContent(html_b80f1596273d690df6ae13641a132588);
+            
+        
+
+        circle_marker_7c7b4870e880a1392868558f9aca24ec.bindPopup(popup_91ea830b25a16660a4d06d3f12758344)
+        ;
+
+        
+    
+    
+            circle_marker_7c7b4870e880a1392868558f9aca24ec.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_02 (Turia - CORE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4db78fbd12d2f25928bd77eaa8903673 = L.circleMarker(
+                [21.712, 79.261],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_387cba25d70ad9d0aef1ecf4611137c7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_238d7ec4247febb78f2b739a6027b446 = $(`<div id="html_238d7ec4247febb78f2b739a6027b446" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_03<br>                 <b>Grid ID:</b> GRID_A3<br>                 <b>Range:</b> Turia<br>                 <b>Zone:</b> CORE<br>                 <b>Model:</b> Reconyx_HyperFire<br>                 <b>GPS:</b> 21.7120°N, 79.2610°E                 </div>`)[0];
+                popup_387cba25d70ad9d0aef1ecf4611137c7.setContent(html_238d7ec4247febb78f2b739a6027b446);
+            
+        
+
+        circle_marker_4db78fbd12d2f25928bd77eaa8903673.bindPopup(popup_387cba25d70ad9d0aef1ecf4611137c7)
+        ;
+
+        
+    
+    
+            circle_marker_4db78fbd12d2f25928bd77eaa8903673.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_03 (Turia - CORE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c578574964d19f95080655e0b71c178f = L.circleMarker(
+                [21.734, 79.289],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_fd5f8d82c60f707385054ff8158e1aaa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_41b47303c17713748397dc2259ae2474 = $(`<div id="html_41b47303c17713748397dc2259ae2474" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_04<br>                 <b>Grid ID:</b> GRID_B1<br>                 <b>Range:</b> Karmajhiri<br>                 <b>Zone:</b> CORE<br>                 <b>Model:</b> Reconyx_HyperFire<br>                 <b>GPS:</b> 21.7340°N, 79.2890°E                 </div>`)[0];
+                popup_fd5f8d82c60f707385054ff8158e1aaa.setContent(html_41b47303c17713748397dc2259ae2474);
+            
+        
+
+        circle_marker_c578574964d19f95080655e0b71c178f.bindPopup(popup_fd5f8d82c60f707385054ff8158e1aaa)
+        ;
+
+        
+    
+    
+            circle_marker_c578574964d19f95080655e0b71c178f.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_04 (Karmajhiri - CORE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_86813996ff0fb4c75d9bf49cfc2eccea = L.circleMarker(
+                [21.745, 79.308],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_179c9b6e98e98be9e7a2da89c2d910c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fa3a6b3d6734f3077af70659371beaa8 = $(`<div id="html_fa3a6b3d6734f3077af70659371beaa8" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_05<br>                 <b>Grid ID:</b> GRID_B2<br>                 <b>Range:</b> Karmajhiri<br>                 <b>Zone:</b> CORE<br>                 <b>Model:</b> Cuddeback_X6<br>                 <b>GPS:</b> 21.7450°N, 79.3080°E                 </div>`)[0];
+                popup_179c9b6e98e98be9e7a2da89c2d910c9.setContent(html_fa3a6b3d6734f3077af70659371beaa8);
+            
+        
+
+        circle_marker_86813996ff0fb4c75d9bf49cfc2eccea.bindPopup(popup_179c9b6e98e98be9e7a2da89c2d910c9)
+        ;
+
+        
+    
+    
+            circle_marker_86813996ff0fb4c75d9bf49cfc2eccea.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_05 (Karmajhiri - CORE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9742fae4c845a403de29369c7d304afb = L.circleMarker(
+                [21.728, 79.325],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_6cc7cfaf500e26e15b1926a80490efe9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f248faaa019c7003c32e5098932be11e = $(`<div id="html_f248faaa019c7003c32e5098932be11e" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_06<br>                 <b>Grid ID:</b> GRID_B3<br>                 <b>Range:</b> Karmajhiri<br>                 <b>Zone:</b> CORE<br>                 <b>Model:</b> Cuddeback_X6<br>                 <b>GPS:</b> 21.7280°N, 79.3250°E                 </div>`)[0];
+                popup_6cc7cfaf500e26e15b1926a80490efe9.setContent(html_f248faaa019c7003c32e5098932be11e);
+            
+        
+
+        circle_marker_9742fae4c845a403de29369c7d304afb.bindPopup(popup_6cc7cfaf500e26e15b1926a80490efe9)
+        ;
+
+        
+    
+    
+            circle_marker_9742fae4c845a403de29369c7d304afb.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_06 (Karmajhiri - CORE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cfdac0562dc41d2f10df3a0bd8a0dd87 = L.circleMarker(
+                [21.755, 79.315],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_6367c7b99d2248826a86f4e1a38bede1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e53b68174133c949671b82532e9928a = $(`<div id="html_2e53b68174133c949671b82532e9928a" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_07<br>                 <b>Grid ID:</b> GRID_C1<br>                 <b>Range:</b> Jamtara<br>                 <b>Zone:</b> CORE<br>                 <b>Model:</b> Reconyx_HyperFire<br>                 <b>GPS:</b> 21.7550°N, 79.3150°E                 </div>`)[0];
+                popup_6367c7b99d2248826a86f4e1a38bede1.setContent(html_2e53b68174133c949671b82532e9928a);
+            
+        
+
+        circle_marker_cfdac0562dc41d2f10df3a0bd8a0dd87.bindPopup(popup_6367c7b99d2248826a86f4e1a38bede1)
+        ;
+
+        
+    
+    
+            circle_marker_cfdac0562dc41d2f10df3a0bd8a0dd87.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_07 (Jamtara - CORE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8491580e8072d1d8348d4fd37fa4817e = L.circleMarker(
+                [21.768, 79.328],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_0b9911c523f5bb61335d9891df849b6d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca9e7f2ef7fcb1bbc5eaa46eff886182 = $(`<div id="html_ca9e7f2ef7fcb1bbc5eaa46eff886182" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_08<br>                 <b>Grid ID:</b> GRID_C2<br>                 <b>Range:</b> Jamtara<br>                 <b>Zone:</b> CORE<br>                 <b>Model:</b> Reconyx_HyperFire<br>                 <b>GPS:</b> 21.7680°N, 79.3280°E                 </div>`)[0];
+                popup_0b9911c523f5bb61335d9891df849b6d.setContent(html_ca9e7f2ef7fcb1bbc5eaa46eff886182);
+            
+        
+
+        circle_marker_8491580e8072d1d8348d4fd37fa4817e.bindPopup(popup_0b9911c523f5bb61335d9891df849b6d)
+        ;
+
+        
+    
+    
+            circle_marker_8491580e8072d1d8348d4fd37fa4817e.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_08 (Jamtara - CORE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0349eb16f737d5f2d3cff7d9e8cb3c64 = L.circleMarker(
+                [21.75, 79.34],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_2be8fd3ad27e2983a5961dee4ea540ed = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c97c11c14ec7177c9d884700cc68be2a = $(`<div id="html_c97c11c14ec7177c9d884700cc68be2a" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_09<br>                 <b>Grid ID:</b> GRID_C3<br>                 <b>Range:</b> Jamtara<br>                 <b>Zone:</b> CORE<br>                 <b>Model:</b> Cuddeback_X6<br>                 <b>GPS:</b> 21.7500°N, 79.3400°E                 </div>`)[0];
+                popup_2be8fd3ad27e2983a5961dee4ea540ed.setContent(html_c97c11c14ec7177c9d884700cc68be2a);
+            
+        
+
+        circle_marker_0349eb16f737d5f2d3cff7d9e8cb3c64.bindPopup(popup_2be8fd3ad27e2983a5961dee4ea540ed)
+        ;
+
+        
+    
+    
+            circle_marker_0349eb16f737d5f2d3cff7d9e8cb3c64.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_09 (Jamtara - CORE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0fda98e5d032ddb43874ac4762d80da0 = L.circleMarker(
+                [21.782, 79.365],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_37a4ad0f654746b79dd55f4e7ddcac8a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_980f7989acb3f2f27b1d6eecf0b3bb12 = $(`<div id="html_980f7989acb3f2f27b1d6eecf0b3bb12" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_10<br>                 <b>Grid ID:</b> GRID_D1<br>                 <b>Range:</b> Khawasa<br>                 <b>Zone:</b> BUFFER<br>                 <b>Model:</b> Browning_StrikeForce<br>                 <b>GPS:</b> 21.7820°N, 79.3650°E                 </div>`)[0];
+                popup_37a4ad0f654746b79dd55f4e7ddcac8a.setContent(html_980f7989acb3f2f27b1d6eecf0b3bb12);
+            
+        
+
+        circle_marker_0fda98e5d032ddb43874ac4762d80da0.bindPopup(popup_37a4ad0f654746b79dd55f4e7ddcac8a)
+        ;
+
+        
+    
+    
+            circle_marker_0fda98e5d032ddb43874ac4762d80da0.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_10 (Khawasa - BUFFER)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_378347b66a23eeedff4234082883c9cb = L.circleMarker(
+                [21.775, 79.38],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_d1c37dfcac514ef47d8a2a8f6ea27378 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_909d3001c0481cf52e320bc89d4666e3 = $(`<div id="html_909d3001c0481cf52e320bc89d4666e3" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_11<br>                 <b>Grid ID:</b> GRID_D2<br>                 <b>Range:</b> Khawasa<br>                 <b>Zone:</b> BUFFER<br>                 <b>Model:</b> Browning_StrikeForce<br>                 <b>GPS:</b> 21.7750°N, 79.3800°E                 </div>`)[0];
+                popup_d1c37dfcac514ef47d8a2a8f6ea27378.setContent(html_909d3001c0481cf52e320bc89d4666e3);
+            
+        
+
+        circle_marker_378347b66a23eeedff4234082883c9cb.bindPopup(popup_d1c37dfcac514ef47d8a2a8f6ea27378)
+        ;
+
+        
+    
+    
+            circle_marker_378347b66a23eeedff4234082883c9cb.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_11 (Khawasa - BUFFER)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5826fa2b985cee1fc69cf5ed5fade9cc = L.circleMarker(
+                [21.76, 79.36],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_da9ef7f0cd2eeeec6dccfcfd8ea4a488 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aa0a03d4050e470f248de806a41bfdb0 = $(`<div id="html_aa0a03d4050e470f248de806a41bfdb0" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_12<br>                 <b>Grid ID:</b> GRID_D3<br>                 <b>Range:</b> Gumtara<br>                 <b>Zone:</b> BUFFER<br>                 <b>Model:</b> Browning_StrikeForce<br>                 <b>GPS:</b> 21.7600°N, 79.3600°E                 </div>`)[0];
+                popup_da9ef7f0cd2eeeec6dccfcfd8ea4a488.setContent(html_aa0a03d4050e470f248de806a41bfdb0);
+            
+        
+
+        circle_marker_5826fa2b985cee1fc69cf5ed5fade9cc.bindPopup(popup_da9ef7f0cd2eeeec6dccfcfd8ea4a488)
+        ;
+
+        
+    
+    
+            circle_marker_5826fa2b985cee1fc69cf5ed5fade9cc.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_12 (Gumtara - BUFFER)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b422a7f0a59d07b64665755af7d2fe46 = L.circleMarker(
+                [21.678, 79.248],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_46e70bb90c309329b2f97c32ce28f163 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ffaa4ee383a4e74cc94f853c642fdbd4 = $(`<div id="html_ffaa4ee383a4e74cc94f853c642fdbd4" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_13<br>                 <b>Grid ID:</b> GRID_E1<br>                 <b>Range:</b> Turia_Fringe<br>                 <b>Zone:</b> VILLAGE_FRINGE<br>                 <b>Model:</b> Browning_StrikeForce<br>                 <b>GPS:</b> 21.6780°N, 79.2480°E                 </div>`)[0];
+                popup_46e70bb90c309329b2f97c32ce28f163.setContent(html_ffaa4ee383a4e74cc94f853c642fdbd4);
+            
+        
+
+        circle_marker_b422a7f0a59d07b64665755af7d2fe46.bindPopup(popup_46e70bb90c309329b2f97c32ce28f163)
+        ;
+
+        
+    
+    
+            circle_marker_b422a7f0a59d07b64665755af7d2fe46.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_13 (Turia_Fringe - VILLAGE_FRINGE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9bdba3bb0dec1f84772652ff226458f7 = L.circleMarker(
+                [21.671, 79.259],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_5b1c7918e734792be60aab0d21bce392 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_63af0ecde6db1c66ff2c216fc71a7c57 = $(`<div id="html_63af0ecde6db1c66ff2c216fc71a7c57" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_14<br>                 <b>Grid ID:</b> GRID_E2<br>                 <b>Range:</b> Awarghani_Fringe<br>                 <b>Zone:</b> VILLAGE_FRINGE<br>                 <b>Model:</b> Browning_StrikeForce<br>                 <b>GPS:</b> 21.6710°N, 79.2590°E                 </div>`)[0];
+                popup_5b1c7918e734792be60aab0d21bce392.setContent(html_63af0ecde6db1c66ff2c216fc71a7c57);
+            
+        
+
+        circle_marker_9bdba3bb0dec1f84772652ff226458f7.bindPopup(popup_5b1c7918e734792be60aab0d21bce392)
+        ;
+
+        
+    
+    
+            circle_marker_9bdba3bb0dec1f84772652ff226458f7.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_14 (Awarghani_Fringe - VILLAGE_FRINGE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b3446e3aa83706954fa042d53a80f445 = L.circleMarker(
+                [21.791, 79.371],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_10742a9f3a76b67714466a1d627aac2f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4aaa8a775cfb1f3b292ab8814e4a6911 = $(`<div id="html_4aaa8a775cfb1f3b292ab8814e4a6911" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_15<br>                 <b>Grid ID:</b> GRID_E3<br>                 <b>Range:</b> Khawasa_Fringe<br>                 <b>Zone:</b> VILLAGE_FRINGE<br>                 <b>Model:</b> Browning_StrikeForce<br>                 <b>GPS:</b> 21.7910°N, 79.3710°E                 </div>`)[0];
+                popup_10742a9f3a76b67714466a1d627aac2f.setContent(html_4aaa8a775cfb1f3b292ab8814e4a6911);
+            
+        
+
+        circle_marker_b3446e3aa83706954fa042d53a80f445.bindPopup(popup_10742a9f3a76b67714466a1d627aac2f)
+        ;
+
+        
+    
+    
+            circle_marker_b3446e3aa83706954fa042d53a80f445.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_15 (Khawasa_Fringe - VILLAGE_FRINGE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_feb738ecaa77c9a88e13ee0c0b85aa40 = L.circleMarker(
+                [21.788, 79.405],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_1da7da9a93a8ab178568d5f00db2aa9f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_96e1698357d059913a2ded97c5c1893b = $(`<div id="html_96e1698357d059913a2ded97c5c1893b" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_16<br>                 <b>Grid ID:</b> GRID_E4<br>                 <b>Range:</b> Dhawalpur_Fringe<br>                 <b>Zone:</b> VILLAGE_FRINGE<br>                 <b>Model:</b> Browning_StrikeForce<br>                 <b>GPS:</b> 21.7880°N, 79.4050°E                 </div>`)[0];
+                popup_1da7da9a93a8ab178568d5f00db2aa9f.setContent(html_96e1698357d059913a2ded97c5c1893b);
+            
+        
+
+        circle_marker_feb738ecaa77c9a88e13ee0c0b85aa40.bindPopup(popup_1da7da9a93a8ab178568d5f00db2aa9f)
+        ;
+
+        
+    
+    
+            circle_marker_feb738ecaa77c9a88e13ee0c0b85aa40.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_16 (Dhawalpur_Fringe - VILLAGE_FRINGE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_60bf5c970ab1de9a9cac9d20215659b2 = L.circleMarker(
+                [21.848, 79.438],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_baf3b94d2e7b2753aa7f352abbb7d3a2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cf82477fccf053a06ed30ba9f25fb5ea = $(`<div id="html_cf82477fccf053a06ed30ba9f25fb5ea" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_17<br>                 <b>Grid ID:</b> GRID_E5<br>                 <b>Range:</b> Rukhad_Corridor<br>                 <b>Zone:</b> VILLAGE_FRINGE<br>                 <b>Model:</b> Browning_StrikeForce<br>                 <b>GPS:</b> 21.8480°N, 79.4380°E                 </div>`)[0];
+                popup_baf3b94d2e7b2753aa7f352abbb7d3a2.setContent(html_cf82477fccf053a06ed30ba9f25fb5ea);
+            
+        
+
+        circle_marker_60bf5c970ab1de9a9cac9d20215659b2.bindPopup(popup_baf3b94d2e7b2753aa7f352abbb7d3a2)
+        ;
+
+        
+    
+    
+            circle_marker_60bf5c970ab1de9a9cac9d20215659b2.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_17 (Rukhad_Corridor - VILLAGE_FRINGE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4b77c9577074b8878e4b527d4582bed3 = L.circleMarker(
+                [21.692, 79.234],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_63af2efe0b593612bf8e2844b751ab36);
+        
+    
+        var popup_723d5172730d0a1fd1cfc09b70f6893f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e22a29e6f098603c51dcdbf1dc8af97a = $(`<div id="html_e22a29e6f098603c51dcdbf1dc8af97a" style="width: 100.0%; height: 100.0%;">                 <b>Station ID:</b> PTR_STN_18<br>                 <b>Grid ID:</b> GRID_E6<br>                 <b>Range:</b> Kohka_Fringe<br>                 <b>Zone:</b> VILLAGE_FRINGE<br>                 <b>Model:</b> Browning_StrikeForce<br>                 <b>GPS:</b> 21.6920°N, 79.2340°E                 </div>`)[0];
+                popup_723d5172730d0a1fd1cfc09b70f6893f.setContent(html_e22a29e6f098603c51dcdbf1dc8af97a);
+            
+        
+
+        circle_marker_4b77c9577074b8878e4b527d4582bed3.bindPopup(popup_723d5172730d0a1fd1cfc09b70f6893f)
+        ;
+
+        
+    
+    
+            circle_marker_4b77c9577074b8878e4b527d4582bed3.bindTooltip(
+                `<div>
+                     Camera Station: PTR_STN_18 (Kohka_Fringe - VILLAGE_FRINGE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_63af2efe0b593612bf8e2844b751ab36.addTo(map_7cee7083a477eb8ec81bcfa5af237f61);
+        
+    
+            var feature_group_a8ef4839d5977c1b16838346622d4a8e = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var polygon_459444f4be8ed4e5d5a23a4a2a4e2c11 = L.polygon(
+                [[21.69689, 79.29066], [21.70206, 79.28955], [21.70644, 79.2864], [21.70937, 79.28168], [21.7104, 79.27611], [21.70937, 79.27055], [21.70644, 79.26583], [21.70206, 79.26267], [21.69689, 79.26157], [21.69172, 79.26267], [21.68733, 79.26583], [21.6844, 79.27055], [21.68338, 79.27611], [21.6844, 79.28168], [21.68733, 79.2864], [21.69172, 79.28955], [21.69689, 79.29066]],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_a8ef4839d5977c1b16838346622d4a8e);
+        
+    
+        var popup_1cdcc54889c46e9ff13763b70e5c9cc6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4beb1ceff08cec92c440ef19c36ccf97 = $(`<div id="html_4beb1ceff08cec92c440ef19c36ccf97" style="width: 100.0%; height: 100.0%;">                     <div style='font-family: Arial; width: 220px;'>                         <h3 style='margin:0; color:#2ca02c;'>BAJIRAO</h3>                         <hr style='margin:4px 0;'>                         <p style='margin:3px 0;'><b>Home Range Area:</b> 7.07 km²</p>                         <p style='margin:3px 0;'><b>Total Camera Sightings:</b> 9</p>                         <p style='margin:3px 0;'><b>Stations Used:</b> PTR_STN_03, PTR_STN_02</p>                     </div>                     </div>`)[0];
+                popup_1cdcc54889c46e9ff13763b70e5c9cc6.setContent(html_4beb1ceff08cec92c440ef19c36ccf97);
+            
+        
+
+        polygon_459444f4be8ed4e5d5a23a4a2a4e2c11.bindPopup(popup_1cdcc54889c46e9ff13763b70e5c9cc6)
+        ;
+
+        
+    
+    
+            polygon_459444f4be8ed4e5d5a23a4a2a4e2c11.bindTooltip(
+                `<div>
+                     <b>Tiger: BAJIRAO</b> | Area: 7.07 km² (9 sightings)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_23c2c0b0906fb79e8cddf4ca49489b33 = L.marker(
+                [21.69689, 79.27611],
+                {
+}
+            ).addTo(feature_group_a8ef4839d5977c1b16838346622d4a8e);
+        
+    
+            var icon_fc713936ce0822397f84366e1c7b9c48 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "white",
+  "icon": "paw",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bf0aa3e5479a148216e117ed56cea81a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8acfb2de44aceb0e0aeb3a3b46e79217 = $(`<div id="html_8acfb2de44aceb0e0aeb3a3b46e79217" style="width: 100.0%; height: 100.0%;"><b>Activity Centroid (BAJIRAO)</b><br>Lat: 21.6969°N, Lon: 79.2761°E<br>Home Range: 7.07 km²</div>`)[0];
+                popup_bf0aa3e5479a148216e117ed56cea81a.setContent(html_8acfb2de44aceb0e0aeb3a3b46e79217);
+            
+        
+
+        marker_23c2c0b0906fb79e8cddf4ca49489b33.bindPopup(popup_bf0aa3e5479a148216e117ed56cea81a)
+        ;
+
+        
+    
+    
+            marker_23c2c0b0906fb79e8cddf4ca49489b33.bindTooltip(
+                `<div>
+                     Centroid of Activity: BAJIRAO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_23c2c0b0906fb79e8cddf4ca49489b33.setIcon(icon_fc713936ce0822397f84366e1c7b9c48);
+            
+    
+            var polygon_23d77d62f3398dc985a8a514cda42080 = L.polygon(
+                [[21.70169, 79.29924], [21.70686, 79.29813], [21.71125, 79.29498], [21.71418, 79.29026], [21.71521, 79.28469], [21.71418, 79.27913], [21.71125, 79.27441], [21.70686, 79.27126], [21.70169, 79.27015], [21.69652, 79.27126], [21.69214, 79.27441], [21.68921, 79.27913], [21.68818, 79.28469], [21.68921, 79.29026], [21.69214, 79.29498], [21.69652, 79.29813], [21.70169, 79.29924]],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_a8ef4839d5977c1b16838346622d4a8e);
+        
+    
+        var popup_7c746b52ec379026cab9ef20ffedd513 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f650751b11ecad7b3f1c3f2d2fc7b299 = $(`<div id="html_f650751b11ecad7b3f1c3f2d2fc7b299" style="width: 100.0%; height: 100.0%;">                     <div style='font-family: Arial; width: 220px;'>                         <h3 style='margin:0; color:#ff7f0e;'>T15_COLLARWALI</h3>                         <hr style='margin:4px 0;'>                         <p style='margin:3px 0;'><b>Home Range Area:</b> 7.07 km²</p>                         <p style='margin:3px 0;'><b>Total Camera Sightings:</b> 13</p>                         <p style='margin:3px 0;'><b>Stations Used:</b> PTR_STN_02, PTR_STN_10</p>                     </div>                     </div>`)[0];
+                popup_7c746b52ec379026cab9ef20ffedd513.setContent(html_f650751b11ecad7b3f1c3f2d2fc7b299);
+            
+        
+
+        polygon_23d77d62f3398dc985a8a514cda42080.bindPopup(popup_7c746b52ec379026cab9ef20ffedd513)
+        ;
+
+        
+    
+    
+            polygon_23d77d62f3398dc985a8a514cda42080.bindTooltip(
+                `<div>
+                     <b>Tiger: T15_COLLARWALI</b> | Area: 7.07 km² (13 sightings)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_50eda06030e7929490ab72cd89f7f489 = L.marker(
+                [21.70169, 79.28469],
+                {
+}
+            ).addTo(feature_group_a8ef4839d5977c1b16838346622d4a8e);
+        
+    
+            var icon_129ad0aa49221321dc87c681054900c8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "white",
+  "icon": "paw",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_db5f36d601d7eaba0e2f3c30f10dab4d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_13c653b82da893745e3138e40aa4bf96 = $(`<div id="html_13c653b82da893745e3138e40aa4bf96" style="width: 100.0%; height: 100.0%;"><b>Activity Centroid (T15_COLLARWALI)</b><br>Lat: 21.7017°N, Lon: 79.2847°E<br>Home Range: 7.07 km²</div>`)[0];
+                popup_db5f36d601d7eaba0e2f3c30f10dab4d.setContent(html_13c653b82da893745e3138e40aa4bf96);
+            
+        
+
+        marker_50eda06030e7929490ab72cd89f7f489.bindPopup(popup_db5f36d601d7eaba0e2f3c30f10dab4d)
+        ;
+
+        
+    
+    
+            marker_50eda06030e7929490ab72cd89f7f489.bindTooltip(
+                `<div>
+                     Centroid of Activity: T15_COLLARWALI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_50eda06030e7929490ab72cd89f7f489.setIcon(icon_129ad0aa49221321dc87c681054900c8);
+            
+    
+            var polygon_1718d3fe35ce9a121f9cdb8dabd4aa70 = L.polygon(
+                [[21.6984, 79.28914], [21.70357, 79.28804], [21.70796, 79.28488], [21.71088, 79.28017], [21.71191, 79.2746], [21.71088, 79.26903], [21.70796, 79.26432], [21.70357, 79.26116], [21.6984, 79.26006], [21.69323, 79.26116], [21.68884, 79.26432], [21.68592, 79.26903], [21.68489, 79.2746], [21.68592, 79.28017], [21.68884, 79.28488], [21.69323, 79.28804], [21.6984, 79.28914]],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_a8ef4839d5977c1b16838346622d4a8e);
+        
+    
+        var popup_237f82a27c72e03d7c35e7931e7567db = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4ce1e31aa6e738b45e0510cd2a95d4d0 = $(`<div id="html_4ce1e31aa6e738b45e0510cd2a95d4d0" style="width: 100.0%; height: 100.0%;">                     <div style='font-family: Arial; width: 220px;'>                         <h3 style='margin:0; color:#d62728;'>T40_PATDEV</h3>                         <hr style='margin:4px 0;'>                         <p style='margin:3px 0;'><b>Home Range Area:</b> 7.07 km²</p>                         <p style='margin:3px 0;'><b>Total Camera Sightings:</b> 5</p>                         <p style='margin:3px 0;'><b>Stations Used:</b> PTR_STN_03, PTR_STN_02</p>                     </div>                     </div>`)[0];
+                popup_237f82a27c72e03d7c35e7931e7567db.setContent(html_4ce1e31aa6e738b45e0510cd2a95d4d0);
+            
+        
+
+        polygon_1718d3fe35ce9a121f9cdb8dabd4aa70.bindPopup(popup_237f82a27c72e03d7c35e7931e7567db)
+        ;
+
+        
+    
+    
+            polygon_1718d3fe35ce9a121f9cdb8dabd4aa70.bindTooltip(
+                `<div>
+                     <b>Tiger: T40_PATDEV</b> | Area: 7.07 km² (5 sightings)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_830b334ff872f4d1ae27bfeb7fd1b8ad = L.marker(
+                [21.6984, 79.2746],
+                {
+}
+            ).addTo(feature_group_a8ef4839d5977c1b16838346622d4a8e);
+        
+    
+            var icon_26cb86c4969d96ac1cd9e7efb746ff60 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "white",
+  "icon": "paw",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a3fd0ac2727348d688f830a841793b9f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8dad6e0053a85ead6745e68d911f5e6e = $(`<div id="html_8dad6e0053a85ead6745e68d911f5e6e" style="width: 100.0%; height: 100.0%;"><b>Activity Centroid (T40_PATDEV)</b><br>Lat: 21.6984°N, Lon: 79.2746°E<br>Home Range: 7.07 km²</div>`)[0];
+                popup_a3fd0ac2727348d688f830a841793b9f.setContent(html_8dad6e0053a85ead6745e68d911f5e6e);
+            
+        
+
+        marker_830b334ff872f4d1ae27bfeb7fd1b8ad.bindPopup(popup_a3fd0ac2727348d688f830a841793b9f)
+        ;
+
+        
+    
+    
+            marker_830b334ff872f4d1ae27bfeb7fd1b8ad.bindTooltip(
+                `<div>
+                     Centroid of Activity: T40_PATDEV
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_830b334ff872f4d1ae27bfeb7fd1b8ad.setIcon(icon_26cb86c4969d96ac1cd9e7efb746ff60);
+            
+    
+            var polygon_a5b7334f57302d29a32b691277b520b4 = L.polygon(
+                [[21.695, 79.29254], [21.70017, 79.29144], [21.70456, 79.28828], [21.70748, 79.28357], [21.70851, 79.278], [21.70748, 79.27243], [21.70456, 79.26772], [21.70017, 79.26456], [21.695, 79.26346], [21.68983, 79.26456], [21.68544, 79.26772], [21.68252, 79.27243], [21.68149, 79.278], [21.68252, 79.28357], [21.68544, 79.28828], [21.68983, 79.29144], [21.695, 79.29254]],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_a8ef4839d5977c1b16838346622d4a8e);
+        
+    
+        var popup_0c6bf7913d053a7342bc59fa1a51c8e4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6fc0e63d7b9b28aa2c69986e250758aa = $(`<div id="html_6fc0e63d7b9b28aa2c69986e250758aa" style="width: 100.0%; height: 100.0%;">                     <div style='font-family: Arial; width: 220px;'>                         <h3 style='margin:0; color:#1f77b4;'>SWASTIK</h3>                         <hr style='margin:4px 0;'>                         <p style='margin:3px 0;'><b>Home Range Area:</b> 7.07 km²</p>                         <p style='margin:3px 0;'><b>Total Camera Sightings:</b> 4</p>                         <p style='margin:3px 0;'><b>Stations Used:</b> PTR_STN_02</p>                     </div>                     </div>`)[0];
+                popup_0c6bf7913d053a7342bc59fa1a51c8e4.setContent(html_6fc0e63d7b9b28aa2c69986e250758aa);
+            
+        
+
+        polygon_a5b7334f57302d29a32b691277b520b4.bindPopup(popup_0c6bf7913d053a7342bc59fa1a51c8e4)
+        ;
+
+        
+    
+    
+            polygon_a5b7334f57302d29a32b691277b520b4.bindTooltip(
+                `<div>
+                     <b>Tiger: SWASTIK</b> | Area: 7.07 km² (4 sightings)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f76d7dcd833f4e4a45e8675e656a96aa = L.marker(
+                [21.695, 79.278],
+                {
+}
+            ).addTo(feature_group_a8ef4839d5977c1b16838346622d4a8e);
+        
+    
+            var icon_2f5dbfd7bf8b6f0ad83010214522a5a4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "white",
+  "icon": "paw",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_35029a8fde6053cdfa14ee70f0cb8c04 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_97894a37871881e46528cc1eb42ad92d = $(`<div id="html_97894a37871881e46528cc1eb42ad92d" style="width: 100.0%; height: 100.0%;"><b>Activity Centroid (SWASTIK)</b><br>Lat: 21.6950°N, Lon: 79.2780°E<br>Home Range: 7.07 km²</div>`)[0];
+                popup_35029a8fde6053cdfa14ee70f0cb8c04.setContent(html_97894a37871881e46528cc1eb42ad92d);
+            
+        
+
+        marker_f76d7dcd833f4e4a45e8675e656a96aa.bindPopup(popup_35029a8fde6053cdfa14ee70f0cb8c04)
+        ;
+
+        
+    
+    
+            marker_f76d7dcd833f4e4a45e8675e656a96aa.bindTooltip(
+                `<div>
+                     Centroid of Activity: SWASTIK
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f76d7dcd833f4e4a45e8675e656a96aa.setIcon(icon_2f5dbfd7bf8b6f0ad83010214522a5a4);
+            
+    
+            var polygon_e97a75a907e8ee3dbca5d264e3591958 = L.polygon(
+                [[21.782, 79.38439], [21.7889, 79.38292], [21.79474, 79.37871], [21.79865, 79.37242], [21.80002, 79.365], [21.79865, 79.35758], [21.79474, 79.35129], [21.7889, 79.34708], [21.782, 79.34561], [21.7751, 79.34708], [21.76926, 79.35129], [21.76535, 79.35758], [21.76398, 79.365], [21.76535, 79.37242], [21.76926, 79.37871], [21.7751, 79.38292], [21.782, 79.38439]],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_a8ef4839d5977c1b16838346622d4a8e);
+        
+    
+        var popup_7160dc9aca77c665d0ad90554448b1d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0b81833e7ae71f34a8764528e0d7796b = $(`<div id="html_0b81833e7ae71f34a8764528e0d7796b" style="width: 100.0%; height: 100.0%;">                     <div style='font-family: Arial; width: 220px;'>                         <h3 style='margin:0; color:#9467bd;'>T_74_L_MARK</h3>                         <hr style='margin:4px 0;'>                         <p style='margin:3px 0;'><b>Home Range Area:</b> 12.57 km²</p>                         <p style='margin:3px 0;'><b>Total Camera Sightings:</b> 1</p>                         <p style='margin:3px 0;'><b>Stations Used:</b> PTR_STN_10</p>                     </div>                     </div>`)[0];
+                popup_7160dc9aca77c665d0ad90554448b1d6.setContent(html_0b81833e7ae71f34a8764528e0d7796b);
+            
+        
+
+        polygon_e97a75a907e8ee3dbca5d264e3591958.bindPopup(popup_7160dc9aca77c665d0ad90554448b1d6)
+        ;
+
+        
+    
+    
+            polygon_e97a75a907e8ee3dbca5d264e3591958.bindTooltip(
+                `<div>
+                     <b>Tiger: T_74_L_MARK</b> | Area: 12.57 km² (1 sightings)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_5a3a68cdb1f0e32d9dfd3c5e8510bb66 = L.marker(
+                [21.782, 79.365],
+                {
+}
+            ).addTo(feature_group_a8ef4839d5977c1b16838346622d4a8e);
+        
+    
+            var icon_4e13bf51cd746b3be81d76e9b2dd1d20 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "white",
+  "icon": "paw",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0e67f096ac7699f67173e580926cc1af = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_02ad12724906a66e10d2c31174a87fe4 = $(`<div id="html_02ad12724906a66e10d2c31174a87fe4" style="width: 100.0%; height: 100.0%;"><b>Activity Centroid (T_74_L_MARK)</b><br>Lat: 21.7820°N, Lon: 79.3650°E<br>Home Range: 12.57 km²</div>`)[0];
+                popup_0e67f096ac7699f67173e580926cc1af.setContent(html_02ad12724906a66e10d2c31174a87fe4);
+            
+        
+
+        marker_5a3a68cdb1f0e32d9dfd3c5e8510bb66.bindPopup(popup_0e67f096ac7699f67173e580926cc1af)
+        ;
+
+        
+    
+    
+            marker_5a3a68cdb1f0e32d9dfd3c5e8510bb66.bindTooltip(
+                `<div>
+                     Centroid of Activity: T_74_L_MARK
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5a3a68cdb1f0e32d9dfd3c5e8510bb66.setIcon(icon_4e13bf51cd746b3be81d76e9b2dd1d20);
+            
+    
+            feature_group_a8ef4839d5977c1b16838346622d4a8e.addTo(map_7cee7083a477eb8ec81bcfa5af237f61);
+        
+    
+            var feature_group_eadd8ef724b61f03c646d40bfac15aaf = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var polygon_db07cf7e0bca3f1d2d9b7bcefed19e55 = L.polygon(
+                [[21.7104, 79.27611], [21.70937, 79.28168], [21.70644, 79.2864], [21.70206, 79.28955], [21.69689, 79.29066], [21.69172, 79.28955], [21.688674626128122, 79.2873648228482], [21.68818, 79.28469], [21.68921, 79.27913], [21.69214, 79.27441], [21.69652, 79.27126], [21.70169, 79.27015], [21.70686, 79.27126], [21.709906484390874, 79.27344597399345], [21.7104, 79.27611]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": "6, 6", "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_eadd8ef724b61f03c646d40bfac15aaf);
+        
+    
+        var popup_20c38ca0275a6fdb47f47576e18687ad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5348a8cb78113309ec53839c34da64c2 = $(`<div id="html_5348a8cb78113309ec53839c34da64c2" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 230px;'>                     <h4 style='margin:0; color:#c0392b;'>⚠️ Territorial Overlap Zone</h4>                     <hr style='margin:4px 0;'>                     <p style='margin:3px 0;'><b>Tigers in Conflict:</b><br>BAJIRAO & T15_COLLARWALI</p>                     <p style='margin:3px 0;'><b>Overlap Area:</b> 3.89 km²</p>                     <p style='margin:3px 0;'><b>Management Signal:</b> MODERATE territorial pressure</p>                 </div>                 </div>`)[0];
+                popup_20c38ca0275a6fdb47f47576e18687ad.setContent(html_5348a8cb78113309ec53839c34da64c2);
+            
+        
+
+        polygon_db07cf7e0bca3f1d2d9b7bcefed19e55.bindPopup(popup_20c38ca0275a6fdb47f47576e18687ad)
+        ;
+
+        
+    
+    
+            polygon_db07cf7e0bca3f1d2d9b7bcefed19e55.bindTooltip(
+                `<div>
+                     <b>⚠️ Territorial Overlap:</b> BAJIRAO ↔ T15_COLLARWALI (3.89 km²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var polygon_2b77be2008caf2028e4f418d5c92acab = L.polygon(
+                [[21.69172, 79.26267], [21.69689, 79.26157], [21.70206, 79.26267], [21.70644, 79.26583], [21.70937, 79.27055], [21.7104, 79.27611], [21.70937, 79.28168], [21.706917920781713, 79.28563010713663], [21.70357, 79.28804], [21.6984, 79.28914], [21.69323, 79.28804], [21.68884, 79.28488], [21.68592, 79.28017], [21.68489, 79.2746], [21.68592, 79.26903], [21.68836633553718, 79.26508402726708], [21.69172, 79.26267]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": "6, 6", "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_eadd8ef724b61f03c646d40bfac15aaf);
+        
+    
+        var popup_16867b156d78e1c35876c6644a3e66dc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0a040f4f3f8268b3d12d58531755d8e2 = $(`<div id="html_0a040f4f3f8268b3d12d58531755d8e2" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 230px;'>                     <h4 style='margin:0; color:#c0392b;'>⚠️ Territorial Overlap Zone</h4>                     <hr style='margin:4px 0;'>                     <p style='margin:3px 0;'><b>Tigers in Conflict:</b><br>BAJIRAO & T40_PATDEV</p>                     <p style='margin:3px 0;'><b>Overlap Area:</b> 6.21 km²</p>                     <p style='margin:3px 0;'><b>Management Signal:</b> HIGH territorial pressure</p>                 </div>                 </div>`)[0];
+                popup_16867b156d78e1c35876c6644a3e66dc.setContent(html_0a040f4f3f8268b3d12d58531755d8e2);
+            
+        
+
+        polygon_2b77be2008caf2028e4f418d5c92acab.bindPopup(popup_16867b156d78e1c35876c6644a3e66dc)
+        ;
+
+        
+    
+    
+            polygon_2b77be2008caf2028e4f418d5c92acab.bindTooltip(
+                `<div>
+                     <b>⚠️ Territorial Overlap:</b> BAJIRAO ↔ T40_PATDEV (6.21 km²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var polygon_99af2c2edbe164d580ef2fd907a84110 = L.polygon(
+                [[21.70206, 79.28955], [21.69689, 79.29066], [21.69172, 79.28955], [21.68733, 79.2864], [21.6844, 79.28168], [21.68338, 79.27611], [21.6844, 79.27055], [21.686735743238522, 79.2667873009946], [21.68983, 79.26456], [21.695, 79.26346], [21.70017, 79.26456], [21.70456, 79.26772], [21.70748, 79.27243], [21.70851, 79.278], [21.70748, 79.28357], [21.705150651340993, 79.28732727129587], [21.70206, 79.28955]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": "6, 6", "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_eadd8ef724b61f03c646d40bfac15aaf);
+        
+    
+        var popup_9456b9cd2b82d18f45371376066f0310 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3ef0d150a602c846f4e8cd59cedafbc2 = $(`<div id="html_3ef0d150a602c846f4e8cd59cedafbc2" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 230px;'>                     <h4 style='margin:0; color:#c0392b;'>⚠️ Territorial Overlap Zone</h4>                     <hr style='margin:4px 0;'>                     <p style='margin:3px 0;'><b>Tigers in Conflict:</b><br>BAJIRAO & SWASTIK</p>                     <p style='margin:3px 0;'><b>Overlap Area:</b> 6.04 km²</p>                     <p style='margin:3px 0;'><b>Management Signal:</b> HIGH territorial pressure</p>                 </div>                 </div>`)[0];
+                popup_9456b9cd2b82d18f45371376066f0310.setContent(html_3ef0d150a602c846f4e8cd59cedafbc2);
+            
+        
+
+        polygon_99af2c2edbe164d580ef2fd907a84110.bindPopup(popup_9456b9cd2b82d18f45371376066f0310)
+        ;
+
+        
+    
+    
+            polygon_99af2c2edbe164d580ef2fd907a84110.bindTooltip(
+                `<div>
+                     <b>⚠️ Territorial Overlap:</b> BAJIRAO ↔ SWASTIK (6.04 km²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var polygon_42ed9f255eb221cf040ead2a3d13c3c7 = L.polygon(
+                [[21.68921, 79.27913], [21.69214, 79.27441], [21.69652, 79.27126], [21.70169, 79.27015], [21.70686, 79.27126], [21.71125, 79.27441], [21.7117855881256, 79.2752727904276], [21.71088, 79.28017], [21.70796, 79.28488], [21.70357, 79.28804], [21.6984, 79.28914], [21.69323, 79.28804], [21.68884, 79.28488], [21.688304743983117, 79.28401662471249], [21.68921, 79.27913]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": "6, 6", "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_eadd8ef724b61f03c646d40bfac15aaf);
+        
+    
+        var popup_7660e6db9896de783fe0890fba65aa30 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e0d2f3471fe5d10cdfd06c8754517c5b = $(`<div id="html_e0d2f3471fe5d10cdfd06c8754517c5b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 230px;'>                     <h4 style='margin:0; color:#c0392b;'>⚠️ Territorial Overlap Zone</h4>                     <hr style='margin:4px 0;'>                     <p style='margin:3px 0;'><b>Tigers in Conflict:</b><br>T15_COLLARWALI & T40_PATDEV</p>                     <p style='margin:3px 0;'><b>Overlap Area:</b> 3.7 km²</p>                     <p style='margin:3px 0;'><b>Management Signal:</b> MODERATE territorial pressure</p>                 </div>                 </div>`)[0];
+                popup_7660e6db9896de783fe0890fba65aa30.setContent(html_e0d2f3471fe5d10cdfd06c8754517c5b);
+            
+        
+
+        polygon_42ed9f255eb221cf040ead2a3d13c3c7.bindPopup(popup_7660e6db9896de783fe0890fba65aa30)
+        ;
+
+        
+    
+    
+            polygon_42ed9f255eb221cf040ead2a3d13c3c7.bindTooltip(
+                `<div>
+                     <b>⚠️ Territorial Overlap:</b> T15_COLLARWALI ↔ T40_PATDEV (3.7 km²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var polygon_f4a293733d387a9437751026632e50aa = L.polygon(
+                [[21.68921, 79.29026], [21.68818, 79.28469], [21.68921, 79.27913], [21.69214, 79.27441], [21.69652, 79.27126], [21.70169, 79.27015], [21.706738473957223, 79.2712339083351], [21.70748, 79.27243], [21.70851, 79.278], [21.70748, 79.28357], [21.70456, 79.28828], [21.70017, 79.29144], [21.695, 79.29254], [21.689959619819252, 79.29146757868494], [21.68921, 79.29026]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": "6, 6", "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_eadd8ef724b61f03c646d40bfac15aaf);
+        
+    
+        var popup_ca20bc1ceb30d599a1e7d0045f5d79bc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_12c2c2d9db9b813619d2df894e0d4f24 = $(`<div id="html_12c2c2d9db9b813619d2df894e0d4f24" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 230px;'>                     <h4 style='margin:0; color:#c0392b;'>⚠️ Territorial Overlap Zone</h4>                     <hr style='margin:4px 0;'>                     <p style='margin:3px 0;'><b>Tigers in Conflict:</b><br>T15_COLLARWALI & SWASTIK</p>                     <p style='margin:3px 0;'><b>Overlap Area:</b> 3.95 km²</p>                     <p style='margin:3px 0;'><b>Management Signal:</b> MODERATE territorial pressure</p>                 </div>                 </div>`)[0];
+                popup_ca20bc1ceb30d599a1e7d0045f5d79bc.setContent(html_12c2c2d9db9b813619d2df894e0d4f24);
+            
+        
+
+        polygon_f4a293733d387a9437751026632e50aa.bindPopup(popup_ca20bc1ceb30d599a1e7d0045f5d79bc)
+        ;
+
+        
+    
+    
+            polygon_f4a293733d387a9437751026632e50aa.bindTooltip(
+                `<div>
+                     <b>⚠️ Territorial Overlap:</b> T15_COLLARWALI ↔ SWASTIK (3.95 km²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var polygon_08bbf1b6fbf9aff2d15f9922217038b8 = L.polygon(
+                [[21.70357, 79.28804], [21.6984, 79.28914], [21.69323, 79.28804], [21.68884, 79.28488], [21.68592, 79.28017], [21.68489, 79.2746], [21.68592, 79.26903], [21.687773470745956, 79.26604032629676], [21.68983, 79.26456], [21.695, 79.26346], [21.70017, 79.26456], [21.70456, 79.26772], [21.70748, 79.27243], [21.70851, 79.278], [21.70748, 79.28357], [21.705626529254044, 79.28655967370324], [21.70357, 79.28804]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": "6, 6", "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_eadd8ef724b61f03c646d40bfac15aaf);
+        
+    
+        var popup_9b1ee83f3939f24b255c032f9c934570 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_894ba105070e84fbbee6e4e62edc1e84 = $(`<div id="html_894ba105070e84fbbee6e4e62edc1e84" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: Arial; width: 230px;'>                     <h4 style='margin:0; color:#c0392b;'>⚠️ Territorial Overlap Zone</h4>                     <hr style='margin:4px 0;'>                     <p style='margin:3px 0;'><b>Tigers in Conflict:</b><br>T40_PATDEV & SWASTIK</p>                     <p style='margin:3px 0;'><b>Overlap Area:</b> 5.37 km²</p>                     <p style='margin:3px 0;'><b>Management Signal:</b> HIGH territorial pressure</p>                 </div>                 </div>`)[0];
+                popup_9b1ee83f3939f24b255c032f9c934570.setContent(html_894ba105070e84fbbee6e4e62edc1e84);
+            
+        
+
+        polygon_08bbf1b6fbf9aff2d15f9922217038b8.bindPopup(popup_9b1ee83f3939f24b255c032f9c934570)
+        ;
+
+        
+    
+    
+            polygon_08bbf1b6fbf9aff2d15f9922217038b8.bindTooltip(
+                `<div>
+                     <b>⚠️ Territorial Overlap:</b> T40_PATDEV ↔ SWASTIK (5.37 km²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_eadd8ef724b61f03c646d40bfac15aaf.addTo(map_7cee7083a477eb8ec81bcfa5af237f61);
+        
+    
+            var layer_control_2b09d03ccaa8dd572a4c63ae82a86ca8_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_ba76469342aaebcbc1980c9055b25f88,
+                    "Satellite Imagery" : tile_layer_59d9106e3b8acf112592d27417b2f80b,
+                },
+                overlays :  {
+                    "Reserve Boundaries (Core \u0026 Buffer)" : feature_group_0a87c2ea65adb43163682c07a32e7cf3,
+                    "Surrounding Villages \u0026 Conflict Buffer" : feature_group_74b6f3e7e0384eff3c020dc1d08facd6,
+                    "Camera Trap Grid Stations (18)" : feature_group_63af2efe0b593612bf8e2844b751ab36,
+                    "Individual Tiger Home Ranges (MCP)" : feature_group_a8ef4839d5977c1b16838346622d4a8e,
+                    "Territorial Overlap \u0026 Conflict Zones (6)" : feature_group_eadd8ef724b61f03c646d40bfac15aaf,
+                },
+            };
+            let layer_control_2b09d03ccaa8dd572a4c63ae82a86ca8 = L.control.layers(
+                layer_control_2b09d03ccaa8dd572a4c63ae82a86ca8_layers.base_layers,
+                layer_control_2b09d03ccaa8dd572a4c63ae82a86ca8_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_7cee7083a477eb8ec81bcfa5af237f61);
+
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_7cee7083a477eb8ec81bcfa5af237f61);
+        
+    
+            var measure_control_eeaaf694cc9930485ab9fa6a64afb02a = new L.Control.Measure(
+                {
+  "position": "bottomleft",
+  "primaryLengthUnit": "kilometers",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_7cee7083a477eb8ec81bcfa5af237f61.addControl(measure_control_eeaaf694cc9930485ab9fa6a64afb02a);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+</script>
+</html>

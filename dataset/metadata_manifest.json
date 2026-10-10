@@ -1,0 +1,2820 @@
+{
+  "dataset_name": "Pench_Tiger_Reserve_Dataset",
+  "description": "Complete dataset for Pench camera trap triage, individual tiger stripe Re-ID, co-predator/prey classification, and territory mapping",
+  "last_updated": "2026-08-15 22:05:59",
+  "statistics": {
+    "camera_trap_blanks/empty_trails": 3,
+    "camera_trap_blanks/vegetation_and_habitat": 13,
+    "co_predators/dhole_wild_dog": 12,
+    "co_predators/jackal": 25,
+    "co_predators/jungle_cat": 1,
+    "filtered_out_non_tigers/habitat_and_blanks": 95,
+    "filtered_out_non_tigers/maps_and_charts": 59,
+    "filtered_out_non_tigers/other_fauna_and_prey": 7,
+    "individual_tigers/General_Pench_Tigers": 97,
+    "individual_tigers/T15_Collarwali": 39,
+    "individual_tigers/T40_Patdev": 2,
+    "reserve_maps_and_grids/activity_and_monitoring_charts": 26,
+    "reserve_maps_and_grids/intensive_use_density_maps": 18,
+    "reserve_maps_and_grids/mcp_territory_maps": 6,
+    "verified_tiger_dataset/Karmajhiri_Core_Tigers": 16,
+    "verified_tiger_dataset/Pench_General_Resident_Tigers": 36,
+    "verified_tiger_dataset/Pench_PhaseIV_CameraTrap_Tigers": 4,
+    "verified_tiger_dataset/T15_Collarwali": 4,
+    "verified_tiger_dataset/T40_Patdev": 2
+  },
+  "files": [
+    {
+      "filename": "Bye__16343460854_.jpg",
+      "category": "camera_trap_blanks/empty_trails",
+      "size_kb": 1852,
+      "path": "dataset/camera_trap_blanks/empty_trails/Bye__16343460854_.jpg"
+    },
+    {
+      "filename": "Pench_jungle_road_by_Ananth_T.jpg",
+      "category": "camera_trap_blanks/empty_trails",
+      "size_kb": 6681,
+      "path": "dataset/camera_trap_blanks/empty_trails/Pench_jungle_road_by_Ananth_T.jpg"
+    },
+    {
+      "filename": "Playing_with_shadows_at_Pench_forest.jpg",
+      "category": "camera_trap_blanks/empty_trails",
+      "size_kb": 4313,
+      "path": "dataset/camera_trap_blanks/empty_trails/Playing_with_shadows_at_Pench_forest.jpg"
+    },
+    {
+      "filename": "Ghost_tree_pench_national_forest.jpg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 7239,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/Ghost_tree_pench_national_forest.jpg"
+    },
+    {
+      "filename": "Ghost_Tree__Kulu_.jpg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 5604,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/Ghost_Tree__Kulu_.jpg"
+    },
+    {
+      "filename": "Landscape_at_Pench.jpg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 3909,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/Landscape_at_Pench.jpg"
+    },
+    {
+      "filename": "Pench_Habitat_P12_52.jpeg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 288,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/Pench_Habitat_P12_52.jpeg"
+    },
+    {
+      "filename": "Pench_Habitat_P26_109.png",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 32,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/Pench_Habitat_P26_109.png"
+    },
+    {
+      "filename": "Pench_Habitat_P26_110.jpeg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 948,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/Pench_Habitat_P26_110.jpeg"
+    },
+    {
+      "filename": "Pench_Habitat_P32_151.jpeg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 29,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/Pench_Habitat_P32_151.jpeg"
+    },
+    {
+      "filename": "Pench_landscape_by_Ananth_T.jpg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 6007,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/Pench_landscape_by_Ananth_T.jpg"
+    },
+    {
+      "filename": "Pench_National_Park_banner.jpg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 242,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/Pench_National_Park_banner.jpg"
+    },
+    {
+      "filename": "seoni_gov_habitat_79.jpg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 78,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/seoni_gov_habitat_79.jpg"
+    },
+    {
+      "filename": "seoni_gov_habitat_84.jpg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 133,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/seoni_gov_habitat_84.jpg"
+    },
+    {
+      "filename": "seoni_gov_habitat_99.jpg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 10,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/seoni_gov_habitat_99.jpg"
+    },
+    {
+      "filename": "Tiriya_gate_seoni_pench_Tiger_reserve.jpg",
+      "category": "camera_trap_blanks/vegetation_and_habitat",
+      "size_kb": 609,
+      "path": "dataset/camera_trap_blanks/vegetation_and_habitat/Tiriya_gate_seoni_pench_Tiger_reserve.jpg"
+    },
+    {
+      "filename": "20140303_7589_Pench_Dhole.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 347,
+      "path": "dataset/co_predators/dhole_wild_dog/20140303_7589_Pench_Dhole.jpg"
+    },
+    {
+      "filename": "20140303_7674_Pench_Dhole.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 366,
+      "path": "dataset/co_predators/dhole_wild_dog/20140303_7674_Pench_Dhole.jpg"
+    },
+    {
+      "filename": "20140303_7687_Pench_Dhole.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 306,
+      "path": "dataset/co_predators/dhole_wild_dog/20140303_7687_Pench_Dhole.jpg"
+    },
+    {
+      "filename": "Dhole_-_Wild_Dog__5217608510_.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 161,
+      "path": "dataset/co_predators/dhole_wild_dog/Dhole_-_Wild_Dog__5217608510_.jpg"
+    },
+    {
+      "filename": "Dhole_in_Pench_National_Park_01.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 3534,
+      "path": "dataset/co_predators/dhole_wild_dog/Dhole_in_Pench_National_Park_01.jpg"
+    },
+    {
+      "filename": "Dhole_in_Pench_National_Park_02.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 4713,
+      "path": "dataset/co_predators/dhole_wild_dog/Dhole_in_Pench_National_Park_02.jpg"
+    },
+    {
+      "filename": "Dhole_Stroll_at_Pench_National_Park__India.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 12921,
+      "path": "dataset/co_predators/dhole_wild_dog/Dhole_Stroll_at_Pench_National_Park__India.jpg"
+    },
+    {
+      "filename": "Dhole__8433756565_.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 624,
+      "path": "dataset/co_predators/dhole_wild_dog/Dhole__8433756565_.jpg"
+    },
+    {
+      "filename": "Dhole__Pench_Tiger_Reserve.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 177,
+      "path": "dataset/co_predators/dhole_wild_dog/Dhole__Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Golden_Jackal-9673.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 7579,
+      "path": "dataset/co_predators/dhole_wild_dog/Golden_Jackal-9673.jpg"
+    },
+    {
+      "filename": "Indian_Wild_Dog.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 721,
+      "path": "dataset/co_predators/dhole_wild_dog/Indian_Wild_Dog.jpg"
+    },
+    {
+      "filename": "Pair_of_Dholes_at_Pench_National_Park__India.jpg",
+      "category": "co_predators/dhole_wild_dog",
+      "size_kb": 10989,
+      "path": "dataset/co_predators/dhole_wild_dog/Pair_of_Dholes_at_Pench_National_Park__India.jpg"
+    },
+    {
+      "filename": "All_Focused.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 1991,
+      "path": "dataset/co_predators/jackal/All_Focused.jpg"
+    },
+    {
+      "filename": "A_jackal_at_the_Pench_National_Park.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 5677,
+      "path": "dataset/co_predators/jackal/A_jackal_at_the_Pench_National_Park.jpg"
+    },
+    {
+      "filename": "Bye__16343460854_.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 1852,
+      "path": "dataset/co_predators/jackal/Bye__16343460854_.jpg"
+    },
+    {
+      "filename": "Camera_Conscious.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 6501,
+      "path": "dataset/co_predators/jackal/Camera_Conscious.jpg"
+    },
+    {
+      "filename": "Camera_Conscious__cropped_.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 1659,
+      "path": "dataset/co_predators/jackal/Camera_Conscious__cropped_.jpg"
+    },
+    {
+      "filename": "Canis_aureus_Pench_National_Park.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 677,
+      "path": "dataset/co_predators/jackal/Canis_aureus_Pench_National_Park.jpg"
+    },
+    {
+      "filename": "Canis_aureus_Pench___Kanha.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 119,
+      "path": "dataset/co_predators/jackal/Canis_aureus_Pench___Kanha.jpg"
+    },
+    {
+      "filename": "Canis_aureus_Pench___Kanha_2.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 220,
+      "path": "dataset/co_predators/jackal/Canis_aureus_Pench___Kanha_2.jpg"
+    },
+    {
+      "filename": "Canis_aureus_Pench___Kanha_3.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 256,
+      "path": "dataset/co_predators/jackal/Canis_aureus_Pench___Kanha_3.jpg"
+    },
+    {
+      "filename": "Day_Of_The_Jackal.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 11443,
+      "path": "dataset/co_predators/jackal/Day_Of_The_Jackal.jpg"
+    },
+    {
+      "filename": "Golden_Jackal_.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 2579,
+      "path": "dataset/co_predators/jackal/Golden_Jackal_.jpg"
+    },
+    {
+      "filename": "Golden_jackal_in_Pench_National_Park_01.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 7360,
+      "path": "dataset/co_predators/jackal/Golden_jackal_in_Pench_National_Park_01.jpg"
+    },
+    {
+      "filename": "Golden_jackal_in_Pench_National_Park_02.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 7553,
+      "path": "dataset/co_predators/jackal/Golden_jackal_in_Pench_National_Park_02.jpg"
+    },
+    {
+      "filename": "Golden_jackal_in_Pench_Tiger_Reserve.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 1798,
+      "path": "dataset/co_predators/jackal/Golden_jackal_in_Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Golden_jackal__Canis_aureus_indicus__male_hea.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 15692,
+      "path": "dataset/co_predators/jackal/Golden_jackal__Canis_aureus_indicus__male_hea.jpg"
+    },
+    {
+      "filename": "Golden_jackal___hanuman_langur.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 156,
+      "path": "dataset/co_predators/jackal/Golden_jackal___hanuman_langur.jpg"
+    },
+    {
+      "filename": "Indian_jackal_in_the_morning.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 6645,
+      "path": "dataset/co_predators/jackal/Indian_jackal_in_the_morning.jpg"
+    },
+    {
+      "filename": "Jackal_Posing__5216994881_.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 190,
+      "path": "dataset/co_predators/jackal/Jackal_Posing__5216994881_.jpg"
+    },
+    {
+      "filename": "Jackal__16964489612_.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 1291,
+      "path": "dataset/co_predators/jackal/Jackal__16964489612_.jpg"
+    },
+    {
+      "filename": "Jackal__24719346064_.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 2456,
+      "path": "dataset/co_predators/jackal/Jackal__24719346064_.jpg"
+    },
+    {
+      "filename": "Jackal__5216995231_.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 226,
+      "path": "dataset/co_predators/jackal/Jackal__5216995231_.jpg"
+    },
+    {
+      "filename": "Mating_of_Jackals_at_Pench_forests.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 1611,
+      "path": "dataset/co_predators/jackal/Mating_of_Jackals_at_Pench_forests.jpg"
+    },
+    {
+      "filename": "Shy_Jackal__5216997067_.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 286,
+      "path": "dataset/co_predators/jackal/Shy_Jackal__5216997067_.jpg"
+    },
+    {
+      "filename": "The_day_of_Jackals_at_Pench.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 2400,
+      "path": "dataset/co_predators/jackal/The_day_of_Jackals_at_Pench.jpg"
+    },
+    {
+      "filename": "Wild_Jackal_in_Pench_National_Park___Madhya_P.jpg",
+      "category": "co_predators/jackal",
+      "size_kb": 1231,
+      "path": "dataset/co_predators/jackal/Wild_Jackal_in_Pench_National_Park___Madhya_P.jpg"
+    },
+    {
+      "filename": "Golden_jackal___hanuman_langur.jpg",
+      "category": "co_predators/jungle_cat",
+      "size_kb": 156,
+      "path": "dataset/co_predators/jungle_cat/Golden_jackal___hanuman_langur.jpg"
+    },
+    {
+      "filename": "20140303_7589_Pench_Dhole.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 347,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/20140303_7589_Pench_Dhole.jpg"
+    },
+    {
+      "filename": "20140303_7674_Pench_Dhole.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 366,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/20140303_7674_Pench_Dhole.jpg"
+    },
+    {
+      "filename": "20140303_7687_Pench_Dhole.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 306,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/20140303_7687_Pench_Dhole.jpg"
+    },
+    {
+      "filename": "8P-BGB_Thorp_T-18_Tiger__8057462936_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 193,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/8P-BGB_Thorp_T-18_Tiger__8057462936_.jpg"
+    },
+    {
+      "filename": "All_Focused.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1991,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/All_Focused.jpg"
+    },
+    {
+      "filename": "A_jackal_at_the_Pench_National_Park.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 5677,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/A_jackal_at_the_Pench_National_Park.jpg"
+    },
+    {
+      "filename": "A_nilgai_female_in_Pilibhit_Tiger_Reserve__AJ.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 4328,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/A_nilgai_female_in_Pilibhit_Tiger_Reserve__AJ.jpg"
+    },
+    {
+      "filename": "Bengal_tiger_in_Pench_National_Park_01.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 10463,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Bengal_tiger_in_Pench_National_Park_01.jpg"
+    },
+    {
+      "filename": "Bye__16343460854_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1852,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Bye__16343460854_.jpg"
+    },
+    {
+      "filename": "Camera_Conscious.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 6501,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Camera_Conscious.jpg"
+    },
+    {
+      "filename": "Camera_Conscious__cropped_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1659,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Camera_Conscious__cropped_.jpg"
+    },
+    {
+      "filename": "Camouflaged_Indian_Scops_Owls_in_Pench_Nation.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 3445,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Camouflaged_Indian_Scops_Owls_in_Pench_Nation.jpg"
+    },
+    {
+      "filename": "Canis_aureus_Pench_National_Park.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 677,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Canis_aureus_Pench_National_Park.jpg"
+    },
+    {
+      "filename": "Canis_aureus_Pench___Kanha.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 119,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Canis_aureus_Pench___Kanha.jpg"
+    },
+    {
+      "filename": "Canis_aureus_Pench___Kanha_2.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 220,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Canis_aureus_Pench___Kanha_2.jpg"
+    },
+    {
+      "filename": "Canis_aureus_Pench___Kanha_3.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 256,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Canis_aureus_Pench___Kanha_3.jpg"
+    },
+    {
+      "filename": "Cattle_egret__Pench_Tiger_Reserve__Maharashtr.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 6365,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Cattle_egret__Pench_Tiger_Reserve__Maharashtr.jpg"
+    },
+    {
+      "filename": "Day_Of_The_Jackal.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 11443,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Day_Of_The_Jackal.jpg"
+    },
+    {
+      "filename": "Dhole_-_Wild_Dog__5217608510_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 161,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Dhole_-_Wild_Dog__5217608510_.jpg"
+    },
+    {
+      "filename": "Dhole_in_Pench_National_Park_01.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 3534,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Dhole_in_Pench_National_Park_01.jpg"
+    },
+    {
+      "filename": "Dhole_in_Pench_National_Park_02.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 4713,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Dhole_in_Pench_National_Park_02.jpg"
+    },
+    {
+      "filename": "Dhole_Stroll_at_Pench_National_Park__India.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 12921,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Dhole_Stroll_at_Pench_National_Park__India.jpg"
+    },
+    {
+      "filename": "Dhole__8433756565_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 624,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Dhole__8433756565_.jpg"
+    },
+    {
+      "filename": "Dhole__Pench_Tiger_Reserve.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 177,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Dhole__Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Gibson_Dusk_Tiger__clip_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 629,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Gibson_Dusk_Tiger__clip_.jpg"
+    },
+    {
+      "filename": "Golden_Jackal-9673.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 7579,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Golden_Jackal-9673.jpg"
+    },
+    {
+      "filename": "Golden_Jackal_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 2579,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Golden_Jackal_.jpg"
+    },
+    {
+      "filename": "Golden_jackal_in_Pench_National_Park_01.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 7360,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Golden_jackal_in_Pench_National_Park_01.jpg"
+    },
+    {
+      "filename": "Golden_jackal_in_Pench_National_Park_02.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 7553,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Golden_jackal_in_Pench_National_Park_02.jpg"
+    },
+    {
+      "filename": "Golden_jackal_in_Pench_Tiger_Reserve.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1798,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Golden_jackal_in_Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Golden_jackal__Canis_aureus_indicus__male_hea.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 15692,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Golden_jackal__Canis_aureus_indicus__male_hea.jpg"
+    },
+    {
+      "filename": "Golden_jackal___hanuman_langur.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 156,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Golden_jackal___hanuman_langur.jpg"
+    },
+    {
+      "filename": "Indian_jackal_in_the_morning.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 6645,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Indian_jackal_in_the_morning.jpg"
+    },
+    {
+      "filename": "Indian_Tiger_at_Pench_03.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 9496,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Indian_Tiger_at_Pench_03.jpg"
+    },
+    {
+      "filename": "Indian_Wild_Dog.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 721,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Indian_Wild_Dog.jpg"
+    },
+    {
+      "filename": "Jackal_Posing__5216994881_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 190,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Jackal_Posing__5216994881_.jpg"
+    },
+    {
+      "filename": "Jackal__16964489612_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1291,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Jackal__16964489612_.jpg"
+    },
+    {
+      "filename": "Jackal__24719346064_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 2456,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Jackal__24719346064_.jpg"
+    },
+    {
+      "filename": "Jackal__5216995231_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 226,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Jackal__5216995231_.jpg"
+    },
+    {
+      "filename": "K_T_Tiger_20000415P1.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 896,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/K_T_Tiger_20000415P1.jpg"
+    },
+    {
+      "filename": "Mating_of_Jackals_at_Pench_forests.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1611,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Mating_of_Jackals_at_Pench_forests.jpg"
+    },
+    {
+      "filename": "Military_Families_share_golf_memories_at_Tige.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 269,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Military_Families_share_golf_memories_at_Tige.jpg"
+    },
+    {
+      "filename": "Millipede__Pench_Tiger_Reserve__Maharashtra.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 310,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Millipede__Pench_Tiger_Reserve__Maharashtra.jpg"
+    },
+    {
+      "filename": "N831GR_THORP_Tiger_T-18_C_N_831__53646878385_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1084,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/N831GR_THORP_Tiger_T-18_C_N_831__53646878385_.jpg"
+    },
+    {
+      "filename": "N831GR_THORP_Tiger_T-18_C_N_831__53919388734_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1486,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/N831GR_THORP_Tiger_T-18_C_N_831__53919388734_.jpg"
+    },
+    {
+      "filename": "Pair_of_Dholes_at_Pench_National_Park__India.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 10989,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pair_of_Dholes_at_Pench_National_Park__India.jpg"
+    },
+    {
+      "filename": "Partially_open_wing_position_of_Parantica_agl.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1436,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Partially_open_wing_position_of_Parantica_agl.jpg"
+    },
+    {
+      "filename": "Pench_Habitat_P12_52.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 288,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Habitat_P12_52.jpeg"
+    },
+    {
+      "filename": "Pench_Habitat_P26_109.png",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 32,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Habitat_P26_109.png"
+    },
+    {
+      "filename": "Pench_Habitat_P26_110.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 948,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Habitat_P26_110.jpeg"
+    },
+    {
+      "filename": "Pench_Habitat_P32_151.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 29,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Habitat_P32_151.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P17_73.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 54,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Image_P17_73.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P17_74.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 52,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Image_P17_74.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P3_6.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 11,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Image_P3_6.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P3_8.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 8,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Image_P3_8.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P45_204.png",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 10,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Image_P45_204.png"
+    },
+    {
+      "filename": "Pench_Image_P45_206.png",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 8,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Image_P45_206.png"
+    },
+    {
+      "filename": "Pench_Image_P45_210.png",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 11,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Image_P45_210.png"
+    },
+    {
+      "filename": "Pench_Image_P6_25.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 204,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Image_P6_25.jpeg"
+    },
+    {
+      "filename": "Pench_National_Park_-_Madhya_Pradesh.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 3423,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_National_Park_-_Madhya_Pradesh.jpg"
+    },
+    {
+      "filename": "Pench_National_Park_banner.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 242,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_National_Park_banner.jpg"
+    },
+    {
+      "filename": "Pench_National_Park__Madhya_Pradesh_-_by_Isha.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1447,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_National_Park__Madhya_Pradesh_-_by_Isha.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_12.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 139,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/pench_net_wildlife_12.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_6.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 155,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/pench_net_wildlife_6.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_9.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 119,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/pench_net_wildlife_9.jpg"
+    },
+    {
+      "filename": "Pench_Safari.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1243,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Safari.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P10_45.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 377,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Tiger_PhaseIV_P10_45.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P19_82.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 281,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Tiger_PhaseIV_P19_82.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P9_2819.jpeg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1990,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Tiger_PhaseIV_P9_2819.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 4179,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__01.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 424,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Tiger_Reserve__MP__India__01.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__02.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 356,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Tiger_Reserve__MP__India__02.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__04.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 434,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Tiger_Reserve__MP__India__04.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__05.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 431,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Tiger_Reserve__MP__India__05.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__06.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 459,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Pench_Tiger_Reserve__MP__India__06.jpg"
+    },
+    {
+      "filename": "Project_Tiger_T-Shirt__Notepad_and_Pen.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 2598,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Project_Tiger_T-Shirt__Notepad_and_Pen.jpg"
+    },
+    {
+      "filename": "P__T__Brodie.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 57,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/P__T__Brodie.jpg"
+    },
+    {
+      "filename": "Rose_Tiger_Eyes_____________5926625102_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 266,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Rose_Tiger_Eyes_____________5926625102_.jpg"
+    },
+    {
+      "filename": "Rose__Tiger_Eyes___________Eyes___19405016172.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 2916,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Rose__Tiger_Eyes___________Eyes___19405016172.jpg"
+    },
+    {
+      "filename": "seoni_gov_habitat_79.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 78,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/seoni_gov_habitat_79.jpg"
+    },
+    {
+      "filename": "seoni_gov_habitat_84.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 133,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/seoni_gov_habitat_84.jpg"
+    },
+    {
+      "filename": "Shy_Jackal__5216997067_.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 286,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Shy_Jackal__5216997067_.jpg"
+    },
+    {
+      "filename": "Spotted_Deer_at_Pench_Tiger_Reserve.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 385,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Spotted_Deer_at_Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Spotted_Deer_in_Pench_National_Park_India.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 3959,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Spotted_Deer_in_Pench_National_Park_India.jpg"
+    },
+    {
+      "filename": "The_day_of_Jackals_at_Pench.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 2400,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/The_day_of_Jackals_at_Pench.jpg"
+    },
+    {
+      "filename": "Thorpe_T-18_Tiger_Blue_RFront_EASM_4Feb2010__.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 170,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Thorpe_T-18_Tiger_Blue_RFront_EASM_4Feb2010__.jpg"
+    },
+    {
+      "filename": "Thorpe_T-18_Tiger_Blue_RSideRear_EASM_4Feb201.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 152,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Thorpe_T-18_Tiger_Blue_RSideRear_EASM_4Feb201.jpg"
+    },
+    {
+      "filename": "Tiger_of_Turia_Core_Zone_-_Pench_National_Par.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 24172,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Tiger_of_Turia_Core_Zone_-_Pench_National_Par.jpg"
+    },
+    {
+      "filename": "Tiger_pendant_TT-31.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 6662,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Tiger_pendant_TT-31.jpg"
+    },
+    {
+      "filename": "Tiriya_gate_seoni_pench_Tiger_reserve.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 609,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Tiriya_gate_seoni_pench_Tiger_reserve.jpg"
+    },
+    {
+      "filename": "Unidentified_Frog-1_Pench_Tiger_Reserve_Mahar.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 7379,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Unidentified_Frog-1_Pench_Tiger_Reserve_Mahar.jpg"
+    },
+    {
+      "filename": "Unidentified_Frog-3_Pench_Tiger_Reserve_Mahar.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 3964,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Unidentified_Frog-3_Pench_Tiger_Reserve_Mahar.jpg"
+    },
+    {
+      "filename": "Unidentified_Frog_-2_Pench_Tiger_Reserve_Maha.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 4554,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Unidentified_Frog_-2_Pench_Tiger_Reserve_Maha.jpg"
+    },
+    {
+      "filename": "Unidentified_Frog_Pench_Tiger_Reserve_Maharas.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 6470,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Unidentified_Frog_Pench_Tiger_Reserve_Maharas.jpg"
+    },
+    {
+      "filename": "Wild_Jackal_in_Pench_National_Park___Madhya_P.jpg",
+      "category": "filtered_out_non_tigers/habitat_and_blanks",
+      "size_kb": 1231,
+      "path": "dataset/filtered_out_non_tigers/habitat_and_blanks/Wild_Jackal_in_Pench_National_Park___Madhya_P.jpg"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P27_113.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 46,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P27_113.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P27_114.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 46,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P27_114.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P27_115.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 47,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P27_115.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_118.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 43,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P28_118.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_119.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 41,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P28_119.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_120.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 36,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P28_120.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_121.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 44,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P28_121.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_122.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 44,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P28_122.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_123.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 46,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P28_123.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_124.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 46,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P28_124.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_127.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 36,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P29_127.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_128.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 43,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P29_128.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_129.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 46,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P29_129.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_130.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 45,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P29_130.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_131.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 45,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P29_131.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_132.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 42,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P29_132.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P30_135.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 40,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P30_135.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P30_136.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 41,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P30_136.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P30_137.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 42,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P30_137.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_140.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 45,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P31_140.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_141.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 46,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P31_141.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_142.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 48,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P31_142.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_143.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 46,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P31_143.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_144.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 45,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P31_144.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_145.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 44,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P31_145.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_146.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 41,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Activity_Chart_P31_146.png"
+    },
+    {
+      "filename": "Pench_Image_P15_60.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 11,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Image_P15_60.png"
+    },
+    {
+      "filename": "Pench_Image_P15_61.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 10,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Image_P15_61.png"
+    },
+    {
+      "filename": "Pench_Image_P15_62.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 12,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Image_P15_62.png"
+    },
+    {
+      "filename": "Pench_Image_P15_63.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 9,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Image_P15_63.png"
+    },
+    {
+      "filename": "Pench_Image_P15_64.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 11,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Image_P15_64.png"
+    },
+    {
+      "filename": "Pench_Image_P15_65.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 10,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Image_P15_65.png"
+    },
+    {
+      "filename": "Pench_Image_P15_66.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 25,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Image_P15_66.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P15_67.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 10,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Image_P15_67.png"
+    },
+    {
+      "filename": "Pench_Image_P15_68.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 9,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Image_P15_68.png"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P22_90.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 256,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_MCP_Territory_Map_P22_90.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P22_91.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 168,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_MCP_Territory_Map_P22_91.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P23_94.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 174,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_MCP_Territory_Map_P23_94.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P23_95.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 193,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_MCP_Territory_Map_P23_95.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P24_98.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 154,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_MCP_Territory_Map_P24_98.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P24_99.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 132,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_MCP_Territory_Map_P24_99.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P33_156.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 111,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P33_156.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P33_157.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 102,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P33_157.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P34_160.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 109,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P34_160.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P34_161.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 98,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P34_161.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P35_164.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 93,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P35_164.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P35_165.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 65,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P35_165.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P36_168.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 109,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P36_168.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P36_169.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 98,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P36_169.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P37_172.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 88,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P37_172.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P37_173.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 105,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P37_173.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P38_176.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 93,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P38_176.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P38_177.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 103,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P38_177.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P39_180.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 107,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P39_180.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P39_181.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 110,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P39_181.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P40_184.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 84,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P40_184.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P40_185.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 115,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P40_185.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P41_188.png",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 92,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P41_188.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P41_189.jpeg",
+      "category": "filtered_out_non_tigers/maps_and_charts",
+      "size_kb": 101,
+      "path": "dataset/filtered_out_non_tigers/maps_and_charts/Pench_Spatial_Density_Map_P41_189.jpeg"
+    },
+    {
+      "filename": "Axix_axis__Indian_Spotted_Deer_or_commonly_kn.jpg",
+      "category": "filtered_out_non_tigers/other_fauna_and_prey",
+      "size_kb": 1048,
+      "path": "dataset/filtered_out_non_tigers/other_fauna_and_prey/Axix_axis__Indian_Spotted_Deer_or_commonly_kn.jpg"
+    },
+    {
+      "filename": "Pench_Image_P3_10.png",
+      "category": "filtered_out_non_tigers/other_fauna_and_prey",
+      "size_kb": 8,
+      "path": "dataset/filtered_out_non_tigers/other_fauna_and_prey/Pench_Image_P3_10.png"
+    },
+    {
+      "filename": "Pench_National_Park_habitat_shot.jpg",
+      "category": "filtered_out_non_tigers/other_fauna_and_prey",
+      "size_kb": 11225,
+      "path": "dataset/filtered_out_non_tigers/other_fauna_and_prey/Pench_National_Park_habitat_shot.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_7.jpg",
+      "category": "filtered_out_non_tigers/other_fauna_and_prey",
+      "size_kb": 70,
+      "path": "dataset/filtered_out_non_tigers/other_fauna_and_prey/pench_net_wildlife_7.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_8.jpg",
+      "category": "filtered_out_non_tigers/other_fauna_and_prey",
+      "size_kb": 69,
+      "path": "dataset/filtered_out_non_tigers/other_fauna_and_prey/pench_net_wildlife_8.jpg"
+    },
+    {
+      "filename": "PENCH_TIGER_RESERVE.jpg",
+      "category": "filtered_out_non_tigers/other_fauna_and_prey",
+      "size_kb": 6767,
+      "path": "dataset/filtered_out_non_tigers/other_fauna_and_prey/PENCH_TIGER_RESERVE.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__03.jpg",
+      "category": "filtered_out_non_tigers/other_fauna_and_prey",
+      "size_kb": 387,
+      "path": "dataset/filtered_out_non_tigers/other_fauna_and_prey/Pench_Tiger_Reserve__MP__India__03.jpg"
+    },
+    {
+      "filename": "Bengal_tiger_in_Pench_National_Park_01.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 10463,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Bengal_tiger_in_Pench_National_Park_01.jpg"
+    },
+    {
+      "filename": "Bengal_tiger_in_Pench_National_Park_02.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 4606,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Bengal_tiger_in_Pench_National_Park_02.jpg"
+    },
+    {
+      "filename": "Bengal_tiger_in_Pench_National_Park_03.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 4321,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Bengal_tiger_in_Pench_National_Park_03.jpg"
+    },
+    {
+      "filename": "Camouflaged_Indian_Scops_Owls_in_Pench_Nation.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 3445,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Camouflaged_Indian_Scops_Owls_in_Pench_Nation.jpg"
+    },
+    {
+      "filename": "Cannot_hide_from_the_queen_of_the_jungle.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 6448,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Cannot_hide_from_the_queen_of_the_jungle.jpg"
+    },
+    {
+      "filename": "Collarwali_Tigress_of_Pench.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 30336,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Collarwali_Tigress_of_Pench.jpg"
+    },
+    {
+      "filename": "Indian_Tiger_at_Pench_01.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 12045,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Indian_Tiger_at_Pench_01.jpg"
+    },
+    {
+      "filename": "Indian_Tiger_at_Pench_02.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 10385,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Indian_Tiger_at_Pench_02.jpg"
+    },
+    {
+      "filename": "Indian_Tiger_at_Pench_03.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 9496,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Indian_Tiger_at_Pench_03.jpg"
+    },
+    {
+      "filename": "Indian_tiger_at_Pench_04.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 8474,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Indian_tiger_at_Pench_04.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 2138,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_1.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 2861,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_1.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_13.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 2523,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_13.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_14.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 1475,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_14.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_15.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 2226,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_15.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_16.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 1701,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_16.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_19.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 4477,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_19.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_2.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 2477,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_2.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_20.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 3830,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_20.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_22.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 4236,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_22.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_23.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 4021,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_23.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_25.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 2744,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_25.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_4.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 2210,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_4.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_5.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 2065,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_5.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_6.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 1681,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_6.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_7.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 1650,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Karmazari_Pench_National_Park_7.jpg"
+    },
+    {
+      "filename": "Panthera_tigris_at_Pench.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 980,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Panthera_tigris_at_Pench.jpg"
+    },
+    {
+      "filename": "Panthera_Tigris_Tigress__Collerwali_Pench.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 8419,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Panthera_Tigris_Tigress__Collerwali_Pench.jpg"
+    },
+    {
+      "filename": "Panthera_tigris_tigris_camoflage_Pench_India_.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 63,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Panthera_tigris_tigris_camoflage_Pench_India_.jpg"
+    },
+    {
+      "filename": "Panthera_tigris_tigris_pench.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 91,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Panthera_tigris_tigris_pench.jpg"
+    },
+    {
+      "filename": "Panthera_tigris_tigris_pench_india.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 130,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Panthera_tigris_tigris_pench_india.jpg"
+    },
+    {
+      "filename": "Panthera_tigris_tigris_wild_pench.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 128,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Panthera_tigris_tigris_wild_pench.jpg"
+    },
+    {
+      "filename": "Patdev_Pench.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 2235,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Patdev_Pench.jpg"
+    },
+    {
+      "filename": "Pench_Image_P15_60.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 11,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P15_60.png"
+    },
+    {
+      "filename": "Pench_Image_P15_61.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 10,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P15_61.png"
+    },
+    {
+      "filename": "Pench_Image_P15_62.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 12,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P15_62.png"
+    },
+    {
+      "filename": "Pench_Image_P15_63.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 9,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P15_63.png"
+    },
+    {
+      "filename": "Pench_Image_P15_64.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 11,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P15_64.png"
+    },
+    {
+      "filename": "Pench_Image_P15_65.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 10,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P15_65.png"
+    },
+    {
+      "filename": "Pench_Image_P15_66.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 25,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P15_66.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P15_67.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 10,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P15_67.png"
+    },
+    {
+      "filename": "Pench_Image_P15_68.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 9,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P15_68.png"
+    },
+    {
+      "filename": "Pench_Image_P17_73.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 54,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P17_73.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P17_74.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 52,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P17_74.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P3_10.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 8,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P3_10.png"
+    },
+    {
+      "filename": "Pench_Image_P3_6.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 11,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P3_6.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P3_8.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 8,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P3_8.jpeg"
+    },
+    {
+      "filename": "Pench_Image_P45_204.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 10,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P45_204.png"
+    },
+    {
+      "filename": "Pench_Image_P45_206.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 8,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P45_206.png"
+    },
+    {
+      "filename": "Pench_Image_P45_210.png",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 11,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P45_210.png"
+    },
+    {
+      "filename": "Pench_Image_P6_25.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 204,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Image_P6_25.jpeg"
+    },
+    {
+      "filename": "Pench_National_Park_-_Madhya_Pradesh.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 3423,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_National_Park_-_Madhya_Pradesh.jpg"
+    },
+    {
+      "filename": "Pench_National_Park_habitat_shot.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 11225,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_National_Park_habitat_shot.jpg"
+    },
+    {
+      "filename": "Pench_National_Park__Madhya_Pradesh_-_by_Isha.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 1447,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_National_Park__Madhya_Pradesh_-_by_Isha.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_10.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 114,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_10.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_11.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 100,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_11.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_12.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 139,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_12.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_13.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 103,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_13.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_14.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 99,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_14.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_15.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 145,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_15.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_16.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 132,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_16.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_17.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 162,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_17.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_18.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 77,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_18.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_19.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 88,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_19.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_20.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 70,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_20.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_21.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 97,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_21.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_4.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 95,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_4.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_5.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 102,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_5.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_6.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 155,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_6.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_7.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 70,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_7.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_8.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 69,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_8.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_9.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 119,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/pench_net_wildlife_9.jpg"
+    },
+    {
+      "filename": "Pench_Safari.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 1243,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Safari.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P10_45.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 377,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_PhaseIV_P10_45.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P19_82.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 281,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_PhaseIV_P19_82.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P1_2805.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 913,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_PhaseIV_P1_2805.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P21_87.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 1111,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_PhaseIV_P21_87.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P5_21.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 1062,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_PhaseIV_P5_21.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P8_30.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 2434,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_PhaseIV_P8_30.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P9_2819.jpeg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 1990,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_PhaseIV_P9_2819.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 4179,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__01.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 424,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_Reserve__MP__India__01.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__02.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 356,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_Reserve__MP__India__02.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__03.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 387,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_Reserve__MP__India__03.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__04.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 434,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_Reserve__MP__India__04.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__05.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 431,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_Reserve__MP__India__05.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__06.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 459,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Pench_Tiger_Reserve__MP__India__06.jpg"
+    },
+    {
+      "filename": "Queen_of_Pench.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 12210,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Queen_of_Pench.jpg"
+    },
+    {
+      "filename": "seoni_gov_tiger_64.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 143,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/seoni_gov_tiger_64.jpg"
+    },
+    {
+      "filename": "seoni_gov_tiger_69.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 218,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/seoni_gov_tiger_69.jpg"
+    },
+    {
+      "filename": "seoni_gov_tiger_74.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 194,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/seoni_gov_tiger_74.jpg"
+    },
+    {
+      "filename": "Tiger_at_Pench_National_Park.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 3107,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Tiger_at_Pench_National_Park.jpg"
+    },
+    {
+      "filename": "Tiger_at_Pench_Tiger_Reserve.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 3924,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Tiger_at_Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Tiger_of_Turia_Core_Zone_-_Pench_National_Par.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 24172,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Tiger_of_Turia_Core_Zone_-_Pench_National_Par.jpg"
+    },
+    {
+      "filename": "Tiger__Panthera_tigris_.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 118,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Tiger__Panthera_tigris_.jpg"
+    },
+    {
+      "filename": "Tigress_at_Pench.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 4336,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/Tigress_at_Pench.jpg"
+    },
+    {
+      "filename": "We_are_a_family.jpg",
+      "category": "individual_tigers/General_Pench_Tigers",
+      "size_kb": 580,
+      "path": "dataset/individual_tigers/General_Pench_Tigers/We_are_a_family.jpg"
+    },
+    {
+      "filename": "8P-BGB_Thorp_T-18_Tiger__8057462936_.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 193,
+      "path": "dataset/individual_tigers/T15_Collarwali/8P-BGB_Thorp_T-18_Tiger__8057462936_.jpg"
+    },
+    {
+      "filename": "A_nilgai_female_in_Pilibhit_Tiger_Reserve__AJ.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 4328,
+      "path": "dataset/individual_tigers/T15_Collarwali/A_nilgai_female_in_Pilibhit_Tiger_Reserve__AJ.jpg"
+    },
+    {
+      "filename": "Bengal_tiger_in_Bandhavgarh_National_Park_May.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 8357,
+      "path": "dataset/individual_tigers/T15_Collarwali/Bengal_tiger_in_Bandhavgarh_National_Park_May.jpg"
+    },
+    {
+      "filename": "Cattle_egret__Pench_Tiger_Reserve__Maharashtr.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 6365,
+      "path": "dataset/individual_tigers/T15_Collarwali/Cattle_egret__Pench_Tiger_Reserve__Maharashtr.jpg"
+    },
+    {
+      "filename": "Collarwali_Tigress_of_Pench.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 30336,
+      "path": "dataset/individual_tigers/T15_Collarwali/Collarwali_Tigress_of_Pench.jpg"
+    },
+    {
+      "filename": "Dhole__Pench_Tiger_Reserve.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 177,
+      "path": "dataset/individual_tigers/T15_Collarwali/Dhole__Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Gibson_Dusk_Tiger__clip_.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 629,
+      "path": "dataset/individual_tigers/T15_Collarwali/Gibson_Dusk_Tiger__clip_.jpg"
+    },
+    {
+      "filename": "Golden_jackal_in_Pench_Tiger_Reserve.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 1798,
+      "path": "dataset/individual_tigers/T15_Collarwali/Golden_jackal_in_Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "K_T_Tiger_20000415P1.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 896,
+      "path": "dataset/individual_tigers/T15_Collarwali/K_T_Tiger_20000415P1.jpg"
+    },
+    {
+      "filename": "Military_Families_share_golf_memories_at_Tige.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 269,
+      "path": "dataset/individual_tigers/T15_Collarwali/Military_Families_share_golf_memories_at_Tige.jpg"
+    },
+    {
+      "filename": "Millipede__Pench_Tiger_Reserve__Maharashtra.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 310,
+      "path": "dataset/individual_tigers/T15_Collarwali/Millipede__Pench_Tiger_Reserve__Maharashtra.jpg"
+    },
+    {
+      "filename": "N831GR_THORP_Tiger_T-18_C_N_831__53646878385_.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 1084,
+      "path": "dataset/individual_tigers/T15_Collarwali/N831GR_THORP_Tiger_T-18_C_N_831__53646878385_.jpg"
+    },
+    {
+      "filename": "N831GR_THORP_Tiger_T-18_C_N_831__53919388734_.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 1486,
+      "path": "dataset/individual_tigers/T15_Collarwali/N831GR_THORP_Tiger_T-18_C_N_831__53919388734_.jpg"
+    },
+    {
+      "filename": "On_the_prowl_2014-04-15_14-33.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 619,
+      "path": "dataset/individual_tigers/T15_Collarwali/On_the_prowl_2014-04-15_14-33.jpg"
+    },
+    {
+      "filename": "Partially_open_wing_position_of_Parantica_agl.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 1436,
+      "path": "dataset/individual_tigers/T15_Collarwali/Partially_open_wing_position_of_Parantica_agl.jpg"
+    },
+    {
+      "filename": "Pench_National_Park_habitat_shot.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 11225,
+      "path": "dataset/individual_tigers/T15_Collarwali/Pench_National_Park_habitat_shot.jpg"
+    },
+    {
+      "filename": "PENCH_TIGER_RESERVE.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 6767,
+      "path": "dataset/individual_tigers/T15_Collarwali/PENCH_TIGER_RESERVE.jpg"
+    },
+    {
+      "filename": "Pench_tiger_reserve_forest_office_-_panoramio.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 2074,
+      "path": "dataset/individual_tigers/T15_Collarwali/Pench_tiger_reserve_forest_office_-_panoramio.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__01.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 424,
+      "path": "dataset/individual_tigers/T15_Collarwali/Pench_Tiger_Reserve__MP__India__01.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__02.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 356,
+      "path": "dataset/individual_tigers/T15_Collarwali/Pench_Tiger_Reserve__MP__India__02.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__03.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 387,
+      "path": "dataset/individual_tigers/T15_Collarwali/Pench_Tiger_Reserve__MP__India__03.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__04.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 434,
+      "path": "dataset/individual_tigers/T15_Collarwali/Pench_Tiger_Reserve__MP__India__04.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__05.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 431,
+      "path": "dataset/individual_tigers/T15_Collarwali/Pench_Tiger_Reserve__MP__India__05.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_Reserve__MP__India__06.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 459,
+      "path": "dataset/individual_tigers/T15_Collarwali/Pench_Tiger_Reserve__MP__India__06.jpg"
+    },
+    {
+      "filename": "Project_Tiger_T-Shirt__Notepad_and_Pen.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 2598,
+      "path": "dataset/individual_tigers/T15_Collarwali/Project_Tiger_T-Shirt__Notepad_and_Pen.jpg"
+    },
+    {
+      "filename": "P__T__Brodie.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 57,
+      "path": "dataset/individual_tigers/T15_Collarwali/P__T__Brodie.jpg"
+    },
+    {
+      "filename": "Rose_Tiger_Eyes_____________5926625102_.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 266,
+      "path": "dataset/individual_tigers/T15_Collarwali/Rose_Tiger_Eyes_____________5926625102_.jpg"
+    },
+    {
+      "filename": "Rose__Tiger_Eyes___________Eyes___19405016172.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 2916,
+      "path": "dataset/individual_tigers/T15_Collarwali/Rose__Tiger_Eyes___________Eyes___19405016172.jpg"
+    },
+    {
+      "filename": "Spotted_Deer_at_Pench_Tiger_Reserve.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 385,
+      "path": "dataset/individual_tigers/T15_Collarwali/Spotted_Deer_at_Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Thorpe_T-18_Tiger_Blue_RFront_EASM_4Feb2010__.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 170,
+      "path": "dataset/individual_tigers/T15_Collarwali/Thorpe_T-18_Tiger_Blue_RFront_EASM_4Feb2010__.jpg"
+    },
+    {
+      "filename": "Thorpe_T-18_Tiger_Blue_RSideRear_EASM_4Feb201.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 152,
+      "path": "dataset/individual_tigers/T15_Collarwali/Thorpe_T-18_Tiger_Blue_RSideRear_EASM_4Feb201.jpg"
+    },
+    {
+      "filename": "Tiger_at_Pench_Tiger_Reserve.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 3924,
+      "path": "dataset/individual_tigers/T15_Collarwali/Tiger_at_Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Tiger_Jhalra_Female__T-19__at_the_Ranthambore.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 1817,
+      "path": "dataset/individual_tigers/T15_Collarwali/Tiger_Jhalra_Female__T-19__at_the_Ranthambore.jpg"
+    },
+    {
+      "filename": "Tiger_pendant_TT-31.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 6662,
+      "path": "dataset/individual_tigers/T15_Collarwali/Tiger_pendant_TT-31.jpg"
+    },
+    {
+      "filename": "Tiriya_gate_seoni_pench_Tiger_reserve.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 609,
+      "path": "dataset/individual_tigers/T15_Collarwali/Tiriya_gate_seoni_pench_Tiger_reserve.jpg"
+    },
+    {
+      "filename": "Unidentified_Frog-1_Pench_Tiger_Reserve_Mahar.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 7379,
+      "path": "dataset/individual_tigers/T15_Collarwali/Unidentified_Frog-1_Pench_Tiger_Reserve_Mahar.jpg"
+    },
+    {
+      "filename": "Unidentified_Frog-3_Pench_Tiger_Reserve_Mahar.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 3964,
+      "path": "dataset/individual_tigers/T15_Collarwali/Unidentified_Frog-3_Pench_Tiger_Reserve_Mahar.jpg"
+    },
+    {
+      "filename": "Unidentified_Frog_-2_Pench_Tiger_Reserve_Maha.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 4554,
+      "path": "dataset/individual_tigers/T15_Collarwali/Unidentified_Frog_-2_Pench_Tiger_Reserve_Maha.jpg"
+    },
+    {
+      "filename": "Unidentified_Frog_Pench_Tiger_Reserve_Maharas.jpg",
+      "category": "individual_tigers/T15_Collarwali",
+      "size_kb": 6470,
+      "path": "dataset/individual_tigers/T15_Collarwali/Unidentified_Frog_Pench_Tiger_Reserve_Maharas.jpg"
+    },
+    {
+      "filename": "PatdevPTR.jpg",
+      "category": "individual_tigers/T40_Patdev",
+      "size_kb": 11159,
+      "path": "dataset/individual_tigers/T40_Patdev/PatdevPTR.jpg"
+    },
+    {
+      "filename": "Patdev_Pench.jpg",
+      "category": "individual_tigers/T40_Patdev",
+      "size_kb": 2235,
+      "path": "dataset/individual_tigers/T40_Patdev/Patdev_Pench.jpg"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P27_113.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 46,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P27_113.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P27_114.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 46,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P27_114.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P27_115.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 47,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P27_115.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_118.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 43,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P28_118.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_119.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 41,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P28_119.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_120.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 36,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P28_120.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_121.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 44,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P28_121.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_122.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 44,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P28_122.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_123.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 46,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P28_123.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P28_124.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 46,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P28_124.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_127.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 36,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P29_127.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_128.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 43,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P29_128.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_129.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 46,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P29_129.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_130.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 45,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P29_130.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_131.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 45,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P29_131.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P29_132.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 42,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P29_132.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P30_135.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 40,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P30_135.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P30_136.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 41,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P30_136.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P30_137.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 42,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P30_137.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_140.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 45,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P31_140.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_141.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 46,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P31_141.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_142.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 48,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P31_142.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_143.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 46,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P31_143.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_144.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 45,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P31_144.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_145.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 44,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P31_145.png"
+    },
+    {
+      "filename": "Pench_Activity_Chart_P31_146.png",
+      "category": "reserve_maps_and_grids/activity_and_monitoring_charts",
+      "size_kb": 41,
+      "path": "dataset/reserve_maps_and_grids/activity_and_monitoring_charts/Pench_Activity_Chart_P31_146.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P33_156.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 111,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P33_156.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P33_157.png",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 102,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P33_157.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P34_160.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 109,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P34_160.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P34_161.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 98,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P34_161.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P35_164.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 93,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P35_164.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P35_165.png",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 65,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P35_165.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P36_168.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 109,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P36_168.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P36_169.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 98,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P36_169.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P37_172.png",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 88,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P37_172.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P37_173.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 105,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P37_173.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P38_176.png",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 93,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P38_176.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P38_177.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 103,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P38_177.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P39_180.png",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 107,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P39_180.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P39_181.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 110,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P39_181.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P40_184.png",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 84,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P40_184.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P40_185.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 115,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P40_185.jpeg"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P41_188.png",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 92,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P41_188.png"
+    },
+    {
+      "filename": "Pench_Spatial_Density_Map_P41_189.jpeg",
+      "category": "reserve_maps_and_grids/intensive_use_density_maps",
+      "size_kb": 101,
+      "path": "dataset/reserve_maps_and_grids/intensive_use_density_maps/Pench_Spatial_Density_Map_P41_189.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P22_90.jpeg",
+      "category": "reserve_maps_and_grids/mcp_territory_maps",
+      "size_kb": 256,
+      "path": "dataset/reserve_maps_and_grids/mcp_territory_maps/Pench_MCP_Territory_Map_P22_90.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P22_91.jpeg",
+      "category": "reserve_maps_and_grids/mcp_territory_maps",
+      "size_kb": 168,
+      "path": "dataset/reserve_maps_and_grids/mcp_territory_maps/Pench_MCP_Territory_Map_P22_91.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P23_94.jpeg",
+      "category": "reserve_maps_and_grids/mcp_territory_maps",
+      "size_kb": 174,
+      "path": "dataset/reserve_maps_and_grids/mcp_territory_maps/Pench_MCP_Territory_Map_P23_94.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P23_95.jpeg",
+      "category": "reserve_maps_and_grids/mcp_territory_maps",
+      "size_kb": 193,
+      "path": "dataset/reserve_maps_and_grids/mcp_territory_maps/Pench_MCP_Territory_Map_P23_95.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P24_98.jpeg",
+      "category": "reserve_maps_and_grids/mcp_territory_maps",
+      "size_kb": 154,
+      "path": "dataset/reserve_maps_and_grids/mcp_territory_maps/Pench_MCP_Territory_Map_P24_98.jpeg"
+    },
+    {
+      "filename": "Pench_MCP_Territory_Map_P24_99.jpeg",
+      "category": "reserve_maps_and_grids/mcp_territory_maps",
+      "size_kb": 132,
+      "path": "dataset/reserve_maps_and_grids/mcp_territory_maps/Pench_MCP_Territory_Map_P24_99.jpeg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 2138,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_1.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 2861,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_1.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_13.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 2523,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_13.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_14.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 1475,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_14.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_15.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 2226,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_15.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_16.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 1701,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_16.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_19.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 4477,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_19.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_2.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 2477,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_2.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_20.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 3830,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_20.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_22.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 4236,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_22.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_23.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 4021,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_23.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_25.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 2744,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_25.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_4.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 2210,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_4.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_5.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 2065,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_5.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_6.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 1681,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_6.jpg"
+    },
+    {
+      "filename": "Karmazari_Pench_National_Park_7.jpg",
+      "category": "verified_tiger_dataset/Karmajhiri_Core_Tigers",
+      "size_kb": 1650,
+      "path": "dataset/verified_tiger_dataset/Karmajhiri_Core_Tigers/Karmazari_Pench_National_Park_7.jpg"
+    },
+    {
+      "filename": "Bengal_tiger_in_Bandhavgarh_National_Park_May.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 8357,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Bengal_tiger_in_Bandhavgarh_National_Park_May.jpg"
+    },
+    {
+      "filename": "Bengal_tiger_in_Pench_National_Park_02.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 4606,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Bengal_tiger_in_Pench_National_Park_02.jpg"
+    },
+    {
+      "filename": "Bengal_tiger_in_Pench_National_Park_03.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 4321,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Bengal_tiger_in_Pench_National_Park_03.jpg"
+    },
+    {
+      "filename": "Indian_Tiger_at_Pench_01.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 12045,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Indian_Tiger_at_Pench_01.jpg"
+    },
+    {
+      "filename": "Indian_Tiger_at_Pench_02.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 10385,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Indian_Tiger_at_Pench_02.jpg"
+    },
+    {
+      "filename": "Indian_tiger_at_Pench_04.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 8474,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Indian_tiger_at_Pench_04.jpg"
+    },
+    {
+      "filename": "On_the_prowl_2014-04-15_14-33.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 619,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/On_the_prowl_2014-04-15_14-33.jpg"
+    },
+    {
+      "filename": "Panthera_tigris_at_Pench.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 980,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Panthera_tigris_at_Pench.jpg"
+    },
+    {
+      "filename": "Panthera_tigris_tigris_camoflage_Pench_India_.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 63,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Panthera_tigris_tigris_camoflage_Pench_India_.jpg"
+    },
+    {
+      "filename": "Panthera_tigris_tigris_pench.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 91,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Panthera_tigris_tigris_pench.jpg"
+    },
+    {
+      "filename": "Panthera_tigris_tigris_pench_india.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 130,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Panthera_tigris_tigris_pench_india.jpg"
+    },
+    {
+      "filename": "Panthera_tigris_tigris_wild_pench.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 128,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Panthera_tigris_tigris_wild_pench.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_10.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 114,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_10.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_11.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 100,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_11.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_13.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 103,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_13.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_14.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 99,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_14.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_15.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 145,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_15.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_16.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 132,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_16.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_17.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 162,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_17.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_18.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 77,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_18.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_19.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 88,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_19.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_20.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 70,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_20.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_21.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 97,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_21.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_4.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 95,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_4.jpg"
+    },
+    {
+      "filename": "pench_net_wildlife_5.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 102,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/pench_net_wildlife_5.jpg"
+    },
+    {
+      "filename": "Pench_tiger_reserve_forest_office_-_panoramio.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 2074,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Pench_tiger_reserve_forest_office_-_panoramio.jpg"
+    },
+    {
+      "filename": "seoni_gov_habitat_99.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 10,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/seoni_gov_habitat_99.jpg"
+    },
+    {
+      "filename": "seoni_gov_tiger_64.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 143,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/seoni_gov_tiger_64.jpg"
+    },
+    {
+      "filename": "seoni_gov_tiger_69.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 218,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/seoni_gov_tiger_69.jpg"
+    },
+    {
+      "filename": "seoni_gov_tiger_74.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 194,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/seoni_gov_tiger_74.jpg"
+    },
+    {
+      "filename": "Tiger_at_Pench_National_Park.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 3107,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Tiger_at_Pench_National_Park.jpg"
+    },
+    {
+      "filename": "Tiger_at_Pench_Tiger_Reserve.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 3924,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Tiger_at_Pench_Tiger_Reserve.jpg"
+    },
+    {
+      "filename": "Tiger_Jhalra_Female__T-19__at_the_Ranthambore.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 1817,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Tiger_Jhalra_Female__T-19__at_the_Ranthambore.jpg"
+    },
+    {
+      "filename": "Tiger__Panthera_tigris_.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 118,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Tiger__Panthera_tigris_.jpg"
+    },
+    {
+      "filename": "Tigress_at_Pench.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 4336,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/Tigress_at_Pench.jpg"
+    },
+    {
+      "filename": "We_are_a_family.jpg",
+      "category": "verified_tiger_dataset/Pench_General_Resident_Tigers",
+      "size_kb": 580,
+      "path": "dataset/verified_tiger_dataset/Pench_General_Resident_Tigers/We_are_a_family.jpg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P1_2805.jpeg",
+      "category": "verified_tiger_dataset/Pench_PhaseIV_CameraTrap_Tigers",
+      "size_kb": 913,
+      "path": "dataset/verified_tiger_dataset/Pench_PhaseIV_CameraTrap_Tigers/Pench_Tiger_PhaseIV_P1_2805.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P21_87.jpeg",
+      "category": "verified_tiger_dataset/Pench_PhaseIV_CameraTrap_Tigers",
+      "size_kb": 1111,
+      "path": "dataset/verified_tiger_dataset/Pench_PhaseIV_CameraTrap_Tigers/Pench_Tiger_PhaseIV_P21_87.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P5_21.jpeg",
+      "category": "verified_tiger_dataset/Pench_PhaseIV_CameraTrap_Tigers",
+      "size_kb": 1062,
+      "path": "dataset/verified_tiger_dataset/Pench_PhaseIV_CameraTrap_Tigers/Pench_Tiger_PhaseIV_P5_21.jpeg"
+    },
+    {
+      "filename": "Pench_Tiger_PhaseIV_P8_30.jpeg",
+      "category": "verified_tiger_dataset/Pench_PhaseIV_CameraTrap_Tigers",
+      "size_kb": 2434,
+      "path": "dataset/verified_tiger_dataset/Pench_PhaseIV_CameraTrap_Tigers/Pench_Tiger_PhaseIV_P8_30.jpeg"
+    },
+    {
+      "filename": "Cannot_hide_from_the_queen_of_the_jungle.jpg",
+      "category": "verified_tiger_dataset/T15_Collarwali",
+      "size_kb": 6448,
+      "path": "dataset/verified_tiger_dataset/T15_Collarwali/Cannot_hide_from_the_queen_of_the_jungle.jpg"
+    },
+    {
+      "filename": "Collarwali_Tigress_of_Pench.jpg",
+      "category": "verified_tiger_dataset/T15_Collarwali",
+      "size_kb": 30336,
+      "path": "dataset/verified_tiger_dataset/T15_Collarwali/Collarwali_Tigress_of_Pench.jpg"
+    },
+    {
+      "filename": "Panthera_Tigris_Tigress__Collerwali_Pench.jpg",
+      "category": "verified_tiger_dataset/T15_Collarwali",
+      "size_kb": 8419,
+      "path": "dataset/verified_tiger_dataset/T15_Collarwali/Panthera_Tigris_Tigress__Collerwali_Pench.jpg"
+    },
+    {
+      "filename": "Queen_of_Pench.jpg",
+      "category": "verified_tiger_dataset/T15_Collarwali",
+      "size_kb": 12210,
+      "path": "dataset/verified_tiger_dataset/T15_Collarwali/Queen_of_Pench.jpg"
+    },
+    {
+      "filename": "PatdevPTR.jpg",
+      "category": "verified_tiger_dataset/T40_Patdev",
+      "size_kb": 11159,
+      "path": "dataset/verified_tiger_dataset/T40_Patdev/PatdevPTR.jpg"
+    },
+    {
+      "filename": "Patdev_Pench.jpg",
+      "category": "verified_tiger_dataset/T40_Patdev",
+      "size_kb": 2235,
+      "path": "dataset/verified_tiger_dataset/T40_Patdev/Patdev_Pench.jpg"
+    }
+  ],
+  "total_images": 465,
+  "total_size_mb": 974.4
+}

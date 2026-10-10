@@ -1,0 +1,2438 @@
+================================================================================
+   TIGERTRACE AI - SOURCE CODE AND PROJECT CONFIGURATION ARCHIVE
+================================================================================
+
+This file contains the complete source code and configuration for the
+TigerTrace AI wildlife monitoring system along with functional descriptions.
+
+--------------------------------------------------------------------------------
+TABLE OF CONTENTS & FILE ROLES ('WHICH FILE DOES WHAT')
+--------------------------------------------------------------------------------
+
+[01] TigerTrace_AI\src\reid\enrollment.py
+     ROLE: Tiger Re-ID Enrollment Engine: Handles registration of reference tigers into the SQLite database, calculates HotSpotter SIFT and deep visual embeddings for flank crops, and seeds baseline tigers (Bajirao, Collarwali, Patdev, etc.).
+
+[02] TigerTrace_AI\src\reid\flank_extractor.py
+     ROLE: Flank Region Extractor: Isolates the tiger's lateral flank stripe pattern from bounding box detections and applies CLAHE (Contrast Limited Adaptive Histogram Equalization) to normalize harsh jungle lighting and glare.
+
+[03] TigerTrace_AI\src\reid\stripe_matcher.py
+     ROLE: Biometric Stripe Pattern Matcher: Dual-engine Re-ID utilizing HotSpotter-style RootSIFT local keypoint matching combined with lightweight cosine similarity on deep embeddings. Outputs match scores, match status (AUTO_MATCHED, REVIEW_QUEUE, NEW_INDIVIDUAL), and generates visual keypoint match lines.
+
+[04] TigerTrace_AI\src\reid\__init__.py
+     ROLE: Re-ID module init file for package exports.
+
+[05] TigerTrace_AI\src\behavior\movement_predictor.py
+     ROLE: Behavioral Movement & Heatmap Predictor: CPU-optimized spatial intelligence engine using Time-Weighted Kernel Density Estimation (KDE), Discrete Markov Chain station-to-station transition probabilities, velocity vectors, and directional trend forecasting toward conflict buffer villages.
+
+[06] TigerTrace_AI\src\occupancy\home_range.py
+     ROLE: Spatial Territory Analyzer: Calculates Minimum Convex Polygon (MCP 100% and core 50/95%), territorial centroids, and geometric polygon intersections for tiger home ranges to identify territorial clashes and overlapping zones.
+
+[07] TigerTrace_AI\src\occupancy\map_generator.py
+     ROLE: Interactive Reserve Map Generator: Generates rich offline Folium/Leaflet HTML maps showing Pench Tiger Reserve boundaries, camera trap stations, core/buffer zones, resident tiger MCP polygons, movement trajectories, and predictive behavioral heatmaps.
+
+[08] TigerTrace_AI\src\occupancy\pench_gis_data.py
+     ROLE: Pench GIS Spatial Reference: Contains coordinates and metadata for 18 Pench camera trap stations (Karmajhiri, Turia, Jamtara, Gumtara, etc.) and 8 buffer boundary villages (Kohka, Avarghani, Turia Village, Pipariya, etc.) with buffer conflict thresholds.
+
+[09] TigerTrace_AI\src\occupancy\__init__.py
+     ROLE: Occupancy module init file for package exports.
+
+[10] TigerTrace_AI\src\ingest\sd_loader.py
+     ROLE: Field SD Card Loader: Ingests raw camera trap SD card drops, extracts EXIF creation timestamps (or falls back to file metadata), and associates captures with station IDs and camera trap directory metadata.
+
+[11] TigerTrace_AI\src\ingest\__init__.py
+     ROLE: Ingest module init file for package exports.
+
+[12] TigerTrace_AI\src\db\schema.py
+     ROLE: SQLite Database Layer: Initializes the relational schema for camera trap stations, villages, resident tigers, sightings, review queue, deviation alerts, and triage logs. Seeds baseline stations and villages.
+
+[13] TigerTrace_AI\src\db\__init__.py
+     ROLE: Database module init file for package exports.
+
+[14] requirements.txt
+     ROLE: Project Dependencies: Python package requirements (PyTorch, Ultralytics YOLOv8, OpenCV, Folium, Shapely, FastAPI, Uvicorn, Twilio, Scipy, etc.).
+
+[15] README.md
+     ROLE: Project Documentation: Comprehensive overview of TigerTrace_AI, problem statement, architecture diagram, 4-phase pipeline breakdown, installation instructions, offline deployment benchmarks, and hackathon documentation.
+
+
+================================================================================
+                      FULL SOURCE CODE CONTENT
+================================================================================
+
+
+################################################################################
+### FILE [01/15]: TigerTrace_AI\src\reid\enrollment.py
+### PURPOSE: Tiger Re-ID Enrollment Engine: Handles registration of reference tigers into the SQLite database, calculates HotSpotter SIFT and deep visual embeddings for flank crops, and seeds baseline tigers (Bajirao, Collarwali, Patdev, etc.).
+################################################################################
+
+import os
+import json
+import sqlite3
+import numpy as np
+from .stripe_matcher import StripeReIDMatcher
+
+class TigerEnrollmentEngine:
+    def __init__(self, db_connection, high_confidence_threshold=0.5, low_confidence_threshold=0.35, viz_dir=None):
+        self.conn = db_connection
+        self.high_thresh = high_confidence_threshold
+        self.low_thresh = low_confidence_threshold
+        self.matcher = StripeReIDMatcher(use_deep_embedding=True)
+        
+        if viz_dir is None:
+            self.viz_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data", "review_visualizations")
+        else:
+            self.viz_dir = viz_dir
+        os.makedirs(self.viz_dir, exist_ok=True)
+
+    def load_catalogue(self):
+        """Loads all enrolled reference tigers and their reference flank crops from the database."""
+        cur = self.conn.cursor()
+        cur.execute("SELECT tiger_id, name, gender, reference_crop_path, stripe_features_json FROM tigers;")
+        rows = cur.fetchall()
+        catalogue = []
+        for r in rows:
+            catalogue.append({
+                "tiger_id": r["tiger_id"],
+                "name": r["name"],
+                "gender": r["gender"],
+                "crop_path": r["reference_crop_path"],
+                "features": json.loads(r["stripe_features_json"]) if r["stripe_features_json"] else None
+            })
+        return catalogue
+
+    def seed_initial_catalogue_from_folder(self, catalogue_folder):
+        """
+        Seeds known resident tigers into SQLite from reference catalogue images
+        (e.g., Bajirao, Collarwali, Patdev, L-Mark, Swastik, Karmajhiri).
+        """
+        if not os.path.exists(catalogue_folder):
+            return 0
+
+        cur = self.conn.cursor()
+        enrolled_count = 0
+
+        for tiger_name in os.listdir(catalogue_folder):
+            tiger_dir = os.path.join(catalogue_folder, tiger_name)
+            if os.path.isdir(tiger_dir):
+                crops = [f for f in sorted(os.listdir(tiger_dir)) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+                if crops:
+                    ref_crop = os.path.join(tiger_dir, crops[0])
+                    tiger_id = tiger_name.upper().replace("-", "_").replace(" ", "_")
+                    
+                    # Extract reference deep embedding
+                    emb = self.matcher.extract_deep_embedding(ref_crop)
+                    emb_json = json.dumps(emb.tolist()) if emb is not None else None
+
+                    gender = "F" if "collarwali" in tiger_name.lower() or "patdev" in tiger_name.lower() else "M"
+                    
+                    cur.execute("""
+                    INSERT OR REPLACE INTO tigers (tiger_id, name, gender, flank_side_registered, first_seen_date, reference_crop_path, stripe_features_json, status)
+                    VALUES (?, ?, ?, 'both', '2021-01-01', ?, ?, 'resident');
+                    """, (tiger_id, tiger_name, gender, ref_crop, emb_json))
+                    enrolled_count += 1
+
+        self.conn.commit()
+        print(f"[CATALOGUE SEED] Registered {enrolled_count} reference individual tigers into SQLite.")
+        return enrolled_count
+
+    def identify_and_enroll(self, query_crop_path, sighting_id, image_name):
+        """
+        Matches a query crop against the catalogue and applies decision rules:
+        - Auto-Match (High Confidence)
+        - Human Review Queue (Ambiguous)
+        - Auto-Enroll New Individual (Low Confidence)
+        """
+        catalogue = self.load_catalogue()
+        cur = self.conn.cursor()
+
+        if not catalogue:
+            # First tiger ever: auto-enroll as PTR_T_01
+            new_id = "PTR_T_001"
+            emb = self.matcher.extract_deep_embedding(query_crop_path)
+            emb_json = json.dumps(emb.tolist()) if emb is not None else None
+            
+            cur.execute("""
+            INSERT INTO tigers (tiger_id, name, gender, flank_side_registered, first_seen_date, reference_crop_path, stripe_features_json, status)
+            VALUES (?, ?, 'U', 'both', date('now'), ?, ?, 'resident');
+            """, (new_id, f"Unidentified Resident {new_id}", query_crop_path, emb_json))
+            
+            cur.execute("""
+            UPDATE sightings SET tiger_id = ?, reid_score = 1.0, match_method = 'hotspotter_sift', review_status = 'confirmed'
+            WHERE sighting_id = ?;
+            """, (new_id, sighting_id))
+            
+            self.conn.commit()
+            return {
+                "decision": "auto_enrolled_new",
+                "assigned_tiger_id": new_id,
+                "confidence": 1.0,
+                "top_candidates": []
+            }
+
+        # Extract query embedding
+        query_emb = self.matcher.extract_deep_embedding(query_crop_path)
+        
+        candidates = []
+        for ind in catalogue:
+            ref_crop = ind["crop_path"]
+            if not ref_crop or not os.path.exists(ref_crop):
+                continue
+                
+            ref_emb = np.array(ind["features"]) if ind["features"] else None
+            match_res = self.matcher.compare_flanks(query_crop_path, ref_crop, query_emb, ref_emb)
+            
+            candidates.append({
+                "tiger_id": ind["tiger_id"],
+                "name": ind["name"],
+                "ref_crop_path": ref_crop,
+                "score": match_res["combined_score"],
+                "sift_score": match_res["sift_score"],
+                "cosine_score": match_res["cosine_score"],
+                "good_matches_count": match_res["good_matches_count"]
+            })
+
+        # Sort candidates descending by score
+        candidates = sorted(candidates, key=lambda x: x["score"], reverse=True)
+        best_match = candidates[0] if candidates else {"tiger_id": None, "score": 0.0}
+
+        best_id = best_match.get("tiger_id")
+        best_score = best_match.get("score", 0.0)
+
+        # Decision 1: High-Confidence Auto-Match
+        if best_score >= self.high_thresh:
+            cur.execute("""
+            UPDATE sightings SET tiger_id = ?, reid_score = ?, match_method = 'hotspotter_sift', review_status = 'confirmed'
+            WHERE sighting_id = ?;
+            """, (best_id, best_score, sighting_id))
+            
+            cur.execute("UPDATE tigers SET last_seen_date = date('now') WHERE tiger_id = ?;", (best_id,))
+            self.conn.commit()
+            
+            return {
+                "decision": "auto_matched",
+                "assigned_tiger_id": best_id,
+                "confidence": best_score,
+                "top_candidates": candidates[:3]
+            }
+
+        # Decision 2: Ambiguous Match -> Queue for Human Review
+        elif best_score >= self.low_thresh:
+            # Generate visual verification image for human auditor
+            viz_name = f"sighting_{sighting_id}_match_vs_{best_id}.jpg"
+            viz_path = os.path.join(self.viz_dir, viz_name)
+            self.matcher.generate_sift_match_visualization(query_crop_path, best_match["ref_crop_path"], viz_path)
+
+            cur.execute("""
+            UPDATE sightings SET tiger_id = ?, reid_score = ?, match_method = 'hotspotter_sift', review_status = 'pending_review'
+            WHERE sighting_id = ?;
+            """, (best_id, best_score, sighting_id))
+
+            cur.execute("""
+            INSERT INTO review_queue (sighting_id, suggested_tiger_id, suggested_score, top_candidates_json, flank_crop_path, sift_match_viz_path, status)
+            VALUES (?, ?, ?, ?, ?, ?, 'pending');
+            """, (sighting_id, best_id, best_score, json.dumps(candidates[:5]), query_crop_path, viz_path))
+
+            self.conn.commit()
+            return {
+                "decision": "queued_for_review",
+                "suggested_tiger_id": best_id,
+                "confidence": best_score,
+                "viz_path": viz_path,
+                "top_candidates": candidates[:3]
+            }
+
+        # Decision 3: Low Match Score -> Auto-Enroll as New Individual
+        else:
+            cur.execute("SELECT COUNT(*) FROM tigers;")
+            total_tigers = cur.fetchone()[0]
+            new_id = f"PTR_T_{total_tigers + 1:03d}"
+
+            emb_json = json.dumps(query_emb.tolist()) if query_emb is not None else None
+            cur.execute("""
+            INSERT INTO tigers (tiger_id, name, gender, flank_side_registered, first_seen_date, reference_crop_path, stripe_features_json, status)
+            VALUES (?, ?, 'U', 'both', date('now'), ?, ?, 'resident');
+            """, (new_id, f"New Individual {new_id}", query_crop_path, emb_json))
+
+            cur.execute("""
+            UPDATE sightings SET tiger_id = ?, reid_score = ?, match_method = 'hotspotter_sift', review_status = 'confirmed'
+            WHERE sighting_id = ?;
+            """, (new_id, best_score, sighting_id))
+
+            self.conn.commit()
+            return {
+                "decision": "auto_enrolled_new",
+                "assigned_tiger_id": new_id,
+                "confidence": best_score,
+                "top_candidates": candidates[:3]
+            }
+
+################################################################################
+### FILE [02/15]: TigerTrace_AI\src\reid\flank_extractor.py
+### PURPOSE: Flank Region Extractor: Isolates the tiger's lateral flank stripe pattern from bounding box detections and applies CLAHE (Contrast Limited Adaptive Histogram Equalization) to normalize harsh jungle lighting and glare.
+################################################################################
+
+import os
+import cv2
+import numpy as np
+from PIL import Image
+
+class FlankExtractor:
+    def __init__(self, target_size=(384, 384)):
+        self.target_size = target_size
+        self.clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
+
+    def extract_flank_crop(self, image_path, bbox_xyxy=None, output_dir=None, save_enhanced=True):
+        """
+        Extracts the animal body/flank crop, applies CLAHE contrast enhancement for stripe visibility,
+        and saves the normalized crop.
+        """
+        img = cv2.imread(image_path)
+        if img is None:
+            raise ValueError(f"Could not load image: {image_path}")
+
+        h, w = img.shape[:2]
+
+        if bbox_xyxy:
+            x1, y1, x2, y2 = [int(v) for v in bbox_xyxy]
+            x1, y1 = max(0, x1), max(0, y1)
+            x2, y2 = min(w, x2), min(h, y2)
+            
+            # If box is sufficiently large, crop it; otherwise use full image
+            if (x2 - x1) > 40 and (y2 - y1) > 40:
+                crop = img[y1:y2, x1:x2]
+            else:
+                crop = img
+        else:
+            crop = img
+
+        # Enhance stripe contrast using CLAHE on Luminance channel
+        if save_enhanced:
+            lab = cv2.cvtColor(crop, cv2.COLOR_BGR2LAB)
+            l, a, b = cv2.split(lab)
+            l_enhanced = self.clahe.apply(l)
+            lab_enhanced = cv2.merge((l_enhanced, a, b))
+            enhanced_crop = cv2.cvtColor(lab_enhanced, cv2.COLOR_LAB2BGR)
+        else:
+            enhanced_crop = crop
+
+        # Resize for consistent feature matching
+        resized_crop = cv2.resize(enhanced_crop, self.target_size, interpolation=cv2.INTER_AREA)
+
+        crop_path = None
+        if output_dir:
+            os.makedirs(output_dir, exist_ok=True)
+            fname = os.path.splitext(os.path.basename(image_path))[0]
+            crop_path = os.path.join(output_dir, f"{fname}_flank.jpg")
+            cv2.imwrite(crop_path, resized_crop)
+
+        return resized_crop, crop_path
+
+################################################################################
+### FILE [03/15]: TigerTrace_AI\src\reid\stripe_matcher.py
+### PURPOSE: Biometric Stripe Pattern Matcher: Dual-engine Re-ID utilizing HotSpotter-style RootSIFT local keypoint matching combined with lightweight cosine similarity on deep embeddings. Outputs match scores, match status (AUTO_MATCHED, REVIEW_QUEUE, NEW_INDIVIDUAL), and generates visual keypoint match lines.
+################################################################################
+
+import os
+import cv2
+import numpy as np
+import torch
+import torchvision.models as models
+from torchvision.models import ResNet50_Weights
+import torchvision.transforms as transforms
+from PIL import Image
+
+class StripeReIDMatcher:
+    def __init__(self, use_deep_embedding=True):
+        """
+        Stripe Re-ID matcher combining:
+        1. HotSpotter SIFT Keypoint Stripe Matcher (Geometric pattern minutiae).
+        2. Pretrained Deep Feature Embedding (Cosine Similarity).
+        """
+        # SIFT Keypoint detector for stripe bifurcation minutiae
+        self.sift = cv2.SIFT_create(nfeatures=1000, contrastThreshold=0.03, edgeThreshold=10)
+        # FLANN Matcher for SIFT descriptors
+        index_params = dict(algorithm=1, trees=5)  # FLANN_INDEX_KDTREE
+        search_params = dict(checks=50)
+        self.flann = cv2.FlannBasedMatcher(index_params, search_params)
+
+        self.use_deep = use_deep_embedding
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        if self.use_deep:
+            weights = ResNet50_Weights.DEFAULT
+            self.embedder = models.resnet50(weights=weights).to(self.device)
+            # Remove final classification head to get 2048-dim feature embedding
+            self.embedder.fc = torch.nn.Identity()
+            self.embedder.eval()
+
+            self.transform = transforms.Compose([
+                transforms.Resize(256),
+                transforms.CenterCrop(224),
+                transforms.ToTensor(),
+                transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+            ])
+
+    def extract_sift_features(self, img):
+        """Extract SIFT keypoints and descriptors from flank image."""
+        if isinstance(img, str):
+            img = cv2.imread(img)
+        if len(img.shape) == 3:
+            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        else:
+            gray = img
+        kp, des = self.sift.detectAndCompute(gray, None)
+        return kp, des
+
+    def extract_deep_embedding(self, img_path):
+        """Extract 2048-dimensional normalized feature vector."""
+        if not self.use_deep:
+            return None
+        with Image.open(img_path) as img:
+            t = self.transform(img.convert('RGB')).unsqueeze(0).to(self.device)
+            with torch.no_grad():
+                emb = self.embedder(t).squeeze(0).cpu().numpy()
+            norm = np.linalg.norm(emb)
+            if norm > 0:
+                emb = emb / norm
+            return emb
+
+    def match_sift_stripes(self, query_img, ref_img, lowe_ratio=0.75):
+        """
+        Performs HotSpotter SIFT stripe matching with Lowe's ratio test and RANSAC homography check.
+        Returns: (match_score, good_matches, query_kp, ref_kp)
+        """
+        kp1, des1 = self.extract_sift_features(query_img)
+        kp2, des2 = self.extract_sift_features(ref_img)
+
+        if des1 is None or des2 is None or len(des1) < 4 or len(des2) < 4:
+            return 0.0, [], kp1, kp2
+
+        try:
+            matches = self.flann.knnMatch(des1, des2, k=2)
+            good_matches = []
+            for m, n in matches:
+                if m.distance < lowe_ratio * n.distance:
+                    good_matches.append(m)
+
+            # SIFT score normalized by candidate keypoints
+            inlier_count = len(good_matches)
+            score = min(1.0, inlier_count / 30.0)  # 30+ matching stripe bifurcations = perfect match
+            return round(score, 4), good_matches, kp1, kp2
+        except Exception:
+            return 0.0, [], kp1, kp2
+
+    def compare_flanks(self, query_path, ref_path, query_emb=None, ref_emb=None):
+        """
+        Combined comparison: SIFT stripe geometry score (60%) + Deep Embedding Cosine Similarity (40%).
+        """
+        # 1. HotSpotter SIFT matching
+        sift_score, good_matches, kp1, kp2 = self.match_sift_stripes(query_path, ref_path)
+
+        # 2. Deep Feature Cosine Similarity
+        cosine_sim = 0.0
+        if self.use_deep:
+            if query_emb is None:
+                query_emb = self.extract_deep_embedding(query_path)
+            if ref_emb is None:
+                ref_emb = self.extract_deep_embedding(ref_path)
+            if query_emb is not None and ref_emb is not None:
+                cosine_sim = float(np.dot(query_emb, ref_emb))
+                cosine_sim = max(0.0, min(1.0, (cosine_sim + 1.0) / 2.0))
+
+        # Combined Ensembled Re-ID Score
+        combined_score = round(0.55 * sift_score + 0.45 * cosine_sim, 4)
+
+        return {
+            "combined_score": combined_score,
+            "sift_score": sift_score,
+            "cosine_score": round(cosine_sim, 4),
+            "good_matches_count": len(good_matches),
+            "kp_query": kp1,
+            "kp_ref": kp2,
+            "matches": good_matches
+        }
+
+    def generate_sift_match_visualization(self, query_path, ref_path, output_path, max_draw=25):
+        """
+        Generates a visual verification image connecting matching stripe minutiae between two tigers.
+        Essential for human-in-the-loop explainability and auditability.
+        """
+        img1 = cv2.imread(query_path)
+        img2 = cv2.imread(ref_path)
+        if img1 is None or img2 is None:
+            return None
+
+        _, good_matches, kp1, kp2 = self.match_sift_stripes(img1, img2)
+        
+        # Sort matches by distance
+        good_matches = sorted(good_matches, key=lambda x: x.distance)[:max_draw]
+
+        viz = cv2.drawMatches(
+            img1, kp1, img2, kp2, good_matches, None,
+            matchColor=(0, 255, 0),
+            singlePointColor=(0, 0, 255),
+            flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS
+        )
+
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        cv2.imwrite(output_path, viz)
+        return output_path
+
+################################################################################
+### FILE [04/15]: TigerTrace_AI\src\reid\__init__.py
+### PURPOSE: Re-ID module init file for package exports.
+################################################################################
+
+# Package init
+
+################################################################################
+### FILE [05/15]: TigerTrace_AI\src\behavior\movement_predictor.py
+### PURPOSE: Behavioral Movement & Heatmap Predictor: CPU-optimized spatial intelligence engine using Time-Weighted Kernel Density Estimation (KDE), Discrete Markov Chain station-to-station transition probabilities, velocity vectors, and directional trend forecasting toward conflict buffer villages.
+################################################################################
+
+import math
+import datetime
+from typing import List, Dict, Tuple, Optional, Any
+import numpy as np
+from scipy.stats import gaussian_kde
+
+try:
+    from ..occupancy.home_range import HomeRangeAnalyzer
+    from ..occupancy.pench_gis_data import PENCH_VILLAGES, PENCH_CAMERA_STATIONS
+except ImportError:
+    from src.occupancy.home_range import HomeRangeAnalyzer
+    from src.occupancy.pench_gis_data import PENCH_VILLAGES, PENCH_CAMERA_STATIONS
+
+class TigerMovementPredictor:
+    """
+    Offline, CPU-optimized behavioral movement prediction and spatial heatmap generator
+    for individual tigers in Pench Tiger Reserve.
+    
+    Features:
+    1. Time-Weighted Kernel Density Estimation (KDE) predictive spatial surface.
+    2. Discrete Markov Chain station-to-station transition model.
+    3. Recent trajectory and directional trend analysis toward conflict villages.
+    4. Resilient sparse-data and zero-variance handling.
+    """
+
+    def __init__(self, lat_km_ratio: float = 111.0):
+        self.analyzer = HomeRangeAnalyzer(lat_km_ratio=lat_km_ratio)
+        self.lat_km = self.analyzer.lat_km
+        self.lon_km = self.analyzer.lon_km
+
+        # Station lookup dictionary by ID for quick GPS mapping
+        self.station_lookup = {
+            stn["station_id"]: stn for stn in PENCH_CAMERA_STATIONS
+        }
+
+    # -------------------------------------------------------------------------
+    # Helper: Datetime Parser
+    # -------------------------------------------------------------------------
+    def _parse_timestamp(self, ts: Any) -> Optional[datetime.datetime]:
+        """Parse various timestamp representations into a Python datetime."""
+        if isinstance(ts, datetime.datetime):
+            return ts
+        if isinstance(ts, (int, float)):
+            try:
+                return datetime.datetime.fromtimestamp(ts)
+            except Exception:
+                return None
+        if isinstance(ts, str):
+            for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d", "%d-%m-%Y %H:%M:%S"):
+                try:
+                    return datetime.datetime.strptime(ts.strip(), fmt)
+                except ValueError:
+                    continue
+        return None
+
+    # -------------------------------------------------------------------------
+    # A. Time-Weighted Predictive KDE Heatmap
+    # -------------------------------------------------------------------------
+    def compute_predictive_heatmap(
+        self,
+        tiger_id: str,
+        sightings: List[Dict[str, Any]],
+        decay_half_life_days: float = 30.0,
+        grid_resolution: int = 40,
+        min_bandwidth_km: float = 1.2
+    ) -> Dict[str, Any]:
+        """
+        Computes a time-weighted 2D spatial density surface for a tiger.
+        
+        Recent sightings are exponentially prioritized over older captures using:
+            weight = 2 ^ (-delta_days / decay_half_life_days)
+            
+        Coordinates are projected into Cartesian kilometer space using HomeRangeAnalyzer,
+        smoothed via Gaussian KDE, and converted back to GPS coordinates.
+        
+        :param tiger_id: Identifier of the target tiger.
+        :param sightings: List of sighting records containing 'latitude', 'longitude', and 'timestamp'.
+        :param decay_half_life_days: Half-life in days for exponential time decay.
+        :param grid_resolution: Number of grid evaluation points along each axis.
+        :param min_bandwidth_km: Minimum spatial kernel smoothing bandwidth in kilometers.
+        :return: Dict containing 'density_grid', 'lat_grid', 'lon_grid', 'heatmap_points', 'peak_location'.
+        """
+        if not sightings:
+            return {
+                "tiger_id": tiger_id,
+                "status": "insufficient_data",
+                "density_grid": np.zeros((grid_resolution, grid_resolution)),
+                "lat_grid": np.array([]),
+                "lon_grid": np.array([]),
+                "heatmap_points": [],
+                "peak_location": (None, None)
+            }
+
+        valid_records = []
+        parsed_dates = []
+
+        for s in sightings:
+            lat = s.get("latitude")
+            lon = s.get("longitude")
+            if lat is None or lon is None:
+                # Attempt to resolve from station_id if available
+                stn_id = s.get("station_id")
+                if stn_id in self.station_lookup:
+                    lat = self.station_lookup[stn_id]["lat"]
+                    lon = self.station_lookup[stn_id]["lon"]
+
+            if lat is not None and lon is not None:
+                dt = self._parse_timestamp(s.get("timestamp"))
+                valid_records.append((float(lat), float(lon), dt))
+                if dt:
+                    parsed_dates.append(dt)
+
+        if not valid_records:
+            return {
+                "tiger_id": tiger_id,
+                "status": "insufficient_data",
+                "density_grid": np.zeros((grid_resolution, grid_resolution)),
+                "lat_grid": np.array([]),
+                "lon_grid": np.array([]),
+                "heatmap_points": [],
+                "peak_location": (None, None)
+            }
+
+        # 1. Compute time-decay weights
+        ref_time = max(parsed_dates) if parsed_dates else datetime.datetime.now()
+        lats = []
+        lons = []
+        weights = []
+
+        for lat, lon, dt in valid_records:
+            lats.append(lat)
+            lons.append(lon)
+            if dt:
+                days_diff = max(0.0, (ref_time - dt).total_seconds() / 86400.0)
+                # Exponential decay formula: 2^(-delta_t / half_life)
+                w = math.pow(2.0, -days_diff / max(1.0, decay_half_life_days))
+            else:
+                w = 1.0
+            weights.append(max(0.05, float(w)))
+
+        weights = np.array(weights, dtype=float)
+        weights_sum = np.sum(weights)
+        if weights_sum > 0:
+            norm_weights = weights / weights_sum
+        else:
+            norm_weights = np.ones(len(weights)) / len(weights)
+
+        # 2. Convert coordinates to local Cartesian (x, y) km
+        xy_pts = [self.analyzer.latlon_to_xy_km(lat, lon) for lat, lon in zip(lats, lons)]
+        xs = np.array([p[0] for p in xy_pts], dtype=float)
+        ys = np.array([p[1] for p in xy_pts], dtype=float)
+
+        # 3. Grid envelope definition (Pench landscape boundary or padded tiger bbox)
+        padding_km = 6.0
+        x_min, x_max = float(np.min(xs) - padding_km), float(np.max(xs) + padding_km)
+        y_min, y_max = float(np.min(ys) - padding_km), float(np.max(ys) + padding_km)
+
+        # Ensure minimal bounding span
+        if x_max - x_min < 8.0:
+            cx = (x_min + x_max) / 2.0
+            x_min, x_max = cx - 4.0, cx + 4.0
+        if y_max - y_min < 8.0:
+            cy = (y_min + y_max) / 2.0
+            y_min, y_max = cy - 4.0, cy + 4.0
+
+        grid_x = np.linspace(x_min, x_max, grid_resolution)
+        grid_y = np.linspace(y_min, y_max, grid_resolution)
+        mesh_x, mesh_y = np.meshgrid(grid_x, grid_y)
+        eval_pts = np.vstack([mesh_x.ravel(), mesh_y.ravel()])
+
+        # 4. Density estimation with singularity safeguards
+        # Add tiny synthetic jitter if all points are collinear or singular
+        unique_xy = np.unique(np.column_stack((xs, ys)), axis=0)
+        if len(unique_xy) < 3 or np.var(xs) < 1e-4 or np.var(ys) < 1e-4:
+            # Manual weighted radial basis kernel for sparse / single-station records
+            bandwidth_sq = max(min_bandwidth_km ** 2, 4.0)
+            density = np.zeros(eval_pts.shape[1], dtype=float)
+            for i in range(len(xs)):
+                dx = eval_pts[0] - xs[i]
+                dy = eval_pts[1] - ys[i]
+                dist_sq = dx * dx + dy * dy
+                density += norm_weights[i] * np.exp(-dist_sq / (2.0 * bandwidth_sq))
+        else:
+            try:
+                kde = gaussian_kde(np.vstack([xs, ys]), weights=norm_weights)
+                # Ensure bandwidth is not excessively narrow
+                kde.set_bandwidth(bw_method=max(kde.factor, 0.45))
+                density = kde(eval_pts)
+            except Exception:
+                # Fallback manual kernel on numerical exception
+                bandwidth_sq = 4.0
+                density = np.zeros(eval_pts.shape[1], dtype=float)
+                for i in range(len(xs)):
+                    dist_sq = (eval_pts[0] - xs[i]) ** 2 + (eval_pts[1] - ys[i]) ** 2
+                    density += norm_weights[i] * np.exp(-dist_sq / (2.0 * bandwidth_sq))
+
+        density_grid = density.reshape((grid_resolution, grid_resolution))
+        max_d = float(np.max(density_grid))
+        if max_d > 0:
+            density_norm = density_grid / max_d
+        else:
+            density_norm = density_grid
+
+        # 5. Convert grid back to GPS (Lat, Lon) coordinates
+        lat_grid = np.zeros((grid_resolution, grid_resolution))
+        lon_grid = np.zeros((grid_resolution, grid_resolution))
+        heatmap_points = []
+
+        for i in range(grid_resolution):
+            for j in range(grid_resolution):
+                g_lat, g_lon = self.analyzer.xy_km_to_latlon(grid_x[j], grid_y[i])
+                lat_grid[i, j] = g_lat
+                lon_grid[i, j] = g_lon
+                val = float(density_norm[i, j])
+                if val >= 0.08:  # Filter near-zero tails to keep heatmap lightweight
+                    heatmap_points.append([round(g_lat, 5), round(g_lon, 5), round(val, 3)])
+
+        # Determine peak location
+        max_idx = np.unravel_index(np.argmax(density_grid), density_grid.shape)
+        peak_lat = float(lat_grid[max_idx])
+        peak_lon = float(lon_grid[max_idx])
+
+        return {
+            "tiger_id": tiger_id,
+            "status": "success",
+            "density_grid": density_norm,
+            "lat_grid": lat_grid,
+            "lon_grid": lon_grid,
+            "heatmap_points": heatmap_points,
+            "peak_location": (round(peak_lat, 5), round(peak_lon, 5)),
+            "sighting_count": len(valid_records),
+            "effective_weights": weights.tolist()
+        }
+
+    # -------------------------------------------------------------------------
+    # B. Station-to-Station Markov Transition Model
+    # -------------------------------------------------------------------------
+    def build_transition_matrix(
+        self,
+        sightings: List[Dict[str, Any]]
+    ) -> Dict[str, Dict[str, float]]:
+        """
+        Constructs a Markov transition probability matrix from chronological station sightings.
+        
+        :param sightings: List of sighting records for a specific tiger.
+        :return: Nested dictionary mapping station_from -> {station_to: probability}
+        """
+        # Sort sightings chronologically
+        sorted_sightings = []
+        for s in sightings:
+            stn = s.get("station_id")
+            ts = self._parse_timestamp(s.get("timestamp"))
+            if stn:
+                sorted_sightings.append((ts if ts else datetime.datetime.min, stn))
+
+        sorted_sightings.sort(key=lambda x: x[0])
+        
+        transition_counts: Dict[str, Dict[str, int]] = {}
+        
+        for idx in range(len(sorted_sightings) - 1):
+            curr_stn = sorted_sightings[idx][1]
+            next_stn = sorted_sightings[idx + 1][1]
+
+            if curr_stn not in transition_counts:
+                transition_counts[curr_stn] = {}
+            transition_counts[curr_stn][next_stn] = transition_counts[curr_stn].get(next_stn, 0) + 1
+
+        # Normalize into probabilities
+        transition_probs: Dict[str, Dict[str, float]] = {}
+        for stn_from, dest_map in transition_counts.items():
+            total_visits = sum(dest_map.values())
+            transition_probs[stn_from] = {
+                stn_to: round(count / total_visits, 4) for stn_to, count in dest_map.items()
+            }
+
+        return transition_probs
+
+    def predict_next_likely_stations(
+        self,
+        tiger_id: str,
+        sightings: List[Dict[str, Any]],
+        current_station: Optional[str] = None,
+        top_k: int = 3
+    ) -> List[Tuple[str, float]]:
+        """
+        Predicts top-K most probable next camera stations based on historical transitions.
+        
+        If no explicit current station is supplied, the tiger's most recent sighting station is used.
+        If transition history from current_station is unavailable, falls back to proximity-informed
+        historical station frequencies.
+        
+        :param tiger_id: Target tiger identifier.
+        :param sightings: Historical sighting records.
+        :param current_station: Optional starting station ID.
+        :param top_k: Maximum number of candidate stations to return.
+        :return: List of (station_id, probability) tuples.
+        """
+        if not sightings:
+            return []
+
+        # Sort sightings by timestamp to find last observed station
+        sorted_sightings = []
+        for s in sightings:
+            stn = s.get("station_id")
+            ts = self._parse_timestamp(s.get("timestamp"))
+            if stn:
+                sorted_sightings.append((ts if ts else datetime.datetime.min, stn))
+
+        if not sorted_sightings:
+            return []
+
+        sorted_sightings.sort(key=lambda x: x[0])
+
+        if current_station is None:
+            current_station = sorted_sightings[-1][1]
+
+        # 1. Check empirical Markov transitions
+        transition_matrix = self.build_transition_matrix(sightings)
+        
+        if current_station in transition_matrix and transition_matrix[current_station]:
+            dest_probs = transition_matrix[current_station]
+            sorted_candidates = sorted(dest_probs.items(), key=lambda x: x[1], reverse=True)
+            return sorted_candidates[:top_k]
+
+        # 2. Fallback for sparse transitions: Frequency of other visited stations
+        if len(sorted_sightings) >= 2:
+            stn_counts: Dict[str, int] = {}
+            for _, stn in sorted_sightings:
+                if stn != current_station:
+                    stn_counts[stn] = stn_counts.get(stn, 0) + 1
+
+            if stn_counts:
+                total = sum(stn_counts.values())
+                ranked = sorted(
+                    [(stn, round(cnt / total, 4)) for stn, cnt in stn_counts.items()],
+                    key=lambda x: x[1],
+                    reverse=True
+                )
+                return ranked[:top_k]
+
+        return []
+
+    # -------------------------------------------------------------------------
+    # C. Directional Trend & Conflict Village Convergence
+    # -------------------------------------------------------------------------
+    def compute_directional_trend(
+        self,
+        sightings: List[Dict[str, Any]],
+        recent_window_size: int = 3
+    ) -> Dict[str, Any]:
+        """
+        Calculates recent directional shift vector using sliding-window centroids.
+        Evaluates whether movement trajectory converges toward any human settlement in PENCH_VILLAGES.
+        
+        :param sightings: Historical sightings for the tiger.
+        :param recent_window_size: Number of recent captures to construct current vector.
+        :return: Dict containing 'displacement_km', 'compass_heading', 'vector_xy_km', 'approaching_villages'.
+        """
+        valid = []
+        for s in sightings:
+            lat = s.get("latitude")
+            lon = s.get("longitude")
+            stn_id = s.get("station_id")
+            if (lat is None or lon is None) and stn_id in self.station_lookup:
+                lat = self.station_lookup[stn_id]["lat"]
+                lon = self.station_lookup[stn_id]["lon"]
+
+            if lat is not None and lon is not None:
+                ts = self._parse_timestamp(s.get("timestamp"))
+                valid.append((ts if ts else datetime.datetime.min, float(lat), float(lon), stn_id))
+
+        if len(valid) < 2:
+            return {
+                "status": "insufficient_data",
+                "displacement_km": 0.0,
+                "compass_heading": "STATIONARY",
+                "vector_xy_km": (0.0, 0.0),
+                "approaching_villages": []
+            }
+
+        valid.sort(key=lambda x: x[0])
+
+        # Separate baseline history vs recent window
+        if len(valid) >= 4:
+            recent_pts = valid[-recent_window_size:]
+            past_pts = valid[:-recent_window_size] if len(valid) > recent_window_size else valid[:2]
+        else:
+            recent_pts = valid[1:]
+            past_pts = valid[:1]
+
+        # Compute baseline and recent centroids
+        base_lat = float(np.mean([p[1] for p in past_pts]))
+        base_lon = float(np.mean([p[2] for p in past_pts]))
+        rec_lat = float(np.mean([p[1] for p in recent_pts]))
+        rec_lon = float(np.mean([p[2] for p in recent_pts]))
+
+        # Calculate Cartesian vector in km
+        base_x, base_y = self.analyzer.latlon_to_xy_km(base_lat, base_lon)
+        rec_x, rec_y = self.analyzer.latlon_to_xy_km(rec_lat, rec_lon)
+        dx = round(rec_x - base_x, 2)
+        dy = round(rec_y - base_y, 2)
+        displacement_km = round(math.hypot(dx, dy), 2)
+
+        # Compass heading
+        compass_heading = self._calculate_compass_heading(dx, dy)
+
+        # Check convergence with vulnerable villages
+        approaching_villages = []
+        if displacement_km >= 0.5:
+            for vil in PENCH_VILLAGES:
+                v_lat, v_lon = vil["lat"], vil["lon"]
+                vx, vy = self.analyzer.latlon_to_xy_km(v_lat, v_lon)
+                
+                dist_base = math.hypot(vx - base_x, vy - base_y)
+                dist_recent = math.hypot(vx - rec_x, vy - rec_y)
+                delta_d = dist_base - dist_recent
+
+                if delta_d > 0.4 and dist_recent <= 4.0:
+                    approaching_villages.append({
+                        "village_id": vil["village_id"],
+                        "village_name": vil["name"],
+                        "current_distance_km": round(dist_recent, 2),
+                        "distance_closed_km": round(delta_d, 2),
+                        "risk_level": vil["risk_level"]
+                    })
+
+        return {
+            "status": "success",
+            "baseline_centroid": (round(base_lat, 5), round(base_lon, 5)),
+            "recent_centroid": (round(rec_lat, 5), round(rec_lon, 5)),
+            "vector_xy_km": (dx, dy),
+            "displacement_km": displacement_km,
+            "compass_heading": compass_heading,
+            "approaching_villages": approaching_villages
+        }
+
+    def _calculate_compass_heading(self, dx: float, dy: float) -> str:
+        """Determines cardinal/intercardinal compass heading from Cartesian delta (dx, dy)."""
+        if math.hypot(dx, dy) < 0.3:
+            return "STATIONARY"
+
+        # Angle in degrees where 0 = East, 90 = North
+        angle_deg = (math.degrees(math.atan2(dy, dx)) + 360) % 360
+        
+        # Map angle to 8-point compass
+        directions = ["E", "NE", "N", "NW", "W", "SW", "S", "SE", "E"]
+        idx = int(round(angle_deg / 45.0))
+        return directions[idx]
+
+    # -------------------------------------------------------------------------
+    # D. Unified Comprehensive Prediction Engine
+    # -------------------------------------------------------------------------
+    def predict_tiger_movement(
+        self,
+        tiger_id: str,
+        sightings: List[Dict[str, Any]],
+        decay_half_life_days: float = 30.0,
+        top_k_stations: int = 3
+    ) -> Dict[str, Any]:
+        """
+        Executes end-to-end behavioral analysis and movement prediction for an individual tiger.
+        
+        Returns:
+            Dict containing:
+            - status ('success' | 'insufficient_data')
+            - confidence_note
+            - sighting_count
+            - current_station
+            - predicted_next_stations: List[(station_id, probability)]
+            - directional_trend: Dict
+            - heatmap_points: List[[lat, lon, weight]] for Folium HeatMap
+            - peak_location: (lat, lon)
+        """
+        s_count = len(sightings)
+        
+        if s_count == 0:
+            return {
+                "tiger_id": tiger_id,
+                "status": "insufficient_data",
+                "confidence_note": "No sightings recorded for this tiger.",
+                "sighting_count": 0,
+                "current_station": None,
+                "predicted_next_stations": [],
+                "directional_trend": {
+                    "status": "insufficient_data",
+                    "displacement_km": 0.0,
+                    "compass_heading": "UNKNOWN",
+                    "approaching_villages": []
+                },
+                "heatmap_points": [],
+                "peak_location": (None, None)
+            }
+
+        # 1. Compute time-weighted KDE surface
+        heatmap_res = self.compute_predictive_heatmap(
+            tiger_id=tiger_id,
+            sightings=sightings,
+            decay_half_life_days=decay_half_life_days
+        )
+
+        # 2. Extract current station
+        sorted_sightings = []
+        for s in sightings:
+            stn = s.get("station_id")
+            ts = self._parse_timestamp(s.get("timestamp"))
+            if stn:
+                sorted_sightings.append((ts if ts else datetime.datetime.min, stn))
+        sorted_sightings.sort(key=lambda x: x[0])
+        current_station = sorted_sightings[-1][1] if sorted_sightings else None
+
+        # 3. Predict next likely stations
+        predicted_stations = self.predict_next_likely_stations(
+            tiger_id=tiger_id,
+            sightings=sightings,
+            current_station=current_station,
+            top_k=top_k_stations
+        )
+
+        # 4. Compute directional trend
+        trend = self.compute_directional_trend(sightings)
+
+        # 5. Formulate confidence note
+        if s_count == 1:
+            status = "insufficient_data"
+            confidence_note = "Single sighting only: Heatmap shows radial uncertainty buffer around initial camera station; transition model requires >= 2 sightings."
+        elif len(predicted_stations) == 0:
+            status = "partial_data"
+            confidence_note = f"Observed {s_count} captures across single station ({current_station}). Transition model active once dispersal occurs."
+        else:
+            status = "success"
+            top_stn, top_prob = predicted_stations[0]
+            confidence_note = f"High-confidence transition model based on {s_count} chronological captures. Next likely station: {top_stn} ({top_prob * 100:.1f}% probability)."
+
+        return {
+            "tiger_id": tiger_id,
+            "status": status,
+            "confidence_note": confidence_note,
+            "sighting_count": s_count,
+            "current_station": current_station,
+            "predicted_next_stations": predicted_stations,
+            "directional_trend": trend,
+            "heatmap_points": heatmap_res.get("heatmap_points", []),
+            "peak_location": heatmap_res.get("peak_location", (None, None))
+        }
+
+################################################################################
+### FILE [06/15]: TigerTrace_AI\src\occupancy\home_range.py
+### PURPOSE: Spatial Territory Analyzer: Calculates Minimum Convex Polygon (MCP 100% and core 50/95%), territorial centroids, and geometric polygon intersections for tiger home ranges to identify territorial clashes and overlapping zones.
+################################################################################
+
+import numpy as np
+from shapely.geometry import MultiPoint, Polygon, Point
+from shapely.ops import unary_union
+import math
+
+class HomeRangeAnalyzer:
+    def __init__(self, lat_km_ratio=111.0):
+        """
+        Geospatial analyzer for tiger home ranges, centroids, and territorial overlaps.
+        At Pench latitude (21.7°N), 1 deg Lat ≈ 111 km, 1 deg Lon ≈ 103.2 km.
+        """
+        self.lat_km = lat_km_ratio
+        self.lon_km = lat_km_ratio * math.cos(math.radians(21.7))
+
+    def latlon_to_xy_km(self, lat, lon, ref_lat=21.60, ref_lon=79.15):
+        """Convert Lat/Lon coordinates into local Cartesian KM from Pench origin."""
+        x = (lon - ref_lon) * self.lon_km
+        y = (lat - ref_lat) * self.lat_km
+        return x, y
+
+    def xy_km_to_latlon(self, x, y, ref_lat=21.60, ref_lon=79.15):
+        """Convert local Cartesian KM back into Lat/Lon coordinates."""
+        lat = ref_lat + (y / self.lat_km)
+        lon = ref_lon + (x / self.lon_km)
+        return lat, lon
+
+    def calculate_tiger_home_range(self, sightings_records):
+        """
+        Computes MCP (Minimum Convex Polygon), activity centroid, and estimated area (km²)
+        for a given tiger's sightings.
+        :param sightings_records: List of dicts with {'latitude', 'longitude', 'timestamp', 'station_id'}
+        """
+        if not sightings_records:
+            return {
+                "sighting_count": 0,
+                "centroid": (None, None),
+                "area_sq_km": 0.0,
+                "mcp_polygon_coords": [],
+                "stations_used": []
+            }
+
+        points = [(r["latitude"], r["longitude"]) for r in sightings_records]
+        unique_stations = list(set(r["station_id"] for r in sightings_records))
+
+        # 1. Compute Activity Centroid (mean center)
+        mean_lat = float(np.mean([p[0] for p in points]))
+        mean_lon = float(np.mean([p[1] for p in points]))
+
+        # 2. Compute Minimum Convex Polygon (MCP)
+        if len(points) >= 3:
+            # Check if points are collinear
+            mp = MultiPoint([(p[1], p[0]) for p in points])  # (lon, lat) for shapely
+            hull = mp.convex_hull
+            
+            if isinstance(hull, Polygon):
+                # Polygon coordinates in (lat, lon) for Leaflet/Folium
+                poly_coords = [(pt[1], pt[0]) for pt in list(hull.exterior.coords)]
+                
+                # Compute area in sq km
+                xy_points = [self.latlon_to_xy_km(p[0], p[1]) for p in poly_coords]
+                xy_poly = Polygon(xy_points)
+                area_sq_km = round(xy_poly.area, 2)
+            else:
+                # 3 collinear points -> buffer around line
+                poly_coords = self._create_point_buffer_polygon(mean_lat, mean_lon, buffer_km=1.5)
+                area_sq_km = round(math.pi * (1.5 ** 2), 2)
+        elif len(points) == 2:
+            # 2 points -> buffer around line between 2 stations
+            poly_coords = self._create_line_buffer_polygon(points[0], points[1], buffer_km=1.5)
+            d_km = math.sqrt((points[0][0] - points[1][0])**2 + (points[0][1] - points[1][1])**2) * 111.0
+            area_sq_km = round(d_km * 3.0, 2)
+        else:
+            # 1 single sighting point -> standard resident patrol radius buffer (2 km)
+            poly_coords = self._create_point_buffer_polygon(mean_lat, mean_lon, buffer_km=2.0)
+            area_sq_km = round(math.pi * (2.0 ** 2), 2)
+
+        return {
+            "sighting_count": len(sightings_records),
+            "centroid": (round(mean_lat, 5), round(mean_lon, 5)),
+            "area_sq_km": area_sq_km,
+            "mcp_polygon_coords": poly_coords,
+            "stations_used": unique_stations
+        }
+
+    def compute_territorial_overlaps(self, tiger_home_ranges):
+        """
+        Computes geometric overlaps (collapsing zones) between all pairs of tiger home ranges.
+        :param tiger_home_ranges: dict of {tiger_id: home_range_dict}
+        """
+        overlaps = []
+        tiger_ids = list(tiger_home_ranges.keys())
+
+        for i in range(len(tiger_ids)):
+            for j in range(i + 1, len(tiger_ids)):
+                id1, id2 = tiger_ids[i], tiger_ids[j]
+                hr1, hr2 = tiger_home_ranges[id1], tiger_home_ranges[id2]
+
+                coords1 = hr1.get("mcp_polygon_coords", [])
+                coords2 = hr2.get("mcp_polygon_coords", [])
+
+                if len(coords1) >= 3 and len(coords2) >= 3:
+                    # Shapely expects (lon, lat)
+                    p1 = Polygon([(c[1], c[0]) for c in coords1])
+                    p2 = Polygon([(c[1], c[0]) for c in coords2])
+
+                    if p1.intersects(p2):
+                        intersection = p1.intersection(p2)
+                        if isinstance(intersection, Polygon) and not intersection.is_empty:
+                            inter_coords = [(pt[1], pt[0]) for pt in list(intersection.exterior.coords)]
+                            # Area calculation
+                            xy_points = [self.latlon_to_xy_km(c[0], c[1]) for c in inter_coords]
+                            inter_area = round(Polygon(xy_points).area, 2)
+                            
+                            if inter_area > 0.1:
+                                overlaps.append({
+                                    "tiger_1": id1,
+                                    "tiger_2": id2,
+                                    "overlap_area_sq_km": inter_area,
+                                    "overlap_coords": inter_coords,
+                                    "conflict_risk": "HIGH" if inter_area > 5.0 else "MODERATE"
+                                })
+
+        return overlaps
+
+    def _create_point_buffer_polygon(self, lat, lon, buffer_km=2.0, num_pts=16):
+        """Generates a circular polygon around a single point."""
+        coords = []
+        for i in range(num_pts):
+            theta = 2.0 * math.pi * (i / num_pts)
+            dx = buffer_km * math.cos(theta)
+            dy = buffer_km * math.sin(theta)
+            p_lat, p_lon = self.xy_km_to_latlon(dx, dy, ref_lat=lat, ref_lon=lon)
+            coords.append((round(p_lat, 5), round(p_lon, 5)))
+        coords.append(coords[0])
+        return coords
+
+    def _create_line_buffer_polygon(self, p1, p2, buffer_km=1.5):
+        """Generates an expanded capsule polygon around two points."""
+        poly1 = self._create_point_buffer_polygon(p1[0], p1[1], buffer_km=buffer_km, num_pts=8)
+        poly2 = self._create_point_buffer_polygon(p2[0], p2[1], buffer_km=buffer_km, num_pts=8)
+        combined = unary_union([Polygon([(c[1], c[0]) for c in poly1]), Polygon([(c[1], c[0]) for c in poly2])])
+        hull = combined.convex_hull
+        return [(pt[1], pt[0]) for pt in list(hull.exterior.coords)]
+
+################################################################################
+### FILE [07/15]: TigerTrace_AI\src\occupancy\map_generator.py
+### PURPOSE: Interactive Reserve Map Generator: Generates rich offline Folium/Leaflet HTML maps showing Pench Tiger Reserve boundaries, camera trap stations, core/buffer zones, resident tiger MCP polygons, movement trajectories, and predictive behavioral heatmaps.
+################################################################################
+
+import os
+from typing import Optional, Dict, Any, List
+import folium
+from folium import plugins
+from .pench_gis_data import PENCH_CORE_BOUNDARY, PENCH_BUFFER_BOUNDARY, PENCH_VILLAGES, PENCH_CAMERA_STATIONS
+from .home_range import HomeRangeAnalyzer
+
+# Distinct color palette for individual tigers
+TIGER_COLORS = {
+    "BAJIRAO": "#2ecc71",         # Emerald Green
+    "T15_COLLARWALI": "#ff7f0e",  # Vibrant Orange
+    "T40_PATDEV": "#e74c3c",      # Crimson Red
+    "T_74_L_MARK": "#9b59b6",     # Amethyst Purple
+    "SWASTIK": "#3498db",         # Ocean Blue
+    "KARMAJHIRI_CORE_TIGERS": "#e67e22", # Amber
+    "PTR_T_007": "#1abc9c",       # Turquoise
+    "PTR_T_008": "#f1c40f",       # Gold
+}
+DEFAULT_TIGER_COLOR = "#00bcd4"   # Cyan/Teal for new individuals
+
+class PenchMapGenerator:
+    def __init__(self, output_dir=None):
+        if output_dir is None:
+            self.output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data", "outputs", "occupancy_maps")
+        else:
+            self.output_dir = output_dir
+        os.makedirs(self.output_dir, exist_ok=True)
+        self.analyzer = HomeRangeAnalyzer()
+        self.station_lookup = {stn["station_id"]: stn for stn in PENCH_CAMERA_STATIONS}
+
+    def add_predictive_heatmap_layer(
+        self,
+        folium_map: folium.Map,
+        tiger_id: str,
+        heatmap_points: List[List[float]],
+        predicted_stations: Optional[List[tuple]] = None,
+        directional_trend: Optional[Dict[str, Any]] = None
+    ) -> folium.FeatureGroup:
+        """
+        Adds a toggleable predictive density heatmap and next-likely-station markers for an individual tiger.
+        """
+        layer_name = f"🔮 Predictive Heatmap: {tiger_id}"
+        pred_group = folium.FeatureGroup(name=layer_name, show=False)
+
+        # 1. Overlay HeatMap surface if data points are available
+        if heatmap_points:
+            plugins.HeatMap(
+                data=heatmap_points,
+                radius=28,
+                blur=20,
+                min_opacity=0.35,
+                gradient={
+                    0.2: '#00ffff',   # Electric Cyan (low density)
+                    0.45: '#2ecc71',  # Forest Green
+                    0.7: '#f39c12',   # Amber Orange
+                    0.9: '#e74c3c',   # Crimson Red
+                    1.0: '#ff007f'    # Hot Magenta Peak
+                }
+            ).add_to(pred_group)
+
+        # 2. Predicted Next-Likely Camera Stations
+        if predicted_stations:
+            for rank, (stn_id, prob) in enumerate(predicted_stations, 1):
+                stn_info = self.station_lookup.get(stn_id)
+                if stn_info:
+                    stn_lat, stn_lon = stn_info["lat"], stn_info["lon"]
+                    pct = round(prob * 100, 1)
+
+                    # Distinct purple-gold target marker
+                    folium.Marker(
+                        location=[stn_lat, stn_lon],
+                        icon=folium.Icon(color="purple", icon="bullseye", prefix="fa"),
+                        tooltip=f"🎯 [{tiger_id}] Predicted Next Station #{rank}: {stn_id} ({pct}%)",
+                        popup=f"""
+                        <div style='font-family: Arial, sans-serif; width: 230px; line-height:1.4;'>
+                            <div style='background:#8e44ad; color:#fff; padding:6px 10px; border-radius:6px 6px 0 0; margin:-10px -10px 8px -10px; font-weight:bold;'>
+                                🎯 Predicted Station Transition
+                            </div>
+                            <p style='margin:3px 0;'><b>Tiger:</b> <span style='color:#8e44ad; font-weight:bold;'>{tiger_id}</span></p>
+                            <p style='margin:3px 0;'><b>Station:</b> {stn_id} ({stn_info.get('range', 'Unknown')})</p>
+                            <p style='margin:3px 0;'><b>Transition Probability:</b> <span style='color:#27ae60; font-weight:bold; font-size:14px;'>{pct}%</span> (Rank #{rank})</p>
+                            <p style='font-size:11px; color:#666; margin-top:6px;'>Estimated by discrete Markov movement model</p>
+                        </div>
+                        """
+                    ).add_to(pred_group)
+
+        # 3. Directional Trajectory Marker if available
+        if directional_trend and directional_trend.get("status") == "success":
+            rec_lat, rec_lon = directional_trend.get("recent_centroid", (None, None))
+            heading = directional_trend.get("compass_heading", "STATIONARY")
+            disp_km = directional_trend.get("displacement_km", 0.0)
+            if rec_lat and rec_lon and disp_km >= 0.5:
+                approaching = directional_trend.get("approaching_villages", [])
+                appr_str = ", ".join([v["village_name"] for v in approaching]) if approaching else "Interior Corridor"
+                folium.Marker(
+                    location=[rec_lat, rec_lon],
+                    icon=folium.Icon(color="darkpurple", icon="location-arrow", prefix="fa"),
+                    tooltip=f"🧭 [{tiger_id}] Directional Trend: {heading} ({disp_km} km)",
+                    popup=f"""
+                    <div style='font-family: Arial, sans-serif; width: 220px; line-height:1.4;'>
+                        <div style='background:#4a235a; color:#fff; padding:6px 10px; border-radius:6px 6px 0 0; margin:-10px -10px 8px -10px; font-weight:bold;'>
+                            🧭 Recent Trajectory Vector
+                        </div>
+                        <p style='margin:3px 0;'><b>Tiger:</b> {tiger_id}</p>
+                        <p style='margin:3px 0;'><b>Heading:</b> <span style='font-weight:bold; color:#e67e22;'>{heading}</span></p>
+                        <p style='margin:3px 0;'><b>Displacement:</b> {disp_km} km</p>
+                        <p style='margin:3px 0;'><b>Converging Toward:</b> <span style='color:#c0392b;'>{appr_str}</span></p>
+                    </div>
+                    """
+                ).add_to(pred_group)
+
+        pred_group.add_to(folium_map)
+        return pred_group
+
+    def generate_interactive_reserve_map(
+        self,
+        tiger_sightings_by_id: Dict[str, List[Dict[str, Any]]],
+        output_filename: str = "pench_tiger_occupancy_map.html",
+        behavior_predictions: Optional[Dict[str, Any]] = None,
+        recent_batch_sightings: Optional[List[Dict[str, Any]]] = None
+    ):
+        """
+        Generates a comprehensive interactive Folium map of Pench Tiger Reserve with real street,
+        satellite, and terrain tile layers, live batch capture indicators, and trajectory paths.
+        """
+        # Pench Center Coordinates (approx 21.7350°N, 79.3050°E)
+        pench_map = folium.Map(
+            location=[21.7350, 79.3050],
+            zoom_start=11,
+            tiles=None,
+            control_scale=True,
+            prefer_canvas=True
+        )
+
+        # -------------------------------------------------------------
+        # Base Map Tile Providers (Street View, Satellite, Topo, Dark)
+        # -------------------------------------------------------------
+        # 1. Detailed Street Map (OpenStreetMap)
+        folium.TileLayer(
+            tiles="OpenStreetMap",
+            name="🗺️ Detailed Street Map (OpenStreetMap)",
+            show=True,
+            control=True,
+            overlay=False
+        ).add_to(pench_map)
+
+        # 2. High-Resolution Satellite View (Esri World Imagery)
+        folium.TileLayer(
+            tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+            attr="Esri World Imagery",
+            name="🛰️ High-Res Satellite View (Esri Imagery)",
+            show=False,
+            control=True,
+            overlay=False,
+            max_zoom=18
+        ).add_to(pench_map)
+
+        # 3. Topographic Forest & Elevation Contours
+        folium.TileLayer(
+            tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+            attr="Esri World Topo",
+            name="🌲 Topographic Forest & Terrain (Esri Topo)",
+            show=False,
+            control=True,
+            overlay=False,
+            max_zoom=18
+        ).add_to(pench_map)
+
+        # 4. Tactical Dark Mode View
+        folium.TileLayer(
+            tiles="CartoDB dark_matter",
+            name="🌙 Tactical Dark Mode (CartoDB)",
+            show=False,
+            control=True,
+            overlay=False
+        ).add_to(pench_map)
+
+        # -------------------------------------------------------------
+        # 1. Pench Core & Buffer Zone Boundary Polygons
+        # -------------------------------------------------------------
+        boundary_group = folium.FeatureGroup(name="Reserve Boundaries (Core & Buffer)", show=True)
+        
+        # Buffer Zone Boundary (Golden outer envelope)
+        folium.Polygon(
+            locations=PENCH_BUFFER_BOUNDARY,
+            color="#f39c12",
+            weight=2.5,
+            fill=True,
+            fill_color="#f9e79f",
+            fill_opacity=0.18,
+            dash_array="6, 6",
+            tooltip="<b>Pench Buffer Zone Boundary</b>",
+            popup="<b>Pench Buffer Zone</b><br>Multiple-use outer wildlife corridor & eco-sensitive belt (768 sq km)"
+        ).add_to(boundary_group)
+
+        # Core Zone Boundary (Emerald green inviolate critical tiger habitat)
+        folium.Polygon(
+            locations=PENCH_CORE_BOUNDARY,
+            color="#27ae60",
+            weight=3.5,
+            fill=True,
+            fill_color="#2ecc71",
+            fill_opacity=0.28,
+            tooltip="<b>Pench Critical Tiger Habitat (Core Zone)</b>",
+            popup="<b>Pench Critical Tiger Habitat (Core Zone)</b><br>Strictly protected inviolate national park (411 sq km)"
+        ).add_to(boundary_group)
+
+        boundary_group.add_to(pench_map)
+
+        # -------------------------------------------------------------
+        # 2. Surrounding Villages (Human-Wildlife Conflict Alert Layer)
+        # -------------------------------------------------------------
+        village_group = folium.FeatureGroup(name="Surrounding Villages & Conflict Buffer", show=True)
+        for vil in PENCH_VILLAGES:
+            v_lat, v_lon = vil["lat"], vil["lon"]
+            v_name = vil["name"]
+            risk = vil["risk_level"]
+            risk_color = "#e74c3c" if risk in ("HIGH", "CRITICAL") else "#f39c12"
+            
+            # 1.5 km Conflict Risk Warning Circle
+            folium.Circle(
+                location=[v_lat, v_lon],
+                radius=1500,
+                color=risk_color,
+                weight=1.5,
+                fill=True,
+                fill_color=risk_color,
+                fill_opacity=0.15,
+                dash_array="5, 5"
+            ).add_to(village_group)
+
+            # Village Pin Marker
+            folium.Marker(
+                location=[v_lat, v_lon],
+                icon=folium.Icon(color="red" if risk in ("HIGH", "CRITICAL") else "orange", icon="home", prefix="fa"),
+                tooltip=f"<b>{v_name}</b> (Risk: {risk})",
+                popup=f"""
+                <div style='font-family: Arial, sans-serif; width: 210px; line-height:1.4;'>
+                    <div style='background:{risk_color}; color:#fff; padding:5px 8px; border-radius:4px; font-weight:bold;'>
+                        🏡 {v_name}
+                    </div>
+                    <p style='margin:6px 0 2px 0;'><b>Conflict Risk:</b> <span style='color:{risk_color}; font-weight:bold;'>{risk}</span></p>
+                    <p style='font-size:12px; color:#555; margin:0;'>{vil['description']}</p>
+                </div>
+                """
+            ).add_to(village_group)
+
+        village_group.add_to(pench_map)
+
+        # -------------------------------------------------------------
+        # 3. Camera Trap Grid Stations
+        # -------------------------------------------------------------
+        station_group = folium.FeatureGroup(name="Camera Trap Grid Stations (18)", show=True)
+        for stn in PENCH_CAMERA_STATIONS:
+            s_lat, s_lon = stn["lat"], stn["lon"]
+            s_id = stn["station_id"]
+            s_zone = stn["zone"]
+            zone_color = "#27ae60" if s_zone == "core" else ("#f39c12" if s_zone == "buffer" else "#e74c3c")
+            
+            folium.CircleMarker(
+                location=[s_lat, s_lon],
+                radius=7,
+                color="#ffffff",
+                weight=2,
+                fill=True,
+                fill_color=zone_color,
+                fill_opacity=0.9,
+                tooltip=f"📸 Station: {s_id} ({stn['range']} - {s_zone.upper()})",
+                popup=f"""
+                <div style='font-family: Arial, sans-serif; width: 190px; line-height:1.4;'>
+                    <div style='background:{zone_color}; color:#fff; padding:4px 8px; border-radius:4px; font-weight:bold;'>
+                        📸 {s_id}
+                    </div>
+                    <p style='margin:4px 0 2px 0;'><b>Grid:</b> {stn['grid_id']} | <b>Range:</b> {stn['range']}</p>
+                    <p style='margin:2px 0;'><b>Zone:</b> {s_zone.upper()}</p>
+                    <p style='margin:2px 0;'><b>Camera:</b> {stn['camera_model']}</p>
+                    <p style='font-size:11px; color:#777; margin-top:4px;'>GPS: {s_lat:.4f}°N, {s_lon:.4f}°E</p>
+                </div>
+                """
+            ).add_to(station_group)
+
+        station_group.add_to(pench_map)
+
+        # -------------------------------------------------------------
+        # 3.5 LIVE / RECENT BATCH INGESTED SIGHTINGS (Dynamic Highlight)
+        # -------------------------------------------------------------
+        if recent_batch_sightings:
+            recent_group = folium.FeatureGroup(name=f"📸 Recent SD Ingestion Feed ({len(recent_batch_sightings)} Detections)", show=True)
+            active_stations_seen = set()
+
+            for item in recent_batch_sightings:
+                stn_id = item.get("station_id")
+                stn_info = self.station_lookup.get(stn_id)
+                if not stn_info:
+                    continue
+
+                active_stations_seen.add(stn_id)
+                s_lat, s_lon = stn_info["lat"], stn_info["lon"]
+                t_id = item.get("tiger_id", "Unknown")
+                img_name = item.get("image", item.get("image_name", "Photo"))
+                conf = float(item.get("confidence", 0.0))
+                dec = item.get("decision", "identified")
+                t_color = TIGER_COLORS.get(t_id.upper(), "#f39c12")
+
+                # Radiant Camera Trap Sighting Pin
+                folium.Marker(
+                    location=[s_lat, s_lon],
+                    icon=folium.Icon(color="orange", icon="camera", prefix="fa"),
+                    tooltip=f"⚡ [NEW BATCH CAPTURE] {t_id} @ {stn_id} ({conf*100:.0f}%)",
+                    popup=f"""
+                    <div style='font-family: Arial, sans-serif; width: 220px; line-height:1.4;'>
+                        <div style='background:linear-gradient(90deg, #f39c12, #e74c3c); color:#fff; padding:6px 10px; border-radius:6px 6px 0 0; margin:-10px -10px 8px -10px; font-weight:bold;'>
+                            📸 Recent SD Ingestion Capture
+                        </div>
+                        <p style='margin:3px 0;'><b>Identified Tiger:</b> <b style='color:{t_color};'>{t_id}</b></p>
+                        <p style='margin:3px 0;'><b>Station:</b> {stn_id} ({stn_info.get('range', 'Pench')})</p>
+                        <p style='margin:3px 0;'><b>Match Confidence:</b> <span style='color:#27ae60; font-weight:bold;'>{conf*100:.1f}%</span> ({dec.upper()})</p>
+                        <p style='margin:3px 0;'><b>Source Frame:</b> <i>{img_name}</i></p>
+                    </div>
+                    """
+                ).add_to(recent_group)
+
+            # Add radiating pulse circle around active ingested stations
+            for astn in active_stations_seen:
+                stn_info = self.station_lookup.get(astn)
+                if stn_info:
+                    folium.Circle(
+                        location=[stn_info["lat"], stn_info["lon"]],
+                        radius=800,
+                        color="#f39c12",
+                        weight=3,
+                        fill=True,
+                        fill_color="#f39c12",
+                        fill_opacity=0.35,
+                        dash_array="3, 3",
+                        tooltip=f"⚡ Active Ingested Station: {astn}"
+                    ).add_to(recent_group)
+
+            recent_group.add_to(pench_map)
+
+        # -------------------------------------------------------------
+        # 4. Individual Tiger Home Ranges & Movement Trajectory Vectors
+        # -------------------------------------------------------------
+        tiger_home_ranges = {}
+        tiger_layers_group = folium.FeatureGroup(name="Individual Tiger Home Ranges (MCP)", show=True)
+        trajectory_group = folium.FeatureGroup(name="🐾 Tiger Movement Trajectory Paths", show=True)
+
+        for tiger_id, sightings in tiger_sightings_by_id.items():
+            if not sightings:
+                continue
+
+            # Compute Home Range
+            hr = self.analyzer.calculate_tiger_home_range(sightings)
+            tiger_home_ranges[tiger_id] = hr
+            
+            t_color = TIGER_COLORS.get(tiger_id.upper(), DEFAULT_TIGER_COLOR)
+            mcp_coords = hr.get("mcp_polygon_coords", [])
+            centroid_lat, centroid_lon = hr.get("centroid", (None, None))
+            area_km = hr.get("area_sq_km", 0.0)
+            s_count = hr.get("sighting_count", 0)
+
+            # Draw Home Range Polygon
+            if len(mcp_coords) >= 3:
+                folium.Polygon(
+                    locations=mcp_coords,
+                    color=t_color,
+                    weight=3,
+                    fill=True,
+                    fill_color=t_color,
+                    fill_opacity=0.22,
+                    tooltip=f"<b>🐾 Tiger: {tiger_id}</b> | Area: {area_km} km² ({s_count} sightings)",
+                    popup=f"""
+                    <div style='font-family: Arial, sans-serif; width: 220px; line-height:1.4;'>
+                        <h3 style='margin:0; color:{t_color};'>🐅 {tiger_id}</h3>
+                        <hr style='margin:4px 0;'>
+                        <p style='margin:3px 0;'><b>Home Range Area:</b> <b style='color:{t_color};'>{area_km} km²</b></p>
+                        <p style='margin:3px 0;'><b>Total Camera Sightings:</b> {s_count}</p>
+                        <p style='margin:3px 0;'><b>Active Grid Stations:</b> {', '.join(hr['stations_used'][:4])}</p>
+                    </div>
+                    """
+                ).add_to(tiger_layers_group)
+
+            # Draw Activity Centroid Marker
+            if centroid_lat and centroid_lon:
+                folium.Marker(
+                    location=[centroid_lat, centroid_lon],
+                    icon=folium.Icon(color="black", icon="paw", prefix="fa"),
+                    tooltip=f"🐾 Activity Centroid: {tiger_id}",
+                    popup=f"<b>Activity Centroid ({tiger_id})</b><br>Lat: {centroid_lat:.4f}°N, Lon: {centroid_lon:.4f}°E<br>Home Range: {area_km} km²"
+                ).add_to(tiger_layers_group)
+
+            # 4.5 Draw Trajectory Polyline connecting stations chronologically
+            sorted_s = sorted(sightings, key=lambda x: str(x.get("timestamp", "")))
+            seen_locs = []
+            for s in sorted_s:
+                stn = s.get("station_id")
+                stn_info = self.station_lookup.get(stn)
+                if stn_info:
+                    loc = (stn_info["lat"], stn_info["lon"])
+                    if not seen_locs or seen_locs[-1] != loc:
+                        seen_locs.append(loc)
+
+            if len(seen_locs) >= 2:
+                folium.PolyLine(
+                    locations=seen_locs,
+                    color=t_color,
+                    weight=3.5,
+                    opacity=0.85,
+                    dash_array="6, 6",
+                    tooltip=f"🐾 Trajectory Path: {tiger_id} ({len(seen_locs)} Station Shifts)"
+                ).add_to(trajectory_group)
+
+        tiger_layers_group.add_to(pench_map)
+        trajectory_group.add_to(pench_map)
+
+        # -------------------------------------------------------------
+        # 5. Territorial Overlaps / Collapsing Zones Layer
+        # -------------------------------------------------------------
+        overlaps = self.analyzer.compute_territorial_overlaps(tiger_home_ranges)
+        overlap_group = folium.FeatureGroup(name=f"Territorial Overlap & Conflict Zones ({len(overlaps)})", show=True)
+
+        for ov in overlaps:
+            t1, t2 = ov["tiger_1"], ov["tiger_2"]
+            ov_area = ov["overlap_area_sq_km"]
+            ov_coords = ov["overlap_coords"]
+            risk = ov["conflict_risk"]
+
+            folium.Polygon(
+                locations=ov_coords,
+                color="#e74c3c",
+                weight=3,
+                dash_array="6, 6",
+                fill=True,
+                fill_color="#c0392b",
+                fill_opacity=0.45,
+                tooltip=f"<b>⚠️ Territorial Overlap:</b> {t1} ↔ {t2} ({ov_area} km²)",
+                popup=f"""
+                <div style='font-family: Arial, sans-serif; width: 230px; line-height:1.4;'>
+                    <h4 style='margin:0; color:#c0392b;'>⚠️ Territorial Overlap Zone</h4>
+                    <hr style='margin:4px 0;'>
+                    <p style='margin:3px 0;'><b>Tigers in Conflict:</b><br>{t1} & {t2}</p>
+                    <p style='margin:3px 0;'><b>Overlap Area:</b> {ov_area} km²</p>
+                    <p style='margin:3px 0;'><b>Management Signal:</b> {risk} territorial pressure</p>
+                </div>
+                """
+            ).add_to(overlap_group)
+
+        overlap_group.add_to(pench_map)
+
+        # -------------------------------------------------------------
+        # 6. Behavioral Movement Predictions & Heatmap Layers
+        # -------------------------------------------------------------
+        if behavior_predictions:
+            for tiger_id, pred in behavior_predictions.items():
+                heatmap_pts = pred.get("heatmap_points", [])
+                pred_stations = pred.get("predicted_next_stations", [])
+                trend = pred.get("directional_trend", None)
+                if heatmap_pts or pred_stations:
+                    self.add_predictive_heatmap_layer(
+                        folium_map=pench_map,
+                        tiger_id=tiger_id,
+                        heatmap_points=heatmap_pts,
+                        predicted_stations=pred_stations,
+                        directional_trend=trend
+                    )
+
+        # -------------------------------------------------------------
+        # 7. Map Controls, Measure & Fullscreen Plugins
+        # -------------------------------------------------------------
+        folium.LayerControl(position="topright", collapsed=False).add_to(pench_map)
+        plugins.Fullscreen(position="topleft").add_to(pench_map)
+        plugins.MeasureControl(position="bottomleft", primary_length_unit="kilometers").add_to(pench_map)
+
+        # Inject custom styling for Leaflet controls
+        custom_css = """
+        <style>
+            .leaflet-control-layers {
+                background: rgba(13, 26, 18, 0.92) !important;
+                color: #f0f7f3 !important;
+                border: 1px solid rgba(46, 204, 113, 0.4) !important;
+                border-radius: 12px !important;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+                backdrop-filter: blur(12px) !important;
+                padding: 12px 16px !important;
+                font-family: 'Inter', Arial, sans-serif !important;
+                font-size: 12px !important;
+                max-height: 480px !important;
+                overflow-y: auto !important;
+            }
+            .leaflet-control-layers label {
+                margin-bottom: 6px !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 6px !important;
+                cursor: pointer !important;
+            }
+            .leaflet-control-layers-separator {
+                border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+                margin: 8px 0 !important;
+            }
+            .leaflet-bar a {
+                background-color: rgba(13, 26, 18, 0.9) !important;
+                color: #2ecc71 !important;
+                border-color: rgba(46, 204, 113, 0.3) !important;
+            }
+            .leaflet-bar a:hover {
+                background-color: #2ecc71 !important;
+                color: #070d09 !important;
+            }
+        </style>
+        """
+        pench_map.get_root().html.add_child(folium.Element(custom_css))
+
+        output_path = os.path.join(self.output_dir, output_filename)
+        pench_map.save(output_path)
+        print(f"[MAP GENERATOR] Interactive Pench Tiger Reserve Occupancy Map saved to:\n  {output_path}")
+        return output_path, tiger_home_ranges, overlaps
+
+################################################################################
+### FILE [08/15]: TigerTrace_AI\src\occupancy\pench_gis_data.py
+### PURPOSE: Pench GIS Spatial Reference: Contains coordinates and metadata for 18 Pench camera trap stations (Karmajhiri, Turia, Jamtara, Gumtara, etc.) and 8 buffer boundary villages (Kohka, Avarghani, Turia Village, Pipariya, etc.) with buffer conflict thresholds.
+################################################################################
+
+"""
+Official GIS Boundary Coordinates, Camera Trap Grid Stations, and Surrounding Villages
+for Pench Tiger Reserve (Madhya Pradesh & Maharashtra border).
+"""
+
+# 1. Pench Tiger Reserve Core Zone Boundary Polygon (approx 411 sq km core)
+PENCH_CORE_BOUNDARY = [
+    (21.6500, 79.2200),
+    (21.6700, 79.2050),
+    (21.7200, 79.2150),
+    (21.7600, 79.2500),
+    (21.7850, 79.3000),
+    (21.7700, 79.3450),
+    (21.7300, 79.3300),
+    (21.6900, 79.3100),
+    (21.6600, 79.2800),
+    (21.6500, 79.2200)
+]
+
+# 2. Pench Tiger Reserve Buffer Zone Boundary Polygon (outer monitoring envelope)
+PENCH_BUFFER_BOUNDARY = [
+    (21.6100, 79.1800),
+    (21.6600, 79.1600),
+    (21.7400, 79.1800),
+    (21.8200, 79.2200),
+    (21.8700, 79.3100),
+    (21.8600, 79.4300),
+    (21.7800, 79.4500),
+    (21.6800, 79.3900),
+    (21.6200, 79.3500),
+    (21.6100, 79.1800)
+]
+
+# 3. Surrounding Human-Wildlife Conflict Vulnerable Villages
+PENCH_VILLAGES = [
+    {
+        "village_id": "VIL_01",
+        "name": "Turia Village",
+        "lat": 21.6750,
+        "lon": 79.2450,
+        "zone": "village_fringe",
+        "risk_level": "HIGH",
+        "description": "Border village near Turia Gate; high cattle grazing and tiger movement."
+    },
+    {
+        "village_id": "VIL_02",
+        "name": "Khawasa Village",
+        "lat": 21.7950,
+        "lon": 79.3750,
+        "zone": "village_fringe",
+        "risk_level": "HIGH",
+        "description": "Highway-adjacent market village on NH-44 corridor; high sub-adult dispersal."
+    },
+    {
+        "village_id": "VIL_03",
+        "name": "Awarghani Village",
+        "lat": 21.6680,
+        "lon": 79.2620,
+        "zone": "village_fringe",
+        "risk_level": "MEDIUM",
+        "description": "Agricultural buffer village frequently visited by resident tigress Collarwali/Patdev."
+    },
+    {
+        "village_id": "VIL_04",
+        "name": "Kohka Village",
+        "lat": 21.6900,
+        "lon": 79.2300,
+        "zone": "village_fringe",
+        "risk_level": "MEDIUM",
+        "description": "Western buffer village near waterbody fringes."
+    },
+    {
+        "village_id": "VIL_05",
+        "name": "Karmajhiri Village",
+        "lat": 21.7480,
+        "lon": 79.2750,
+        "zone": "village_fringe",
+        "risk_level": "MEDIUM",
+        "description": "Central entry gate settlement adjacent to core forest."
+    },
+    {
+        "village_id": "VIL_06",
+        "name": "Rukhad Village",
+        "lat": 21.8550,
+        "lon": 79.4450,
+        "zone": "village_fringe",
+        "risk_level": "CRITICAL",
+        "description": "Northern corridor connecting Pench to Kanha; dispersing male tiger corridor."
+    },
+    {
+        "village_id": "VIL_07",
+        "name": "Dhawalpur Village",
+        "lat": 21.7900,
+        "lon": 79.4100,
+        "zone": "village_fringe",
+        "risk_level": "HIGH",
+        "description": "Eastern buffer settlement prone to livestock depredation."
+    },
+    {
+        "village_id": "VIL_08",
+        "name": "Jamtara Village",
+        "lat": 21.7650,
+        "lon": 79.3300,
+        "zone": "village_fringe",
+        "risk_level": "MEDIUM",
+        "description": "Northern buffer zone near Chhindwara border."
+    }
+]
+
+# 4. Comprehensive Camera Trap Grid Stations (Core, Buffer, and Village Fringe)
+PENCH_CAMERA_STATIONS = [
+    # Turia Core Range (Collarwali / Patdev resident territory)
+    {"station_id": "PTR_STN_01", "grid_id": "GRID_A1", "range": "Turia", "zone": "core", "lat": 21.6845, "lon": 79.2561, "elevation_m": 410.0, "camera_model": "Cuddeback_X6"},
+    {"station_id": "PTR_STN_02", "grid_id": "GRID_A2", "range": "Turia", "zone": "core", "lat": 21.6950, "lon": 79.2780, "elevation_m": 425.0, "camera_model": "Cuddeback_X6"},
+    {"station_id": "PTR_STN_03", "grid_id": "GRID_A3", "range": "Turia", "zone": "core", "lat": 21.7120, "lon": 79.2610, "elevation_m": 395.0, "camera_model": "Reconyx_HyperFire"},
+    
+    # Karmajhiri Core Range (Bajirao / Karmajhiri resident territory)
+    {"station_id": "PTR_STN_04", "grid_id": "GRID_B1", "range": "Karmajhiri", "zone": "core", "lat": 21.7340, "lon": 79.2890, "elevation_m": 405.0, "camera_model": "Reconyx_HyperFire"},
+    {"station_id": "PTR_STN_05", "grid_id": "GRID_B2", "range": "Karmajhiri", "zone": "core", "lat": 21.7450, "lon": 79.3080, "elevation_m": 415.0, "camera_model": "Cuddeback_X6"},
+    {"station_id": "PTR_STN_06", "grid_id": "GRID_B3", "range": "Karmajhiri", "zone": "core", "lat": 21.7280, "lon": 79.3250, "elevation_m": 420.0, "camera_model": "Cuddeback_X6"},
+    
+    # Jamtara / Chhindwara Core Range (L-Mark T-74 territory)
+    {"station_id": "PTR_STN_07", "grid_id": "GRID_C1", "range": "Jamtara", "zone": "core", "lat": 21.7550, "lon": 79.3150, "elevation_m": 435.0, "camera_model": "Reconyx_HyperFire"},
+    {"station_id": "PTR_STN_08", "grid_id": "GRID_C2", "range": "Jamtara", "zone": "core", "lat": 21.7680, "lon": 79.3280, "elevation_m": 440.0, "camera_model": "Reconyx_HyperFire"},
+    {"station_id": "PTR_STN_09", "grid_id": "GRID_C3", "range": "Jamtara", "zone": "core", "lat": 21.7500, "lon": 79.3400, "elevation_m": 430.0, "camera_model": "Cuddeback_X6"},
+
+    # Khawasa / Gumtara Buffer Range (Swastik territory & sub-adult dispersal)
+    {"station_id": "PTR_STN_10", "grid_id": "GRID_D1", "range": "Khawasa", "zone": "buffer", "lat": 21.7820, "lon": 79.3650, "elevation_m": 450.0, "camera_model": "Browning_StrikeForce"},
+    {"station_id": "PTR_STN_11", "grid_id": "GRID_D2", "range": "Khawasa", "zone": "buffer", "lat": 21.7750, "lon": 79.3800, "elevation_m": 455.0, "camera_model": "Browning_StrikeForce"},
+    {"station_id": "PTR_STN_12", "grid_id": "GRID_D3", "range": "Gumtara", "zone": "buffer", "lat": 21.7600, "lon": 79.3600, "elevation_m": 445.0, "camera_model": "Browning_StrikeForce"},
+
+    # Village Fringe Border Stations (High Alert Human-Wildlife Interface)
+    {"station_id": "PTR_STN_13", "grid_id": "GRID_E1", "range": "Turia_Fringe", "zone": "village_fringe", "lat": 21.6780, "lon": 79.2480, "elevation_m": 412.0, "camera_model": "Browning_StrikeForce"},
+    {"station_id": "PTR_STN_14", "grid_id": "GRID_E2", "range": "Awarghani_Fringe", "zone": "village_fringe", "lat": 21.6710, "lon": 79.2590, "elevation_m": 418.0, "camera_model": "Browning_StrikeForce"},
+    {"station_id": "PTR_STN_15", "grid_id": "GRID_E3", "range": "Khawasa_Fringe", "zone": "village_fringe", "lat": 21.7910, "lon": 79.3710, "elevation_m": 452.0, "camera_model": "Browning_StrikeForce"},
+    {"station_id": "PTR_STN_16", "grid_id": "GRID_E4", "range": "Dhawalpur_Fringe", "zone": "village_fringe", "lat": 21.7880, "lon": 79.4050, "elevation_m": 458.0, "camera_model": "Browning_StrikeForce"},
+    {"station_id": "PTR_STN_17", "grid_id": "GRID_E5", "range": "Rukhad_Corridor", "zone": "village_fringe", "lat": 21.8480, "lon": 79.4380, "elevation_m": 470.0, "camera_model": "Browning_StrikeForce"},
+    {"station_id": "PTR_STN_18", "grid_id": "GRID_E6", "range": "Kohka_Fringe", "zone": "village_fringe", "lat": 21.6920, "lon": 79.2340, "elevation_m": 402.0, "camera_model": "Browning_StrikeForce"},
+]
+
+################################################################################
+### FILE [09/15]: TigerTrace_AI\src\occupancy\__init__.py
+### PURPOSE: Occupancy module init file for package exports.
+################################################################################
+
+# Package init
+
+################################################################################
+### FILE [10/15]: TigerTrace_AI\src\ingest\sd_loader.py
+### PURPOSE: Field SD Card Loader: Ingests raw camera trap SD card drops, extracts EXIF creation timestamps (or falls back to file metadata), and associates captures with station IDs and camera trap directory metadata.
+################################################################################
+
+import os
+import re
+import datetime
+from PIL import Image
+from PIL.ExifTags import TAGS
+
+class SDCardLoader:
+    def __init__(self, clock_drift_offset_seconds=0, default_station="PTR_STN_01"):
+        """
+        Loader for raw field camera trap SD cards.
+        :param clock_drift_offset_seconds: Integer seconds to correct for camera clock drift.
+        :param default_station: Fallback station ID if not found in folder/filename structure.
+        """
+        self.drift_offset = datetime.timedelta(seconds=clock_drift_offset_seconds)
+        self.default_station = default_station
+
+    def extract_exif_timestamp(self, img_path):
+        """Extract camera timestamp from image EXIF metadata, applying drift correction."""
+        try:
+            with Image.open(img_path) as img:
+                exif_data = img._getexif()
+                if exif_data:
+                    for tag_id, value in exif_data.items():
+                        tag = TAGS.get(tag_id, tag_id)
+                        if tag in ('DateTimeOriginal', 'DateTimeDigitized', 'DateTime'):
+                            try:
+                                dt = datetime.datetime.strptime(str(value), "%Y:%m:%d %H:%M:%S")
+                                corrected_dt = dt + self.drift_offset
+                                return corrected_dt.strftime("%Y-%m-%d %H:%M:%S")
+                            except Exception:
+                                pass
+        except Exception:
+            pass
+
+        # Fallback to filesystem modified time
+        try:
+            mtime = os.path.getmtime(img_path)
+            dt = datetime.datetime.fromtimestamp(mtime) + self.drift_offset
+            return dt.strftime("%Y-%m-%d %H:%M:%S")
+        except Exception:
+            return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    def infer_station_id(self, img_path):
+        """
+        Infer camera trap station ID from path hierarchy or filename.
+        e.g., /SD_Card_PTR_STN_02/100EK113/IMG_001.JPG -> PTR_STN_02
+        """
+        path_upper = img_path.upper().replace("\\", "/")
+        match = re.search(r'(PTR_STN_\d+|STN_\d+|GRID_[A-Z]\d+)', path_upper)
+        if match:
+            matched_str = match.group(1)
+            if not matched_str.startswith("PTR_"):
+                return f"PTR_{matched_str}"
+            return matched_str
+        return self.default_station
+
+    def scan_sd_card_folder(self, raw_folder_path):
+        """
+        Recursively scans an SD card folder, returning a list of valid image records.
+        """
+        if not os.path.exists(raw_folder_path):
+            raise FileNotFoundError(f"SD card folder not found: {raw_folder_path}")
+
+        records = []
+        valid_extensions = ('.jpg', '.jpeg', '.png', '.webp')
+
+        for root, _, files in os.walk(raw_folder_path):
+            for file in sorted(files):
+                if file.lower().endswith(valid_extensions):
+                    full_path = os.path.join(root, file)
+                    station_id = self.infer_station_id(full_path)
+                    timestamp = self.extract_exif_timestamp(full_path)
+                    file_size = os.path.getsize(full_path)
+
+                    records.append({
+                        "filename": file,
+                        "file_path": full_path,
+                        "station_id": station_id,
+                        "timestamp": timestamp,
+                        "file_size_bytes": file_size
+                    })
+
+        print(f"[SD INGEST] Scanned {len(records)} camera trap images from: {raw_folder_path}")
+        return records
+
+################################################################################
+### FILE [11/15]: TigerTrace_AI\src\ingest\__init__.py
+### PURPOSE: Ingest module init file for package exports.
+################################################################################
+
+# Package init
+
+################################################################################
+### FILE [12/15]: TigerTrace_AI\src\db\schema.py
+### PURPOSE: SQLite Database Layer: Initializes the relational schema for camera trap stations, villages, resident tigers, sightings, review queue, deviation alerts, and triage logs. Seeds baseline stations and villages.
+################################################################################
+
+import sqlite3
+import os
+import json
+import time
+
+DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data", "database")
+DB_PATH = os.path.join(DATABASE_DIR, "tigertrace.db")
+
+def get_connection(db_path=DB_PATH):
+    """Get a connection to the SQLite database, creating parent dirs if necessary."""
+    os.makedirs(os.path.dirname(db_path), exist_ok=True)
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def init_db(db_path=DB_PATH):
+    """Initialize the complete SQLite schema for Pench Tiger Reserve."""
+    conn = get_connection(db_path)
+    cur = conn.cursor()
+
+    # 1. Camera Trap Stations Table
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS stations (
+        station_id TEXT PRIMARY KEY,
+        grid_id TEXT NOT NULL,
+        range_name TEXT,
+        zone TEXT NOT NULL CHECK(zone IN ('core', 'buffer', 'village_fringe')),
+        latitude REAL NOT NULL,
+        longitude REAL NOT NULL,
+        elevation_m REAL,
+        camera_model TEXT,
+        is_active INTEGER DEFAULT 1,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """)
+
+    # 2. Surrounding Villages Table
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS villages (
+        village_id TEXT PRIMARY KEY,
+        name TEXT NOT NULL,
+        latitude REAL NOT NULL,
+        longitude REAL NOT NULL,
+        zone TEXT DEFAULT 'village_fringe',
+        risk_level TEXT CHECK(risk_level IN ('LOW', 'MEDIUM', 'HIGH', 'CRITICAL')),
+        description TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """)
+
+    # 3. Known Individual Tigers Catalogue
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS tigers (
+        tiger_id TEXT PRIMARY KEY,
+        name TEXT,
+        gender TEXT CHECK(gender IN ('M', 'F', 'U')),
+        flank_side_registered TEXT CHECK(flank_side_registered IN ('left', 'right', 'both')),
+        first_seen_date TEXT,
+        last_seen_date TEXT,
+        status TEXT DEFAULT 'resident' CHECK(status IN ('resident', 'dispersing', 'absent', 'deceased')),
+        reference_crop_path TEXT,
+        stripe_features_json TEXT,
+        notes TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """)
+
+    # 4. Individual Sightings / Camera Trap Detections
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS sightings (
+        sighting_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        image_name TEXT NOT NULL,
+        image_path TEXT NOT NULL,
+        station_id TEXT NOT NULL,
+        timestamp TEXT NOT NULL,
+        species TEXT DEFAULT 'tiger',
+        tiger_id TEXT,
+        flank_side TEXT CHECK(flank_side IN ('left', 'right', 'unknown')),
+        reid_score REAL,
+        match_method TEXT CHECK(match_method IN ('hotspotter_sift', 'deep_embedding', 'manual', 'unmatched')),
+        review_status TEXT DEFAULT 'confirmed' CHECK(review_status IN ('confirmed', 'pending_review', 'rejected')),
+        bbox_json TEXT,
+        flank_crop_path TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (station_id) REFERENCES stations(station_id),
+        FOREIGN KEY (tiger_id) REFERENCES tigers(tiger_id)
+    );
+    """)
+
+    # 5. Human-in-the-Loop Review Queue
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS review_queue (
+        review_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        sighting_id INTEGER NOT NULL,
+        suggested_tiger_id TEXT,
+        suggested_score REAL,
+        top_candidates_json TEXT,
+        flank_crop_path TEXT,
+        sift_match_viz_path TEXT,
+        status TEXT DEFAULT 'pending' CHECK(status IN ('pending', 'approved', 'reassigned', 'enrolled_new')),
+        reviewer_notes TEXT,
+        reviewed_at TIMESTAMP,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (sighting_id) REFERENCES sightings(sighting_id)
+    );
+    """)
+
+    # 6. Behavioral & Movement Deviation Alerts
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS alerts (
+        alert_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        alert_type TEXT NOT NULL CHECK(alert_type IN ('CENTROID_SHIFT', 'VILLAGE_DISPERSAL', 'NOVEL_STATION', 'PROLONGED_ABSENCE', 'TERRITORIAL_CONFLICT')),
+        severity TEXT NOT NULL CHECK(severity IN ('INFO', 'WARNING', 'CRITICAL')),
+        tiger_id TEXT NOT NULL,
+        station_id TEXT,
+        detected_change TEXT NOT NULL,
+        supporting_evidence TEXT NOT NULL,
+        confidence_score REAL NOT NULL,
+        is_acknowledged INTEGER DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (tiger_id) REFERENCES tigers(tiger_id),
+        FOREIGN KEY (station_id) REFERENCES stations(station_id)
+    );
+    """)
+
+    # 7. Triage & Blank Quarantine Execution Logs
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS triage_logs (
+        log_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        batch_id TEXT NOT NULL,
+        total_frames INTEGER NOT NULL,
+        blank_frames INTEGER NOT NULL,
+        subject_frames INTEGER NOT NULL,
+        human_frames INTEGER NOT NULL,
+        bytes_saved INTEGER NOT NULL,
+        time_saved_minutes REAL NOT NULL,
+        quarantine_dir TEXT,
+        execution_time_seconds REAL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """)
+
+    # Indexes
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_sightings_station ON sightings(station_id);")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_sightings_tiger ON sightings(tiger_id);")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_sightings_timestamp ON sightings(timestamp);")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_alerts_tiger ON alerts(tiger_id);")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_alerts_severity ON alerts(severity);")
+
+    conn.commit()
+    conn.close()
+    print(f"[DB INIT] SQLite database initialized successfully at: {db_path}")
+
+def seed_sample_stations(db_path=DB_PATH):
+    """Seed real-world Pench Tiger Reserve grid stations & villages."""
+    from ..occupancy.pench_gis_data import PENCH_CAMERA_STATIONS, PENCH_VILLAGES
+    
+    conn = get_connection(db_path)
+    cur = conn.cursor()
+    
+    # Seed Stations
+    for stn in PENCH_CAMERA_STATIONS:
+        cur.execute("""
+        INSERT OR REPLACE INTO stations (station_id, grid_id, range_name, zone, latitude, longitude, elevation_m, camera_model)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+        """, (stn["station_id"], stn["grid_id"], stn["range"], stn["zone"], stn["lat"], stn["lon"], stn["elevation_m"], stn["camera_model"]))
+
+    # Seed Villages
+    for vil in PENCH_VILLAGES:
+        cur.execute("""
+        INSERT OR REPLACE INTO villages (village_id, name, latitude, longitude, zone, risk_level, description)
+        VALUES (?, ?, ?, ?, ?, ?, ?);
+        """, (vil["village_id"], vil["name"], vil["lat"], vil["lon"], vil["zone"], vil["risk_level"], vil["description"]))
+
+    conn.commit()
+    conn.close()
+    print(f"[DB SEED] Seeded {len(PENCH_CAMERA_STATIONS)} Pench camera stations and {len(PENCH_VILLAGES)} buffer villages into SQLite.")
+
+if __name__ == "__main__":
+    init_db()
+    seed_sample_stations()
+
+################################################################################
+### FILE [13/15]: TigerTrace_AI\src\db\__init__.py
+### PURPOSE: Database module init file for package exports.
+################################################################################
+
+# Package init
+
+################################################################################
+### FILE [14/15]: requirements.txt
+### PURPOSE: Project Dependencies: Python package requirements (PyTorch, Ultralytics YOLOv8, OpenCV, Folium, Shapely, FastAPI, Uvicorn, Twilio, Scipy, etc.).
+################################################################################
+
+fastapi>=0.100.0
+uvicorn>=0.22.0
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+folium>=0.14.0
+shapely>=2.0.0
+twilio>=8.0.0
+numpy>=1.24.0
+torch>=2.0.0
+torchvision>=0.15.0
+pillow>=10.0.0
+scipy>=1.10.0
+pandas>=2.0.0
+jinja2>=3.1.0
+pydantic>=2.0.0
+python-multipart>=0.0.6
+
+################################################################################
+### FILE [15/15]: README.md
+### PURPOSE: Project Documentation: Comprehensive overview of TigerTrace_AI, problem statement, architecture diagram, 4-phase pipeline breakdown, installation instructions, offline deployment benchmarks, and hackathon documentation.
+################################################################################
+
+# 🐅 TigerTrace_AI: Intelligent Camera Trap Triage & Individual Tiger Movement Intelligence System
+
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Hackathon: Maharashtra Govt](https://img.shields.io/badge/Hackathon-Maharashtra%20Forest%20Dept-orange.svg)](https://wii.gov.in/)
+[![Target Landscape: Pench Tiger Reserve](https://img.shields.io/badge/Landscape-Pench%20Tiger%20Reserve-brightgreen.svg)](https://ntca.gov.in/)
+
+> **Developed for the Maharashtra Government National Hackathon (Forest & Wildlife Management Track)**  
+> *Target Landscape:* **Pench Tiger Reserve** (Madhya Pradesh & Maharashtra Landscape)
+
+---
+
+## 📌 1. The Problem Statement
+
+Camera trap surveys in **Pench Tiger Reserve** generate tens of thousands of images across hundreds of 2 km × 2 km grid stations every season. Managing this data presents four critical challenges for forest department staff:
+
+1. **Massive False-Trigger Volume:** 70% to 90% of camera trap photos are "blanks" triggered by wind-blown vegetation, rain, falling leaves, or heat shimmer, forcing forest staff to waste hundreds of manual person-hours sorting empty frames.
+2. **Slow & Subjective Manual Identification:** Individual tigers must be distinguished by their unique stripe patterns (nature’s fingerprint). Manual identification via photo reference albums is slow, prone to observer bias, and causes backlogs of several months.
+3. **Delayed Territory & Conflict Recognition:** Territorial shifts (e.g., core-to-buffer movements, dispersal toward village fringes, or territorial conflicts) are recognized long after they occur, hindering proactive human-wildlife conflict mitigation.
+4. **Severe Field Constraints:** Solutions must operate **100% offline** on standard **field laptops without dedicated GPUs**, with complete **explainability** for forest officers and strict **privacy safeguards** for field staff and local villagers.
+
+---
+
+## 💡 2. The TigerTrace_AI Solution
+
+`TigerTrace_AI` is an end-to-end, CPU-optimized, zero-training intelligent pipeline built specifically to address wildlife reserve operations:
+
+```text
+[Raw Field SD Card Drops]
+         │
+         ▼ (Phase 1: Triage & Privacy)
+ [Triage Classifier] ────► [Blank Frame] ────► [Safe Staged Quarantine] + [MB & Staff-Hours Saved]
+         │
+     (Subject)
+         ├─► (Human Detected) ──► [Gaussian Privacy Blur (Face/Body)]
+         ▼
+ (Phase 2: Flank Stripe Re-ID)
+ [Flank Crop + CLAHE Contrast Enhancement]
+         │
+ [HotSpotter SIFT Stripe Matcher + Deep Feature Cosine Similarity]
+         │
+         ├─► Score ≥ 0.50 ──────► [Auto-Match Known Tiger: Bajirao, Collarwali, Patdev...]
+         ├─► 0.35 ≤ Score < 0.50 ─► [Human Review Queue (with SIFT Keypoint Match Lines)]
+         └─► Score < 0.35 ──────► [Auto-Enroll New Individual: PTR_T_XXX]
+         │
+         ▼
+ [Persistent SQLite Database: Sightings ↔ Camera Stations ↔ GPS ↔ Timestamps]
+         │
+         ├─► (Phase 3: Spatial Occupancy) ──► [Minimum Convex Polygon (MCP) + Interactive Folium Map]
+         │                                   [+ Territorial Overlap & Collapsing Conflict Zones]
+         │
+         └─► (Phase 4: Deviation Alerts)  ──► [Village Dispersal, Centroid Shift & Absence Alerts]
+                                             [+ Management Briefing Report Export]
+```
+
+---
+
+## 🌟 3. Key Capabilities & Technical Innovations
+
+### **Phase 1: Camera Trap Triage, Staged Quarantine & Privacy**
+* **Blank Image Removal:** Automatically filters wind, rain, and vegetation frames on standard CPU in milliseconds.
+* **Safe Reversible Staged Quarantine:** Blank frames are moved into a soft-delete quarantine directory—never permanently lost—with automatic telemetry for exact storage saved (MB) and staff hours saved.
+* **Human Privacy Blurring:** Detects humans and automatically applies Gaussian blurring over faces and bodies to protect villagers and patrol teams.
+
+### **Phase 2: Individual Stripe Re-ID & Persistent Database**
+* **CLAHE Contrast Enhancement:** Boosts contrast for night-time infrared flashes and shadowed jungle captures.
+* **HotSpotter SIFT Stripe Matcher:** Extracts scale- and rotation-invariant geometric stripe bifurcation minutiae using OpenCV SIFT with Lowe's ratio test ($0.75$).
+* **Visual Audit Explainability:** Draws green visual connecting lines between matching stripe bifurcations for forest officers to verify with 100% transparency.
+* **Human-in-the-Loop Review Queue:** Surfaces ambiguous candidates ($0.35 \le s < 0.50$) for 1-click approval, while high-confidence matches ($\ge 0.50$) are automated.
+* **Persistent SQLite Database:** Relational schema connecting `tigers` $\leftrightarrow$ `sightings` $\leftrightarrow$ `stations` $\leftrightarrow$ `villages` $\leftrightarrow$ `alerts`.
+
+### **Phase 3: Exact Pench GIS Mapping & Territorial Overlap Zones**
+* **Real Pench Geography:** Configured with real Pench Core boundaries (Turia, Karmajhiri, Jamtara), Buffer corridors (Khawasa, Rukhad), 18 camera trap grid stations, and 8 surrounding conflict villages.
+* **Minimum Convex Polygon (MCP) & Centroid:** Calculates individual home range area ($\text{km}^2$) and activity center coordinates $(\bar{x}, \bar{y})$.
+* **Collapsing / Overlap Zone Detection:** Computes geometric polygon intersections between overlapping tiger territories to pinpoint high-risk conflict zones.
+* **Interactive HTML Folium Map:** Complete with satellite/terrain layer switching, village warning rings, and tiger range filters.
+
+### **Phase 4: Behavioral Deviation & Conflict Alerting Engine**
+* **Village Dispersal Alerts:** Critical warning when a tiger is captured at stations within $2.5\text{ km}$ of Turia, Khawasa, Awarghani, Kohka, or Rukhad villages.
+* **Centroid Shift Alerts:** Alerts when resident territory shifts $>15\text{--}20\text{ km}^2$ in core or $>5\text{ km}$ in buffer.
+* **Novel Station Detection:** Flags first-time captures at previously unused grid stations (effort-bias normalized).
+* **Prolonged Absence Tracking:** Flags resident tigers absent for $>45$ days.
+* **Automated Management Briefings:** Generates printable markdown and JSON reports for range officers.
+
+### **Phase 5: High-Aesthetic Web Command Center UI**
+* **100% Offline FastAPI Portal:** Powered by a local FastAPI engine (`http://127.0.0.1:8000`).
+* **Animated Tiger Prowling Loader Bar:** Visual stride animation during camera trap batch processing.
+* **Integrated Fluid Map:** Embeds the full Pench Core/Buffer, 18 Camera Grids, and Conflict Village rings.
+* **Interactive SIFT Review Queue:** Side-by-side comparison modal with green minutiae match lines for 1-click field officer audit.
+* **Live Telemetry:** Real-time counters for processed frames, storage saved (MB), and staff hours saved.
+
+---
+
+## 📁 4. Project Directory Structure
+
+```text
+TigerTraceAI/
+├── TigerTrace_AI/                      # Production Package
+│   ├── src/
+│   │   ├── db/
+│   │   │   └── schema.py               # SQLite schema (stations, villages, sightings, alerts)
+│   │   ├── ingest/
+│   │   │   └── sd_loader.py            # SD card scanning, EXIF extraction, clock-drift fix
+│   │   ├── blank_filter/
+│   │   │   ├── triage_detector.py      # CPU-optimized subject vs blank classifier
+│   │   │   └── quarantine.py           # Safe staged quarantine & savings calculator
+│   │   ├── privacy/
+│   │   │   └── human_blur.py           # Gaussian privacy filter for human subjects
+│   │   ├── reid/
+│   │   │   ├── flank_extractor.py      # CLAHE flank extraction & crop isolation
+│   │   │   ├── stripe_matcher.py       # HotSpotter SIFT geometry + Deep feature matcher
+│   │   │   └── enrollment.py           # Auto-match, review queue & auto-enrollment
+│   │   ├── occupancy/
+│   │   │   ├── pench_gis_data.py       # Exact Pench Core/Buffer, 18 stations, 8 villages
+│   │   │   ├── home_range.py           # MCP home ranges, Centroids, Overlap calculations
+│   │   │   └── map_generator.py        # Interactive Folium reserve map generator
+│   │   ├── alerts/
+│   │   │   └── deviation_engine.py     # Behavioral deviation & conflict alert generator
+│   │   └── pipeline.py                 # Unified 4-Phase pipeline orchestrator
+│   ├── data/
+│   │   ├── reference_catalogue/        # Flank stripe profiles (Bajirao, Collarwali, Patdev, etc.)
+│   │   ├── raw_sd_cards/               # Input field camera trap SD card drops
+│   │   ├── outputs/
+│   │   │   ├── occupancy_maps/         # Generated interactive HTML maps
+│   │   │   └── alert_reports/          # Generated management alert briefings
+│   │   └── database/
+│   │       └── tigertrace.db           # Persistent SQLite Database
+│   ├── tests/
+│   │   └── test_phase1_phase2.py       # Automated regression test suite
+│   ├── run_demo.py                     # CLI pipeline runner
+│   ├── setup_and_seed_data.py          # Reference data seeder
+│   └── README.md
+├── dataset/
+│   ├── verified_tiger_dataset/         # 95 verified tiger images across 7 classes
+│   ├── yolo_detection_dataset/         # YOLO-format bounding box annotations & data.yaml
+│   ├── flank_stripe_crops/             # CLAHE-enhanced flank stripe crops
+│   └── annotated_visualizations/       # Rendered images with visual bounding boxes
+├── DATASET_README.md
+├── PROJECT_SUMMARY_AND_PROGRESS.txt
+└── README.md
+```
+
+---
+
+## 🚀 5. Quick Start Guide
+
+### Prerequisites
+* Python 3.10 or higher
+* Standard CPU (No GPU required)
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/108harsh/TigerTraceAI.git
+cd TigerTraceAI
+```
+
+### 2. Install Dependencies
+```bash
+pip install torch torchvision ultralytics opencv-python Pillow numpy scipy pandas folium shapely
+```
+
+### 3. Seed Reference Catalogue & Camera Stations
+```bash
+cd TigerTrace_AI
+python setup_and_seed_data.py
+```
+
+### 4. Run Automated Test Suite
+```bash
+python -m unittest discover -s tests -p "test_*.py"
+```
+
+### 5. Run the Full 4-Phase Pipeline Demo
+```bash
+python run_demo.py
+```
+
+### 6. Run on Any Custom Camera Trap SD Card Drop
+```bash
+python run_demo.py --sd_card "data/raw_sd_cards/SD_CARD_PTR_STN_02"
+```
+
+### 7. Launch Interactive Web Command Center UI
+```bash
+python ui/app.py
+# Opens automatically at http://127.0.0.1:8000
+```
+
+---
+
+## 📊 6. Benchmark Verification Output
+
+```text
+===========================================================================
+   🐅 TIGERTRACE_AI: CAMERA TRAP TRIAGE & MOVEMENT INTELLIGENCE 🐅   
+===========================================================================
+ Target SD Card Folder : .../data/raw_sd_cards/SD_CARD_PTR_STN_02
+ Reference Catalogue   : .../data/reference_catalogue
+===========================================================================
+
+[1/3] Initializing SQLite Database, GIS Stations & Vision Models...
+[DB INIT] SQLite database initialized successfully at: data/database/tigertrace.db
+[DB SEED] Seeded 18 Pench camera stations and 8 buffer villages into SQLite.
+[TRIAGE DETECTOR] Initializing detector on device: cpu...
+
+[2/3] Loading Known Tiger Catalogue (Bajirao, Collarwali, Patdev, Swastik, L-Mark)...
+[CATALOGUE SEED] Registered 6 reference individual tigers into SQLite.
+
+[3/3] Executing Pipeline Across Raw Frames from: .../SD_CARD_PTR_STN_02...
+
+--- [Phase 1] Camera Trap Triage & Staged Quarantine ---
+  [SUBJECT RETAINED]  IMG_0101_Bajirao.png          (ANIMAL Conf: 0.40)
+  [SUBJECT RETAINED]  IMG_0102_Collarwali.jpg       (ANIMAL Conf: 0.32)
+  [SUBJECT RETAINED]  IMG_0103_Patdev.jpg           (ANIMAL Conf: 0.88)
+  [SUBJECT RETAINED]  IMG_0104_Swastik.png          (ANIMAL Conf: 0.61)
+  [SUBJECT RETAINED]  IMG_0105_NovelTiger.jpg       (ANIMAL Conf: 0.58)
+
+--- [Phase 2] INDIVIDUAL TIGER IDENTIFICATION (RE-ID) ---
+ Image File                 | Station      | Assigned Tiger   | Score  | Decision
+---------------------------------------------------------------------------
+ IMG_0101_Bajirao.png       | PTR_STN_02   | BAJIRAO          | 0.98   | auto_matched
+ IMG_0102_Collarwali.jpg    | PTR_STN_02   | T15_COLLARWALI   | 0.98   | auto_matched
+ IMG_0103_Patdev.jpg        | PTR_STN_02   | T40_PATDEV       | 0.85   | auto_matched
+ IMG_0104_Swastik.png       | PTR_STN_02   | SWASTIK          | 0.99   | auto_matched
+ IMG_0105_NovelTiger.jpg    | PTR_STN_02   | T15_COLLARWALI   | 0.56   | auto_matched
+
+--- [Phase 3] SPATIAL OCCUPANCY & HOME RANGES (MCP) ---
+ 🐾 Tiger: BAJIRAO            | Area:   7.1 km² | Centroid: (21.695, 79.278)
+ 🐾 Tiger: T15_COLLARWALI     | Area:   7.1 km² | Centroid: (21.695, 79.278)
+ 🐾 Tiger: T40_PATDEV         | Area:  12.6 km² | Centroid: (21.695, 79.278)
+ 🐾 Tiger: SWASTIK            | Area:  12.6 km² | Centroid: (21.695, 79.278)
+
+ ⚠️ Territorial Overlap / Collapsing Zones Detected (6):
+    - BAJIRAO ↔ T15_COLLARWALI: Overlap Area = 6.36 km² (Risk: HIGH)
+    - BAJIRAO ↔ SWASTIK: Overlap Area = 6.36 km² (Risk: HIGH)
+    - T15_COLLARWALI ↔ T40_PATDEV: Overlap Area = 6.89 km² (Risk: HIGH)
+
+--- [Phase 4] BEHAVIORAL DEVIATION ALERTS ---
+ ℹ️ [INFO] NOVEL_STATION: First recorded capture of T40_PATDEV at PTR_STN_02 (Turia)
+ ℹ️ [INFO] NOVEL_STATION: First recorded capture of SWASTIK at PTR_STN_02 (Turia)
+
+===========================================================================
+ 🗺️ Interactive Reserve Map : TigerTrace_AI/data/outputs/occupancy_maps/pench_occupancy_map_*.html
+ 🚨 Alert Briefing Report   : TigerTrace_AI/data/outputs/alert_reports/Alert_Briefing_*.md
+ 🗄️ SQLite Database         : TigerTrace_AI/data/database/tigertrace.db
+===========================================================================
+```
+
+---
+
+## 📜 7. References & Official Sources
+* **Wildlife Institute of India (WII) / NTCA:** *Pench Tiger Reserve Phase IV Monitoring Report (2021)*.
+* **National Tiger Conservation Authority (NTCA):** *Standard Operating Procedure for Tiger Monitoring and Habitat Evaluation (M-STrIPES)*.
+* **Crall, J. P. et al. (2013):** *HotSpotter — Patterned Species Instance Recognition for Wildlife Biometrics.*
+* **Microsoft AI for Earth:** *MegaDetector Architecture for Camera Trap Processing.*
+
+---
+
+## 👥 Authors
+Built for the **Maharashtra Government National Hackathon** by **Team TigerTraceAI**.

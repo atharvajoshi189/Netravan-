@@ -1,0 +1,13 @@
+# Pench Tiger Reserve Individual Detection & Flank Localization Dataset
+path: C:/Users/Lenovo/Desktop/Pench_TIger_Images/dataset/yolo_detection_dataset
+train: images/train
+val: images/train
+
+names:
+  0: T15_Collarwali
+  1: T40_Patdev
+  2: T-74_L-Mark
+  3: Bajirao
+  4: Swastik
+  5: Karmajhiri_Core_Tigers
+  6: Pench_General_Tigers

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TigerTrace AI - Pench Tiger Reserve Command Center</title>
+  <link rel="stylesheet" href="/static/css/style.css?v=3.5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    .predictive-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+      gap: 20px !important;
+      margin-bottom: 24px !important;
+    }
+    .pred-card {
+      background: linear-gradient(145deg, #0e1e16 0%, #07130c 100%) !important;
+      border: 1.5px solid rgba(46, 204, 113, 0.35) !important;
+      border-radius: 16px !important;
+      padding: 20px !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      position: relative !important;
+      overflow: hidden !important;
+      transition: all 0.25s ease !important;
+    }
+    .pred-card:hover {
+      transform: translateY(-4px) !important;
+      border-color: rgba(46, 204, 113, 0.75) !important;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.8), 0 0 20px rgba(46, 204, 113, 0.25) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================= -->
+  <!-- 1. SIDEBAR NAVIGATION                                     -->
+  <!-- ========================================================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">🐅</div>
+      <div class="brand-text">
+        <h1>TigerTrace AI</h1>
+        <p>Pench Command Center</p>
+      </div>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item active" data-tab="overview-tab">
+        <span class="nav-icon">📊</span>
+        <span>Command Overview</span>
+      </li>
+      <li class="nav-item" data-tab="ingest-tab">
+        <span class="nav-icon">📥</span>
+        <span>Field SD Ingestion</span>
+      </li>
+      <li class="nav-item" data-tab="map-tab">
+        <span class="nav-icon">🗺️</span>
+        <span>Interactive Reserve Map</span>
+      </li>
+      <li class="nav-item" data-tab="predictive-tab">
+        <span class="nav-icon">🔮</span>
+        <span>Predictive Heatmaps</span>
+      </li>
+      <li class="nav-item" data-tab="quarantine-tab">
+        <span class="nav-icon">🍂</span>
+        <span>Quarantined Blanks</span>
+      </li>
+      <li class="nav-item" data-tab="review-tab">
+        <span class="nav-icon">🔍</span>
+        <span>Human Review Queue</span>
+        <span id="review-badge" class="nav-badge" style="display:none;">0</span>
+      </li>
+      <li class="nav-item" data-tab="alerts-tab">
+        <span class="nav-icon">🚨</span>
+        <span>Deviation Alerts</span>
+      </li>
+      <li class="nav-item" data-tab="catalogue-tab">
+        <span class="nav-icon">🐾</span>
+        <span>Resident Tiger Catalogue</span>
+      </li>
+    </ul>
+
+    <div class="system-status">
+      <div class="status-indicator">
+        <div class="status-dot"></div>
+        <span>Edge CPU Engine Active</span>
+      </div>
+      <p>100% Offline Wildlife Biometrics</p>
+    </div>
+  </aside>
+
+  <!-- ========================================================= -->
+  <!-- 2. MAIN CONTENT AREA                                      -->
+  <!-- ========================================================= -->
+  <main class="main-content">
+
+    <!-- Top Header -->
+    <header class="top-bar">
+      <div class="page-title">
+        <h2>Pench Tiger Reserve Intelligence Portal</h2>
+        <p>Automated Camera Trap Triage, Stripe Minutiae Re-ID & Spatial Territory Tracking</p>
+      </div>
+      <div class="reserve-tag">
+        <span>🌿</span>
+        <span>Madhya Pradesh & Maharashtra Landscape</span>
+      </div>
+    </header>
+
+    <!-- Wildlife Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-text">
+        <h3>🐅 Neural Biometric Biosecurity & Spatial Intelligence</h3>
+        <p>
+          Zero-training HotSpotter SIFT stripe geometry & CPU-native triage engine built for field forest officers. 
+          Instantly filters false-trigger blanks, identifies individual tigers by stripe minutiae, and maps dynamic territory overlap conflict zones.
+        </p>
+        <div class="hero-badge-group">
+          <span class="hero-badge">⚡ 100% Edge Offline</span>
+          <span class="hero-badge" style="color:var(--accent-orange); border-color:rgba(243,156,18,0.3); background:rgba(243,156,18,0.15);">🔍 SIFT Stripe Minutiae</span>
+          <span class="hero-badge" style="color:var(--accent-blue); border-color:rgba(52,152,219,0.3); background:rgba(52,152,219,0.15);">🗺️ Real Pench GIS</span>
+        </div>
+      </div>
+      <div class="hero-art">🐅</div>
+    </section>
+
+    <!-- Telemetry Stats Cards -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📷</div>
+        <div class="stat-info">
+          <h3 id="stat-total-frames">0</h3>
+          <p>Total Photos Processed</p>
+          <span class="stat-sub">Across 18 Camera Grids</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon orange">🍂</div>
+        <div class="stat-info">
+          <h3 id="stat-blanks-pct">0%</h3>
+          <p>Blanks Quarantined</p>
+          <span class="stat-sub" style="color:var(--accent-orange);">False-Triggers Filtered</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green">💾</div>
+        <div class="stat-info">
+          <h3 id="stat-mb-saved">0.0 MB</h3>
+          <p>Disk Storage Saved</p>
+          <span class="stat-sub">Safe Staged Quarantine</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon blue">⏱️</div>
+        <div class="stat-info">
+          <h3 id="stat-hours-saved">0.0 hrs</h3>
+          <p>Staff Hours Saved</p>
+          <span class="stat-sub" style="color:var(--accent-blue);">Automated Sorting</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon red">🐾</div>
+        <div class="stat-info">
+          <h3 id="stat-active-tigers">6</h3>
+          <p>Enrolled Resident Tigers</p>
+          <span class="stat-sub" style="color:var(--accent-red);">Active Monitored Flanks</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- TAB 1: COMMAND OVERVIEW                                 -->
+    <!-- ======================================================= -->
+    <div id="overview-tab" class="tab-pane active">
+      <div class="card-panel">
+        <div class="card-title">
+          <h3><span>🛡️</span> TigerTrace AI System Architecture Overview</h3>
+        </div>
+        <p style="color:var(--text-muted); font-size:14px; line-height:1.6; margin-bottom:20px;">
+          TigerTrace AI is an offline, CPU-native wildlife biometric intelligence system designed specifically for the <b>Pench Tiger Reserve</b>. 
+          It replaces months of manual photo sorting with instant false-trigger blank removal, explains individual tiger identifications through geometric stripe minutiae matching, and maps territorial overlap conflict zones.
+        </p>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:18px;">
+          <div style="background:rgba(0,0,0,0.3); padding:18px; border-radius:12px; border-left:4px solid var(--accent-green);">
+            <h4 style="color:#2ecc71; margin-bottom:6px;">Phase 1: Triage & Privacy</h4>
+            <p style="font-size:12px; color:#95a5a6;">Eliminates 70–90% blank vegetation frames into staged quarantine and applies automatic Gaussian privacy blur on humans.</p>
+          </div>
+          <div style="background:rgba(0,0,0,0.3); padding:18px; border-radius:12px; border-left:4px solid var(--accent-orange);">
+            <h4 style="color:#f39c12; margin-bottom:6px;">Phase 2: Stripe Re-ID</h4>
+            <p style="font-size:12px; color:#95a5a6;">HotSpotter SIFT stripe minutiae matching with visual green connecting lines and human-in-the-loop review queue.</p>
+          </div>
+          <div style="background:rgba(0,0,0,0.3); padding:18px; border-radius:12px; border-left:4px solid var(--accent-blue);">
+            <h4 style="color:#3498db; margin-bottom:6px;">Phase 3: Spatial GIS</h4>
+            <p style="font-size:12px; color:#95a5a6;">Computes Minimum Convex Polygons (MCP) and highlights high-risk territorial overlap and collapsing zones.</p>
+          </div>
+          <div style="background:rgba(0,0,0,0.3); padding:18px; border-radius:12px; border-left:4px solid var(--accent-red);">
+            <h4 style="color:#e74c3c; margin-bottom:6px;">Phase 4: Deviation Alerts</h4>
+            <p style="font-size:12px; color:#95a5a6;">Triggers immediate warnings for village dispersal within 2.5 km, territory shifts, and prolonged absence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 2: FIELD SD CARD INGESTION STUDIO                   -->
+    <!-- ======================================================= -->
+    <div id="ingest-tab" class="tab-pane">
+      <div class="card-panel">
+        <div class="card-title">
+          <h3><span>📥</span> Field Camera Trap SD Card Ingestion Studio</h3>
+          <span style="font-size:12px; color:#2ecc71; font-weight:600;">✓ Automated EXIF & Clock-Drift Correction</span>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:16px; background:rgba(0,0,0,0.25); border:2px dashed rgba(46,204,113,0.35); border-radius:14px; padding:32px 20px;">
+          <div style="font-size:44px; color:var(--accent-green);">📷</div>
+          <h4 style="font-size:17px;">Select Camera Trap SD Card Folder or Upload Direct Batch</h4>
+          
+          <!-- Dropdown of Pre-Configured Camera Drops -->
+          <select id="sd-dropdown-select" onchange="selectSDFromDropdown();" 
+                  style="width:80%; max-width:600px; padding:12px 16px; background:rgba(0,0,0,0.6); border:1px solid var(--border-color); border-radius:8px; color:#2ecc71; font-size:13px; font-weight:700;">
+            <!-- Loaded dynamically by app.js -->
+          </select>
+
+          <input type="text" id="sd-folder-input" 
+                 value="data/raw_sd_cards/SD_CARD_PTR_STN_03" 
+                 style="width:80%; max-width:600px; padding:12px 16px; background:rgba(0,0,0,0.5); border:1px solid var(--border-color); border-radius:8px; color:#fff; font-family:var(--font-mono); font-size:13px; text-align:center;">
+
+          <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+            <button id="start-process-btn" class="btn-primary" onclick="startSDProcessing();">
+              <span>⚡</span> Execute Triage & Re-ID Pipeline
+            </button>
+
+            <button class="btn-secondary" onclick="document.getElementById('folder-upload-input').click();">
+              <span>📁</span> Upload Custom SD Folder from Computer
+            </button>
+            <input type="file" id="folder-upload-input" webkitdirectory directory multiple onchange="handleFolderUpload(this)" style="display:none;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Prowling Tiger Loader Bar -->
+      <div id="tiger-loader-box" class="tiger-loader-wrapper" style="display:none;">
+        <div class="loader-header">
+          <div class="loader-title">
+            <span style="font-size:22px;">🐅</span>
+            <span id="loader-status-text">Processing Camera Trap Batch...</span>
+          </div>
+          <span style="font-size:12px; color:#95a5a6;">Pench AI Vision Engine</span>
+        </div>
+
+        <div class="loader-progress-track">
+          <div id="tiger-progress-bar" class="loader-progress-fill">
+            <div class="prowling-tiger-sprite">🐅</div>
+          </div>
+        </div>
+
+        <div class="loader-steps">
+          <span>1. Ingestion & EXIF</span>
+          <span>2. Triage & Quarantine</span>
+          <span>3. SIFT Stripe Re-ID</span>
+          <span>4. GIS Territory & Alerts</span>
+        </div>
+      </div>
+
+      <!-- Batch Summary Results -->
+      <div id="batch-summary-result" class="card-panel" style="display:none;">
+        <!-- Filled dynamically by app.js -->
+      </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 3: INTERACTIVE RESERVE MAP STUDIO                   -->
+    <!-- ======================================================= -->
+    <div id="map-tab" class="tab-pane">
+      <div class="card-panel" style="padding:16px;">
+        <div class="card-title" style="margin-bottom:12px;">
+          <h3><span>🗺️</span> Pench Tiger Reserve Spatial Occupancy & Territory Overlap Map</h3>
+          <div style="display:flex; gap:10px;">
+            <button class="btn-secondary" onclick="loadInteractiveMap();">🔄 Refresh Map</button>
+            <a href="/api/map" target="_blank" class="btn-secondary" style="text-decoration:none;">⛶ Open Fullscreen</a>
+          </div>
+        </div>
+
+        <!-- Predictive Heatmap Instruction Banner -->
+        <div style="background:rgba(142,68,173,0.15); border:1px solid rgba(142,68,173,0.4); border-radius:10px; padding:10px 14px; margin-bottom:14px; display:flex; align-items:center; gap:10px;">
+          <span style="font-size:22px;">🔮</span>
+          <p style="font-size:12px; color:#d2b4de; margin:0; line-height:1.4;">
+            <b>Predictive Movement Layers Available:</b> Open the <b>Layer Control box (top right on the map)</b> and check <b>🔮 Predictive Heatmap: &lt;Tiger_ID&gt;</b> to reveal time-weighted KDE movement surfaces and <b>🎯 Next Likely Station Transition</b> markers!
+          </p>
+        </div>
+
+        <div class="map-frame-wrapper">
+          <iframe id="pench-map-iframe" src="/api/map"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 3.5: BEHAVIORAL MOVEMENT & PREDICTIVE HEATMAPS      -->
+    <!-- ======================================================= -->
+    <div id="predictive-tab" class="tab-pane">
+      <div class="card-panel">
+        <div class="card-title">
+          <h3><span>🔮</span> Behavioral Movement Intelligence & Predictive Heatmaps</h3>
+          <span style="font-size:12px; color:#9b59b6; font-weight:700;">Time-Weighted KDE + Markov Transition Model</span>
+        </div>
+        <!-- Filter and View Controls -->
+        <div class="filter-btn-group">
+          <button class="filter-btn active" onclick="filterPredictiveCards('all', this)">🐾 All Monitored Tigers (8)</button>
+          <button class="filter-btn" onclick="filterPredictiveCards('high', this)">⚡ High Transition Certainty</button>
+          <button class="filter-btn" onclick="filterPredictiveCards('alert', this)">⚠️ Village Convergence Alerts</button>
+        </div>
+
+        <!-- Predictive Cards Grid -->
+        <div id="predictive-cards-container" class="predictive-grid">
+          <!-- Populated dynamically by app.js -->
+        </div>
+
+        <!-- Embedded Map with Heatmaps -->
+        <div class="card-title" style="margin-top:28px; margin-bottom:14px;">
+          <h3><span>🗺️</span> Pench Reserve Predictive Heatmap & Transition Surface</h3>
+          <div style="display:flex; gap:10px;">
+            <button class="btn-secondary" onclick="loadInteractiveMap();">🔄 Refresh Map View</button>
+            <a href="/api/map" target="_blank" class="btn-secondary" style="text-decoration:none;">⛶ Open Fullscreen</a>
+          </div>
+        </div>
+        <div class="map-frame-wrapper">
+          <iframe id="predictive-map-iframe" src="/api/map"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 4: QUARANTINED BLANKS GALLERY                       -->
+    <!-- ======================================================= -->
+    <div id="quarantine-tab" class="tab-pane">
+      <div class="card-panel">
+        <div class="card-title">
+          <h3><span>🍂</span> Quarantined False-Trigger Blanks (Safe Staged Delete)</h3>
+          <span style="font-size:12px; color:#f39c12; font-weight:700;">100% Reversible Storage Protection</span>
+        </div>
+        <p style="color:#95a5a6; font-size:13px; margin-bottom:20px;">
+          Camera trap images triggered by moving branches, rain, or heat shimmer are safely staged in quarantine rather than permanently deleted.
+        </p>
+
+        <div id="quarantine-cards-container" class="quarantine-grid">
+          <!-- Filled dynamically by app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 5: HUMAN REVIEW QUEUE                               -->
+    <!-- ======================================================= -->
+    <div id="review-tab" class="tab-pane">
+      <div class="card-panel">
+        <div class="card-title">
+          <h3><span>🔍</span> Human-in-the-Loop SIFT Stripe Review Queue</h3>
+          <span style="font-size:12px; color:#f39c12; font-weight:600;">⚠️ Ambiguous Matches Flagged for Field Officer Audit</span>
+        </div>
+        <p style="color:#95a5a6; font-size:13px; margin-bottom:20px;">
+          When stripe bifurcation similarity falls between 35% and 50%, the system draws visual green SIFT connecting lines so forest officers can inspect and confirm or reassign with 1 click.
+        </p>
+
+        <div id="review-cards-container" class="review-grid">
+          <!-- Filled dynamically by app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 6: THREAT & DEVIATION ALERT CENTER                  -->
+    <!-- ======================================================= -->
+    <div id="alerts-tab" class="tab-pane">
+      <div class="card-panel">
+        <div class="card-title">
+          <h3><span>🚨</span> Behavioral Deviation & Human-Wildlife Conflict Alert Center</h3>
+          <button class="btn-secondary" onclick="window.open('/api/export_report', '_blank');">📄 Download Officer Briefing Report</button>
+        </div>
+        <p style="color:#95a5a6; font-size:13px; margin-bottom:18px;">
+          Active automated alerts covering village dispersal proximity (within 2.5 km of Turia, Khawasa, Awarghani, Kohka, or Rukhad), territory shifts, and prolonged absence.
+        </p>
+
+        <div id="alerts-list-container">
+          <!-- Filled dynamically by app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 7: RESIDENT TIGER CATALOGUE                         -->
+    <!-- ======================================================= -->
+    <div id="catalogue-tab" class="tab-pane">
+      <div class="card-panel">
+        <div class="card-title">
+          <h3><span>🐾</span> Enrolled Resident Tigers of Pench</h3>
+          <span style="font-size:12px; color:#2ecc71; font-weight:600;">Persistent Database Records</span>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Tiger ID</th>
+              <th>Common Name</th>
+              <th>Status</th>
+              <th>Total Sightings</th>
+              <th>Last Seen Date</th>
+            </tr>
+          </thead>
+          <tbody id="catalogue-table-body">
+            <!-- Filled dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="/static/js/app.js?v=3.5"></script>
+</body>
+</html>
