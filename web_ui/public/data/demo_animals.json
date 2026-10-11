@@ -1,6 +1,351 @@
 {
   "tigers": [
     {
+      "id": "T-84",
+      "name": "Chota Dadhiyal (Tiger T-84)",
+      "type": "tiger",
+      "gender": "Male",
+      "age": "8.5 Years",
+      "territory": "Tadoba Central & Moharli Core Buffer (Telia Lake / Katezari)",
+      "collarId": "GPS-TATR-84",
+      "totalSightings": 7,
+      "sightings": [
+        {
+          "sightingId": "sight-T-84-1",
+          "cameraId": "CT-C2",
+          "cameraName": "Central Telia Dam Camera",
+          "pos": [
+            20.211,
+            79.345
+          ],
+          "time": 1791571048579,
+          "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.4,
+          "behavior": "Alert quadrupedal stance near Telia lake shore, scent-marking boundary",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Alert quadrupedal stance near Telia lake shore, scent-marking boundary."
+        },
+        {
+          "sightingId": "sight-T-84-2",
+          "cameraId": "CT-C1",
+          "cameraName": "Central Tadoba Lake North Camera",
+          "pos": [
+            20.252,
+            79.385
+          ],
+          "time": 1791590684942,
+          "image": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.2,
+          "behavior": "Patrolling Tadoba lake edge, 4-point stance inspecting water margin",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Patrolling Tadoba lake edge, 4-point stance inspecting water margin."
+        },
+        {
+          "sightingId": "sight-T-84-3",
+          "cameraId": "CT-C6",
+          "cameraName": "Central Andhari River Gorge Camera",
+          "pos": [
+            20.258,
+            79.432
+          ],
+          "time": 1791602466760,
+          "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.6,
+          "behavior": "Territorial boundary scrape on teak tree trunk near Andhari gorge",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Territorial boundary scrape on teak tree trunk near Andhari gorge."
+        },
+        {
+          "sightingId": "sight-T-84-4",
+          "cameraId": "CT-C4",
+          "cameraName": "Central Pandharpauni Grasslands Camera",
+          "pos": [
+            20.285,
+            79.362
+          ],
+          "time": 1791614248579,
+          "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.8,
+          "behavior": "Erect vigilance stance scanning tall grass for prey herd",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Erect vigilance stance scanning tall grass for prey herd."
+        },
+        {
+          "sightingId": "sight-T-84-5",
+          "cameraId": "CT-C5",
+          "cameraName": "Central Katezari Waterhole Camera",
+          "pos": [
+            20.312,
+            79.398
+          ],
+          "time": 1791626030397,
+          "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.5,
+          "behavior": "Active hydration and perimeter patrol along Katezari stream bank",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Active hydration and perimeter patrol along Katezari stream bank."
+        },
+        {
+          "sightingId": "sight-T-84-6",
+          "cameraId": "CT-W1",
+          "cameraName": "West Khutwanda Crossing Camera",
+          "pos": [
+            20.268,
+            79.335
+          ],
+          "time": 1791641739488,
+          "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.1,
+          "behavior": "Nocturnal patrol along fireline road crossing",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Nocturnal patrol along fireline road crossing."
+        },
+        {
+          "sightingId": "sight-T-84-7",
+          "cameraId": "CT-C2",
+          "cameraName": "Central Telia Dam Camera",
+          "pos": [
+            20.211,
+            79.345
+          ],
+          "time": 1791657448579,
+          "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.9,
+          "behavior": "Return circuit to Telia lake territory core, resting on bund",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Return circuit to Telia lake territory core, resting on bund."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.211,
+          "lng": 79.345,
+          "time": 1791571048579,
+          "heading": 29.74,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C2",
+          "cameraName": "Central Telia Dam Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.4,
+          "behavior": "Alert quadrupedal stance near Telia lake shore, scent-marking boundary",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Alert quadrupedal stance near Telia lake shore, scent-marking boundary."
+        },
+        {
+          "lat": 20.218,
+          "lng": 79.349,
+          "time": 1791574975851,
+          "heading": 32.01,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.226,
+          "lng": 79.354,
+          "time": 1791578903124,
+          "heading": 41.63,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.235,
+          "lng": 79.362,
+          "time": 1791582830397,
+          "heading": 48.01,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.244,
+          "lng": 79.372,
+          "time": 1791586757669,
+          "heading": 58.39,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.252,
+          "lng": 79.385,
+          "time": 1791590684942,
+          "heading": 82.87,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C1",
+          "cameraName": "Central Tadoba Lake North Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.2,
+          "behavior": "Patrolling Tadoba lake edge, 4-point stance inspecting water margin",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Patrolling Tadoba lake edge, 4-point stance inspecting water margin."
+        },
+        {
+          "lat": 20.254,
+          "lng": 79.401,
+          "time": 1791594612215,
+          "heading": 83.29,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.256,
+          "lng": 79.418,
+          "time": 1791598539488,
+          "heading": 81.87,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.258,
+          "lng": 79.432,
+          "time": 1791602466760,
+          "heading": -65.77,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C6",
+          "cameraName": "Central Andhari River Gorge Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.6,
+          "behavior": "Territorial boundary scrape on teak tree trunk near Andhari gorge",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Territorial boundary scrape on teak tree trunk near Andhari gorge."
+        },
+        {
+          "lat": 20.267,
+          "lng": 79.412,
+          "time": 1791606394033,
+          "heading": -69.44,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.276,
+          "lng": 79.388,
+          "time": 1791610321306,
+          "heading": -70.91,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.285,
+          "lng": 79.362,
+          "time": 1791614248579,
+          "heading": 53.13,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C4",
+          "cameraName": "Central Pandharpauni Grasslands Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.8,
+          "behavior": "Erect vigilance stance scanning tall grass for prey herd",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Erect vigilance stance scanning tall grass for prey herd."
+        },
+        {
+          "lat": 20.294,
+          "lng": 79.374,
+          "time": 1791618175851,
+          "heading": 53.13,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.303,
+          "lng": 79.386,
+          "time": 1791622103124,
+          "heading": 53.13,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.312,
+          "lng": 79.398,
+          "time": 1791626030397,
+          "heading": -118.81,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C5",
+          "cameraName": "Central Katezari Waterhole Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.5,
+          "behavior": "Active hydration and perimeter patrol along Katezari stream bank",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Active hydration and perimeter patrol along Katezari stream bank."
+        },
+        {
+          "lat": 20.301,
+          "lng": 79.378,
+          "time": 1791629957669,
+          "heading": -118.61,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.289,
+          "lng": 79.356,
+          "time": 1791633884942,
+          "heading": -128.16,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.278,
+          "lng": 79.342,
+          "time": 1791637812215,
+          "heading": -145.01,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.268,
+          "lng": 79.335,
+          "time": 1791641739488,
+          "heading": 171.87,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-W1",
+          "cameraName": "West Khutwanda Crossing Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.1,
+          "behavior": "Nocturnal patrol along fireline road crossing",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Nocturnal patrol along fireline road crossing."
+        },
+        {
+          "lat": 20.254,
+          "lng": 79.337,
+          "time": 1791645666760,
+          "heading": 171.87,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.24,
+          "lng": 79.339,
+          "time": 1791649594033,
+          "heading": 167.91,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.226,
+          "lng": 79.342,
+          "time": 1791653521306,
+          "heading": 168.69,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.211,
+          "lng": 79.345,
+          "time": 1791657448579,
+          "heading": 168.69,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C2",
+          "cameraName": "Central Telia Dam Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.9,
+          "behavior": "Return circuit to Telia lake territory core, resting on bund",
+          "notes": "Chota Dadhiyal (Tiger T-84) captured by motion sensor. Return circuit to Telia lake territory core, resting on bund."
+        }
+      ]
+    },
+    {
       "id": "T-1",
       "name": "Maya (Tiger T-1)",
       "type": "tiger",

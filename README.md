@@ -115,7 +115,7 @@ pip install -r requirements.txt
 python scripts/migrate_tadoba_db.py
 
 # Launch the FastAPI Backend Server
-python TigerTrace_AI/ui/app.py
+python Netravan_AI/ui/app.py
 ```
 *The backend API will be available at:* `http://127.0.0.1:8000/`  
 *API Swagger Documentation:* `http://127.0.0.1:8000/docs`
@@ -138,11 +138,11 @@ npm run dev -- --host 127.0.0.1 --port 3000
 
 ```text
 Netravan/
-├── TigerTrace_AI/              # Core AI Engine & Backend Server
+├── Netravan_AI/                # Core AI Engine & Backend Server
 │   ├── data/
 │   │   ├── database/           # SQLite database (tigertrace.db)
 │   │   ├── models/             # Trained YOLOv8 weights (best_yolov8.pt)
-│   │   └── reference_catalogue/# Biometric tiger catalogue (Maya, Chota Dadhiyal, Matkasur...)
+│   │   └── taxonomy/           # Canonical 17-class species taxonomy
 │   ├── src/
 │   │   ├── behavior/           # Movement predictor & Markov transition engine
 │   │   ├── db/                 # SQLite schema & station seeding

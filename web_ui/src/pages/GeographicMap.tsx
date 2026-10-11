@@ -192,12 +192,12 @@ export const GeographicMap: React.FC = () => {
     start: Date.now() - 7 * 24 * 3600 * 1000,
     end: Date.now(),
   });
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
 
-  // Tracking State (Default to Maya T-1)
+  // Tracking State (Default to Chota Dadhiyal T-84)
   const [trackingMode, setTrackingMode] = useState<'single' | 'all'>('single');
-  const [trackedAnimalId, setTrackedAnimalId] = useState<string>('T-1');
+  const [trackedAnimalId, setTrackedAnimalId] = useState<string>('T-84');
 
   // Selected Entity for Detail Drawer
   const [selectedFeature, setSelectedFeature] = useState<any>(null);
@@ -268,16 +268,17 @@ export const GeographicMap: React.FC = () => {
         setCameras(cameraJson);
         setWaterBodies(waterJson);
         setTimeBounds(simTime);
-        setCurrentTime(simTime.end);
+        // Start timeline at start of movement cycle so tiger begins progressing forward
+        setCurrentTime(simTime.start);
         setBoundary(boundaryGeo);
         setCoreZone(coreGeo);
         setGates(gateGeo);
         setVillages(villageGeo);
         setDataLoaded(true);
 
-        // Default tracked animal to Maya (T-1)
+        // Default tracked animal to Chota Dadhiyal (T-84)
         if (allAnimals.length > 0) {
-          const defaultAnimal = allAnimals.find((a) => a.id === 'T-1') || allAnimals[0];
+          const defaultAnimal = allAnimals.find((a) => a.id === 'T-84') || allAnimals[0];
           setTrackedAnimalId(defaultAnimal.id);
           setSelectedFeature(defaultAnimal);
         }
@@ -288,15 +289,16 @@ export const GeographicMap: React.FC = () => {
   }, []);
 
   // --------------------------------------------------------------------------
-  // 2. Continuous Playback Animation Engine
+  // 2. Continuous Playback Animation Engine (Smooth slow movement along path)
   // --------------------------------------------------------------------------
   useEffect(() => {
     let interval: any;
     if (isPlaying && timeBounds) {
       interval = setInterval(() => {
         setCurrentTime((prev) => {
-          // 15-minute simulation step adjusted by playbackSpeed
-          const nextTime = prev + 15 * 60 * 1000 * playbackSpeed;
+          // Slow steady 3-minute simulation progress per 100ms tick for graceful visible traversal
+          const stepMs = 3 * 60 * 1000 * playbackSpeed;
+          const nextTime = prev + stepMs;
           if (nextTime >= timeBounds.end) return timeBounds.start;
           return nextTime;
         });
@@ -889,7 +891,7 @@ export const GeographicMap: React.FC = () => {
             <Search className="w-4 h-4 text-slate-400 mr-2 shrink-0" />
             <input
               type="text"
-              placeholder="Search Maya, Matkasur, gate, camera, lake..."
+              placeholder="Search Chota Dadhiyal, Maya, Matkasur, gate, camera, lake..."
               value={searchQuery}
               onChange={handleSearch}
               onFocus={() => {
@@ -1568,7 +1570,7 @@ export const GeographicMap: React.FC = () => {
           </div>
           <div className="flex items-center space-x-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-amber-500 border border-white"></span>
-            <span>Animal Position (Maya, Matkasur, etc.)</span>
+            <span>Animal Position (Chota Dadhiyal, Maya, etc.)</span>
           </div>
           <div className="flex items-center space-x-1.5">
             <span className="w-3.5 h-0.5 bg-amber-400"></span>

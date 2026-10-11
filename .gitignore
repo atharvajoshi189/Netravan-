@@ -29,3 +29,14 @@ mobile_app/build/
 mobile_app/.dart_tool/
 mobile_app/.flutter-plugins
 mobile_app/.flutter-plugins-dependencies
+
+# Netravan AI runtime uploads & outputs
+Netravan_AI/data/mobile_uploads/
+Netravan_AI/data/review_visualizations/
+Netravan_AI/data/outputs/
+Netravan_AI/data/privacy_blurred/
+Netravan_AI/data/tiger_crops/
+Netravan_AI/data/quarantine/
+Netravan_AI/data/raw_sd_cards/
+TigerTrace_AI/
+
