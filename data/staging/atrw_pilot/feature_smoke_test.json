@@ -1,0 +1,724 @@
+{
+  "test_name": "ATRW Pilot Feature Extraction Smoke Test",
+  "timestamp_utc": "2026-10-10T06:55:28Z",
+  "environment": {
+    "python_version": "3.10.11",
+    "device": "cpu",
+    "deep_model": "ResNet50 (ResNet50_Weights.DEFAULT)",
+    "sift_detector": "cv2.SIFT_create(nfeatures=1000)"
+  },
+  "provenance_and_licensing": {
+    "dataset_name": "ATRW (Amur Tiger Re-identification in the Wild)",
+    "source_archive": "https://storage.googleapis.com/public-datasets-lila/cvwc2019/train/atrw_reid_train.tar.gz",
+    "license": "CC-BY-NC-SA-4.0",
+    "attribution": "MakerCollider / WWF / Li et al. (2019)"
+  },
+  "summary": {
+    "total_images_tested": 13,
+    "successful_extractions": 13,
+    "failed_extractions": 0,
+    "all_vectors_finite": true,
+    "degenerate_vectors_count": 0
+  },
+  "per_image_results": [
+    {
+      "sample_id": "atrw_pilot_0001",
+      "filename": "000938.jpg",
+      "original_identity_id": "153",
+      "local_alias": "tiger_001",
+      "checksum_sha256": "56aa961654702c7ce193302a28c83d9ecb94124c170cebc83bb82cbc98e477d5",
+      "original_dimensions": [
+        489,
+        259
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 1000,
+        "descriptor_shape": [
+          1000,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.2597,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0002",
+      "filename": "002739.jpg",
+      "original_identity_id": "153",
+      "local_alias": "tiger_001",
+      "checksum_sha256": "cf7a9080ec6bf28ae3b6f6afb666e319d4f618b69792fe4f58fd02fed32da3b5",
+      "original_dimensions": [
+        224,
+        173
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 604,
+        "descriptor_shape": [
+          604,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.0535,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0003",
+      "filename": "003437.jpg",
+      "original_identity_id": "153",
+      "local_alias": "tiger_001",
+      "checksum_sha256": "b00e54d5e5e1742f65304a022edcc77fe6e2d2854b0212b4cc7c9f63cc3eae95",
+      "original_dimensions": [
+        583,
+        428
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 1000,
+        "descriptor_shape": [
+          1000,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.095,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0004",
+      "filename": "003944.jpg",
+      "original_identity_id": "153",
+      "local_alias": "tiger_001",
+      "checksum_sha256": "df91be09a49cce4a8ec93e6fed0d5614483bde0133e0057a7eaa4bea3f5ca058",
+      "original_dimensions": [
+        714,
+        440
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 1001,
+        "descriptor_shape": [
+          1001,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.103,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0005",
+      "filename": "000739.jpg",
+      "original_identity_id": "160",
+      "local_alias": "tiger_002",
+      "checksum_sha256": "ddd12eaba2fb554fa76611d4a4b5961bcd7f72a06d2179c18da0278d83a6586d",
+      "original_dimensions": [
+        248,
+        170
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 548,
+        "descriptor_shape": [
+          548,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.049,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0006",
+      "filename": "002149.jpg",
+      "original_identity_id": "160",
+      "local_alias": "tiger_002",
+      "checksum_sha256": "ba94ec64226736c22f16031f165efcd6e3beb23d850d9cb5074e7d1c693bb957",
+      "original_dimensions": [
+        238,
+        203
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 746,
+        "descriptor_shape": [
+          746,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.0526,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0007",
+      "filename": "000696.jpg",
+      "original_identity_id": "154",
+      "local_alias": "tiger_003",
+      "checksum_sha256": "7dd02debe48b177e7476bade6f4da6b1ef6e04c6bde1b896b9eaa83cd1f2c686",
+      "original_dimensions": [
+        398,
+        211
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 1000,
+        "descriptor_shape": [
+          1000,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.059,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0008",
+      "filename": "001069.jpg",
+      "original_identity_id": "154",
+      "local_alias": "tiger_003",
+      "checksum_sha256": "d8bc94415ffd6923b6d4622ec501ad674642c2cad755607946c0d59f61df28c9",
+      "original_dimensions": [
+        268,
+        167
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 926,
+        "descriptor_shape": [
+          926,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.0571,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0009",
+      "filename": "001718.jpg",
+      "original_identity_id": "154",
+      "local_alias": "tiger_003",
+      "checksum_sha256": "7d8cc10a2b53852c4c69fc1a14420f0b328474ab9d9f45403b8f2aa0f53d9b6a",
+      "original_dimensions": [
+        695,
+        407
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 1000,
+        "descriptor_shape": [
+          1000,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.0966,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0010",
+      "filename": "003286.jpg",
+      "original_identity_id": "154",
+      "local_alias": "tiger_003",
+      "checksum_sha256": "d16aa11a1c599a86e6d59f058cca068ec0d7f4662785dd8e1011debbd75073fc",
+      "original_dimensions": [
+        697,
+        469
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 1000,
+        "descriptor_shape": [
+          1000,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.1064,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0011",
+      "filename": "000179.jpg",
+      "original_identity_id": "243",
+      "local_alias": "tiger_005",
+      "checksum_sha256": "3ed169c0fbd6b2c92386d9e3704934b2cd0d9f9f8a7d3c8b5f0d04e461ed23ee",
+      "original_dimensions": [
+        635,
+        390
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 1000,
+        "descriptor_shape": [
+          1000,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.0885,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0012",
+      "filename": "000792.jpg",
+      "original_identity_id": "243",
+      "local_alias": "tiger_005",
+      "checksum_sha256": "ab1bc3c33fde271a0952ccd90981020763ed320d12cb000a543b3c980350fe5a",
+      "original_dimensions": [
+        836,
+        502
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 1001,
+        "descriptor_shape": [
+          1001,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.1245,
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "sample_id": "atrw_pilot_0013",
+      "filename": "002315.jpg",
+      "original_identity_id": "243",
+      "local_alias": "tiger_005",
+      "checksum_sha256": "3e93c402cb245beabdd71807a6ffb95df3ac9edbcedad9c40b1f1be88f760c35",
+      "original_dimensions": [
+        665,
+        433
+      ],
+      "flank_extraction": {
+        "success": true,
+        "crop_dimensions": [
+          384,
+          384
+        ]
+      },
+      "sift_features": {
+        "success": true,
+        "keypoints_count": 1000,
+        "descriptor_shape": [
+          1000,
+          128
+        ],
+        "descriptor_dtype": "float32",
+        "all_finite": true
+      },
+      "deep_embedding": {
+        "success": true,
+        "vector_shape": [
+          2048
+        ],
+        "vector_dtype": "float32",
+        "l2_norm": 1.0,
+        "all_finite": true,
+        "is_degenerate": false
+      },
+      "overall_success": true,
+      "runtime_seconds": 0.0996,
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "exploratory_matching_diagnostics": {
+    "disclaimer": "EXPLORATORY SMOKE-TEST DIAGNOSTICS ONLY. NOT A SCIENTIFIC ACCURACY BENCHMARK OR RANK-1 CLAIM.",
+    "same_identity_summary": {
+      "count": 16,
+      "mean_combined": 0.5976,
+      "min_combined": 0.4078,
+      "max_combined": 0.994,
+      "mean_cosine": 0.9053,
+      "mean_sift": 0.3458
+    },
+    "different_identity_summary": {
+      "count": 62,
+      "mean_combined": 0.4616,
+      "min_combined": 0.3496,
+      "max_combined": 0.8039,
+      "mean_cosine": 0.8706,
+      "mean_sift": 0.1269
+    },
+    "sample_same_identity_pairs": [
+      {
+        "image_1": "000938.jpg",
+        "alias_1": "tiger_001",
+        "atrw_id_1": "153",
+        "image_2": "002739.jpg",
+        "alias_2": "tiger_001",
+        "atrw_id_2": "153",
+        "is_same_identity": true,
+        "sift_score": 0.2667,
+        "cosine_score": 0.8761,
+        "combined_score": 0.5409,
+        "good_matches_count": 8
+      },
+      {
+        "image_1": "000938.jpg",
+        "alias_1": "tiger_001",
+        "atrw_id_1": "153",
+        "image_2": "003437.jpg",
+        "alias_2": "tiger_001",
+        "atrw_id_2": "153",
+        "is_same_identity": true,
+        "sift_score": 0.0333,
+        "cosine_score": 0.8985,
+        "combined_score": 0.4226,
+        "good_matches_count": 1
+      },
+      {
+        "image_1": "000938.jpg",
+        "alias_1": "tiger_001",
+        "atrw_id_1": "153",
+        "image_2": "003944.jpg",
+        "alias_2": "tiger_001",
+        "atrw_id_2": "153",
+        "is_same_identity": true,
+        "sift_score": 0.2333,
+        "cosine_score": 0.901,
+        "combined_score": 0.5338,
+        "good_matches_count": 7
+      },
+      {
+        "image_1": "002739.jpg",
+        "alias_1": "tiger_001",
+        "atrw_id_1": "153",
+        "image_2": "003437.jpg",
+        "alias_2": "tiger_001",
+        "atrw_id_2": "153",
+        "is_same_identity": true,
+        "sift_score": 0.1333,
+        "cosine_score": 0.8894,
+        "combined_score": 0.4735,
+        "good_matches_count": 4
+      },
+      {
+        "image_1": "002739.jpg",
+        "alias_1": "tiger_001",
+        "atrw_id_1": "153",
+        "image_2": "003944.jpg",
+        "alias_2": "tiger_001",
+        "atrw_id_2": "153",
+        "is_same_identity": true,
+        "sift_score": 0.1,
+        "cosine_score": 0.9374,
+        "combined_score": 0.4768,
+        "good_matches_count": 3
+      }
+    ],
+    "sample_different_identity_pairs": [
+      {
+        "image_1": "000938.jpg",
+        "alias_1": "tiger_001",
+        "atrw_id_1": "153",
+        "image_2": "000739.jpg",
+        "alias_2": "tiger_002",
+        "atrw_id_2": "160",
+        "is_same_identity": false,
+        "sift_score": 0.2,
+        "cosine_score": 0.8626,
+        "combined_score": 0.4982,
+        "good_matches_count": 6
+      },
+      {
+        "image_1": "000938.jpg",
+        "alias_1": "tiger_001",
+        "atrw_id_1": "153",
+        "image_2": "002149.jpg",
+        "alias_2": "tiger_002",
+        "atrw_id_2": "160",
+        "is_same_identity": false,
+        "sift_score": 0.0667,
+        "cosine_score": 0.8086,
+        "combined_score": 0.4006,
+        "good_matches_count": 2
+      },
+      {
+        "image_1": "000938.jpg",
+        "alias_1": "tiger_001",
+        "atrw_id_1": "153",
+        "image_2": "000696.jpg",
+        "alias_2": "tiger_003",
+        "atrw_id_2": "154",
+        "is_same_identity": false,
+        "sift_score": 0.1667,
+        "cosine_score": 0.8855,
+        "combined_score": 0.4901,
+        "good_matches_count": 5
+      },
+      {
+        "image_1": "000938.jpg",
+        "alias_1": "tiger_001",
+        "atrw_id_1": "153",
+        "image_2": "001069.jpg",
+        "alias_2": "tiger_003",
+        "atrw_id_2": "154",
+        "is_same_identity": false,
+        "sift_score": 0.2,
+        "cosine_score": 0.8566,
+        "combined_score": 0.4955,
+        "good_matches_count": 6
+      },
+      {
+        "image_1": "000938.jpg",
+        "alias_1": "tiger_001",
+        "atrw_id_1": "153",
+        "image_2": "001718.jpg",
+        "alias_2": "tiger_003",
+        "atrw_id_2": "154",
+        "is_same_identity": false,
+        "sift_score": 0.2333,
+        "cosine_score": 0.9055,
+        "combined_score": 0.5358,
+        "good_matches_count": 7
+      }
+    ]
+  }
+}

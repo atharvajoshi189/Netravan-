@@ -1,0 +1,510 @@
+{
+  "evaluation_name": "TigerTraceAI Baseline Re-ID Evaluation",
+  "timestamp_utc": "2026-10-10 11:07:28 UTC",
+  "model_architecture": "Ensemble (55% HotSpotter SIFT Keypoints + 45% Torchvision ResNet-50 ImageNet)",
+  "dataset": {
+    "source": "ATRW Pilot",
+    "approved_images_count": 13,
+    "total_staged_images_count": 30,
+    "approved_identities_count": 4,
+    "identities": [
+      "tiger_001",
+      "tiger_002",
+      "tiger_003",
+      "tiger_005"
+    ]
+  },
+  "pairwise_verification": {
+    "total_pairs_evaluated": 78,
+    "partitions": {
+      "genuine_cross_encounter": {
+        "count": 12,
+        "combined_score": {
+          "count": 12,
+          "min": 0.4078,
+          "mean": 0.4677,
+          "median": 0.4616,
+          "max": 0.5427,
+          "std": 0.0509
+        },
+        "sift_score": {
+          "count": 12,
+          "min": 0.0333,
+          "mean": 0.125,
+          "median": 0.1,
+          "max": 0.2667,
+          "std": 0.09
+        },
+        "cosine_score": {
+          "count": 12,
+          "min": 0.8247,
+          "mean": 0.8867,
+          "median": 0.8828,
+          "max": 0.9374,
+          "std": 0.0295
+        },
+        "good_matches_count": {
+          "count": 12,
+          "min": 1.0,
+          "mean": 3.75,
+          "median": 3.0,
+          "max": 8.0,
+          "std": 2.701
+        },
+        "decision_bands": {
+          "matched_ge_0_50": 3,
+          "review_required_0_35_to_0_50": 9,
+          "new_identity_candidate_lt_0_35": 0,
+          "pct_matched": 25.0,
+          "pct_review_required": 75.0,
+          "pct_new_identity_candidate": 0.0
+        }
+      },
+      "genuine_burst": {
+        "count": 4,
+        "combined_score": {
+          "count": 4,
+          "min": 0.9531,
+          "mean": 0.9826,
+          "median": 0.9916,
+          "max": 0.994,
+          "std": 0.0197
+        },
+        "sift_score": {
+          "count": 4,
+          "min": 1.0,
+          "mean": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "std": 0.0
+        },
+        "cosine_score": {
+          "count": 4,
+          "min": 0.8957,
+          "mean": 0.9613,
+          "median": 0.9814,
+          "max": 0.9867,
+          "std": 0.0438
+        },
+        "good_matches_count": {
+          "count": 4,
+          "min": 192.0,
+          "mean": 262.0,
+          "median": 233.0,
+          "max": 390.0,
+          "std": 90.2293
+        },
+        "decision_bands": {
+          "matched_ge_0_50": 4,
+          "review_required_0_35_to_0_50": 0,
+          "new_identity_candidate_lt_0_35": 0,
+          "pct_matched": 100.0,
+          "pct_review_required": 0.0,
+          "pct_new_identity_candidate": 0.0
+        }
+      },
+      "impostor_same_flank": {
+        "count": 20,
+        "combined_score": {
+          "count": 20,
+          "min": 0.3496,
+          "mean": 0.4492,
+          "median": 0.4565,
+          "max": 0.5239,
+          "std": 0.0528
+        },
+        "sift_score": {
+          "count": 20,
+          "min": 0.0,
+          "mean": 0.0983,
+          "median": 0.1,
+          "max": 0.2333,
+          "std": 0.0688
+        },
+        "cosine_score": {
+          "count": 20,
+          "min": 0.7734,
+          "mean": 0.878,
+          "median": 0.891,
+          "max": 0.9455,
+          "std": 0.057
+        },
+        "good_matches_count": {
+          "count": 20,
+          "min": 0.0,
+          "mean": 2.95,
+          "median": 3.0,
+          "max": 7.0,
+          "std": 2.0641
+        },
+        "decision_bands": {
+          "matched_ge_0_50": 4,
+          "review_required_0_35_to_0_50": 15,
+          "new_identity_candidate_lt_0_35": 1,
+          "pct_matched": 20.0,
+          "pct_review_required": 75.0,
+          "pct_new_identity_candidate": 5.0
+        }
+      },
+      "cross_flank_incompatible": {
+        "count": 42,
+        "combined_score": {
+          "count": 42,
+          "min": 0.0,
+          "mean": 0.0,
+          "median": 0.0,
+          "max": 0.0,
+          "std": 0.0
+        },
+        "sift_score": {
+          "count": 42,
+          "min": 0.0,
+          "mean": 0.0,
+          "median": 0.0,
+          "max": 0.0,
+          "std": 0.0
+        },
+        "cosine_score": {
+          "count": 42,
+          "min": 0.0,
+          "mean": 0.0,
+          "median": 0.0,
+          "max": 0.0,
+          "std": 0.0
+        },
+        "good_matches_count": {
+          "count": 42,
+          "min": 0.0,
+          "mean": 0.0,
+          "median": 0.0,
+          "max": 0.0,
+          "std": 0.0
+        },
+        "decision_bands": {
+          "matched_ge_0_50": 0,
+          "review_required_0_35_to_0_50": 0,
+          "new_identity_candidate_lt_0_35": 42,
+          "pct_matched": 0.0,
+          "pct_review_required": 0.0,
+          "pct_new_identity_candidate": 100.0
+        }
+      }
+    },
+    "separation_metrics": {
+      "cross_encounter_genuine_minus_impostor": 0.0185,
+      "burst_genuine_minus_impostor": 0.5334,
+      "burst_inflation_effect": 0.5149
+    }
+  },
+  "identification_retrieval": {
+    "left_flank_cohort": {
+      "flank": "left",
+      "gallery_size": 2,
+      "gallery_identities": [
+        "tiger_001",
+        "tiger_005"
+      ],
+      "probe_count": 5,
+      "rank1_hits": 3,
+      "rank1_accuracy_pct": 60.0,
+      "mean_reciprocal_rank": 0.8,
+      "probe_details": [
+        {
+          "probe_file": "000938.jpg",
+          "ground_truth": "tiger_001",
+          "probe_type": "cross_encounter",
+          "top1_predicted": "tiger_005",
+          "top1_score": 0.5206,
+          "is_correct_rank1": false,
+          "rank": 2,
+          "ranked_candidates": [
+            {
+              "gallery_identity": "tiger_005",
+              "gallery_file": "000179.jpg",
+              "score": 0.5206,
+              "sift": 0.2333,
+              "cosine": 0.8718
+            },
+            {
+              "gallery_identity": "tiger_001",
+              "gallery_file": "003437.jpg",
+              "score": 0.4593,
+              "sift": 0.1,
+              "cosine": 0.8985
+            }
+          ]
+        },
+        {
+          "probe_file": "002739.jpg",
+          "ground_truth": "tiger_001",
+          "probe_type": "cross_encounter",
+          "top1_predicted": "tiger_001",
+          "top1_score": 0.4552,
+          "is_correct_rank1": true,
+          "rank": 1,
+          "ranked_candidates": [
+            {
+              "gallery_identity": "tiger_001",
+              "gallery_file": "003437.jpg",
+              "score": 0.4552,
+              "sift": 0.1,
+              "cosine": 0.8894
+            },
+            {
+              "gallery_identity": "tiger_005",
+              "gallery_file": "000179.jpg",
+              "score": 0.4505,
+              "sift": 0.0667,
+              "cosine": 0.9197
+            }
+          ]
+        },
+        {
+          "probe_file": "003944.jpg",
+          "ground_truth": "tiger_001",
+          "probe_type": "cross_encounter",
+          "top1_predicted": "tiger_005",
+          "top1_score": 0.4988,
+          "is_correct_rank1": false,
+          "rank": 2,
+          "ranked_candidates": [
+            {
+              "gallery_identity": "tiger_005",
+              "gallery_file": "000179.jpg",
+              "score": 0.4988,
+              "sift": 0.1333,
+              "cosine": 0.9455
+            },
+            {
+              "gallery_identity": "tiger_001",
+              "gallery_file": "003437.jpg",
+              "score": 0.4556,
+              "sift": 0.0667,
+              "cosine": 0.931
+            }
+          ]
+        },
+        {
+          "probe_file": "000792.jpg",
+          "ground_truth": "tiger_005",
+          "probe_type": "burst_frame",
+          "top1_predicted": "tiger_005",
+          "top1_score": 0.9913,
+          "is_correct_rank1": true,
+          "rank": 1,
+          "ranked_candidates": [
+            {
+              "gallery_identity": "tiger_005",
+              "gallery_file": "000179.jpg",
+              "score": 0.9913,
+              "sift": 1.0,
+              "cosine": 0.9808
+            },
+            {
+              "gallery_identity": "tiger_001",
+              "gallery_file": "003437.jpg",
+              "score": 0.4498,
+              "sift": 0.0667,
+              "cosine": 0.9181
+            }
+          ]
+        },
+        {
+          "probe_file": "002315.jpg",
+          "ground_truth": "tiger_005",
+          "probe_type": "burst_frame",
+          "top1_predicted": "tiger_005",
+          "top1_score": 0.9919,
+          "is_correct_rank1": true,
+          "rank": 1,
+          "ranked_candidates": [
+            {
+              "gallery_identity": "tiger_005",
+              "gallery_file": "000179.jpg",
+              "score": 0.9919,
+              "sift": 1.0,
+              "cosine": 0.9821
+            },
+            {
+              "gallery_identity": "tiger_001",
+              "gallery_file": "003437.jpg",
+              "score": 0.5239,
+              "sift": 0.2,
+              "cosine": 0.9199
+            }
+          ]
+        }
+      ],
+      "statistical_caveat": "Gallery size N=2; random chance guessing accuracy is 50.0%."
+    },
+    "right_flank_cohort": {
+      "flank": "right",
+      "gallery_size": 2,
+      "gallery_identities": [
+        "tiger_002",
+        "tiger_003"
+      ],
+      "probe_count": 4,
+      "rank1_hits": 3,
+      "rank1_accuracy_pct": 75.0,
+      "mean_reciprocal_rank": 0.875,
+      "probe_details": [
+        {
+          "probe_file": "002149.jpg",
+          "ground_truth": "tiger_002",
+          "probe_type": "cross_encounter",
+          "top1_predicted": "tiger_002",
+          "top1_score": 0.5427,
+          "is_correct_rank1": true,
+          "rank": 1,
+          "ranked_candidates": [
+            {
+              "gallery_identity": "tiger_002",
+              "gallery_file": "000739.jpg",
+              "score": 0.5427,
+              "sift": 0.2667,
+              "cosine": 0.8801
+            },
+            {
+              "gallery_identity": "tiger_003",
+              "gallery_file": "000696.jpg",
+              "score": 0.4242,
+              "sift": 0.1,
+              "cosine": 0.8204
+            }
+          ]
+        },
+        {
+          "probe_file": "001069.jpg",
+          "ground_truth": "tiger_003",
+          "probe_type": "cross_encounter",
+          "top1_predicted": "tiger_002",
+          "top1_score": 0.3972,
+          "is_correct_rank1": false,
+          "rank": 2,
+          "ranked_candidates": [
+            {
+              "gallery_identity": "tiger_002",
+              "gallery_file": "000739.jpg",
+              "score": 0.3972,
+              "sift": 0.0,
+              "cosine": 0.8827
+            },
+            {
+              "gallery_identity": "tiger_003",
+              "gallery_file": "000696.jpg",
+              "score": 0.3945,
+              "sift": 0.0,
+              "cosine": 0.8767
+            }
+          ]
+        },
+        {
+          "probe_file": "001718.jpg",
+          "ground_truth": "tiger_003",
+          "probe_type": "burst_frame",
+          "top1_predicted": "tiger_003",
+          "top1_score": 0.4647,
+          "is_correct_rank1": true,
+          "rank": 1,
+          "ranked_candidates": [
+            {
+              "gallery_identity": "tiger_003",
+              "gallery_file": "000696.jpg",
+              "score": 0.4647,
+              "sift": 0.1333,
+              "cosine": 0.8698
+            },
+            {
+              "gallery_identity": "tiger_002",
+              "gallery_file": "000739.jpg",
+              "score": 0.4219,
+              "sift": 0.1,
+              "cosine": 0.8153
+            }
+          ]
+        },
+        {
+          "probe_file": "003286.jpg",
+          "ground_truth": "tiger_003",
+          "probe_type": "burst_frame",
+          "top1_predicted": "tiger_003",
+          "top1_score": 0.4901,
+          "is_correct_rank1": true,
+          "rank": 1,
+          "ranked_candidates": [
+            {
+              "gallery_identity": "tiger_003",
+              "gallery_file": "000696.jpg",
+              "score": 0.4901,
+              "sift": 0.1667,
+              "cosine": 0.8855
+            },
+            {
+              "gallery_identity": "tiger_002",
+              "gallery_file": "000739.jpg",
+              "score": 0.4523,
+              "sift": 0.1333,
+              "cosine": 0.8422
+            }
+          ]
+        }
+      ],
+      "statistical_caveat": "Gallery size N=2; random chance guessing accuracy is 50.0%."
+    }
+  },
+  "unknown_individual_rejection": {
+    "unenrolled_identity": "tiger_004",
+    "probe_count": 3,
+    "correct_rejections_lt_0_35": 0,
+    "review_required_0_35_to_0_50": 0,
+    "false_matches_ge_0_50": 3,
+    "rejection_rate_pct": 0.0,
+    "false_positive_rate_pct": 100.0,
+    "details": [
+      {
+        "probe_file": "000420.jpg",
+        "true_identity": "tiger_004 (unenrolled)",
+        "highest_gallery_match": "tiger_005",
+        "max_score": 0.5299,
+        "sift_score": 0.2,
+        "cosine_score": 0.9331,
+        "good_matches": 6,
+        "decision_outcome": "false_match_error"
+      },
+      {
+        "probe_file": "001205.jpg",
+        "true_identity": "tiger_004 (unenrolled)",
+        "highest_gallery_match": "tiger_005",
+        "max_score": 0.5163,
+        "sift_score": 0.2,
+        "cosine_score": 0.9029,
+        "good_matches": 6,
+        "decision_outcome": "false_match_error"
+      },
+      {
+        "probe_file": "003134.jpg",
+        "true_identity": "tiger_004 (unenrolled)",
+        "highest_gallery_match": "tiger_005",
+        "max_score": 0.5599,
+        "sift_score": 0.2667,
+        "cosine_score": 0.9183,
+        "good_matches": 8,
+        "decision_outcome": "false_match_error"
+      }
+    ],
+    "finding": "Because off-the-shelf ImageNet ResNet-50 features have a baseline floor of ~0.88 (contributing 0.45 * 0.88 = ~0.39 to the score), unenrolled tiger probes often score >0.35 even with 0 SIFT minutiae matches, artificially triggering review_required."
+  },
+  "cross_flank_guard_validation": {
+    "total_cross_flank_comparisons": 10,
+    "correctly_rejected_comparisons": 10,
+    "guard_enforcement_rate_pct": 100.0,
+    "verdict": "PASS"
+  },
+  "key_limitations": [
+    "Sample Size Constraint: 13 approved images across 4 identities limits statistical power.",
+    "Gallery Size Floor: With N=2 identities per flank, random chance Top-1 is 50.0%.",
+    "Burst Correlation Artifact: Genuine pairs from the same video tracklet average 0.9924 similarity, while independent encounters average 0.4961.",
+    "Generic Feature Floor: Off-the-shelf ImageNet ResNet-50 features yield mean impostor cosine similarity of 0.8780, creating a high baseline floor."
+  ]
+}

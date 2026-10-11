@@ -1,0 +1,22 @@
+{
+  "project_name": "TigerTraceAI_Step15C_Prey_Pilot",
+  "annotation_format": "CVAT for Images 1.1",
+  "xml_file": "annotations.xml",
+  "images_directory": "D:\\TigerTraceAI-main\\TigerTrace_AI\\data\\staging_wildlife_pilot\\images",
+  "total_images": 40,
+  "supported_labels": [
+    "chital",
+    "sambar",
+    "gaur",
+    "nilgai",
+    "unknown_uncertain"
+  ],
+  "instructions": [
+    "1. Open CVAT (cvat.ai or local instance).",
+    "2. Create a new task named 'TigerTraceAI_Prey_Pilot_Step15C'.",
+    "3. Attach images from the staging directory.",
+    "4. Upload 'annotations.xml' as pre-annotated CVAT 1.1 file.",
+    "5. Review, adjust boxes, and classify as Chital, Sambar, Gaur, Nilgai, or Unknown.",
+    "6. Export completed annotations as CVAT for Images 1.1 or YOLO 1.1."
+  ]
+}

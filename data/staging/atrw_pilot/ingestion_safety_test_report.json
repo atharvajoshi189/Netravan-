@@ -1,12 +1,12 @@
 {
   "report_name": "ATRW Pilot Isolated Ingestion and Enrollment Safety Test Report",
-  "timestamp_utc": "2026-10-10 07:06:40 UTC",
+  "timestamp_utc": "2026-10-11 03:39:39 UTC",
   "manifest_path": "data/staging/atrw_pilot/atrw_pilot_manifest.csv",
   "manifest_records_count": 13,
   "production_safety_invariants": {
     "prod_database_path": "TigerTrace_AI/data/database/tigertrace.db",
-    "prod_database_hash_before": "72857a2627a34439708e2664e3457c4226e4bc6b82f684d0aff722907a3722ba",
-    "prod_database_hash_after": "72857a2627a34439708e2664e3457c4226e4bc6b82f684d0aff722907a3722ba",
+    "prod_database_hash_before": "20a1abba20ea25d5384a378ac5b957845699844787b43027f6aafcfd79cfbdf9",
+    "prod_database_hash_after": "20a1abba20ea25d5384a378ac5b957845699844787b43027f6aafcfd79cfbdf9",
     "prod_database_mutated": false,
     "canonical_manifest_path": "data/manifests/dataset_manifest.csv",
     "canonical_manifest_hash_before": "c0a1589a08d8c8584725738f1c67c1b0ff76c9897b4b49fd6247de49691ec922",

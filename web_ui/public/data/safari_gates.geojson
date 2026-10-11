@@ -1,0 +1,603 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.2828617,
+          20.4836633
+        ]
+      },
+      "properties": {
+        "id": "gate_navegaon_core",
+        "original_id": "gate_0",
+        "name": "Navegaon Gate",
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "latitude": 20.4836633,
+        "longitude": 79.2828617,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.386,
+          20.3395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.3628851,
+          20.3946164
+        ]
+      },
+      "properties": {
+        "id": "gate_kolara_core",
+        "original_id": "gate_1",
+        "name": "Kolara Gate",
+        "aliases": [
+          "Chouradeo Gate (Historical Combined)"
+        ],
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "latitude": 20.3946164,
+        "longitude": 79.3628851,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.425,
+          20.351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.425,
+          20.351
+        ]
+      },
+      "properties": {
+        "id": "gate_chouradeo_buffer",
+        "original_id": "gate_1",
+        "name": "Chouradeo Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.351,
+        "longitude": 79.425,
+        "source": "Historical application dataset (Unmatched - pending verification)",
+        "verificationStatus": "needs_verification",
+        "verification_status": "needs_verification",
+        "verified": false,
+        "original_coordinates": [
+          79.425,
+          20.351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.315531,
+          20.275967
+        ]
+      },
+      "properties": {
+        "id": "gate_khutwanda_core",
+        "original_id": "gate_2",
+        "name": "Khutwanda Gate",
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "latitude": 20.275967,
+        "longitude": 79.315531,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.347,
+          20.265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.3349378,
+          20.1919508
+        ]
+      },
+      "properties": {
+        "id": "gate_moharli_core",
+        "original_id": "gate_3",
+        "name": "Moharli Gate",
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "latitude": 20.1919508,
+        "longitude": 79.3349378,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.3698,
+          20.2042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.5096975,
+          20.1016476
+        ]
+      },
+      "properties": {
+        "id": "gate_zari_core",
+        "original_id": "gate_4",
+        "name": "Zari Gate",
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "latitude": 20.1016476,
+        "longitude": 79.5096975,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.4802,
+          20.2042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.5578884,
+          20.1835709
+        ]
+      },
+      "properties": {
+        "id": "gate_pangadi_core",
+        "original_id": "gate_5",
+        "name": "Pangadi Core Gate",
+        "aliases": [
+          "Pangadi Gate"
+        ],
+        "category": "Tourism Gate",
+        "zone": "Core",
+        "latitude": 20.1835709,
+        "longitude": 79.5578884,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.503,
+          20.265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.2296433,
+          20.4220859
+        ]
+      },
+      "properties": {
+        "id": "gate_nimdhela_buffer",
+        "original_id": "gate_6",
+        "name": "Nimdela Gate",
+        "aliases": [
+          "Nimdhela Gate"
+        ],
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.4220859,
+        "longitude": 79.2296433,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.2692,
+          20.3275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.30779705101833,
+          20.39422376426184
+        ]
+      },
+      "properties": {
+        "id": "gate_ramdegi_buffer",
+        "original_id": "gate_7",
+        "name": "Ramdegi Gate / Navegaon Buffer Gate",
+        "aliases": [
+          "Ramdegi Gate",
+          "Navegaon Buffer Gate"
+        ],
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.39422376426184,
+        "longitude": 79.30779705101833,
+        "source": "Historical application dataset (Unmatched - pending verification)",
+        "verificationStatus": "needs_verification",
+        "verification_status": "needs_verification",
+        "verified": false,
+        "original_coordinates": [
+          79.3078,
+          20.3942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.3218059,
+          20.4295997
+        ]
+      },
+      "properties": {
+        "id": "gate_alizanja_buffer",
+        "original_id": "gate_8",
+        "name": "Alizanja Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.4295997,
+        "longitude": 79.3218059,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.4817,
+          20.4367
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.4119514,
+          20.3877757
+        ]
+      },
+      "properties": {
+        "id": "gate_madnapur_buffer",
+        "original_id": "gate_9",
+        "name": "Madnapur Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.3877757,
+        "longitude": 79.4119514,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.5315,
+          20.405
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.4471415,
+          20.3767965
+        ]
+      },
+      "properties": {
+        "id": "gate_belara_buffer",
+        "original_id": "gate_10",
+        "name": "Belara Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.3767965,
+        "longitude": 79.4471415,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.552,
+          20.3825
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.4646461,
+          20.3606711
+        ]
+      },
+      "properties": {
+        "id": "gate_palasgaon_buffer",
+        "original_id": "gate_11",
+        "name": "Palasgaon Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.3606711,
+        "longitude": 79.4646461,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.5685,
+          20.3564
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.5115311,
+          20.325075
+        ]
+      },
+      "properties": {
+        "id": "gate_shirkada_buffer",
+        "original_id": "gate_12",
+        "name": "Sirkada Gate",
+        "aliases": [
+          "Shirkada Gate"
+        ],
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.325075,
+        "longitude": 79.5115311,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.5851,
+          20.3123
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.5641201,
+          20.1854231
+        ]
+      },
+      "properties": {
+        "id": "gate_aswal_chuha_buffer",
+        "original_id": "gate_13",
+        "name": "Aswal Chuwa Gate",
+        "aliases": [
+          "Aswal Chuha Gate",
+          "Pangadi Aswal Chuha Gate",
+          "Pangadi Buffer Gate"
+        ],
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.1854231,
+        "longitude": 79.5641201,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.5882,
+          20.2333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.6231137,
+          20.1121388
+        ]
+      },
+      "properties": {
+        "id": "gate_somnath_buffer",
+        "original_id": "gate_14",
+        "name": "Somnath Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.1121388,
+        "longitude": 79.6231137,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.5685,
+          20.1736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.5697106,
+          20.036052
+        ]
+      },
+      "properties": {
+        "id": "gate_keslaghat_buffer",
+        "original_id": "gate_15",
+        "name": "Keslaghat Gate",
+        "aliases": [
+          "Kesla Ghat Gate"
+        ],
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.036052,
+        "longitude": 79.5697106,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.5315,
+          20.125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.48168983875622,
+          20.093271173551376
+        ]
+      },
+      "properties": {
+        "id": "gate_pethzari_buffer",
+        "original_id": "gate_16",
+        "name": "Peth-Zari Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.093271173551376,
+        "longitude": 79.48168983875622,
+        "source": "Historical application dataset (Unmatched - pending verification)",
+        "verificationStatus": "needs_verification",
+        "verification_status": "needs_verification",
+        "verified": false,
+        "original_coordinates": [
+          79.4817,
+          20.0933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.3910625,
+          20.0415625
+        ]
+      },
+      "properties": {
+        "id": "gate_mamla_buffer",
+        "original_id": "gate_17",
+        "name": "Mamla Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.0415625,
+        "longitude": 79.3910625,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.3683,
+          20.0933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.3276422,
+          20.1380369
+        ]
+      },
+      "properties": {
+        "id": "gate_adegaon_dewada_agarzari_buffer",
+        "original_id": "gate_18",
+        "name": "Adegaon-Dewada-Agarzari Gate",
+        "aliases": [
+          "Agarzari Gate",
+          "Dewada Gate",
+          "Adegaon Gate",
+          "Dewada-Adegaon Gate",
+          "Agarzari Gate & Dewada Adegaon Gate"
+        ],
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.1380369,
+        "longitude": 79.3276422,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.3421,
+          20.1067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.340185,
+          20.1909752
+        ]
+      },
+      "properties": {
+        "id": "gate_junona_buffer",
+        "original_id": "gate_19",
+        "name": "Junona Gate",
+        "category": "Tourism Gate",
+        "zone": "Buffer",
+        "latitude": 20.1909752,
+        "longitude": 79.340185,
+        "source": "Google Maps place pin",
+        "verificationStatus": "place_pin_provided_entrance_unverified",
+        "verification_status": "place_pin_provided_entrance_unverified",
+        "verified": false,
+        "original_coordinates": [
+          79.3185,
+          20.125
+        ]
+      }
+    }
+  ]
+}

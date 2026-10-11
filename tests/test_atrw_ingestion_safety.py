@@ -76,7 +76,7 @@ class ControlledDeterministicMatcher:
             return [], None
         return [1] * 20, np.ones((20, 128), dtype=np.float32)
 
-    def compare_flanks(self, query_path, ref_path, query_emb=None, ref_emb=None):
+    def compare_flanks(self, query_path, ref_path, query_emb=None, ref_emb=None, *args, **kwargs):
         q_name = os.path.basename(query_path) if isinstance(query_path, str) else "query"
         r_name = os.path.basename(ref_path) if isinstance(ref_path, str) else "ref"
         pair_key = (q_name, r_name)
@@ -88,7 +88,7 @@ class ControlledDeterministicMatcher:
             "good_matches_count": int(score * 30),
         }
 
-    def generate_sift_match_visualization(self, query_path, ref_path, output_path, max_draw=25):
+    def generate_sift_match_visualization(self, query_path, ref_path, output_path, max_draw=25, *args, **kwargs):
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         dummy = np.zeros((50, 50, 3), dtype=np.uint8)
         cv2.imwrite(output_path, dummy)
@@ -371,8 +371,8 @@ class TestATRWIngestionSafetyHarness(unittest.TestCase):
 
         # Insert sighting in sandbox DB
         cur.execute("""
-        INSERT INTO sightings (image_name, image_path, station_id, timestamp, species, flank_crop_path)
-        VALUES (?, ?, 'PTR_STN_01', '2026-10-10 10:00:00', 'tiger', ?);
+        INSERT INTO sightings (image_name, image_path, station_id, timestamp, species, flank_crop_path, flank_side)
+        VALUES (?, ?, 'PTR_STN_01', '2026-10-10 10:00:00', 'tiger', ?, 'left');
         """, (os.path.basename(img_path), img_path, img_path))
         sighting_id = cur.lastrowid
 

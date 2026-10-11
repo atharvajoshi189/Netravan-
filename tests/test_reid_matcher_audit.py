@@ -132,28 +132,30 @@ class TestReIDMatcherAudit(unittest.TestCase):
             shutil.rmtree(tmp_dir, ignore_errors=True)
 
     # -------------------------------------------------------------------------
-    # TEST 2: Flank compatibility enforcement gap and test guard
+    # TEST 2: Flank compatibility enforcement guard
     # -------------------------------------------------------------------------
     def test_02_flank_compatibility_gap_and_guard(self):
         """
-        Audits that production StripeReIDMatcher.compare_flanks lacks flank awareness,
-        and verifies the test-only flank_compatibility_guard behavior.
+        Verifies that production StripeReIDMatcher.compare_flanks accepts flank parameters,
+        and enforces biological flank compatibility.
         """
-        # Production matcher signature does not accept flank arguments
         import inspect
         sig = inspect.signature(self.matcher.compare_flanks)
         params = list(sig.parameters.keys())
-        self.assertNotIn("flank_side", params)
-        self.assertNotIn("query_flank", params)
-        self.assertNotIn("ref_flank", params)
+        self.assertIn("query_flank", params)
+        self.assertIn("ref_flank", params)
 
-        # Verify test-only guard correctly permits compatible and blocks incompatible
-        self.assertTrue(flank_compatibility_guard("left_flank", "left_flank"))
-        self.assertTrue(flank_compatibility_guard("right_flank", "right_flank"))
-        self.assertTrue(flank_compatibility_guard("left", "both"))
-        self.assertTrue(flank_compatibility_guard("both", "right"))
-        self.assertFalse(flank_compatibility_guard("left_flank", "right_flank"))
-        self.assertFalse(flank_compatibility_guard("right_flank", "left_flank"))
+        # Verify production flank compatibility guard correctly permits compatible and blocks incompatible
+        from src.reid.stripe_matcher import is_flank_compatible, normalize_flank_orientation
+        self.assertTrue(is_flank_compatible("left", "left")[0])
+        self.assertTrue(is_flank_compatible("right", "right")[0])
+        self.assertTrue(is_flank_compatible("left", "both")[0])
+        self.assertTrue(is_flank_compatible("both", "right")[0])
+        self.assertFalse(is_flank_compatible("left", "right")[0])
+        self.assertFalse(is_flank_compatible("right", "left")[0])
+        self.assertFalse(is_flank_compatible("unknown", "left")[0])
+        self.assertFalse(is_flank_compatible("left", "unknown")[0])
+        self.assertFalse(is_flank_compatible(None, None)[0])
 
     # -------------------------------------------------------------------------
     # TEST 3: Synthetic test-fixture matcher behavior
@@ -179,13 +181,13 @@ class TestReIDMatcherAudit(unittest.TestCase):
             f2_path = os.path.join(tmp_dir, "blank.jpg")
             cv2.imwrite(f2_path, blank_img)
 
-            # Identical comparison
-            res_ident = self.matcher.compare_flanks(f1_path, f1_path)
+            # Identical comparison with compatible flank orientation
+            res_ident = self.matcher.compare_flanks(f1_path, f1_path, query_flank="left", ref_flank="left")
             self.assertGreaterEqual(res_ident["combined_score"], 0.90)
             self.assertGreaterEqual(res_ident["sift_score"], 0.90)
 
             # Comparison with blank image
-            res_blank = self.matcher.compare_flanks(f1_path, f2_path)
+            res_blank = self.matcher.compare_flanks(f1_path, f2_path, query_flank="left", ref_flank="left")
             self.assertEqual(res_blank["sift_score"], 0.0)
             self.assertEqual(res_blank["good_matches_count"], 0)
         finally:
@@ -227,7 +229,10 @@ class TestReIDMatcherAudit(unittest.TestCase):
         cross_flank_pairs = []
 
         for a, b in combinations(sample_data, 2):
-            res = self.matcher.compare_flanks(a["img_path"], b["img_path"], a["deep_emb"], b["deep_emb"])
+            res = self.matcher.compare_flanks(
+                a["img_path"], b["img_path"], a["deep_emb"], b["deep_emb"],
+                query_flank=a["flank"], ref_flank=b["flank"]
+            )
             pair_meta = {
                 "pair": f"{a['filename']} vs {b['filename']}",
                 "sample_a": a["sample_id"],

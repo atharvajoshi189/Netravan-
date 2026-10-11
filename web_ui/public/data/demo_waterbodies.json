@@ -1,0 +1,29 @@
+[
+  {
+    "id": "WB-1",
+    "name": "Tadoba Lake (Demo)",
+    "pos": [
+      20.27,
+      79.33
+    ],
+    "radius": 1500
+  },
+  {
+    "id": "WB-2",
+    "name": "Kolsa Lake (Demo)",
+    "pos": [
+      20.21,
+      79.37
+    ],
+    "radius": 800
+  },
+  {
+    "id": "WB-3",
+    "name": "Irai Dam Backwaters (Demo)",
+    "pos": [
+      20.26,
+      79.3
+    ],
+    "radius": 2500
+  }
+]

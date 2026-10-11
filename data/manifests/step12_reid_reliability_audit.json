@@ -1,0 +1,275 @@
+{
+  "title": "TigerTraceAI Step 12: Independent Re-ID Reliability and False-Match Audit",
+  "timestamp": "2026-10-10T16:49:52Z",
+  "execution_duration_sec": 13.49,
+  "disposable_database_used": "C:\\Users\\Atharva\\AppData\\Local\\Temp\\step12_audit_sandbox_qrmr2olj\\disposable_audit.db",
+  "part1_reported_match_trace": {
+    "query_image": "D:\\TigerTraceAI-main\\dataset\\verified_tiger_dataset\\Bajirao\\Bajirao_001.png",
+    "query_md5": "15ea65475e9bd569f0e53cc012fb08fb",
+    "reference_crop": "D:\\TigerTraceAI-main\\TigerTrace_AI\\data\\reference_catalogue\\Bajirao\\Bajirao_001_flank_crop.jpg",
+    "is_identical_source_image": true,
+    "yolo_confidence": 0.7904,
+    "yolo_bbox": [
+      0,
+      112,
+      327,
+      364
+    ],
+    "flank_compatibility": {
+      "query": "left",
+      "reference": "both",
+      "compatible": true,
+      "reason": "compatible"
+    },
+    "sift_inliers_count": 261,
+    "sift_score": 1.0,
+    "sift_normalization_formula": "min(1.0, inlier_count / 30.0)",
+    "resnet_cosine_score": 0.9524,
+    "resnet_formula": "max(0.0, min(1.0, (dot(q, r) + 1.0) / 2.0))",
+    "composite_formula": "0.55 * sift_score + 0.45 * cosine_score",
+    "composite_score": 0.9786,
+    "decision_state": "matched",
+    "identity_status": "verified_match",
+    "decision_reason": "high_confidence_stripe_match",
+    "audit_verdict": "Confirmed: 97.9% score was produced by an auto-match of the same photographic frame against its own derivative crop."
+  },
+  "part2_byte_vs_preset_independence": {
+    "test_type": "byte_tampering_and_preset_decoupling",
+    "input_file": "D:\\TigerTraceAI-main\\dataset\\verified_tiger_dataset\\T40_Patdev\\T40_Patdev_001.jpg",
+    "spoofed_filename": "field_capture_bajirao.jpg",
+    "top_candidate": "T40_PATDEV",
+    "top_score": 0.9775,
+    "assigned_identity": "T40_PATDEV",
+    "decision_state": "matched",
+    "is_byte_driven": true
+  },
+  "part3_controlled_test_matrix": {
+    "self_match_control": {
+      "query": "Bajirao_001_flank_crop.jpg",
+      "ref": "Bajirao_001_flank_crop.jpg",
+      "combined_score": 1.0,
+      "sift_score": 1.0,
+      "cosine_score": 1.0,
+      "good_matches_count": 1000,
+      "verdict": "PASS"
+    },
+    "genuine_independent_matches": {
+      "count": 9,
+      "scores": [
+        {
+          "file": "Bajirao_002_flank_crop.jpg",
+          "combined_score": 0.5774,
+          "sift_score": 0.3,
+          "cosine_score": 0.9164,
+          "good_matches_count": 9
+        },
+        {
+          "file": "Bajirao_003_flank_crop.jpg",
+          "combined_score": 0.6177,
+          "sift_score": 0.4667,
+          "cosine_score": 0.8024,
+          "good_matches_count": 14
+        },
+        {
+          "file": "Bajirao_004_flank_crop.jpg",
+          "combined_score": 0.7182,
+          "sift_score": 0.5333,
+          "cosine_score": 0.9441,
+          "good_matches_count": 16
+        },
+        {
+          "file": "Bajirao_005_flank_crop.jpg",
+          "combined_score": 0.6727,
+          "sift_score": 0.4667,
+          "cosine_score": 0.9244,
+          "good_matches_count": 14
+        },
+        {
+          "file": "Bajirao_006_flank_crop.jpg",
+          "combined_score": 0.5794,
+          "sift_score": 0.3333,
+          "cosine_score": 0.8802,
+          "good_matches_count": 10
+        },
+        {
+          "file": "Bajirao_007_flank_crop.jpg",
+          "combined_score": 0.5541,
+          "sift_score": 0.3667,
+          "cosine_score": 0.7832,
+          "good_matches_count": 11
+        },
+        {
+          "file": "Bajirao_008_flank_crop.jpg",
+          "combined_score": 0.6848,
+          "sift_score": 0.4667,
+          "cosine_score": 0.9513,
+          "good_matches_count": 14
+        },
+        {
+          "file": "Bajirao_009_flank_crop.jpg",
+          "combined_score": 0.9564,
+          "sift_score": 1.0,
+          "cosine_score": 0.9031,
+          "good_matches_count": 31
+        },
+        {
+          "file": "Bajirao_010_flank_crop.jpg",
+          "combined_score": 0.8414,
+          "sift_score": 0.7667,
+          "cosine_score": 0.9327,
+          "good_matches_count": 23
+        }
+      ],
+      "min_score": 0.5541,
+      "mean_score": 0.6891,
+      "max_score": 0.9564
+    },
+    "impostor_matches": {
+      "count": 8,
+      "scores": [
+        {
+          "individual": "T40_Patdev",
+          "file": "T40_Patdev_001_flank_crop.jpg",
+          "combined_score": 0.9609,
+          "sift_score": 1.0,
+          "cosine_score": 0.9131,
+          "good_matches_count": 34,
+          "false_match_above_0_50": true
+        },
+        {
+          "individual": "T40_Patdev",
+          "file": "T40_Patdev_002_flank_crop.jpg",
+          "combined_score": 0.9572,
+          "sift_score": 1.0,
+          "cosine_score": 0.9049,
+          "good_matches_count": 40,
+          "false_match_above_0_50": true
+        },
+        {
+          "individual": "T15_Collarwali",
+          "file": "T15_Collarwali_001_flank_crop.jpg",
+          "combined_score": 0.5437,
+          "sift_score": 0.2667,
+          "cosine_score": 0.8823,
+          "good_matches_count": 8,
+          "false_match_above_0_50": true
+        },
+        {
+          "individual": "T15_Collarwali",
+          "file": "T15_Collarwali_002_flank_crop.jpg",
+          "combined_score": 0.5988,
+          "sift_score": 0.3333,
+          "cosine_score": 0.9232,
+          "good_matches_count": 10,
+          "false_match_above_0_50": true
+        },
+        {
+          "individual": "Swastik",
+          "file": "Swastik_001_flank_crop.jpg",
+          "combined_score": 0.602,
+          "sift_score": 0.3333,
+          "cosine_score": 0.9304,
+          "good_matches_count": 10,
+          "false_match_above_0_50": true
+        },
+        {
+          "individual": "Swastik",
+          "file": "Swastik_002_flank_crop.jpg",
+          "combined_score": 0.7663,
+          "sift_score": 0.6667,
+          "cosine_score": 0.888,
+          "good_matches_count": 20,
+          "false_match_above_0_50": true
+        },
+        {
+          "individual": "T-74_L-Mark",
+          "file": "T74_LMark_001_flank_crop.jpg",
+          "combined_score": 0.632,
+          "sift_score": 0.4,
+          "cosine_score": 0.9155,
+          "good_matches_count": 12,
+          "false_match_above_0_50": true
+        },
+        {
+          "individual": "Karmajhiri_Core_Tigers",
+          "file": "Karmajhiri_Core_001_flank_crop.jpg",
+          "combined_score": 0.589,
+          "sift_score": 0.3333,
+          "cosine_score": 0.9016,
+          "good_matches_count": 10,
+          "false_match_above_0_50": true
+        }
+      ],
+      "min_score": 0.5437,
+      "mean_score": 0.7062,
+      "max_score": 0.9609,
+      "false_match_rate_at_0_50": 1.0
+    },
+    "unknown_individual_probes": [
+      {
+        "probe": "Pench_General_Tiger_001",
+        "decision_state": "review_required",
+        "assigned_id": null,
+        "suggested_id": "T_74_L_MARK",
+        "best_score": 0.4814,
+        "safe_rejection": true
+      }
+    ],
+    "non_tiger_blank": {
+      "image": "D:\\TigerTraceAI-main\\data\\raw\\blank_1.jpg",
+      "is_blank": true,
+      "category": "blank",
+      "quarantined_before_reid": true,
+      "verdict": "PASS"
+    },
+    "cross_flank_guard": {
+      "query_flank": "left",
+      "ref_flank": "right",
+      "combined_score": 0.0,
+      "flank_compatible": false,
+      "reason": "opposite_flanks_incompatible",
+      "verdict": "PASS"
+    },
+    "invalid_input_handling": {
+      "empty_file": {
+        "state": "unknown",
+        "reason": "corrupt_or_unreadable_image"
+      },
+      "corrupt_file": {
+        "state": "unknown",
+        "reason": "corrupt_or_unreadable_image"
+      },
+      "graceful_failure": true
+    }
+  },
+  "part4_mathematical_audit": {
+    "sift_normalization": {
+      "formula": "min(1.0, count / 30.0)",
+      "score_with_one_correspondence": 0.0333,
+      "is_1_correspondence_yielding_1_00": false,
+      "many_to_one_collapse_detected": true,
+      "raw_matches_count": 32,
+      "unique_reference_keypoints_count": 10,
+      "max_matches_on_single_keypoint": 20
+    },
+    "resnet_cosine_calibration": {
+      "raw_dot_product_mean": 0.7318,
+      "scaled_cosine_min": 0.7344,
+      "scaled_cosine_mean": 0.8659,
+      "uncalibrated_score_floor": 0.3897,
+      "low_confidence_threshold": 0.35,
+      "high_confidence_threshold": 0.5,
+      "vulnerability": "Untrained ImageNet ResNet50 representations of tigers share substantial general feature overlap (fur texture, quadruped posture, foliage). The affine scaling (cos+1)/2 maps average tiger-tiger similarity to 0.8659, giving an uncalibrated base floor of 0.3897. Because this floor exceeds the 0.35 review threshold, any tiger with even zero stripe matches is prevented from entering new_identity_candidate, saturating the human review queue."
+    }
+  },
+  "scientific_assessment": {
+    "evaluation_conclusiveness": "INCONCLUSIVE_FOR_WILD_POPULATION_GENERALIZATION",
+    "justification": "The current dataset consists of a small number of curated Pench images (95 total across 7 classes) and an ATRW pilot subset (13 approved images). While useful for pipeline integration and sanity checks, the lack of extensive multi-camera, multi-year cross-encounter images makes statistical generalization to wild field conditions scientifically unsupported. The reported 97.9% score in Step 11 reflects an auto-match of identical frame crops, not field re-identification accuracy.",
+    "recommendations": [
+      "Do NOT claim a field accuracy percentage based on burst-frame or self-match evaluations.",
+      "Implement mutual 1-to-1 consistency or geometric RANSAC in HotSpotter SIFT to eliminate many-to-one descriptor collapse.",
+      "Replace ImageNet pre-trained ResNet50 with wildlife-specific metric learning (e.g., Triplet/ArcFace loss fine-tuned on ATRW/wild tigers) with calibrated distance distributions.",
+      "Retain human review queue for all observations until a multi-encounter wild dataset is formally validated."
+    ]
+  }
+}

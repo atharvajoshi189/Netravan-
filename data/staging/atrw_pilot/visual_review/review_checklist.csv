@@ -1,0 +1,31 @@
+filename,original_identity_id,local_alias,image_quality,tiger_visibility,viewpoint,flank_orientation,duplicate_suspected,review_notes,review_status
+000187.jpg,153,tiger_001,low,full_body,lateral,left_flank,no,Heavily underexposed / deep shadows; flank stripes obscured; requires illumination enhancement,needs_visual_review
+000938.jpg,153,tiger_001,medium,full_body,lateral,left_flank,no,Clear lateral left flank walking profile; dark background but tiger flank well illuminated,approved
+001223.jpg,153,tiger_001,low,full_body,lateral,left_flank,no,Severely underexposed / pitch shadows; stripe patterns cannot be resolved reliably,rejected
+002739.jpg,153,tiger_001,medium,full_body,lateral,left_flank,no,Good lateral left flank view; smaller crop (224x173) but stripe pattern discernable,approved
+003437.jpg,153,tiger_001,high,full_body,lateral,left_flank,no,Excellent bright daylight crop; clear lateral left flank stripes; ideal Re-ID enrollment anchor,approved
+003944.jpg,153,tiger_001,high,full_body,lateral,left_flank,no,High sharpness daylight image in grass; complete left flank clearly visible; high-confidence match sample,approved
+000739.jpg,160,tiger_002,medium,full_body,lateral,right_flank,no,Clear lateral right flank walking view; moderate resolution (248x170); wire fence in background,approved
+001135.jpg,160,tiger_002,medium,full_body,lateral,right_flank,yes,Suspected near-duplicate video burst frame with 001539.jpg; low resolution (220x123),needs_visual_review
+001539.jpg,160,tiger_002,medium,full_body,lateral,right_flank,yes,Suspected near-duplicate video burst frame with 001135.jpg; identical stride and background,needs_visual_review
+002149.jpg,160,tiger_002,medium,full_body,lateral,right_flank,no,Distinct stride position walking right; good right flank stripe definition,approved
+002986.jpg,160,tiger_002,low,full_body,lateral,right_flank,no,Heavily underexposed; deep shadows prevent reliable stripe feature extraction,rejected
+003817.jpg,160,tiger_002,low,full_body,lateral,right_flank,no,Heavily underexposed / dark night or shadow scene; low contrast across flank,rejected
+000696.jpg,154,tiger_003,high,full_body,lateral,right_flank,no,Sharp daylight crop walking along rock enclosure; complete right flank clearly visible,approved
+001069.jpg,154,tiger_003,medium,full_body,lateral,right_flank,no,Clear lateral right flank view; walking right across enclosure with mouth slightly agape,approved
+001718.jpg,154,tiger_003,high,full_body,lateral,right_flank,no,High resolution (695x407); sharp contrast; excellent right flank stripe resolution,approved
+003156.jpg,154,tiger_003,medium,full_body,lateral,right_flank,yes,Suspected near-duplicate video burst frame with 003896.jpg; walking in bright sunlight,needs_visual_review
+003286.jpg,154,tiger_003,high,full_body,lateral,right_flank,no,High quality (697x469); bright daylight; full right flank unoccluded,approved
+003896.jpg,154,tiger_003,medium,full_body,lateral,right_flank,yes,Suspected near-duplicate video burst frame with 003156.jpg; low resolution (229x127),needs_visual_review
+000245.jpg,246,tiger_004,medium,partial_flank,oblique_frontal,ambiguous,no,Oblique frontal pose looking at camera; flank foreshortened; thin enclosure wire across chest,needs_visual_review
+000420.jpg,246,tiger_004,medium,full_body,lateral,left_flank,yes,High resolution (1253x855) but soft focus; thin wire horizontally intersects flank; burst with 001205/003134,needs_visual_review
+000592.jpg,246,tiger_004,medium,partial_flank,oblique_frontal,ambiguous,no,Frontal oblique head-on angle; flank stripes foreshortened; horizontal wire across frame,needs_visual_review
+001205.jpg,246,tiger_004,medium,full_body,lateral,left_flank,yes,Soft focus; horizontal wire across flank; near-duplicate burst frame with 000420.jpg and 003134.jpg,needs_visual_review
+001595.jpg,246,tiger_004,medium,partial_body,recumbent_oblique,ambiguous,no,Tiger lying down / resting recumbent posture; stripe geometry compressed; unsuitable for lateral enrollment,rejected
+003134.jpg,246,tiger_004,medium,full_body,lateral,left_flank,yes,Near-duplicate video burst frame with 000420.jpg and 001205.jpg; horizontal wire intersects flank,needs_visual_review
+000179.jpg,243,tiger_005,high,full_body,lateral,left_flank,yes,Sharp lateral left flank crop in bright daylight; candidate anchor for burst sequence (000792/001459/002315/003909),approved
+000792.jpg,243,tiger_005,high,full_body,lateral,left_flank,yes,High resolution (836x502); distinct forward stride position; clear left flank stripes,approved
+001459.jpg,243,tiger_005,high,full_body,lateral,left_flank,yes,Near-duplicate video burst frame with 000179.jpg and 000792.jpg; minimal stride difference,needs_visual_review
+002315.jpg,243,tiger_005,high,full_body,lateral,left_flank,yes,Excellent quality daylight image; distinct paw placement; clear left flank pattern,approved
+002846.jpg,243,tiger_005,medium,full_body,lateral,left_flank,no,Lower sharpness / slight motion blur; smaller crop (370x222); flank stripes identifiable,needs_visual_review
+003909.jpg,243,tiger_005,high,full_body,lateral,left_flank,yes,Near-duplicate video burst frame with 000792.jpg; redundant temporal frame in video sequence,needs_visual_review

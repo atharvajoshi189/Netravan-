@@ -62,7 +62,7 @@ class TestTigerTraceFullPipeline(unittest.TestCase):
         img1 = os.path.join(self.raw_sd_dir, "IMG_0101_Bajirao.png")
         
         if os.path.exists(img1):
-            res = matcher.compare_flanks(img1, img1)
+            res = matcher.compare_flanks(img1, img1, query_flank="left", ref_flank="left")
             self.assertGreaterEqual(res["combined_score"], 0.70, "Self-comparison score should be high")
             self.assertGreater(res["good_matches_count"], 10, "SIFT inliers should be high for identical images")
 

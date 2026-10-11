@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
   loadInteractiveMap();
   loadBehaviorPredictions();
   loadQuarantineBlanks();
+  loadMobileObservations();
 
   setInterval(loadTelemetry, 15000);
+  setInterval(loadMobileObservations, 5000);
 });
 
 // -------------------------------------------------------------
@@ -45,6 +47,7 @@ function initNavigation() {
       if (targetTab === 'alerts-tab') loadAlerts();
       if (targetTab === 'catalogue-tab') loadTigerCatalogue();
       if (targetTab === 'quarantine-tab') loadQuarantineBlanks();
+      if (targetTab === 'mobile-tab') loadMobileObservations();
     });
   });
 }
@@ -487,7 +490,7 @@ async function loadQuarantineBlanks() {
 }
 
 // -------------------------------------------------------------
-// 7. Human Review Queue Loader & Actions
+// 7. Human Review Queue Loader & Actions (Step 14 Safety-First HITL)
 // -------------------------------------------------------------
 async function loadReviewQueue() {
   const container = document.getElementById('review-cards-container');
@@ -499,7 +502,7 @@ async function loadReviewQueue() {
       container.innerHTML = `
         <div style="grid-column: 1/-1; text-align:center; padding:40px; background:rgba(0,0,0,0.2); border-radius:12px;">
           <p style="color:#2ecc71; font-size:16px; font-weight:700;">✅ Review Queue is Clear!</p>
-          <p style="color:#95a5a6; font-size:12px; margin-top:4px;">All camera trap tiger stripe matches are auto-verified with high confidence.</p>
+          <p style="color:#95a5a6; font-size:12px; margin-top:4px;">No unverified candidate matches currently awaiting human authorization.</p>
         </div>
       `;
       return;
@@ -507,19 +510,92 @@ async function loadReviewQueue() {
 
     let html = '';
     items.forEach(item => {
-      const vizImg = item.sift_match_viz_path ? `/api/image?path=${encodeURIComponent(item.sift_match_viz_path)}` : (item.flank_crop_path ? `/api/image?path=${encodeURIComponent(item.flank_crop_path)}` : '');
+      const submittedImg = item.flank_crop_url || item.submitted_image_url || '';
+      const refImg = item.reference_image_url || '';
+      const vizImg = item.sift_viz_url || '';
+
       html += `
-        <div class="review-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <span style="font-size:12px; color:#f39c12; font-weight:700;">ID #${item.review_id} | ${item.station_id}</span>
-            <span class="score-badge amber">${(item.suggested_score * 100).toFixed(0)}% SIFT Match</span>
+        <div class="review-card" id="review-card-${item.review_id}" style="border: 1.5px solid rgba(243, 156, 18, 0.4); background: linear-gradient(145deg, #0e1e16 0%, #07130c 100%);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:8px;">
+            <span style="font-size:13px; color:#f39c12; font-weight:800;">Review #${item.review_id} • Station ${item.station_id || 'N/A'}</span>
+            <span class="score-badge amber">${(item.candidate_score * 100).toFixed(1)}% Heuristic Score</span>
           </div>
-          <img src="${vizImg}" class="review-preview-img" alt="SIFT Stripe Match Visualization">
-          <p style="font-size:13px; margin-bottom:4px;"><b>Suggested Candidate:</b> <span style="color:#2ecc71; font-weight:700;">${item.suggested_tiger_id}</span></p>
-          <p style="font-size:11px; color:#95a5a6;">Ambiguous stripe bifurcation pattern flagged for field officer audit.</p>
-          <div class="action-btn-group">
-            <button class="btn-approve" onclick="handleReviewAction(${item.review_id}, 'approve', '${item.suggested_tiger_id}')">✓ Confirm ID</button>
-            <button class="btn-reassign" onclick="handleReviewAction(${item.review_id}, 'enroll_new', 'NEW_TIGER')">🐾 Enroll New</button>
+
+          <!-- Side-by-Side Images -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
+            <div style="background:rgba(0,0,0,0.4); border-radius:8px; padding:6px; border:1px solid rgba(255,255,255,0.08);">
+              <div style="font-size:10px; color:#95a5a6; font-weight:700; text-transform:uppercase; margin-bottom:4px; display:flex; justify-content:space-between;">
+                <span>📸 Submitted Crop</span>
+                <span style="color:#2ecc71;">${(item.query_flank || 'unknown').toUpperCase()}</span>
+              </div>
+              <img src="${submittedImg}" style="width:100%; height:110px; object-fit:cover; border-radius:6px; background:#000;" alt="Submitted Tiger Crop">
+            </div>
+            <div style="background:rgba(0,0,0,0.4); border-radius:8px; padding:6px; border:1px solid rgba(255,255,255,0.08);">
+              <div style="font-size:10px; color:#95a5a6; font-weight:700; text-transform:uppercase; margin-bottom:4px; display:flex; justify-content:space-between;">
+                <span>🐅 Reference Match</span>
+                <span style="color:#3498db;">${(item.ref_flank || 'both').toUpperCase()}</span>
+              </div>
+              ${refImg ? `<img src="${refImg}" style="width:100%; height:110px; object-fit:cover; border-radius:6px; background:#000;" alt="Reference Catalogue Tiger">` : `<div style="height:110px; display:flex; align-items:center; justify-content:center; color:#7f8c8d; font-size:11px;">No registered reference image</div>`}
+            </div>
+          </div>
+
+          <!-- SIFT Verification Preview (if available) -->
+          ${vizImg ? `
+            <div style="margin-bottom:12px;">
+              <a href="${vizImg}" target="_blank" style="display:block; text-decoration:none;">
+                <img src="${vizImg}" style="width:100%; height:80px; object-fit:cover; border-radius:6px; border:1px solid rgba(46,204,113,0.3);" alt="SIFT Stripe Match Lines">
+                <span style="font-size:10px; color:#2ecc71; text-align:center; display:block; margin-top:2px;">🔍 Click to expand SIFT geometric correspondences</span>
+              </a>
+            </div>
+          ` : ''}
+
+          <!-- Biometric Evidence Breakdown -->
+          <div style="background:rgba(0,0,0,0.3); border-radius:8px; padding:10px; margin-bottom:12px; border:1px solid rgba(255,255,255,0.06); font-size:11.5px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span style="color:#95a5a6;">Proposed Candidate:</span>
+              <span style="color:#fff; font-weight:800;">${item.candidate_tiger_id || 'UNMATCHED'} <span style="color:#2ecc71; font-weight:normal;">(${item.candidate_name})</span></span>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span style="color:#95a5a6;">SIFT Inliers (1-to-1 MNN):</span>
+              <span style="color:${item.sift_inliers >= 4 ? '#2ecc71' : '#e74c3c'}; font-weight:700;">${item.sift_inliers} verified [${(item.geometric_status || 'none').toUpperCase()}]</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span style="color:#95a5a6;">Raw ResNet Cosine Sim:</span>
+              <span style="color:#f39c12; font-weight:700;">${(item.raw_cosine_sim || 0.0).toFixed(4)} (Uncalibrated)</span>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="color:#95a5a6;">Flank Orientation Pair:</span>
+              <span style="color:#3498db; font-weight:700;">${(item.query_flank || 'unknown').toUpperCase()} vs ${(item.ref_flank || 'both').toUpperCase()}</span>
+            </div>
+          </div>
+
+          <!-- Uncalibrated Warning -->
+          <div style="background:rgba(231,76,60,0.12); border:1px solid rgba(231,76,60,0.35); border-radius:8px; padding:8px 10px; margin-bottom:12px; font-size:10.5px; color:#e74c3c; line-height:1.35;">
+            ⚠️ <b>UNCALIBRATED MACHINE EVIDENCE:</b> A high score does NOT establish individual identity. Candidate suggestions require explicit human officer verification.
+          </div>
+
+          <!-- Reviewer Inputs -->
+          <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:12px;">
+            <input type="text" id="reviewer-id-${item.review_id}" placeholder="Reviewer ID (e.g. officer_sharma)" value="authorized_field_officer"
+                   style="width:100%; padding:8px 10px; background:rgba(0,0,0,0.5); border:1px solid var(--border-color); border-radius:6px; color:#fff; font-size:12px;">
+            <input type="text" id="review-reason-${item.review_id}" placeholder="Mandatory audit reason (e.g. SIFT stripe pattern confirmed)"
+                   style="width:100%; padding:8px 10px; background:rgba(0,0,0,0.5); border:1px solid var(--border-color); border-radius:6px; color:#fff; font-size:12px;">
+          </div>
+
+          <!-- Action Buttons Grid -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <button class="btn-approve" onclick="handleReviewAction(${item.review_id}, 'accept', '${item.candidate_tiger_id}')" style="background:#2ecc71; color:#07130c; font-weight:800; border:none; padding:8px; border-radius:6px; cursor:pointer;">
+              ✓ Accept ID
+            </button>
+            <button onclick="handleReviewAction(${item.review_id}, 'reject', '${item.candidate_tiger_id}')" style="background:#e74c3c; color:#fff; font-weight:700; border:none; padding:8px; border-radius:6px; cursor:pointer;">
+              ✗ Reject Match
+            </button>
+            <button onclick="handleReviewAction(${item.review_id}, 'inconclusive', '${item.candidate_tiger_id}')" style="background:#7f8c8d; color:#fff; font-weight:700; border:none; padding:8px; border-radius:6px; cursor:pointer;">
+              ❓ Inconclusive
+            </button>
+            <button onclick="handleReviewAction(${item.review_id}, 'enroll_new', 'NEW_TIGER')" style="background:#3498db; color:#fff; font-weight:700; border:none; padding:8px; border-radius:6px; cursor:pointer;">
+              🐾 Enroll New
+            </button>
           </div>
         </div>
       `;
@@ -531,14 +607,44 @@ async function loadReviewQueue() {
 }
 
 async function handleReviewAction(reviewId, action, tigerId) {
+  const reviewerIdInput = document.getElementById(`reviewer-id-${reviewId}`);
+  const reasonInput = document.getElementById(`review-reason-${reviewId}`);
+
+  const reviewerId = reviewerIdInput && reviewerIdInput.value.trim() ? reviewerIdInput.value.trim() : 'authorized_field_officer';
+  const reason = reasonInput && reasonInput.value.trim() ? reasonInput.value.trim() : `Manual human decision (${action}) via Command Center`;
+
+  if (!reason.trim()) {
+    alert('Please enter a review reason to submit this decision.');
+    return;
+  }
+
   try {
     const res = await fetch(`/api/review_queue/${reviewId}/action`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: action, tiger_id: tigerId })
+      body: JSON.stringify({
+        action: action,
+        tiger_id: tigerId,
+        reviewer_id: reviewerId,
+        reason: reason
+      })
     });
+    
+    if (res.status === 409) {
+      const errData = await res.json();
+      alert('⚠️ Conflict: ' + (errData.detail || 'This item has already been resolved by another reviewer.'));
+      loadReviewQueue();
+      return;
+    }
+
+    if (!res.ok) {
+      const errData = await res.json();
+      alert('❌ Action failed: ' + (errData.detail || res.statusText));
+      return;
+    }
+
     const result = await res.json();
-    alert(result.message || 'Action executed successfully.');
+    alert(`✓ Decision recorded: ${result.action.toUpperCase()} by ${reviewerId}`);
     loadReviewQueue();
     loadTelemetry();
   } catch (err) {
@@ -615,3 +721,78 @@ async function loadTigerCatalogue() {
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+// -------------------------------------------------------------
+// 10. Field Mobile App Observations (Step 10 Integration)
+// -------------------------------------------------------------
+async function loadMobileObservations() {
+  const tbody = document.getElementById('mobile-table-body');
+  if (!tbody) return;
+
+  try {
+    const res = await fetch('/api/mobile/observations?limit=50');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const observations = data.observations || [];
+
+    // Update metrics
+    const totalEl = document.getElementById('mobile-total-count');
+    const verifiedEl = document.getElementById('mobile-verified-count');
+    const reviewEl = document.getElementById('mobile-review-count');
+    const badgeEl = document.getElementById('mobile-badge');
+
+    if (totalEl) totalEl.innerText = observations.length;
+    let verifiedCount = 0;
+    let reviewCount = 0;
+
+    let html = '';
+    if (observations.length === 0) {
+      html = '<tr><td colspan="9" style="text-align:center; color:#95a5a6; padding:20px;">No field mobile observations captured yet. Use Flutter Mobile App to scan and sync.</td></tr>';
+    } else {
+      observations.forEach(obs => {
+        const isVerified = obs.review_status === 'approved' || (obs.tiger_id && obs.confidence >= 0.75);
+        if (isVerified) verifiedCount++;
+        if (obs.review_status === 'pending_review' || obs.review_status === 'needs_review') reviewCount++;
+
+        const statusBadge = obs.review_status === 'approved' 
+          ? '<span class="status-badge" style="background:rgba(46,204,113,0.15); color:#2ecc71; border:1px solid #2ecc71;">VERIFIED</span>'
+          : '<span class="status-badge" style="background:rgba(243,156,18,0.15); color:#f39c12; border:1px solid #f39c12;">REVIEW REQUIRED</span>';
+
+        const cropImg = obs.crop_url 
+          ? `<img src="${obs.crop_url}" style="width:48px; height:48px; object-fit:cover; border-radius:6px; border:1px solid #34495e;">`
+          : (obs.image_url ? `<img src="${obs.image_url}" style="width:48px; height:48px; object-fit:cover; border-radius:6px;">` : '🐾');
+
+        html += `
+          <tr>
+            <td>#${obs.sighting_id}</td>
+            <td>${cropImg}</td>
+            <td><b style="color:${obs.tiger_id ? '#2ecc71' : '#e67e22'};">${obs.tiger_id || 'UNKNOWN TIGER'}</b></td>
+            <td><span style="font-size:11px; text-transform:uppercase;">${obs.flank || 'unknown'}</span></td>
+            <td>${obs.station_id || 'FIELD'}</td>
+            <td><b>${((obs.confidence || 0) * 100).toFixed(1)}%</b></td>
+            <td><span style="font-size:11px; color:#95a5a6;">${obs.notes || 'Normal territorial roaming'}</span></td>
+            <td><span style="font-size:11px;">${(obs.timestamp || '').replace('T', ' ').substring(0, 19)}</span></td>
+            <td>${statusBadge}</td>
+          </tr>
+        `;
+      });
+    }
+
+    if (verifiedEl) verifiedEl.innerText = verifiedCount;
+    if (reviewEl) reviewEl.innerText = reviewCount;
+    if (badgeEl) {
+      badgeEl.innerText = reviewCount;
+      badgeEl.style.display = reviewCount > 0 ? 'inline-block' : 'none';
+    }
+
+    tbody.innerHTML = html;
+  } catch (err) {
+    console.error('Error fetching mobile observations:', err);
+    const apiStatus = document.getElementById('mobile-api-status');
+    if (apiStatus) {
+      apiStatus.innerText = 'Offline';
+      apiStatus.style.color = '#e74c3c';
+    }
+  }
+}
+

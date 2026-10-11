@@ -1,0 +1,151 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TigerTraceAI MultiSpecies Dataset Manifest Schema",
+  "description": "Standard schema for validating multi-species wildlife camera-trap detection annotations mapped to the 17-class Tadoba landscape taxonomy.",
+  "type": "object",
+  "required": [
+    "manifest_version",
+    "created_at",
+    "taxonomy_version",
+    "dataset_metadata",
+    "images",
+    "annotations"
+  ],
+  "properties": {
+    "manifest_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the manifest format."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 UTC timestamp of manifest generation."
+    },
+    "taxonomy_version": {
+      "type": "string",
+      "description": "Version of species_taxonomy.json referenced by canonical_class_id."
+    },
+    "dataset_metadata": {
+      "type": "object",
+      "required": ["dataset_id", "source_name", "license", "is_camera_trap"],
+      "properties": {
+        "dataset_id": { "type": "string" },
+        "source_name": { "type": "string" },
+        "source_url": { "type": "string", "format": "uri" },
+        "license": { "type": "string" },
+        "license_permissive_for_research": { "type": "boolean" },
+        "geographic_region": { "type": "string" },
+        "is_camera_trap": { "type": "boolean" },
+        "curator": { "type": "string" }
+      }
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["image_id", "file_name", "width", "height", "split"],
+        "properties": {
+          "image_id": { "type": "string" },
+          "file_name": { "type": "string" },
+          "file_path_relative": { "type": "string" },
+          "file_hash_sha256": { "type": "string" },
+          "width": { "type": "integer", "minimum": 1 },
+          "height": { "type": "integer", "minimum": 1 },
+          "split": {
+            "type": "string",
+            "enum": ["train", "val", "test", "holdout_unseen_site"]
+          },
+          "camera_trap_metadata": {
+            "type": "object",
+            "properties": {
+              "camera_id": { "type": "string" },
+              "location_id": { "type": "string" },
+              "sequence_id": { "type": "string" },
+              "frame_num": { "type": "integer" },
+              "timestamp_utc": { "type": "string" },
+              "illumination": { "type": "string", "enum": ["day_color", "night_ir", "unknown"] }
+            }
+          }
+        }
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "annotation_id",
+          "image_id",
+          "canonical_class_id",
+          "canonical_class_name",
+          "bbox_norm_yolo",
+          "source_label"
+        ],
+        "properties": {
+          "annotation_id": { "type": "string" },
+          "image_id": { "type": "string" },
+          "canonical_class_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16,
+            "description": "Must match canonical_id in species_taxonomy.json (0..16)."
+          },
+          "canonical_class_name": {
+            "type": "string",
+            "enum": [
+              "tiger",
+              "sambar",
+              "wild_boar",
+              "chital",
+              "cattle",
+              "muntjac",
+              "gaur",
+              "nilgai",
+              "sloth_bear",
+              "goat",
+              "indian_hare",
+              "buffalo",
+              "grey_junglefowl",
+              "peafowl",
+              "flying_squirrel",
+              "grey_langur",
+              "grey_mongoose"
+            ]
+          },
+          "source_label": {
+            "type": "string",
+            "description": "Original raw taxonomy string from provider (e.g. 'Axis axis', 'Spotted Deer')."
+          },
+          "bbox_norm_yolo": {
+            "type": "array",
+            "items": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+            "minItems": 4,
+            "maxItems": 4,
+            "description": "[x_center, y_center, width, height] normalized in range [0.0, 1.0]."
+          },
+          "bbox_pixel_xyxy": {
+            "type": "array",
+            "items": { "type": "number", "minimum": 0 },
+            "minItems": 4,
+            "maxItems": 4,
+            "description": "[x_min, y_min, x_max, y_max] in absolute image pixels."
+          },
+          "occlusion_level": {
+            "type": "string",
+            "enum": ["none", "low", "medium", "heavy", "unknown"]
+          },
+          "individual_id": {
+            "type": "string",
+            "description": "Individual animal identifier for Re-ID enabled species (e.g., T-108, ATRW_357); null if unassigned."
+          },
+          "flank_view": {
+            "type": "string",
+            "enum": ["left", "right", "frontal", "rear", "unclear", "not_applicable"]
+          },
+          "verified_by_human": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

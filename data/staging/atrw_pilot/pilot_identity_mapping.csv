@@ -1,0 +1,6 @@
+local_alias,original_atrw_id,species,subspecies,approved_samples_count,total_staged_samples,flank_orientation
+tiger_001,153,Panthera tigris,altaica,4,6,left_flank
+tiger_002,160,Panthera tigris,altaica,2,6,right_flank
+tiger_003,154,Panthera tigris,altaica,4,6,right_flank
+tiger_004,246,Panthera tigris,altaica,0,6,mixed_or_ambiguous
+tiger_005,243,Panthera tigris,altaica,3,6,left_flank

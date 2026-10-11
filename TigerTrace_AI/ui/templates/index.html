@@ -82,6 +82,11 @@
         <span class="nav-icon">🐾</span>
         <span>Resident Tiger Catalogue</span>
       </li>
+      <li class="nav-item" data-tab="mobile-tab">
+        <span class="nav-icon">📱</span>
+        <span>Field Mobile Scans</span>
+        <span id="mobile-badge" class="nav-badge" style="display:none;">0</span>
+      </li>
     </ul>
 
     <div class="system-status">
@@ -359,11 +364,11 @@
     <div id="review-tab" class="tab-pane">
       <div class="card-panel">
         <div class="card-title">
-          <h3><span>🔍</span> Human-in-the-Loop SIFT Stripe Review Queue</h3>
-          <span style="font-size:12px; color:#f39c12; font-weight:600;">⚠️ Ambiguous Matches Flagged for Field Officer Audit</span>
+          <h3><span>🔍</span> Human-in-the-Loop Biometric Identity Review Queue</h3>
+          <span style="font-size:12px; color:#e74c3c; font-weight:700;">🛡️ Step 14 Safety Policy: Automatic Confirmation Disabled</span>
         </div>
         <p style="color:#95a5a6; font-size:13px; margin-bottom:20px;">
-          When stripe bifurcation similarity falls between 35% and 50%, the system draws visual green SIFT connecting lines so forest officers can inspect and confirm or reassign with 1 click.
+          All candidate tiger matches are staged for mandatory human review with full biometric evidence: submitted crop, candidate reference, flank compatibility, SIFT inlier correspondences, RANSAC geometric status, and raw ResNet cosine similarities.
         </p>
 
         <div id="review-cards-container" class="review-grid">
@@ -413,6 +418,75 @@
           </thead>
           <tbody id="catalogue-table-body">
             <!-- Filled dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 8: FIELD MOBILE SCANS (Step 10 Integration)         -->
+    <!-- ======================================================= -->
+    <div id="mobile-tab" class="tab-pane">
+      <div class="card-panel">
+        <div class="card-title">
+          <h3><span>📱</span> Field Mobile App Ingest & Live Biometrics</h3>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <span id="mobile-sync-status" style="font-size:12px; color:#2ecc71; font-weight:600;">● Polling Live (5s)</span>
+            <button class="btn-secondary" onclick="loadMobileObservations();">🔄 Refresh Scans</button>
+          </div>
+        </div>
+        <p style="color:#95a5a6; font-size:13px; margin-bottom:18px;">
+          Instant field captures uploaded via the Flutter Mobile App. Integrated with HotSpotter SIFT stripe geometry, Step 9A flank guard, and automated corridor conflict detection.
+        </p>
+
+        <!-- Metrics bar -->
+        <div class="metrics-grid" style="margin-bottom:20px;">
+          <div class="metric-card">
+            <div class="metric-icon">📸</div>
+            <div class="metric-content">
+              <h4>Total Field Captures</h4>
+              <p class="metric-value" id="mobile-total-count">0</p>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">🐅</div>
+            <div class="metric-content">
+              <h4>Verified Resident Matches</h4>
+              <p class="metric-value" id="mobile-verified-count">0</p>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">🔍</div>
+            <div class="metric-content">
+              <h4>Human Review Required</h4>
+              <p class="metric-value" id="mobile-review-count">0</p>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">⚡</div>
+            <div class="metric-content">
+              <h4>Mobile API Status</h4>
+              <p class="metric-value" style="font-size:16px; color:#2ecc71;" id="mobile-api-status">Active</p>
+            </div>
+          </div>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Capture Crop</th>
+              <th>Species / Resident ID</th>
+              <th>Flank</th>
+              <th>Station / GPS</th>
+              <th>Confidence / Score</th>
+              <th>Behavior Estimate</th>
+              <th>Timestamp</th>
+              <th>Review Status</th>
+            </tr>
+          </thead>
+          <tbody id="mobile-table-body">
+            <!-- Dynamically populated by loadMobileObservations -->
           </tbody>
         </table>
       </div>

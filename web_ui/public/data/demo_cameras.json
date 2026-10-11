@@ -1,0 +1,878 @@
+[
+  {
+    "id": "CT-NW1",
+    "name": "North-West Nimdela Corner Camera",
+    "pos": [
+      20.4285,
+      79.2365
+    ],
+    "status": "Online",
+    "lastDetection": "Maya (Tiger T-1) (96.5%)",
+    "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791572848579,
+    "detections": [
+      {
+        "animalId": "T-1",
+        "animalName": "Maya (Tiger T-1)",
+        "animalType": "tiger",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 96.5,
+        "behavior": "Territorial boundary patrol along forest fireline",
+        "notes": "Maya (Tiger T-1) captured by motion sensor. Territorial boundary patrol along forest fireline."
+      }
+    ]
+  },
+  {
+    "id": "CT-N1",
+    "name": "Far North Navegaon Boundary Camera",
+    "pos": [
+      20.472,
+      79.278
+    ],
+    "status": "Online",
+    "lastDetection": "Ghost (Leopard L-1) (97.3%)",
+    "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791572848579,
+    "detections": [
+      {
+        "animalId": "T-3",
+        "animalName": "Chhota Matka (Tiger T-3)",
+        "animalType": "tiger",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.9,
+        "behavior": "Vigorous movement along Navegaon northern core boundary",
+        "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Vigorous movement along Navegaon northern core boundary."
+      },
+      {
+        "animalId": "L-1",
+        "animalName": "Ghost (Leopard L-1)",
+        "animalType": "leopard",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.3,
+        "behavior": "Scaling rocky ledge near Navegaon cliff top",
+        "notes": "Ghost (Leopard L-1) captured by motion sensor. Scaling rocky ledge near Navegaon cliff top."
+      }
+    ]
+  },
+  {
+    "id": "CT-N2",
+    "name": "North Ramdegi Ridge Camera",
+    "pos": [
+      20.441,
+      79.312
+    ],
+    "status": "Online",
+    "lastDetection": "Maya (Tiger T-1) (97.0%)",
+    "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791655648579,
+    "detections": [
+      {
+        "animalId": "b1",
+        "animalName": "Baloo (Sloth Bear)",
+        "animalType": "bear",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.4,
+        "behavior": "Digging out termite mound at Ramdegi ridge base",
+        "notes": "Baloo (Sloth Bear) captured by motion sensor. Digging out termite mound at Ramdegi ridge base."
+      },
+      {
+        "animalId": "T-3",
+        "animalName": "Chhota Matka (Tiger T-3)",
+        "animalType": "tiger",
+        "time": 1791591374190,
+        "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.9,
+        "behavior": "Descending rocky slopes of Ramdegi ridge",
+        "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Descending rocky slopes of Ramdegi ridge."
+      },
+      {
+        "animalId": "L-1",
+        "animalName": "Ghost (Leopard L-1)",
+        "animalType": "leopard",
+        "time": 1791594501720,
+        "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.4,
+        "behavior": "Surveying Ramdegi valley from high rocky outcrop",
+        "notes": "Ghost (Leopard L-1) captured by motion sensor. Surveying Ramdegi valley from high rocky outcrop."
+      },
+      {
+        "animalId": "T-1",
+        "animalName": "Maya (Tiger T-1)",
+        "animalType": "tiger",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.0,
+        "behavior": "Ridge traversal near Ramdegi cliff line",
+        "notes": "Maya (Tiger T-1) captured by motion sensor. Ridge traversal near Ramdegi cliff line."
+      }
+    ]
+  },
+  {
+    "id": "CT-NE1",
+    "name": "North-East Alizanja Sector Camera",
+    "pos": [
+      20.4215,
+      79.351
+    ],
+    "status": "Online",
+    "lastDetection": "Maya (Tiger T-1) (97.4%)",
+    "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791640380618,
+    "detections": [
+      {
+        "animalId": "T-3",
+        "animalName": "Chhota Matka (Tiger T-3)",
+        "animalType": "tiger",
+        "time": 1791607008918,
+        "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 96.2,
+        "behavior": "Moving through Alizanja buffer grassland",
+        "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Moving through Alizanja buffer grassland."
+      },
+      {
+        "animalId": "T-1",
+        "animalName": "Maya (Tiger T-1)",
+        "animalType": "tiger",
+        "time": 1791640380618,
+        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.4,
+        "behavior": "Nocturnal patrol along Alizanja stream bank",
+        "notes": "Maya (Tiger T-1) captured by motion sensor. Nocturnal patrol along Alizanja stream bank."
+      }
+    ]
+  },
+  {
+    "id": "CT-NE2",
+    "name": "North-East Madnapur Buffer Camera",
+    "pos": [
+      20.395,
+      79.428
+    ],
+    "status": "Online",
+    "lastDetection": "Ghost (Leopard L-1) (99.6%)",
+    "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791633614400,
+    "detections": [
+      {
+        "animalId": "T-3",
+        "animalName": "Chhota Matka (Tiger T-3)",
+        "animalType": "tiger",
+        "time": 1791621527363,
+        "image": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.0,
+        "behavior": "Crossing Madnapur forest stream at dusk",
+        "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Crossing Madnapur forest stream at dusk."
+      },
+      {
+        "animalId": "L-1",
+        "animalName": "Ghost (Leopard L-1)",
+        "animalType": "leopard",
+        "time": 1791633614400,
+        "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.6,
+        "behavior": "Nocturnal tree descent near Madnapur buffer",
+        "notes": "Ghost (Leopard L-1) captured by motion sensor. Nocturnal tree descent near Madnapur buffer."
+      }
+    ]
+  },
+  {
+    "id": "CT-E1",
+    "name": "East Belara Perimeter Camera",
+    "pos": [
+      20.372,
+      79.465
+    ],
+    "status": "Offline",
+    "lastDetection": "Ghost (Leopard L-1) (96.8%)",
+    "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791655648579,
+    "detections": [
+      {
+        "animalId": "T-3",
+        "animalName": "Chhota Matka (Tiger T-3)",
+        "animalType": "tiger",
+        "time": 1791637559767,
+        "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.8,
+        "behavior": "Nocturnal investigation of Belara firewatch tower base",
+        "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Nocturnal investigation of Belara firewatch tower base."
+      },
+      {
+        "animalId": "L-1",
+        "animalName": "Ghost (Leopard L-1)",
+        "animalType": "leopard",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 96.8,
+        "behavior": "Moving along eastern Belara boundary fence",
+        "notes": "Ghost (Leopard L-1) captured by motion sensor. Moving along eastern Belara boundary fence."
+      }
+    ]
+  },
+  {
+    "id": "CT-E2",
+    "name": "East Palasgaon Boundary Camera",
+    "pos": [
+      20.354,
+      79.489
+    ],
+    "status": "Online",
+    "lastDetection": "Chhota Matka (Tiger T-3) (99.1%)",
+    "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791655648579,
+    "detections": [
+      {
+        "animalId": "T-3",
+        "animalName": "Chhota Matka (Tiger T-3)",
+        "animalType": "tiger",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.1,
+        "behavior": "Resting near Palasgaon boundary stream",
+        "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Resting near Palasgaon boundary stream."
+      }
+    ]
+  },
+  {
+    "id": "CT-E3",
+    "name": "East Sirkada Edge Camera",
+    "pos": [
+      20.318,
+      79.525
+    ],
+    "status": "Online",
+    "lastDetection": "T-54 (Tiger T-4) (99.5%)",
+    "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791590438069,
+    "detections": [
+      {
+        "animalId": "T-4",
+        "animalName": "T-54 (Tiger T-4)",
+        "animalType": "tiger",
+        "time": 1791590438069,
+        "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.5,
+        "behavior": "Stalking chital deer near Sirkada waterhole",
+        "notes": "T-54 (Tiger T-4) captured by motion sensor. Stalking chital deer near Sirkada waterhole."
+      }
+    ]
+  },
+  {
+    "id": "CT-E4",
+    "name": "Far East Pangadi Sector Camera",
+    "pos": [
+      20.215,
+      79.562
+    ],
+    "status": "Online",
+    "lastDetection": "Mul Pangolin (99.1%)",
+    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791655648579,
+    "detections": [
+      {
+        "animalId": "T-4",
+        "animalName": "T-54 (Tiger T-4)",
+        "animalType": "tiger",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.9,
+        "behavior": "Early morning patrol at Pangadi eastern boundary",
+        "notes": "T-54 (Tiger T-4) captured by motion sensor. Early morning patrol at Pangadi eastern boundary."
+      },
+      {
+        "animalId": "p1",
+        "animalName": "Mul Pangolin",
+        "animalType": "pangolin",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.1,
+        "behavior": "Foraging along leaf litter at Pangadi sector edge",
+        "notes": "Mul Pangolin captured by motion sensor. Foraging along leaf litter at Pangadi sector edge."
+      }
+    ]
+  },
+  {
+    "id": "CT-SE1",
+    "name": "South-East Somnath Corner Camera",
+    "pos": [
+      20.125,
+      79.61
+    ],
+    "status": "Online",
+    "lastDetection": "T-54 (Tiger T-4) (97.5%)",
+    "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791655648579,
+    "detections": [
+      {
+        "animalId": "p1",
+        "animalName": "Mul Pangolin",
+        "animalType": "pangolin",
+        "time": 1791626690921,
+        "image": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.5,
+        "behavior": "Curled defensive ball upon sensor flash at Somnath",
+        "notes": "Mul Pangolin captured by motion sensor. Curled defensive ball upon sensor flash at Somnath."
+      },
+      {
+        "animalId": "T-4",
+        "animalName": "T-54 (Tiger T-4)",
+        "animalType": "tiger",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.5,
+        "behavior": "Nocturnal scent marking at Somnath southeastern corner",
+        "notes": "T-54 (Tiger T-4) captured by motion sensor. Nocturnal scent marking at Somnath southeastern corner."
+      }
+    ]
+  },
+  {
+    "id": "CT-SE2",
+    "name": "South-East Keslaghat Forest Camera",
+    "pos": [
+      20.065,
+      79.562
+    ],
+    "status": "Offline",
+    "lastDetection": "Karwa Bear (Sloth Bear) (97.0%)",
+    "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791655648579,
+    "detections": [
+      {
+        "animalId": "p1",
+        "animalName": "Mul Pangolin",
+        "animalType": "pangolin",
+        "time": 1791600957645,
+        "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.7,
+        "behavior": "Feeding on red ants near Keslaghat forest floor",
+        "notes": "Mul Pangolin captured by motion sensor. Feeding on red ants near Keslaghat forest floor."
+      },
+      {
+        "animalId": "L-3",
+        "animalName": "Kolsa Shadow (Leopard L-3)",
+        "animalType": "leopard",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.7,
+        "behavior": "Caching kill in high tree near Keslaghat deep forest",
+        "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Caching kill in high tree near Keslaghat deep forest."
+      },
+      {
+        "animalId": "b2",
+        "animalName": "Karwa Bear (Sloth Bear)",
+        "animalType": "bear",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.0,
+        "behavior": "Entering rock cavern near Keslaghat ridge",
+        "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Entering rock cavern near Keslaghat ridge."
+      }
+    ]
+  },
+  {
+    "id": "CT-SE3",
+    "name": "South-East Zari Gate Perimeter Camera",
+    "pos": [
+      20.108,
+      79.501
+    ],
+    "status": "Online",
+    "lastDetection": "T-54 (Tiger T-4) (98.5%)",
+    "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791636994288,
+    "detections": [
+      {
+        "animalId": "p1",
+        "animalName": "Mul Pangolin",
+        "animalType": "pangolin",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 96.3,
+        "behavior": "Nocturnal emergence from subterranean burrow near Zari",
+        "notes": "Mul Pangolin captured by motion sensor. Nocturnal emergence from subterranean burrow near Zari."
+      },
+      {
+        "animalId": "b2",
+        "animalName": "Karwa Bear (Sloth Bear)",
+        "animalType": "bear",
+        "time": 1791627166038,
+        "image": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.2,
+        "behavior": "Crossing dirt track near Zari perimeter",
+        "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Crossing dirt track near Zari perimeter."
+      },
+      {
+        "animalId": "L-3",
+        "animalName": "Kolsa Shadow (Leopard L-3)",
+        "animalType": "leopard",
+        "time": 1791627661025,
+        "image": "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.3,
+        "behavior": "Passing Zari perimeter camera under moonlight",
+        "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Passing Zari perimeter camera under moonlight."
+      },
+      {
+        "animalId": "T-4",
+        "animalName": "T-54 (Tiger T-4)",
+        "animalType": "tiger",
+        "time": 1791636994288,
+        "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.5,
+        "behavior": "Traversing Zari gate forest track after sunset",
+        "notes": "T-54 (Tiger T-4) captured by motion sensor. Traversing Zari gate forest track after sunset."
+      }
+    ]
+  },
+  {
+    "id": "CT-S1",
+    "name": "South Mamla Buffer Corner Camera",
+    "pos": [
+      20.062,
+      79.388
+    ],
+    "status": "Online",
+    "lastDetection": "Matkasur (Tiger T-2) (97.3%)",
+    "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791655648579,
+    "detections": [
+      {
+        "animalId": "b2",
+        "animalName": "Karwa Bear (Sloth Bear)",
+        "animalType": "bear",
+        "time": 1791601523673,
+        "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.1,
+        "behavior": "Excavating ant nest in Mamla buffer woods",
+        "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Excavating ant nest in Mamla buffer woods."
+      },
+      {
+        "animalId": "L-2",
+        "animalName": "Scarface (Leopard L-2)",
+        "animalType": "leopard",
+        "time": 1791627780026,
+        "image": "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.0,
+        "behavior": "Nocturnal patrol along Mamla southern water channel",
+        "notes": "Scarface (Leopard L-2) captured by motion sensor. Nocturnal patrol along Mamla southern water channel."
+      },
+      {
+        "animalId": "T-2",
+        "animalName": "Matkasur (Tiger T-2)",
+        "animalType": "tiger",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.3,
+        "behavior": "Patrolling far southern buffer waterhole",
+        "notes": "Matkasur (Tiger T-2) captured by motion sensor. Patrolling far southern buffer waterhole."
+      }
+    ]
+  },
+  {
+    "id": "CT-S2",
+    "name": "South Junona Forest Camera",
+    "pos": [
+      20.165,
+      79.352
+    ],
+    "status": "Online",
+    "lastDetection": "Matkasur (Tiger T-2) (99.2%)",
+    "image": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791633260024,
+    "detections": [
+      {
+        "animalId": "d1",
+        "animalName": "Kolsa Dhole Pack",
+        "animalType": "dog",
+        "time": 1791594605636,
+        "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.4,
+        "behavior": "Coordinated hunting run through Junona scrub",
+        "notes": "Kolsa Dhole Pack captured by motion sensor. Coordinated hunting run through Junona scrub."
+      },
+      {
+        "animalId": "L-2",
+        "animalName": "Scarface (Leopard L-2)",
+        "animalType": "leopard",
+        "time": 1791601726105,
+        "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.0,
+        "behavior": "Ascending mahua tree branch along Junona track",
+        "notes": "Scarface (Leopard L-2) captured by motion sensor. Ascending mahua tree branch along Junona track."
+      },
+      {
+        "animalId": "T-2",
+        "animalName": "Matkasur (Tiger T-2)",
+        "animalType": "tiger",
+        "time": 1791633260024,
+        "image": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.2,
+        "behavior": "Nocturnal scent marking along Junona forest track",
+        "notes": "Matkasur (Tiger T-2) captured by motion sensor. Nocturnal scent marking along Junona forest track."
+      }
+    ]
+  },
+  {
+    "id": "CT-SW1",
+    "name": "South-West Dewada-Adegaon Camera",
+    "pos": [
+      20.142,
+      79.318
+    ],
+    "status": "Online",
+    "lastDetection": "Matkasur (Tiger T-2) (97.4%)",
+    "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791614420001,
+    "detections": [
+      {
+        "animalId": "L-2",
+        "animalName": "Scarface (Leopard L-2)",
+        "animalType": "leopard",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.4,
+        "behavior": "Creeping through rocky culvert at Dewada-Adegaon",
+        "notes": "Scarface (Leopard L-2) captured by motion sensor. Creeping through rocky culvert at Dewada-Adegaon."
+      },
+      {
+        "animalId": "T-2",
+        "animalName": "Matkasur (Tiger T-2)",
+        "animalType": "tiger",
+        "time": 1791614420001,
+        "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.4,
+        "behavior": "Resting in dense bamboo thicket near Dewada-Adegaon",
+        "notes": "Matkasur (Tiger T-2) captured by motion sensor. Resting in dense bamboo thicket near Dewada-Adegaon."
+      }
+    ]
+  },
+  {
+    "id": "CT-SW2",
+    "name": "South-West Peth-Zari Border Camera",
+    "pos": [
+      20.105,
+      79.462
+    ],
+    "status": "Online",
+    "lastDetection": "Scarface (Leopard L-2) (99.2%)",
+    "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791655648579,
+    "detections": [
+      {
+        "animalId": "b2",
+        "animalName": "Karwa Bear (Sloth Bear)",
+        "animalType": "bear",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.5,
+        "behavior": "Carrying cub on back past Peth-Zari rocks",
+        "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Carrying cub on back past Peth-Zari rocks."
+      },
+      {
+        "animalId": "d1",
+        "animalName": "Kolsa Dhole Pack",
+        "animalType": "dog",
+        "time": 1791614207688,
+        "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.9,
+        "behavior": "Regrouping and social greeting at Peth-Zari edge",
+        "notes": "Kolsa Dhole Pack captured by motion sensor. Regrouping and social greeting at Peth-Zari edge."
+      },
+      {
+        "animalId": "L-2",
+        "animalName": "Scarface (Leopard L-2)",
+        "animalType": "leopard",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.2,
+        "behavior": "Resting on boulder near Peth-Zari border",
+        "notes": "Scarface (Leopard L-2) captured by motion sensor. Resting on boulder near Peth-Zari border."
+      }
+    ]
+  },
+  {
+    "id": "CT-W1",
+    "name": "West Khutwanda Crossing Camera",
+    "pos": [
+      20.268,
+      79.308
+    ],
+    "status": "Online",
+    "lastDetection": "Maya (Tiger T-1) (99.3%)",
+    "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791601018614,
+    "detections": [
+      {
+        "animalId": "T-2",
+        "animalName": "Matkasur (Tiger T-2)",
+        "animalType": "tiger",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.9,
+        "behavior": "Patrolling western core boundary in early twilight",
+        "notes": "Matkasur (Tiger T-2) captured by motion sensor. Patrolling western core boundary in early twilight."
+      },
+      {
+        "animalId": "T-1",
+        "animalName": "Maya (Tiger T-1)",
+        "animalType": "tiger",
+        "time": 1791601018614,
+        "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.3,
+        "behavior": "Prey stalk near edge of Khutwanda clearing",
+        "notes": "Maya (Tiger T-1) captured by motion sensor. Prey stalk near edge of Khutwanda clearing."
+      }
+    ]
+  },
+  {
+    "id": "CT-W2",
+    "name": "West Buffer Kolara Corridor Camera",
+    "pos": [
+      20.355,
+      79.285
+    ],
+    "status": "Online",
+    "lastDetection": "Maya (Tiger T-1) (99.1%)",
+    "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791587758591,
+    "detections": [
+      {
+        "animalId": "T-1",
+        "animalName": "Maya (Tiger T-1)",
+        "animalType": "tiger",
+        "time": 1791587758591,
+        "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 99.1,
+        "behavior": "Scent-marking teak tree at road crossing",
+        "notes": "Maya (Tiger T-1) captured by motion sensor. Scent-marking teak tree at road crossing."
+      }
+    ]
+  },
+  {
+    "id": "CT-C1",
+    "name": "Central Tadoba Lake North Camera",
+    "pos": [
+      20.252,
+      79.385
+    ],
+    "status": "Online",
+    "lastDetection": "Baloo (Sloth Bear) (97.0%)",
+    "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791655648579,
+    "detections": [
+      {
+        "animalId": "T-1",
+        "animalName": "Maya (Tiger T-1)",
+        "animalType": "tiger",
+        "time": 1791613916431,
+        "image": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 96.4,
+        "behavior": "Active drinking and resting at Tadoba Lake edge",
+        "notes": "Maya (Tiger T-1) captured by motion sensor. Active drinking and resting at Tadoba Lake edge."
+      },
+      {
+        "animalId": "b1",
+        "animalName": "Baloo (Sloth Bear)",
+        "animalType": "bear",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.0,
+        "behavior": "Drinking at northern shallows of Tadoba Lake",
+        "notes": "Baloo (Sloth Bear) captured by motion sensor. Drinking at northern shallows of Tadoba Lake."
+      }
+    ]
+  },
+  {
+    "id": "CT-C2",
+    "name": "Central Telia Dam Camera",
+    "pos": [
+      20.211,
+      79.345
+    ],
+    "status": "Online",
+    "lastDetection": "Matkasur (Tiger T-2) (98.6%)",
+    "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791595270198,
+    "detections": [
+      {
+        "animalId": "d1",
+        "animalName": "Kolsa Dhole Pack",
+        "animalType": "dog",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.6,
+        "behavior": "Pack resting in shade near Telia Dam spillway",
+        "notes": "Kolsa Dhole Pack captured by motion sensor. Pack resting in shade near Telia Dam spillway."
+      },
+      {
+        "animalId": "T-2",
+        "animalName": "Matkasur (Tiger T-2)",
+        "animalType": "tiger",
+        "time": 1791595270198,
+        "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.6,
+        "behavior": "Crossing Telia dam embankment towards south",
+        "notes": "Matkasur (Tiger T-2) captured by motion sensor. Crossing Telia dam embankment towards south."
+      }
+    ]
+  },
+  {
+    "id": "CT-C3",
+    "name": "Central Kolsa Core Range Camera",
+    "pos": [
+      20.222,
+      79.462
+    ],
+    "status": "Online",
+    "lastDetection": "Kolsa Dhole Pack (97.1%)",
+    "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791633163297,
+    "detections": [
+      {
+        "animalId": "L-3",
+        "animalName": "Kolsa Shadow (Leopard L-3)",
+        "animalType": "leopard",
+        "time": 1791572848579,
+        "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.3,
+        "behavior": "Stealth patrol along Kolsa core dry creek bed",
+        "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Stealth patrol along Kolsa core dry creek bed."
+      },
+      {
+        "animalId": "T-4",
+        "animalName": "T-54 (Tiger T-4)",
+        "animalType": "tiger",
+        "time": 1791622073284,
+        "image": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 96.6,
+        "behavior": "Resting in shade of Kolsa dense teak canopy",
+        "notes": "T-54 (Tiger T-4) captured by motion sensor. Resting in shade of Kolsa dense teak canopy."
+      },
+      {
+        "animalId": "d1",
+        "animalName": "Kolsa Dhole Pack",
+        "animalType": "dog",
+        "time": 1791633163297,
+        "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.1,
+        "behavior": "Trotting along main Kolsa core firebreak",
+        "notes": "Kolsa Dhole Pack captured by motion sensor. Trotting along main Kolsa core firebreak."
+      }
+    ]
+  },
+  {
+    "id": "CT-C4",
+    "name": "Central Pandharpauni Grasslands Camera",
+    "pos": [
+      20.285,
+      79.362
+    ],
+    "status": "Online",
+    "lastDetection": "Maya (Tiger T-1) (97.5%)",
+    "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791627492344,
+    "detections": [
+      {
+        "animalId": "b1",
+        "animalName": "Baloo (Sloth Bear)",
+        "animalType": "bear",
+        "time": 1791626860798,
+        "image": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 96.5,
+        "behavior": "Foraging for mahua flowers near Pandharpauni",
+        "notes": "Baloo (Sloth Bear) captured by motion sensor. Foraging for mahua flowers near Pandharpauni."
+      },
+      {
+        "animalId": "T-1",
+        "animalName": "Maya (Tiger T-1)",
+        "animalType": "tiger",
+        "time": 1791627492344,
+        "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.5,
+        "behavior": "Moving silently through Pandharpauni tall grass",
+        "notes": "Maya (Tiger T-1) captured by motion sensor. Moving silently through Pandharpauni tall grass."
+      }
+    ]
+  },
+  {
+    "id": "CT-C5",
+    "name": "Central Katezari Waterhole Camera",
+    "pos": [
+      20.312,
+      79.398
+    ],
+    "status": "Offline",
+    "lastDetection": "Ghost (Leopard L-1) (97.8%)",
+    "image": "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791613990563,
+    "detections": [
+      {
+        "animalId": "b1",
+        "animalName": "Baloo (Sloth Bear)",
+        "animalType": "bear",
+        "time": 1791601053228,
+        "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.4,
+        "behavior": "Snuffling along Katezari wet spring bank",
+        "notes": "Baloo (Sloth Bear) captured by motion sensor. Snuffling along Katezari wet spring bank."
+      },
+      {
+        "animalId": "L-1",
+        "animalName": "Ghost (Leopard L-1)",
+        "animalType": "leopard",
+        "time": 1791613990563,
+        "image": "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 97.8,
+        "behavior": "Drinking at Katezari natural spring waterhole",
+        "notes": "Ghost (Leopard L-1) captured by motion sensor. Drinking at Katezari natural spring waterhole."
+      }
+    ]
+  },
+  {
+    "id": "CT-C6",
+    "name": "Central Andhari River Gorge Camera",
+    "pos": [
+      20.258,
+      79.432
+    ],
+    "status": "Online",
+    "lastDetection": "Kolsa Dhole Pack (96.4%)",
+    "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+    "timestamp": 1791655648579,
+    "detections": [
+      {
+        "animalId": "L-3",
+        "animalName": "Kolsa Shadow (Leopard L-3)",
+        "animalType": "leopard",
+        "time": 1791600721699,
+        "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.8,
+        "behavior": "Leaping across rocks at Andhari River gorge",
+        "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Leaping across rocks at Andhari River gorge."
+      },
+      {
+        "animalId": "T-4",
+        "animalName": "T-54 (Tiger T-4)",
+        "animalType": "tiger",
+        "time": 1791606655152,
+        "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 98.2,
+        "behavior": "Crossing Andhari river canyon in deep gorge",
+        "notes": "T-54 (Tiger T-4) captured by motion sensor. Crossing Andhari river canyon in deep gorge."
+      },
+      {
+        "animalId": "d1",
+        "animalName": "Kolsa Dhole Pack",
+        "animalType": "dog",
+        "time": 1791655648579,
+        "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+        "confidence": 96.4,
+        "behavior": "Splashing across Andhari river shallows together",
+        "notes": "Kolsa Dhole Pack captured by motion sensor. Splashing across Andhari river shallows together."
+      }
+    ]
+  }
+]

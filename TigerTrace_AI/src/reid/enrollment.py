@@ -6,7 +6,7 @@ from typing import Optional, Dict, Any, List, Tuple
 import numpy as np
 import cv2
 
-from .stripe_matcher import StripeReIDMatcher
+from .stripe_matcher import StripeReIDMatcher, is_flank_compatible, normalize_flank_orientation
 
 try:
     from ..config import (
@@ -30,6 +30,7 @@ class TigerEnrollmentEngine:
     
     Provides safe, explainable, human-auditable individual identification:
     - Rejects false certainty on empty catalogues.
+    - Enforces biological flank compatibility (rejects cross-flank and unknown-flank comparisons).
     - Prevents unsafe automatic enrollment of low-confidence observations.
     - Emits explicit identity decision states:
         * 'matched': High-confidence match to an existing enrolled individual.
@@ -50,8 +51,10 @@ class TigerEnrollmentEngine:
         viz_dir: Optional[str] = None,
         matcher: Optional[StripeReIDMatcher] = None,
         model_version: Optional[str] = None,
+        allow_auto_confirm: bool = False,
     ):
         self.conn = db_connection
+        self.allow_auto_confirm = allow_auto_confirm
         self.high_thresh = float(
             high_confidence_threshold
             if high_confidence_threshold is not None
@@ -88,10 +91,15 @@ class TigerEnrollmentEngine:
         cur.execute("PRAGMA table_info(tigers);")
         return [row[1] for row in cur.fetchall()]
 
-    def load_catalogue(self, species: Optional[str] = None) -> List[Dict[str, Any]]:
+    def load_catalogue(
+        self,
+        species: Optional[str] = None,
+        flank_side: Optional[str] = None,
+    ) -> List[Dict[str, Any]]:
         """
-        Loads all enrolled reference animals and their reference flank features from the database.
+        Loads enrolled reference animals and their reference flank features from the database.
         Filters by species if species metadata is present in the catalogue.
+        Filters by flank orientation compatibility if flank_side is specified.
         """
         if self.conn is None:
             return []
@@ -99,23 +107,38 @@ class TigerEnrollmentEngine:
         cur = self.conn.cursor()
         cols = self._get_tigers_columns()
         has_species_col = "species" in cols
+        has_flank_col = "flank_side_registered" in cols
 
+        query_cols = ["tiger_id", "name", "gender", "reference_crop_path", "stripe_features_json"]
         if has_species_col:
-            cur.execute(
-                "SELECT tiger_id, name, gender, reference_crop_path, stripe_features_json, species FROM tigers;"
-            )
-        else:
-            cur.execute(
-                "SELECT tiger_id, name, gender, reference_crop_path, stripe_features_json FROM tigers;"
-            )
+            query_cols.append("species")
+        if has_flank_col:
+            query_cols.append("flank_side_registered")
 
+        cur.execute(f"SELECT {', '.join(query_cols)} FROM tigers;")
         rows = cur.fetchall()
+
         catalogue = []
+        norm_query_flank = normalize_flank_orientation(flank_side) if flank_side is not None else None
+
+        # If a query flank orientation is explicitly specified and unknown, orientation guard
+        # dictates that no reference can be safely compared.
+        if flank_side is not None and norm_query_flank == "unknown":
+            return []
+
         for r in rows:
             entry_species = r["species"] if has_species_col else None
-            # If species metadata is provided on both query and catalogue entry, ensure compatibility
+            entry_flank = r["flank_side_registered"] if (has_flank_col and r["flank_side_registered"]) else "both"
+
+            # Species compatibility check
             if species is not None and entry_species is not None:
                 if entry_species.strip().lower() != species.strip().lower():
+                    continue
+
+            # Flank compatibility check when query flank orientation is provided
+            if norm_query_flank is not None:
+                comp, _ = is_flank_compatible(norm_query_flank, entry_flank)
+                if not comp:
                     continue
 
             catalogue.append({
@@ -124,6 +147,7 @@ class TigerEnrollmentEngine:
                 "gender": r["gender"],
                 "crop_path": r["reference_crop_path"],
                 "species": entry_species,
+                "flank_side": entry_flank,
                 "features": json.loads(r["stripe_features_json"]) if r["stripe_features_json"] else None,
             })
         return catalogue
@@ -172,7 +196,7 @@ class TigerEnrollmentEngine:
         print(f"[CATALOGUE SEED] Registered {enrolled_count} reference individual tigers into SQLite.")
         return enrolled_count
 
-    def _generate_next_candidate_id(self, prefix: str = "PTR_T_") -> str:
+    def _generate_next_candidate_id(self, prefix: str = "TATR_T_") -> str:
         """Generates a non-colliding candidate identifier for new individual proposals."""
         if self.conn is None:
             return f"{prefix}001"
@@ -203,17 +227,21 @@ class TigerEnrollmentEngine:
         query_emb: Optional[np.ndarray] = None,
         species: Optional[str] = None,
         exclude_tiger_id: Optional[str] = None,
+        flank_side: Optional[str] = None,
     ) -> Tuple[bool, Optional[Dict[str, Any]]]:
         """
         Compares an image against all currently enrolled individuals to detect potential duplicates.
+        Enforces flank compatibility: incompatible or unknown orientations are not compared.
         Returns: (is_duplicate_flagged, top_match_record)
         """
-        catalogue = self.load_catalogue(species=species)
+        catalogue = self.load_catalogue(species=species, flank_side=flank_side)
         if not catalogue:
             return False, None
 
         if query_emb is None and os.path.exists(query_crop_path):
             query_emb = self.matcher.extract_deep_embedding(query_crop_path)
+
+        norm_query_flank = normalize_flank_orientation(flank_side) if flank_side is not None else None
 
         candidates = []
         for ind in catalogue:
@@ -222,8 +250,23 @@ class TigerEnrollmentEngine:
             ref_crop = ind["crop_path"]
             if not ref_crop or not os.path.exists(ref_crop):
                 continue
+            ref_flank = ind.get("flank_side", "both")
+
+            # Matcher guard: check compatibility before calling compare_flanks
+            if norm_query_flank is not None:
+                comp, _ = is_flank_compatible(norm_query_flank, ref_flank)
+                if not comp:
+                    continue
+
             ref_emb = np.array(ind["features"]) if ind["features"] else None
-            match_res = self.matcher.compare_flanks(query_crop_path, ref_crop, query_emb, ref_emb)
+            match_res = self.matcher.compare_flanks(
+                query_crop_path,
+                ref_crop,
+                query_emb=query_emb,
+                ref_emb=ref_emb,
+                query_flank=flank_side,
+                ref_flank=ref_flank,
+            )
             score = match_res.get("combined_score", 0.0)
             candidates.append({
                 "tiger_id": ind["tiger_id"],
@@ -266,19 +309,23 @@ class TigerEnrollmentEngine:
             raise RuntimeError("Database connection required to approve enrollment.")
 
         cur = self.conn.cursor()
-        cur.execute("SELECT sighting_id, flank_crop_path, species FROM sightings WHERE sighting_id = ?;", (sighting_id,))
+        cur.execute("SELECT * FROM sightings WHERE sighting_id = ?;", (sighting_id,))
         sighting_row = cur.fetchone()
         if not sighting_row:
             raise ValueError(f"Sighting ID {sighting_id} not found in database.")
 
         crop_path = sighting_row["flank_crop_path"]
-        effective_species = species or sighting_row["species"] or "tiger"
+        col_keys = sighting_row.keys() if hasattr(sighting_row, "keys") else []
+        effective_species = species or (sighting_row["species"] if "species" in col_keys else None) or "tiger"
+        effective_flank = sighting_row["flank_side"] if ("flank_side" in col_keys and sighting_row["flank_side"]) else None
 
         if not crop_path or not os.path.exists(crop_path):
             raise FileNotFoundError(f"Crop image not found at: {crop_path}")
 
-        # Check for possible duplicates before approval
-        is_dup, top_dup = self.check_potential_duplicate(crop_path, species=effective_species)
+        # Check for possible duplicates before approval with flank compatibility
+        is_dup, top_dup = self.check_potential_duplicate(
+            crop_path, species=effective_species, flank_side=effective_flank
+        )
         if is_dup and not force:
             logger.warning(
                 "Enrollment approval halted: potential duplicate of %s (score=%.4f >= duplicate_threshold=%.4f).",
@@ -307,17 +354,19 @@ class TigerEnrollmentEngine:
 
         cols = self._get_tigers_columns()
         has_species_col = "species" in cols
+        norm_flank = normalize_flank_orientation(effective_flank)
+        reg_flank = norm_flank if norm_flank in ("left", "right") else "both"
 
         if has_species_col:
             cur.execute("""
             INSERT INTO tigers (tiger_id, name, gender, flank_side_registered, first_seen_date, last_seen_date, reference_crop_path, stripe_features_json, status, notes, species)
-            VALUES (?, ?, ?, 'both', date('now'), date('now'), ?, ?, 'resident', ?, ?);
-            """, (resolved_id, resolved_name, gender, crop_path, emb_json, notes, effective_species))
+            VALUES (?, ?, ?, ?, date('now'), date('now'), ?, ?, 'resident', ?, ?);
+            """, (resolved_id, resolved_name, gender, reg_flank, crop_path, emb_json, notes, effective_species))
         else:
             cur.execute("""
             INSERT INTO tigers (tiger_id, name, gender, flank_side_registered, first_seen_date, last_seen_date, reference_crop_path, stripe_features_json, status, notes)
-            VALUES (?, ?, ?, 'both', date('now'), date('now'), ?, ?, 'resident', ?);
-            """, (resolved_id, resolved_name, gender, crop_path, emb_json, notes))
+            VALUES (?, ?, ?, ?, date('now'), date('now'), ?, ?, 'resident', ?);
+            """, (resolved_id, resolved_name, gender, reg_flank, crop_path, emb_json, notes))
 
         # Update sighting
         cur.execute("""
@@ -351,34 +400,321 @@ class TigerEnrollmentEngine:
             "species": effective_species,
         }
 
+    def _get_review_queue_columns(self) -> List[str]:
+        """Inspects columns of the review_queue table for schema resilience."""
+        if self.conn is None:
+            return []
+        cur = self.conn.cursor()
+        cur.execute("PRAGMA table_info(review_queue);")
+        return [row[1] for row in cur.fetchall()]
+
+    def _insert_review_queue_item(
+        self,
+        sighting_id: int,
+        suggested_tiger_id: str,
+        suggested_score: float,
+        top_candidates: List[Dict[str, Any]],
+        flank_crop_path: str,
+        viz_path: Optional[str] = None,
+        query_flank: Optional[str] = None,
+        ref_flank: Optional[str] = None,
+        sift_inliers: int = 0,
+        geometric_status: str = "none",
+        raw_cosine_sim: float = 0.0,
+    ) -> int:
+        """Safely inserts a review queue record with rich biometric audit evidence."""
+        if self.conn is None:
+            return -1
+        cur = self.conn.cursor()
+        cols = self._get_review_queue_columns()
+
+        insert_dict = {
+            "sighting_id": sighting_id,
+            "suggested_tiger_id": suggested_tiger_id,
+            "suggested_score": suggested_score,
+            "top_candidates_json": json.dumps(top_candidates),
+            "flank_crop_path": flank_crop_path,
+            "sift_match_viz_path": viz_path,
+            "status": "pending",
+        }
+        if "query_flank" in cols:
+            insert_dict["query_flank"] = query_flank
+        if "ref_flank" in cols:
+            insert_dict["ref_flank"] = ref_flank
+        if "sift_inliers" in cols:
+            insert_dict["sift_inliers"] = sift_inliers
+        if "geometric_status" in cols:
+            insert_dict["geometric_status"] = geometric_status
+        if "raw_cosine_sim" in cols:
+            insert_dict["raw_cosine_sim"] = raw_cosine_sim
+
+        col_names = ", ".join(insert_dict.keys())
+        placeholders = ", ".join(["?"] * len(insert_dict))
+        cur.execute(f"INSERT INTO review_queue ({col_names}) VALUES ({placeholders});", tuple(insert_dict.values()))
+        self.conn.commit()
+        return cur.lastrowid
+
+    def process_review_decision(
+        self,
+        review_id: int,
+        action: str,
+        reviewer_id: str,
+        reason: str,
+        tiger_id: Optional[str] = None,
+        force: bool = False,
+    ) -> Dict[str, Any]:
+        """
+        Step 14: Human-in-the-Loop Review Decision Processor.
+        
+        Actions:
+        - 'accept' (or 'approve'): Accept candidate as confirmed identity.
+        - 'reject': Reject candidate match; marks sighting as rejected with tiger_id cleared.
+        - 'inconclusive' (or 'unknown'): Mark observation as inconclusive; marks sighting as inconclusive.
+        - 'enroll_new': Enroll as a new individual in the catalogue via approve_new_identity.
+        
+        Guards:
+        - Rejects conflicting or duplicate review decisions (raises RuntimeError with conflict semantics).
+        - Validates reviewer_id and reason are non-empty.
+        - Records reviewer decision, timestamp, reviewer_id, and reason in review_queue and review_audit_log.
+        - Preserves machine suggested identity and raw scores in audit history.
+        """
+        if self.conn is None:
+            raise RuntimeError("Database connection required to process review decision.")
+
+        norm_action = action.lower().strip()
+        if norm_action == "approve":
+            norm_action = "accept"
+        elif norm_action == "unknown":
+            norm_action = "inconclusive"
+
+        valid_actions = {"accept", "reject", "inconclusive", "enroll_new"}
+        if norm_action not in valid_actions:
+            raise ValueError(f"Invalid review action: '{action}'. Allowed actions: {sorted(list(valid_actions))}")
+
+        if not reviewer_id or not str(reviewer_id).strip():
+            raise ValueError("Reviewer identifier (reviewer_id) is required.")
+
+        if not reason or not str(reason).strip():
+            raise ValueError("Review reason is required.")
+
+        cur = self.conn.cursor()
+        cur.execute("SELECT * FROM review_queue WHERE review_id = ?;", (review_id,))
+        review_row = cur.fetchone()
+        if not review_row:
+            raise KeyError(f"Review item #{review_id} not found.")
+
+        if hasattr(review_row, "keys"):
+            row_dict = dict(review_row)
+        else:
+            col_names = [d[0] for d in cur.description]
+            row_dict = dict(zip(col_names, review_row))
+
+        current_status = row_dict.get("status")
+        if current_status != "pending":
+            raise RuntimeError(
+                f"Conflict: Review item #{review_id} has already been resolved with status '{current_status}'."
+            )
+
+        sighting_id = row_dict.get("sighting_id")
+        suggested_id = row_dict.get("suggested_tiger_id")
+        suggested_score = row_dict.get("suggested_score", 0.0)
+        raw_cosine = row_dict.get("raw_cosine_sim", 0.0)
+        sift_inliers = row_dict.get("sift_inliers", 0)
+
+        assigned_tiger = None
+
+        if norm_action == "accept":
+            assigned_tiger = (tiger_id or suggested_id or "").strip().upper()
+            if not assigned_tiger:
+                raise ValueError("Cannot accept review item without a valid candidate tiger identity.")
+
+            cur.execute("SELECT tiger_id, name FROM tigers WHERE tiger_id = ?;", (assigned_tiger,))
+            tiger_row = cur.fetchone()
+            if not tiger_row:
+                raise ValueError(
+                    f"Candidate identity '{assigned_tiger}' does not exist in registered tigers catalogue. "
+                    "Use 'enroll_new' to register a new individual."
+                )
+
+            cur.execute("""
+            UPDATE sightings 
+            SET tiger_id = ?, review_status = 'confirmed', match_method = 'manual' 
+            WHERE sighting_id = ?;
+            """, (assigned_tiger, sighting_id))
+
+            cur.execute("UPDATE tigers SET last_seen_date = date('now') WHERE tiger_id = ?;", (assigned_tiger,))
+
+            rq_cols = self._get_review_queue_columns()
+            set_clauses = ["status = 'accepted'", "reviewer_notes = ?", "reviewed_at = CURRENT_TIMESTAMP"]
+            params = [reason]
+            if "decision" in rq_cols:
+                set_clauses.append("decision = 'accepted'")
+            if "decision_reason" in rq_cols:
+                set_clauses.append("decision_reason = ?")
+                params.append(reason)
+            if "reviewer_id" in rq_cols:
+                set_clauses.append("reviewer_id = ?")
+                params.append(reviewer_id)
+            params.append(review_id)
+
+            cur.execute(f"UPDATE review_queue SET {', '.join(set_clauses)} WHERE review_id = ?;", tuple(params))
+
+        elif norm_action == "reject":
+            cur.execute("""
+            UPDATE sightings 
+            SET tiger_id = NULL, review_status = 'rejected', match_method = 'unmatched' 
+            WHERE sighting_id = ?;
+            """, (sighting_id,))
+
+            rq_cols = self._get_review_queue_columns()
+            set_clauses = ["status = 'rejected'", "reviewer_notes = ?", "reviewed_at = CURRENT_TIMESTAMP"]
+            params = [reason]
+            if "decision" in rq_cols:
+                set_clauses.append("decision = 'rejected'")
+            if "decision_reason" in rq_cols:
+                set_clauses.append("decision_reason = ?")
+                params.append(reason)
+            if "reviewer_id" in rq_cols:
+                set_clauses.append("reviewer_id = ?")
+                params.append(reviewer_id)
+            params.append(review_id)
+
+            cur.execute(f"UPDATE review_queue SET {', '.join(set_clauses)} WHERE review_id = ?;", tuple(params))
+
+        elif norm_action == "inconclusive":
+            cur.execute("""
+            UPDATE sightings 
+            SET tiger_id = NULL, review_status = 'inconclusive', match_method = 'unmatched' 
+            WHERE sighting_id = ?;
+            """, (sighting_id,))
+
+            rq_cols = self._get_review_queue_columns()
+            set_clauses = ["status = 'inconclusive'", "reviewer_notes = ?", "reviewed_at = CURRENT_TIMESTAMP"]
+            params = [reason]
+            if "decision" in rq_cols:
+                set_clauses.append("decision = 'inconclusive'")
+            if "decision_reason" in rq_cols:
+                set_clauses.append("decision_reason = ?")
+                params.append(reason)
+            if "reviewer_id" in rq_cols:
+                set_clauses.append("reviewer_id = ?")
+                params.append(reviewer_id)
+            params.append(review_id)
+
+            cur.execute(f"UPDATE review_queue SET {', '.join(set_clauses)} WHERE review_id = ?;", tuple(params))
+
+        elif norm_action == "enroll_new":
+            target_new_id = (tiger_id or suggested_id) if tiger_id and tiger_id != "NEW_TIGER" else None
+            enroll_res = self.approve_new_identity(
+                sighting_id=sighting_id,
+                candidate_id=target_new_id,
+                force=force,
+                notes=reason,
+            )
+            if enroll_res.get("status") == "possible_duplicate_flagged":
+                return enroll_res
+            assigned_tiger = enroll_res.get("tiger_id")
+
+            rq_cols = self._get_review_queue_columns()
+            set_clauses = ["status = 'enrolled_new'", "reviewer_notes = ?", "reviewed_at = CURRENT_TIMESTAMP"]
+            params = [reason]
+            if "decision" in rq_cols:
+                set_clauses.append("decision = 'enrolled_new'")
+            if "decision_reason" in rq_cols:
+                set_clauses.append("decision_reason = ?")
+                params.append(reason)
+            if "reviewer_id" in rq_cols:
+                set_clauses.append("reviewer_id = ?")
+                params.append(reviewer_id)
+            params.append(review_id)
+
+            cur.execute(f"UPDATE review_queue SET {', '.join(set_clauses)} WHERE review_id = ?;", tuple(params))
+
+        # Check and record audit log
+        try:
+            cur.execute("""
+            CREATE TABLE IF NOT EXISTS review_audit_log (
+                log_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                review_id INTEGER NOT NULL,
+                sighting_id INTEGER NOT NULL,
+                action TEXT NOT NULL,
+                assigned_tiger_id TEXT,
+                reviewer_id TEXT NOT NULL,
+                reason TEXT NOT NULL,
+                machine_suggested_id TEXT,
+                machine_suggested_score REAL,
+                machine_raw_cosine REAL,
+                machine_sift_inliers INTEGER,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+            """)
+            cur.execute("""
+            INSERT INTO review_audit_log (
+                review_id, sighting_id, action, assigned_tiger_id, reviewer_id,
+                reason, machine_suggested_id, machine_suggested_score,
+                machine_raw_cosine, machine_sift_inliers
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            """, (
+                review_id, sighting_id, norm_action, assigned_tiger, reviewer_id,
+                reason, suggested_id, suggested_score, raw_cosine, sift_inliers
+            ))
+        except Exception as e:
+            logger.warning("Failed to record review_audit_log: %s", e)
+
+        self.conn.commit()
+
+        return {
+            "status": "success",
+            "action": norm_action,
+            "review_id": review_id,
+            "sighting_id": sighting_id,
+            "assigned_tiger_id": assigned_tiger,
+            "reviewer_id": reviewer_id,
+            "reason": reason,
+            "message": f"Review #{review_id} resolved with action '{norm_action}'",
+            "machine_prediction": {
+                "suggested_tiger_id": suggested_id,
+                "suggested_score": suggested_score,
+                "raw_cosine_sim": raw_cosine,
+                "sift_inliers": sift_inliers,
+            }
+        }
+
     def identify_and_enroll(
         self,
         query_crop_path: str,
         sighting_id: int,
         image_name: str,
         species: Optional[str] = None,
+        flank_side: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
         Audited identity matching and triage logic:
         1. Validates query image features.
-        2. Safely handles empty catalogues (no false certainty, returns pending candidate).
-        3. Filters reference animals by species if metadata is available.
-        4. Applies explicit, configurable decision states:
+        2. Enforces flank compatibility guard: unknown orientation or incompatible flanks are safely rejected.
+        3. Safely handles empty catalogues (no false certainty, returns pending candidate).
+        4. Filters reference animals by species and flank compatibility.
+        5. Applies explicit, configurable decision states:
             - 'matched': score >= high_thresh
             - 'review_required': low_thresh <= score < high_thresh
             - 'new_identity_candidate': score < low_thresh (never auto-enrolled without approval)
-        5. Emits structured decision logging.
+        6. Emits structured decision logging.
         """
         cur = self.conn.cursor() if self.conn else None
 
-        # Look up species from sighting record if not explicitly provided
+        # Look up species and flank_side from sighting record if not explicitly provided
         effective_species = species
-        if effective_species is None and cur is not None and sighting_id is not None:
+        effective_flank = flank_side
+        if cur is not None and sighting_id is not None:
             try:
-                cur.execute("SELECT species FROM sightings WHERE sighting_id = ?;", (sighting_id,))
+                cur.execute("SELECT * FROM sightings WHERE sighting_id = ?;", (sighting_id,))
                 row = cur.fetchone()
-                if row and row["species"]:
-                    effective_species = row["species"]
+                if row:
+                    col_keys = row.keys() if hasattr(row, "keys") else []
+                    if effective_species is None and "species" in col_keys and row["species"]:
+                        effective_species = row["species"]
+                    if effective_flank is None and "flank_side" in col_keys and row["flank_side"]:
+                        effective_flank = row["flank_side"]
             except Exception:
                 pass
 
@@ -409,8 +745,14 @@ class TigerEnrollmentEngine:
             }
 
         # Check if image is decodable
-        test_img = cv2.imread(query_crop_path)
-        if test_img is None or test_img.size == 0:
+        test_img = None
+        try:
+            if os.path.exists(query_crop_path) and os.path.getsize(query_crop_path) > 0:
+                test_img = cv2.imread(query_crop_path)
+        except Exception:
+            test_img = None
+
+        if test_img is None or not hasattr(test_img, "size") or test_img.size == 0:
             reason = "corrupt_or_unreadable_image"
             logger.warning("Re-ID Failed: %s for sighting %s", reason, sighting_id)
 
@@ -435,15 +777,65 @@ class TigerEnrollmentEngine:
                 "model_version": self.model_version,
             }
 
-        # Load catalogue filtered by species
-        catalogue = self.load_catalogue(species=effective_species)
+        # Flank orientation guard: unknown flank cannot be safely compared to reference catalogue
+        norm_query_flank = normalize_flank_orientation(effective_flank)
+        if norm_query_flank == "unknown":
+            candidate_id = self._generate_next_candidate_id()
+            reason = "unknown_query_orientation"
+
+            logger.info(
+                "Re-ID Guard: Unknown query flank orientation for sighting %s. Safely rejected from feature matcher.",
+                sighting_id,
+            )
+
+            if cur:
+                cur.execute("""
+                UPDATE sightings
+                SET tiger_id = NULL, reid_score = 0.0, match_method = 'unmatched', review_status = 'pending_review'
+                WHERE sighting_id = ?;
+                """, (sighting_id,))
+
+                self._insert_review_queue_item(
+                    sighting_id=sighting_id,
+                    suggested_tiger_id=candidate_id,
+                    suggested_score=0.0,
+                    top_candidates=[],
+                    flank_crop_path=query_crop_path,
+                    viz_path=None,
+                    query_flank="unknown",
+                    ref_flank=None,
+                    sift_inliers=0,
+                    geometric_status="none",
+                    raw_cosine_sim=0.0,
+                )
+
+            return {
+                "decision_state": "new_identity_candidate",
+                "decision": "new_identity_candidate",
+                "assigned_tiger_id": None,
+                "suggested_tiger_id": candidate_id,
+                "candidate_id": candidate_id,
+                "confidence": 0.0,
+                "best_score": 0.0,
+                "second_best_score": None,
+                "top_candidates": [],
+                "reason": reason,
+                "flank_compatible": False,
+                "flank_reason": "unknown_query_orientation",
+                "requires_approval": True,
+                "species": effective_species,
+                "model_version": self.model_version,
+            }
+
+        # Load catalogue filtered by species and flank compatibility
+        catalogue = self.load_catalogue(species=effective_species, flank_side=norm_query_flank)
 
         # ---------------------------------------------------------------------
-        # Condition A: Empty Catalogue Handling
+        # Condition A: Empty Catalogue or No Compatible Candidates
         # ---------------------------------------------------------------------
         if not catalogue:
             candidate_id = self._generate_next_candidate_id()
-            reason = "empty_catalogue_pending_enrollment_approval"
+            reason = "no_compatible_catalogue_candidates_pending_enrollment_approval"
 
             logger.info(
                 "Re-ID Decision: state=new_identity_candidate, predicted_id=%s, best_score=0.0, second_best_score=None, reason=%s, model_version=%s, sighting_id=%s",
@@ -461,12 +853,19 @@ class TigerEnrollmentEngine:
                 WHERE sighting_id = ?;
                 """, (sighting_id,))
 
-                cur.execute("""
-                INSERT INTO review_queue (sighting_id, suggested_tiger_id, suggested_score, top_candidates_json, flank_crop_path, sift_match_viz_path, status)
-                VALUES (?, ?, 0.0, '[]', ?, NULL, 'pending');
-                """, (sighting_id, candidate_id, query_crop_path))
-
-                self.conn.commit()
+                self._insert_review_queue_item(
+                    sighting_id=sighting_id,
+                    suggested_tiger_id=candidate_id,
+                    suggested_score=0.0,
+                    top_candidates=[],
+                    flank_crop_path=query_crop_path,
+                    viz_path=None,
+                    query_flank=norm_query_flank,
+                    ref_flank=None,
+                    sift_inliers=0,
+                    geometric_status="none",
+                    raw_cosine_sim=0.0,
+                )
 
             return {
                 "decision_state": "new_identity_candidate",
@@ -479,6 +878,7 @@ class TigerEnrollmentEngine:
                 "second_best_score": None,
                 "top_candidates": [],
                 "reason": reason,
+                "flank_compatible": True,
                 "requires_approval": True,
                 "species": effective_species,
                 "model_version": self.model_version,
@@ -493,17 +893,33 @@ class TigerEnrollmentEngine:
             if not ref_crop or not os.path.exists(ref_crop):
                 continue
 
+            ref_flank = ind.get("flank_side", "both")
+            comp, _ = is_flank_compatible(norm_query_flank, ref_flank)
+            if not comp:
+                continue
+
             ref_emb = np.array(ind["features"]) if ind["features"] else None
-            match_res = self.matcher.compare_flanks(query_crop_path, ref_crop, query_emb, ref_emb)
+            match_res = self.matcher.compare_flanks(
+                query_crop_path,
+                ref_crop,
+                query_emb=query_emb,
+                ref_emb=ref_emb,
+                query_flank=norm_query_flank,
+                ref_flank=ref_flank,
+            )
 
             candidates.append({
                 "tiger_id": ind["tiger_id"],
                 "name": ind["name"],
                 "ref_crop_path": ref_crop,
+                "ref_flank": ref_flank,
                 "score": match_res.get("combined_score", 0.0),
                 "sift_score": match_res.get("sift_score", 0.0),
                 "cosine_score": match_res.get("cosine_score", 0.0),
                 "good_matches_count": match_res.get("good_matches_count", 0),
+                "inlier_count": match_res.get("inlier_count", 0),
+                "geometric_verification": match_res.get("geometric_verification", "none"),
+                "raw_cosine_similarity": match_res.get("raw_cosine_similarity", 0.0),
             })
 
         # Sort candidates descending by score
@@ -515,9 +931,9 @@ class TigerEnrollmentEngine:
         second_best_score = float(candidates[1]["score"]) if len(candidates) > 1 else None
 
         # ---------------------------------------------------------------------
-        # Condition B1: High-Confidence Valid Match
+        # Condition B1: High-Confidence Valid Match (ONLY when allow_auto_confirm is True)
         # ---------------------------------------------------------------------
-        if best_score >= self.high_thresh:
+        if best_score >= self.high_thresh and self.allow_auto_confirm:
             decision_state = "matched"
             reason = "strong_biometric_match_above_high_threshold"
 
@@ -557,17 +973,26 @@ class TigerEnrollmentEngine:
             }
 
         # ---------------------------------------------------------------------
-        # Condition B2: Ambiguous Match -> Queue for Human Review
+        # Condition B2: Candidate Match -> Queue for Human Review
+        # (All candidate matches route here under Step 13 safety policy)
         # ---------------------------------------------------------------------
-        elif best_score >= self.low_thresh:
+        elif best_score >= self.low_thresh or (best_score >= self.high_thresh and not self.allow_auto_confirm):
             decision_state = "review_required"
-            reason = "ambiguous_match_below_auto_confirm_threshold"
+            reason = (
+                "candidate_match_queued_for_human_review_uncalibrated_matcher"
+                if best_score >= self.high_thresh
+                else "ambiguous_match_below_auto_confirm_threshold"
+            )
 
             viz_name = f"sighting_{sighting_id}_match_vs_{best_id}.jpg"
             viz_path = os.path.join(self.viz_dir, viz_name)
             if best_match.get("ref_crop_path"):
                 self.matcher.generate_sift_match_visualization(
-                    query_crop_path, best_match["ref_crop_path"], viz_path
+                    query_crop_path,
+                    best_match["ref_crop_path"],
+                    viz_path,
+                    query_flank=norm_query_flank,
+                    ref_flank=best_match.get("ref_flank", "both"),
                 )
             else:
                 viz_path = None
@@ -589,12 +1014,19 @@ class TigerEnrollmentEngine:
                 WHERE sighting_id = ?;
                 """, (best_id, best_score, sighting_id))
 
-                cur.execute("""
-                INSERT INTO review_queue (sighting_id, suggested_tiger_id, suggested_score, top_candidates_json, flank_crop_path, sift_match_viz_path, status)
-                VALUES (?, ?, ?, ?, ?, ?, 'pending');
-                """, (sighting_id, best_id, best_score, json.dumps(candidates[:5]), query_crop_path, viz_path))
-
-                self.conn.commit()
+                self._insert_review_queue_item(
+                    sighting_id=sighting_id,
+                    suggested_tiger_id=best_id,
+                    suggested_score=best_score,
+                    top_candidates=candidates[:5],
+                    flank_crop_path=query_crop_path,
+                    viz_path=viz_path,
+                    query_flank=norm_query_flank,
+                    ref_flank=best_match.get("ref_flank"),
+                    sift_inliers=best_match.get("inlier_count", 0),
+                    geometric_status=best_match.get("geometric_verification", "none"),
+                    raw_cosine_sim=best_match.get("raw_cosine_similarity", 0.0),
+                )
 
             return {
                 "decision_state": decision_state,
@@ -624,7 +1056,11 @@ class TigerEnrollmentEngine:
             viz_path = os.path.join(self.viz_dir, viz_name)
             if best_match.get("ref_crop_path"):
                 self.matcher.generate_sift_match_visualization(
-                    query_crop_path, best_match["ref_crop_path"], viz_path
+                    query_crop_path,
+                    best_match["ref_crop_path"],
+                    viz_path,
+                    query_flank=norm_query_flank,
+                    ref_flank=best_match.get("ref_flank", "both"),
                 )
             else:
                 viz_path = None
@@ -647,10 +1083,19 @@ class TigerEnrollmentEngine:
                 WHERE sighting_id = ?;
                 """, (best_score, sighting_id))
 
-                cur.execute("""
-                INSERT INTO review_queue (sighting_id, suggested_tiger_id, suggested_score, top_candidates_json, flank_crop_path, sift_match_viz_path, status)
-                VALUES (?, ?, ?, ?, ?, ?, 'pending');
-                """, (sighting_id, candidate_id, best_score, json.dumps(candidates[:5]), query_crop_path, viz_path))
+                self._insert_review_queue_item(
+                    sighting_id=sighting_id,
+                    suggested_tiger_id=candidate_id,
+                    suggested_score=best_score,
+                    top_candidates=candidates[:5],
+                    flank_crop_path=query_crop_path,
+                    viz_path=viz_path,
+                    query_flank=norm_query_flank,
+                    ref_flank=best_match.get("ref_flank") if best_match else None,
+                    sift_inliers=best_match.get("inlier_count", 0) if best_match else 0,
+                    geometric_status=best_match.get("geometric_verification", "none") if best_match else "none",
+                    raw_cosine_sim=best_match.get("raw_cosine_similarity", 0.0) if best_match else 0.0,
+                )
 
                 self.conn.commit()
 

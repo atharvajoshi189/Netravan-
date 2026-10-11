@@ -1,0 +1,19 @@
+{
+  "manifest_path": "D:\\TigerTraceAI-main\\data\\manifests\\dataset_manifest.csv",
+  "dataset_root": "D:\\TigerTraceAI-main\\dataset",
+  "total_samples": 0,
+  "is_valid": true,
+  "error_count": 0,
+  "warning_count": 0,
+  "split_leakage_count": 0,
+  "errors": [],
+  "warnings": [],
+  "split_leakages": [],
+  "statistics": {
+    "total_samples": 0,
+    "per_dataset_splits": {},
+    "per_species_splits": {},
+    "dataset_species_splits": {},
+    "unique_individuals_per_dataset": {}
+  }
+}

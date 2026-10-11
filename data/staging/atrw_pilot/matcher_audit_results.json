@@ -1,24 +1,24 @@
 {
   "report_name": "ATRW Pilot Re-ID Matcher Audit Results",
-  "timestamp_utc": "2026-10-10 07:45:31 UTC",
+  "timestamp_utc": "2026-10-11 03:39:56 UTC",
   "total_approved_images": 13,
   "total_pairwise_comparisons": 78,
   "evaluation_partitions": {
     "genuine_same_flank_pairs": {
       "count": 16,
       "combined_score": {
-        "min": 0.4218,
-        "mean": 0.6045,
-        "median": 0.5129,
+        "min": 0.3711,
+        "mean": 0.5449,
+        "median": 0.4022,
         "max": 0.994,
-        "std": 0.2227
+        "std": 0.2531
       },
       "sift_score": {
         "min": 0.0,
-        "mean": 0.3583,
-        "median": 0.2,
+        "mean": 0.25,
+        "median": 0.0,
         "max": 1.0,
-        "std": 0.3785
+        "std": 0.433
       },
       "cosine_score": {
         "min": 0.8247,
@@ -31,18 +31,18 @@
     "impostor_same_flank_pairs": {
       "count": 20,
       "combined_score": {
-        "min": 0.3496,
-        "mean": 0.4519,
-        "median": 0.4472,
-        "max": 0.5423,
-        "std": 0.0482
+        "min": 0.348,
+        "mean": 0.3951,
+        "median": 0.4009,
+        "max": 0.4255,
+        "std": 0.025
       },
       "sift_score": {
         "min": 0.0,
-        "mean": 0.1033,
-        "median": 0.1,
-        "max": 0.2333,
-        "std": 0.0674
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0.0,
+        "std": 0.0
       },
       "cosine_score": {
         "min": 0.7734,
@@ -55,42 +55,42 @@
     "cross_flank_incompatible_pairs": {
       "count": 42,
       "combined_score": {
-        "min": 0.3588,
-        "mean": 0.4679,
-        "median": 0.4567,
-        "max": 0.8039,
-        "std": 0.081
+        "min": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0.0,
+        "std": 0.0
       },
       "sift_score": {
         "min": 0.0,
-        "mean": 0.1413,
-        "median": 0.1167,
-        "max": 0.7,
-        "std": 0.1382
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0.0,
+        "std": 0.0
       },
       "cosine_score": {
-        "min": 0.7566,
-        "mean": 0.8671,
-        "median": 0.8743,
-        "max": 0.9308,
-        "std": 0.0454
+        "min": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0.0,
+        "std": 0.0
       }
     }
   },
   "per_individual_genuine_summary": {
     "tiger_001_left_flank": {
       "pair_count": 6,
-      "combined_mean": 0.4961,
+      "combined_mean": 0.4075,
       "note": "4 distinct images across variable backgrounds; moderate SIFT matches"
     },
     "tiger_002_right_flank": {
       "pair_count": 1,
-      "combined_mean": 0.5244,
+      "combined_mean": 0.396,
       "note": "2 distinct walking frames along fence enclosure"
     },
     "tiger_003_right_flank": {
       "pair_count": 6,
-      "combined_mean": 0.5322,
+      "combined_mean": 0.4833,
       "note": "Mix of 2 correlated frames (score 0.95) and 4 independent encounters (scores 0.40 - 0.48)"
     },
     "tiger_005_left_flank": {

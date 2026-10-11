@@ -1,4 +1,4 @@
-﻿import sys, os
+import sys, os
 tt_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "TigerTrace_AI")
 if tt_dir not in sys.path:
     sys.path.insert(0, tt_dir)
@@ -25,7 +25,7 @@ class DeterministicMockMatcher:
             return None
         return np.ones(128, dtype=np.float32) / np.sqrt(128)
 
-    def compare_flanks(self, query_path, ref_path, query_emb=None, ref_emb=None):
+    def compare_flanks(self, query_path, ref_path, query_emb=None, ref_emb=None, *args, **kwargs):
         pair_key = (os.path.basename(query_path), os.path.basename(ref_path))
         score = self.score_map.get(pair_key, self.default_score)
         return {
@@ -35,7 +35,7 @@ class DeterministicMockMatcher:
             "good_matches_count": int(score * 30),
         }
 
-    def generate_sift_match_visualization(self, query_path, ref_path, output_path, max_draw=25):
+    def generate_sift_match_visualization(self, query_path, ref_path, output_path, max_draw=25, *args, **kwargs):
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         # Write valid minimal dummy JPEG
         dummy = np.zeros((50, 50, 3), dtype=np.uint8)
@@ -66,30 +66,30 @@ class TestTigerEnrollmentAuditedLogic(unittest.TestCase):
         import shutil
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    def _create_sighting(self, image_path, species="tiger"):
+    def _create_sighting(self, image_path, species="tiger", flank_side="left"):
         cur = self.conn.cursor()
         cur.execute("""
-        INSERT INTO sightings (image_name, image_path, station_id, timestamp, species, flank_crop_path)
-        VALUES (?, ?, 'PTR_STN_01', '2026-10-10 10:00:00', ?, ?);
-        """, (os.path.basename(image_path), image_path, species, image_path))
+        INSERT INTO sightings (image_name, image_path, station_id, timestamp, species, flank_crop_path, flank_side)
+        VALUES (?, ?, 'PTR_STN_01', '2026-10-10 10:00:00', ?, ?, ?);
+        """, (os.path.basename(image_path), image_path, species, image_path, flank_side))
         self.conn.commit()
         return cur.lastrowid
 
-    def _enroll_reference_tiger(self, tiger_id="BAJIRAO", name="Bajirao", ref_path=None, species=None):
+    def _enroll_reference_tiger(self, tiger_id="BAJIRAO", name="Bajirao", ref_path=None, species=None, flank_side="both"):
         cur = self.conn.cursor()
         path = ref_path or self.ref1_path
         emb = [1.0] * 128
         cols = [r[1] for r in cur.execute("PRAGMA table_info(tigers);").fetchall()]
         if "species" in cols:
             cur.execute("""
-            INSERT INTO tigers (tiger_id, name, gender, reference_crop_path, stripe_features_json, status, species)
-            VALUES (?, ?, 'M', ?, ?, 'resident', ?);
-            """, (tiger_id, name, path, json.dumps(emb), species or "tiger"))
+            INSERT INTO tigers (tiger_id, name, gender, flank_side_registered, reference_crop_path, stripe_features_json, status, species)
+            VALUES (?, ?, 'M', ?, ?, ?, 'resident', ?);
+            """, (tiger_id, name, flank_side, path, json.dumps(emb), species or "tiger"))
         else:
             cur.execute("""
-            INSERT INTO tigers (tiger_id, name, gender, reference_crop_path, stripe_features_json, status)
-            VALUES (?, ?, 'M', ?, ?, 'resident');
-            """, (tiger_id, name, path, json.dumps(emb)))
+            INSERT INTO tigers (tiger_id, name, gender, flank_side_registered, reference_crop_path, stripe_features_json, status)
+            VALUES (?, ?, 'M', ?, ?, ?, 'resident');
+            """, (tiger_id, name, flank_side, path, json.dumps(emb)))
         self.conn.commit()
 
     # -------------------------------------------------------------------------
@@ -128,7 +128,7 @@ class TestTigerEnrollmentAuditedLogic(unittest.TestCase):
     def test_02_strong_match_returns_matched(self):
         self._enroll_reference_tiger("BAJIRAO", "Bajirao", self.ref1_path)
         matcher = DeterministicMockMatcher(default_score=0.88)
-        engine = TigerEnrollmentEngine(self.conn, matcher=matcher, viz_dir=self.viz_dir)
+        engine = TigerEnrollmentEngine(self.conn, matcher=matcher, viz_dir=self.viz_dir, allow_auto_confirm=True)
 
         sighting_id = self._create_sighting(self.img1_path)
         res = engine.identify_and_enroll(self.img1_path, sighting_id, "query_01.jpg")
@@ -287,8 +287,8 @@ class TestTigerEnrollmentAuditedLogic(unittest.TestCase):
         self._enroll_reference_tiger("BAJIRAO", "Bajirao", self.ref1_path)
         matcher = DeterministicMockMatcher(default_score=0.70)
 
-        # With default high_thresh (0.50), score 0.70 is 'matched'
-        engine_default = TigerEnrollmentEngine(self.conn, matcher=matcher, viz_dir=self.viz_dir)
+        # With default high_thresh (0.50) and allow_auto_confirm=True, score 0.70 is 'matched'
+        engine_default = TigerEnrollmentEngine(self.conn, matcher=matcher, viz_dir=self.viz_dir, allow_auto_confirm=True)
         s1 = self._create_sighting(self.img1_path)
         res1 = engine_default.identify_and_enroll(self.img1_path, s1, "query_01.jpg")
         self.assertEqual(res1["decision_state"], "matched")

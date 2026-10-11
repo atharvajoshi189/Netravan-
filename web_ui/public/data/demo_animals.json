@@ -1,0 +1,3084 @@
+{
+  "tigers": [
+    {
+      "id": "T-1",
+      "name": "Maya (Tiger T-1)",
+      "type": "tiger",
+      "gender": "Female",
+      "age": "9 Years",
+      "territory": "Tadoba Core & North-West Buffer",
+      "collarId": "GPS-TATR-01",
+      "totalSightings": 7,
+      "sightings": [
+        {
+          "sightingId": "sight-T-1-1",
+          "cameraId": "CT-NW1",
+          "cameraName": "North-West Nimdela Corner Camera",
+          "pos": [
+            20.4285,
+            79.2365
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.5,
+          "behavior": "Territorial boundary patrol along forest fireline",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Territorial boundary patrol along forest fireline."
+        },
+        {
+          "sightingId": "sight-T-1-2",
+          "cameraId": "CT-W2",
+          "cameraName": "West Buffer Kolara Corridor Camera",
+          "pos": [
+            20.355,
+            79.285
+          ],
+          "time": 1791587758591,
+          "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.1,
+          "behavior": "Scent-marking teak tree at road crossing",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Scent-marking teak tree at road crossing."
+        },
+        {
+          "sightingId": "sight-T-1-3",
+          "cameraId": "CT-W1",
+          "cameraName": "West Khutwanda Crossing Camera",
+          "pos": [
+            20.268,
+            79.308
+          ],
+          "time": 1791601018614,
+          "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.3,
+          "behavior": "Prey stalk near edge of Khutwanda clearing",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Prey stalk near edge of Khutwanda clearing."
+        },
+        {
+          "sightingId": "sight-T-1-4",
+          "cameraId": "CT-C1",
+          "cameraName": "Central Tadoba Lake North Camera",
+          "pos": [
+            20.252,
+            79.385
+          ],
+          "time": 1791613916431,
+          "image": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.4,
+          "behavior": "Active drinking and resting at Tadoba Lake edge",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Active drinking and resting at Tadoba Lake edge."
+        },
+        {
+          "sightingId": "sight-T-1-5",
+          "cameraId": "CT-C4",
+          "cameraName": "Central Pandharpauni Grasslands Camera",
+          "pos": [
+            20.285,
+            79.362
+          ],
+          "time": 1791627492344,
+          "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.5,
+          "behavior": "Moving silently through Pandharpauni tall grass",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Moving silently through Pandharpauni tall grass."
+        },
+        {
+          "sightingId": "sight-T-1-6",
+          "cameraId": "CT-NE1",
+          "cameraName": "North-East Alizanja Sector Camera",
+          "pos": [
+            20.4215,
+            79.351
+          ],
+          "time": 1791640380618,
+          "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.4,
+          "behavior": "Nocturnal patrol along Alizanja stream bank",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Nocturnal patrol along Alizanja stream bank."
+        },
+        {
+          "sightingId": "sight-T-1-7",
+          "cameraId": "CT-N2",
+          "cameraName": "North Ramdegi Ridge Camera",
+          "pos": [
+            20.441,
+            79.312
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.0,
+          "behavior": "Ridge traversal near Ramdegi cliff line",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Ridge traversal near Ramdegi cliff line."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.4285,
+          "lng": 79.2365,
+          "time": 1791572848579,
+          "heading": 139.79,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-NW1",
+          "cameraName": "North-West Nimdela Corner Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.5,
+          "behavior": "Territorial boundary patrol along forest fireline",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Territorial boundary patrol along forest fireline."
+        },
+        {
+          "lat": 20.41459,
+          "lng": 79.248261,
+          "time": 1791575830581,
+          "heading": 143.99,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.400342,
+          "lng": 79.258615,
+          "time": 1791578812583,
+          "heading": 142.32,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.386889,
+          "lng": 79.269007,
+          "time": 1791581794586,
+          "heading": 152.53,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.370494,
+          "lng": 79.277529,
+          "time": 1791584776588,
+          "heading": 154.26,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.355,
+          "lng": 79.285,
+          "time": 1791587758591,
+          "heading": 152.63,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-W2",
+          "cameraName": "West Buffer Kolara Corridor Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.1,
+          "behavior": "Scent-marking teak tree at road crossing",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Scent-marking teak tree at road crossing."
+        },
+        {
+          "lat": 20.33441,
+          "lng": 79.295659,
+          "time": 1791591073596,
+          "heading": 157.04,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.314507,
+          "lng": 79.30409,
+          "time": 1791594388602,
+          "heading": 173.02,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.290415,
+          "lng": 79.307041,
+          "time": 1791597703608,
+          "heading": 177.55,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.268,
+          "lng": 79.308,
+          "time": 1791601018614,
+          "heading": 118.56,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-W1",
+          "cameraName": "West Khutwanda Crossing Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.3,
+          "behavior": "Prey stalk near edge of Khutwanda clearing",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Prey stalk near edge of Khutwanda clearing."
+        },
+        {
+          "lat": 20.261464,
+          "lng": 79.320006,
+          "time": 1791603168250,
+          "heading": 114.28,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.256115,
+          "lng": 79.331866,
+          "time": 1791605317886,
+          "heading": 109.09,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.251446,
+          "lng": 79.34536,
+          "time": 1791607467522,
+          "heading": 95.97,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.250072,
+          "lng": 79.358499,
+          "time": 1791609617158,
+          "heading": 88.17,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.250492,
+          "lng": 79.371676,
+          "time": 1791611766794,
+          "heading": 83.54,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.252,
+          "lng": 79.385,
+          "time": 1791613916431,
+          "heading": 3.24,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C1",
+          "cameraName": "Central Tadoba Lake North Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.4,
+          "behavior": "Active drinking and resting at Tadoba Lake edge",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Active drinking and resting at Tadoba Lake edge."
+        },
+        {
+          "lat": 20.264968,
+          "lng": 79.385733,
+          "time": 1791617310409,
+          "heading": -25.09,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.273927,
+          "lng": 79.381538,
+          "time": 1791620704387,
+          "heading": -49.28,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.281426,
+          "lng": 79.372825,
+          "time": 1791624098365,
+          "heading": -71.73,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.285,
+          "lng": 79.362,
+          "time": 1791627492344,
+          "heading": 3.42,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C4",
+          "cameraName": "Central Pandharpauni Grasslands Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.5,
+          "behavior": "Moving silently through Pandharpauni tall grass",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Moving silently through Pandharpauni tall grass."
+        },
+        {
+          "lat": 20.308447,
+          "lng": 79.363402,
+          "time": 1791629640389,
+          "heading": 5.21,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.331341,
+          "lng": 79.36549,
+          "time": 1791631788435,
+          "heading": -2.29,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.353399,
+          "lng": 79.364609,
+          "time": 1791633936481,
+          "heading": -5.04,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.376111,
+          "lng": 79.362605,
+          "time": 1791636084526,
+          "heading": -14.97,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.399456,
+          "lng": 79.356365,
+          "time": 1791638232572,
+          "heading": -13.68,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.4215,
+          "lng": 79.351,
+          "time": 1791640380618,
+          "heading": -90.73,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-NE1",
+          "cameraName": "North-East Alizanja Sector Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.4,
+          "behavior": "Nocturnal patrol along Alizanja stream bank",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Nocturnal patrol along Alizanja stream bank."
+        },
+        {
+          "lat": 20.421337,
+          "lng": 79.338228,
+          "time": 1791644197608,
+          "heading": -83.9,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.422394,
+          "lng": 79.328332,
+          "time": 1791648014598,
+          "heading": -47.51,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.430611,
+          "lng": 79.319362,
+          "time": 1791651831588,
+          "heading": -35.32,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.441,
+          "lng": 79.312,
+          "time": 1791655648579,
+          "heading": -35.32,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-N2",
+          "cameraName": "North Ramdegi Ridge Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.0,
+          "behavior": "Ridge traversal near Ramdegi cliff line",
+          "notes": "Maya (Tiger T-1) captured by motion sensor. Ridge traversal near Ramdegi cliff line."
+        }
+      ]
+    },
+    {
+      "id": "T-2",
+      "name": "Matkasur (Tiger T-2)",
+      "type": "tiger",
+      "gender": "Male",
+      "age": "11 Years",
+      "territory": "Central Lake & South Core Corridors",
+      "collarId": "GPS-TATR-02",
+      "totalSightings": 5,
+      "sightings": [
+        {
+          "sightingId": "sight-T-2-1",
+          "cameraId": "CT-W1",
+          "cameraName": "West Khutwanda Crossing Camera",
+          "pos": [
+            20.268,
+            79.308
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.9,
+          "behavior": "Patrolling western core boundary in early twilight",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Matkasur (Tiger T-2) captured by motion sensor. Patrolling western core boundary in early twilight."
+        },
+        {
+          "sightingId": "sight-T-2-2",
+          "cameraId": "CT-C2",
+          "cameraName": "Central Telia Dam Camera",
+          "pos": [
+            20.211,
+            79.345
+          ],
+          "time": 1791595270198,
+          "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.6,
+          "behavior": "Crossing Telia dam embankment towards south",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Matkasur (Tiger T-2) captured by motion sensor. Crossing Telia dam embankment towards south."
+        },
+        {
+          "sightingId": "sight-T-2-3",
+          "cameraId": "CT-SW1",
+          "cameraName": "South-West Dewada-Adegaon Camera",
+          "pos": [
+            20.142,
+            79.318
+          ],
+          "time": 1791614420001,
+          "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.4,
+          "behavior": "Resting in dense bamboo thicket near Dewada-Adegaon",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Matkasur (Tiger T-2) captured by motion sensor. Resting in dense bamboo thicket near Dewada-Adegaon."
+        },
+        {
+          "sightingId": "sight-T-2-4",
+          "cameraId": "CT-S2",
+          "cameraName": "South Junona Forest Camera",
+          "pos": [
+            20.165,
+            79.352
+          ],
+          "time": 1791633260024,
+          "image": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.2,
+          "behavior": "Nocturnal scent marking along Junona forest track",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Matkasur (Tiger T-2) captured by motion sensor. Nocturnal scent marking along Junona forest track."
+        },
+        {
+          "sightingId": "sight-T-2-5",
+          "cameraId": "CT-S1",
+          "cameraName": "South Mamla Buffer Corner Camera",
+          "pos": [
+            20.062,
+            79.388
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.3,
+          "behavior": "Patrolling far southern buffer waterhole",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Matkasur (Tiger T-2) captured by motion sensor. Patrolling far southern buffer waterhole."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.268,
+          "lng": 79.308,
+          "time": 1791572848579,
+          "heading": 166.92,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-W1",
+          "cameraName": "West Khutwanda Crossing Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.9,
+          "behavior": "Patrolling western core boundary in early twilight",
+          "notes": "Matkasur (Tiger T-2) captured by motion sensor. Patrolling western core boundary in early twilight."
+        },
+        {
+          "lat": 20.256048,
+          "lng": 79.310776,
+          "time": 1791576585515,
+          "heading": 158.81,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.244724,
+          "lng": 79.315167,
+          "time": 1791580322452,
+          "heading": 158.3,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.234158,
+          "lng": 79.319372,
+          "time": 1791584059388,
+          "heading": 134.23,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.226512,
+          "lng": 79.327227,
+          "time": 1791587796325,
+          "heading": 140.74,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.217497,
+          "lng": 79.334596,
+          "time": 1791591533261,
+          "heading": 121.98,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.211,
+          "lng": 79.345,
+          "time": 1791595270198,
+          "heading": -172.56,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C2",
+          "cameraName": "Central Telia Dam Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.6,
+          "behavior": "Crossing Telia dam embankment towards south",
+          "notes": "Matkasur (Tiger T-2) captured by motion sensor. Crossing Telia dam embankment towards south."
+        },
+        {
+          "lat": 20.198542,
+          "lng": 79.343374,
+          "time": 1791598461831,
+          "heading": -170.5,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.185512,
+          "lng": 79.341194,
+          "time": 1791601653465,
+          "heading": -161.65,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.175086,
+          "lng": 79.337735,
+          "time": 1791604845099,
+          "heading": -159.21,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.162238,
+          "lng": 79.332857,
+          "time": 1791608036733,
+          "heading": -143.75,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.152852,
+          "lng": 79.325975,
+          "time": 1791611228367,
+          "heading": -143.69,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.142,
+          "lng": 79.318,
+          "time": 1791614420001,
+          "heading": 82.32,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SW1",
+          "cameraName": "South-West Dewada-Adegaon Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.4,
+          "behavior": "Resting in dense bamboo thicket near Dewada-Adegaon",
+          "notes": "Matkasur (Tiger T-2) captured by motion sensor. Resting in dense bamboo thicket near Dewada-Adegaon."
+        },
+        {
+          "lat": 20.143197,
+          "lng": 79.326874,
+          "time": 1791618188005,
+          "heading": 61.32,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.147741,
+          "lng": 79.335181,
+          "time": 1791621956010,
+          "heading": 51.42,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.152425,
+          "lng": 79.341053,
+          "time": 1791625724014,
+          "heading": 51.59,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.157203,
+          "lng": 79.34708,
+          "time": 1791629492019,
+          "heading": 32.25,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.165,
+          "lng": 79.352,
+          "time": 1791633260024,
+          "heading": 152.05,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-S2",
+          "cameraName": "South Junona Forest Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.2,
+          "behavior": "Nocturnal scent marking along Junona forest track",
+          "notes": "Matkasur (Tiger T-2) captured by motion sensor. Nocturnal scent marking along Junona forest track."
+        },
+        {
+          "lat": 20.14917,
+          "lng": 79.3604,
+          "time": 1791636991449,
+          "heading": 155.09,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.132629,
+          "lng": 79.368081,
+          "time": 1791640722875,
+          "heading": 161.45,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.114123,
+          "lng": 79.37429,
+          "time": 1791644454301,
+          "heading": 159.2,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.096777,
+          "lng": 79.380878,
+          "time": 1791648185727,
+          "heading": 165.64,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.080735,
+          "lng": 79.384984,
+          "time": 1791651917153,
+          "heading": 170.85,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.062,
+          "lng": 79.388,
+          "time": 1791655648579,
+          "heading": 170.85,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-S1",
+          "cameraName": "South Mamla Buffer Corner Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.3,
+          "behavior": "Patrolling far southern buffer waterhole",
+          "notes": "Matkasur (Tiger T-2) captured by motion sensor. Patrolling far southern buffer waterhole."
+        }
+      ]
+    },
+    {
+      "id": "T-3",
+      "name": "Chhota Matka (Tiger T-3)",
+      "type": "tiger",
+      "gender": "Male",
+      "age": "6 Years",
+      "territory": "Northern Escarpment & East Buffer",
+      "collarId": "GPS-TATR-03",
+      "totalSightings": 6,
+      "sightings": [
+        {
+          "sightingId": "sight-T-3-1",
+          "cameraId": "CT-N1",
+          "cameraName": "Far North Navegaon Boundary Camera",
+          "pos": [
+            20.472,
+            79.278
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.9,
+          "behavior": "Vigorous movement along Navegaon northern core boundary",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Vigorous movement along Navegaon northern core boundary."
+        },
+        {
+          "sightingId": "sight-T-3-2",
+          "cameraId": "CT-N2",
+          "cameraName": "North Ramdegi Ridge Camera",
+          "pos": [
+            20.441,
+            79.312
+          ],
+          "time": 1791591374190,
+          "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.9,
+          "behavior": "Descending rocky slopes of Ramdegi ridge",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Descending rocky slopes of Ramdegi ridge."
+        },
+        {
+          "sightingId": "sight-T-3-3",
+          "cameraId": "CT-NE1",
+          "cameraName": "North-East Alizanja Sector Camera",
+          "pos": [
+            20.4215,
+            79.351
+          ],
+          "time": 1791607008918,
+          "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.2,
+          "behavior": "Moving through Alizanja buffer grassland",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Moving through Alizanja buffer grassland."
+        },
+        {
+          "sightingId": "sight-T-3-4",
+          "cameraId": "CT-NE2",
+          "cameraName": "North-East Madnapur Buffer Camera",
+          "pos": [
+            20.395,
+            79.428
+          ],
+          "time": 1791621527363,
+          "image": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.0,
+          "behavior": "Crossing Madnapur forest stream at dusk",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Crossing Madnapur forest stream at dusk."
+        },
+        {
+          "sightingId": "sight-T-3-5",
+          "cameraId": "CT-E1",
+          "cameraName": "East Belara Perimeter Camera",
+          "pos": [
+            20.372,
+            79.465
+          ],
+          "time": 1791637559767,
+          "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.8,
+          "behavior": "Nocturnal investigation of Belara firewatch tower base",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Nocturnal investigation of Belara firewatch tower base."
+        },
+        {
+          "sightingId": "sight-T-3-6",
+          "cameraId": "CT-E2",
+          "cameraName": "East Palasgaon Boundary Camera",
+          "pos": [
+            20.354,
+            79.489
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.1,
+          "behavior": "Resting near Palasgaon boundary stream",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Resting near Palasgaon boundary stream."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.472,
+          "lng": 79.278,
+          "time": 1791572848579,
+          "heading": 103.07,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-N1",
+          "cameraName": "Far North Navegaon Boundary Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.9,
+          "behavior": "Vigorous movement along Navegaon northern core boundary",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Vigorous movement along Navegaon northern core boundary."
+        },
+        {
+          "lat": 20.469302,
+          "lng": 79.289622,
+          "time": 1791577479981,
+          "heading": 122.08,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.462436,
+          "lng": 79.300575,
+          "time": 1791582111384,
+          "heading": 138.63,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.453837,
+          "lng": 79.308149,
+          "time": 1791586742787,
+          "heading": 163.3,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.441,
+          "lng": 79.312,
+          "time": 1791591374190,
+          "heading": 88.35,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-N2",
+          "cameraName": "North Ramdegi Ridge Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.9,
+          "behavior": "Descending rocky slopes of Ramdegi ridge",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Descending rocky slopes of Ramdegi ridge."
+        },
+        {
+          "lat": 20.44125,
+          "lng": 79.320694,
+          "time": 1791593979978,
+          "heading": 94.07,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.440659,
+          "lng": 79.329005,
+          "time": 1791596585766,
+          "heading": 110.27,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.438557,
+          "lng": 79.334698,
+          "time": 1791599191554,
+          "heading": 132.11,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.43354,
+          "lng": 79.340248,
+          "time": 1791601797342,
+          "heading": 128.41,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.42856,
+          "lng": 79.346528,
+          "time": 1791604403130,
+          "heading": 147.65,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.4215,
+          "lng": 79.351,
+          "time": 1791607008918,
+          "heading": 94.22,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-NE1",
+          "cameraName": "North-East Alizanja Sector Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.2,
+          "behavior": "Moving through Alizanja buffer grassland",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Moving through Alizanja buffer grassland."
+        },
+        {
+          "lat": 20.420435,
+          "lng": 79.365427,
+          "time": 1791609428658,
+          "heading": 109.06,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.416209,
+          "lng": 79.377657,
+          "time": 1791611848399,
+          "heading": 101.04,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.413669,
+          "lng": 79.390677,
+          "time": 1791614268140,
+          "heading": 113.72,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.407498,
+          "lng": 79.404719,
+          "time": 1791616687881,
+          "heading": 115.6,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.402099,
+          "lng": 79.415986,
+          "time": 1791619107622,
+          "heading": 120.58,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.395,
+          "lng": 79.428,
+          "time": 1791621527363,
+          "heading": 103.22,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-NE2",
+          "cameraName": "North-East Madnapur Buffer Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.0,
+          "behavior": "Crossing Madnapur forest stream at dusk",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Crossing Madnapur forest stream at dusk."
+        },
+        {
+          "lat": 20.392997,
+          "lng": 79.436525,
+          "time": 1791624733843,
+          "heading": 111.64,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.38931,
+          "lng": 79.44582,
+          "time": 1791627940324,
+          "heading": 127.29,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.383996,
+          "lng": 79.452799,
+          "time": 1791631146805,
+          "heading": 132.1,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.379172,
+          "lng": 79.458138,
+          "time": 1791634353286,
+          "heading": 136.27,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.372,
+          "lng": 79.465,
+          "time": 1791637559767,
+          "heading": 101.46,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-E1",
+          "cameraName": "East Belara Perimeter Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.8,
+          "behavior": "Nocturnal investigation of Belara firewatch tower base",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Nocturnal investigation of Belara firewatch tower base."
+        },
+        {
+          "lat": 20.370486,
+          "lng": 79.472465,
+          "time": 1791642081970,
+          "heading": 117.91,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.366487,
+          "lng": 79.480015,
+          "time": 1791646604173,
+          "heading": 135.03,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.362162,
+          "lng": 79.484336,
+          "time": 1791651126376,
+          "heading": 150.26,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.354,
+          "lng": 79.489,
+          "time": 1791655648579,
+          "heading": 150.26,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-E2",
+          "cameraName": "East Palasgaon Boundary Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.1,
+          "behavior": "Resting near Palasgaon boundary stream",
+          "notes": "Chhota Matka (Tiger T-3) captured by motion sensor. Resting near Palasgaon boundary stream."
+        }
+      ]
+    },
+    {
+      "id": "T-4",
+      "name": "T-54 (Tiger T-4)",
+      "type": "tiger",
+      "gender": "Male",
+      "age": "8 Years",
+      "territory": "East Buffer & Kolsa-Somnath Corridor",
+      "collarId": "GPS-TATR-04",
+      "totalSightings": 6,
+      "sightings": [
+        {
+          "sightingId": "sight-T-4-1",
+          "cameraId": "CT-E4",
+          "cameraName": "Far East Pangadi Sector Camera",
+          "pos": [
+            20.215,
+            79.562
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.9,
+          "behavior": "Early morning patrol at Pangadi eastern boundary",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Early morning patrol at Pangadi eastern boundary."
+        },
+        {
+          "sightingId": "sight-T-4-2",
+          "cameraId": "CT-E3",
+          "cameraName": "East Sirkada Edge Camera",
+          "pos": [
+            20.318,
+            79.525
+          ],
+          "time": 1791590438069,
+          "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.5,
+          "behavior": "Stalking chital deer near Sirkada waterhole",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Stalking chital deer near Sirkada waterhole."
+        },
+        {
+          "sightingId": "sight-T-4-3",
+          "cameraId": "CT-C6",
+          "cameraName": "Central Andhari River Gorge Camera",
+          "pos": [
+            20.258,
+            79.432
+          ],
+          "time": 1791606655152,
+          "image": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.2,
+          "behavior": "Crossing Andhari river canyon in deep gorge",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Crossing Andhari river canyon in deep gorge."
+        },
+        {
+          "sightingId": "sight-T-4-4",
+          "cameraId": "CT-C3",
+          "cameraName": "Central Kolsa Core Range Camera",
+          "pos": [
+            20.222,
+            79.462
+          ],
+          "time": 1791622073284,
+          "image": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.6,
+          "behavior": "Resting in shade of Kolsa dense teak canopy",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Resting in shade of Kolsa dense teak canopy."
+        },
+        {
+          "sightingId": "sight-T-4-5",
+          "cameraId": "CT-SE3",
+          "cameraName": "South-East Zari Gate Perimeter Camera",
+          "pos": [
+            20.108,
+            79.501
+          ],
+          "time": 1791636994288,
+          "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.5,
+          "behavior": "Traversing Zari gate forest track after sunset",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Traversing Zari gate forest track after sunset."
+        },
+        {
+          "sightingId": "sight-T-4-6",
+          "cameraId": "CT-SE1",
+          "cameraName": "South-East Somnath Corner Camera",
+          "pos": [
+            20.125,
+            79.61
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.5,
+          "behavior": "Nocturnal scent marking at Somnath southeastern corner",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Nocturnal scent marking at Somnath southeastern corner."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.215,
+          "lng": 79.562,
+          "time": 1791572848579,
+          "heading": -27.91,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-E4",
+          "cameraName": "Far East Pangadi Sector Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.9,
+          "behavior": "Early morning patrol at Pangadi eastern boundary",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Early morning patrol at Pangadi eastern boundary."
+        },
+        {
+          "lat": 20.239174,
+          "lng": 79.549195,
+          "time": 1791577245951,
+          "heading": -25.58,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.265128,
+          "lng": 79.53677,
+          "time": 1791581643324,
+          "heading": -15.94,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.289715,
+          "lng": 79.529746,
+          "time": 1791586040696,
+          "heading": -9.53,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.318,
+          "lng": 79.525,
+          "time": 1791590438069,
+          "heading": -111.75,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-E3",
+          "cameraName": "East Sirkada Edge Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.5,
+          "behavior": "Stalking chital deer near Sirkada waterhole",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Stalking chital deer near Sirkada waterhole."
+        },
+        {
+          "lat": 20.310144,
+          "lng": 79.505307,
+          "time": 1791593681485,
+          "heading": -117.87,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.299337,
+          "lng": 79.484866,
+          "time": 1791596924902,
+          "heading": -123.36,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.286535,
+          "lng": 79.465422,
+          "time": 1791600168318,
+          "heading": -126.45,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.274167,
+          "lng": 79.448675,
+          "time": 1791603411735,
+          "heading": -134.11,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.258,
+          "lng": 79.432,
+          "time": 1791606655152,
+          "heading": 155.19,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C6",
+          "cameraName": "Central Andhari River Gorge Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.2,
+          "behavior": "Crossing Andhari river canyon in deep gorge",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Crossing Andhari river canyon in deep gorge."
+        },
+        {
+          "lat": 20.250778,
+          "lng": 79.435338,
+          "time": 1791609224840,
+          "heading": 154.53,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.244298,
+          "lng": 79.438425,
+          "time": 1791611794529,
+          "heading": 144.46,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.238141,
+          "lng": 79.442824,
+          "time": 1791614364218,
+          "heading": 137.93,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.230964,
+          "lng": 79.449301,
+          "time": 1791616933906,
+          "heading": 126.05,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.22696,
+          "lng": 79.454802,
+          "time": 1791619503595,
+          "heading": 124.57,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.222,
+          "lng": 79.462,
+          "time": 1791622073284,
+          "heading": 153.82,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C3",
+          "cameraName": "Central Kolsa Core Range Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.6,
+          "behavior": "Resting in shade of Kolsa dense teak canopy",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Resting in shade of Kolsa dense teak canopy."
+        },
+        {
+          "lat": 20.203289,
+          "lng": 79.4712,
+          "time": 1791624560118,
+          "heading": 149.22,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.18641,
+          "lng": 79.481254,
+          "time": 1791627046952,
+          "heading": 160.54,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.167052,
+          "lng": 79.488093,
+          "time": 1791629533786,
+          "heading": 163.09,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.148434,
+          "lng": 79.493752,
+          "time": 1791632020620,
+          "heading": 170.28,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.127741,
+          "lng": 79.497297,
+          "time": 1791634507454,
+          "heading": 169.38,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.108,
+          "lng": 79.501,
+          "time": 1791636994288,
+          "heading": 93.4,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SE3",
+          "cameraName": "South-East Zari Gate Perimeter Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.5,
+          "behavior": "Traversing Zari gate forest track after sunset",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Traversing Zari gate forest track after sunset."
+        },
+        {
+          "lat": 20.106711,
+          "lng": 79.522686,
+          "time": 1791640725146,
+          "heading": 91.62,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.106046,
+          "lng": 79.546129,
+          "time": 1791644456004,
+          "heading": 83.81,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.108403,
+          "lng": 79.567878,
+          "time": 1791648186862,
+          "heading": 69.5,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.116051,
+          "lng": 79.588332,
+          "time": 1791651917720,
+          "heading": 67.56,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.125,
+          "lng": 79.61,
+          "time": 1791655648579,
+          "heading": 67.56,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SE1",
+          "cameraName": "South-East Somnath Corner Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.5,
+          "behavior": "Nocturnal scent marking at Somnath southeastern corner",
+          "notes": "T-54 (Tiger T-4) captured by motion sensor. Nocturnal scent marking at Somnath southeastern corner."
+        }
+      ]
+    }
+  ],
+  "leopards": [
+    {
+      "id": "L-1",
+      "name": "Ghost (Leopard L-1)",
+      "type": "leopard",
+      "gender": "Male",
+      "age": "5 Years",
+      "territory": "Northern Cliffs & Ramdegi Ridge",
+      "collarId": "VHF-LEO-11",
+      "totalSightings": 5,
+      "sightings": [
+        {
+          "sightingId": "sight-L-1-1",
+          "cameraId": "CT-N1",
+          "cameraName": "Far North Navegaon Boundary Camera",
+          "pos": [
+            20.472,
+            79.278
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.3,
+          "behavior": "Scaling rocky ledge near Navegaon cliff top",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Ghost (Leopard L-1) captured by motion sensor. Scaling rocky ledge near Navegaon cliff top."
+        },
+        {
+          "sightingId": "sight-L-1-2",
+          "cameraId": "CT-N2",
+          "cameraName": "North Ramdegi Ridge Camera",
+          "pos": [
+            20.441,
+            79.312
+          ],
+          "time": 1791594501720,
+          "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.4,
+          "behavior": "Surveying Ramdegi valley from high rocky outcrop",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Ghost (Leopard L-1) captured by motion sensor. Surveying Ramdegi valley from high rocky outcrop."
+        },
+        {
+          "sightingId": "sight-L-1-3",
+          "cameraId": "CT-C5",
+          "cameraName": "Central Katezari Waterhole Camera",
+          "pos": [
+            20.312,
+            79.398
+          ],
+          "time": 1791613990563,
+          "image": "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.8,
+          "behavior": "Drinking at Katezari natural spring waterhole",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Ghost (Leopard L-1) captured by motion sensor. Drinking at Katezari natural spring waterhole."
+        },
+        {
+          "sightingId": "sight-L-1-4",
+          "cameraId": "CT-NE2",
+          "cameraName": "North-East Madnapur Buffer Camera",
+          "pos": [
+            20.395,
+            79.428
+          ],
+          "time": 1791633614400,
+          "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.6,
+          "behavior": "Nocturnal tree descent near Madnapur buffer",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Ghost (Leopard L-1) captured by motion sensor. Nocturnal tree descent near Madnapur buffer."
+        },
+        {
+          "sightingId": "sight-L-1-5",
+          "cameraId": "CT-E1",
+          "cameraName": "East Belara Perimeter Camera",
+          "pos": [
+            20.372,
+            79.465
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.8,
+          "behavior": "Moving along eastern Belara boundary fence",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Ghost (Leopard L-1) captured by motion sensor. Moving along eastern Belara boundary fence."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.472,
+          "lng": 79.278,
+          "time": 1791572848579,
+          "heading": 102.81,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-N1",
+          "cameraName": "Far North Navegaon Boundary Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.3,
+          "behavior": "Scaling rocky ledge near Navegaon cliff top",
+          "notes": "Ghost (Leopard L-1) captured by motion sensor. Scaling rocky ledge near Navegaon cliff top."
+        },
+        {
+          "lat": 20.469901,
+          "lng": 79.287228,
+          "time": 1791576457435,
+          "heading": 117.39,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.465998,
+          "lng": 79.294762,
+          "time": 1791580066292,
+          "heading": 122.29,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.461946,
+          "lng": 79.301174,
+          "time": 1791583675149,
+          "heading": 145.21,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.456942,
+          "lng": 79.30465,
+          "time": 1791587284006,
+          "heading": 155.27,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.448689,
+          "lng": 79.308452,
+          "time": 1791590892863,
+          "heading": 155.23,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.441,
+          "lng": 79.312,
+          "time": 1791594501720,
+          "heading": 152.96,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-N2",
+          "cameraName": "North Ramdegi Ridge Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.4,
+          "behavior": "Surveying Ramdegi valley from high rocky outcrop",
+          "notes": "Ghost (Leopard L-1) captured by motion sensor. Surveying Ramdegi valley from high rocky outcrop."
+        },
+        {
+          "lat": 20.417052,
+          "lng": 79.324224,
+          "time": 1791597749860,
+          "heading": 153.48,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.393723,
+          "lng": 79.335868,
+          "time": 1791600998001,
+          "heading": 148.85,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.373258,
+          "lng": 79.348237,
+          "time": 1791604246141,
+          "heading": 145.16,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.351289,
+          "lng": 79.363528,
+          "time": 1791607494282,
+          "heading": 138.64,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.332509,
+          "lng": 79.380064,
+          "time": 1791610742422,
+          "heading": 138.83,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.312,
+          "lng": 79.398,
+          "time": 1791613990563,
+          "heading": 38.39,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C5",
+          "cameraName": "Central Katezari Waterhole Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.8,
+          "behavior": "Drinking at Katezari natural spring waterhole",
+          "notes": "Ghost (Leopard L-1) captured by motion sensor. Drinking at Katezari natural spring waterhole."
+        },
+        {
+          "lat": 20.323805,
+          "lng": 79.407354,
+          "time": 1791617261202,
+          "heading": 22.89,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.33788,
+          "lng": 79.413297,
+          "time": 1791620531842,
+          "heading": 27.59,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.350068,
+          "lng": 79.419665,
+          "time": 1791623802481,
+          "heading": 15.42,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.36527,
+          "lng": 79.423858,
+          "time": 1791627073121,
+          "heading": 9.65,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.378998,
+          "lng": 79.426193,
+          "time": 1791630343760,
+          "heading": 6.44,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.395,
+          "lng": 79.428,
+          "time": 1791633614400,
+          "heading": 145.4,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-NE2",
+          "cameraName": "North-East Madnapur Buffer Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.6,
+          "behavior": "Nocturnal tree descent near Madnapur buffer",
+          "notes": "Ghost (Leopard L-1) captured by motion sensor. Nocturnal tree descent near Madnapur buffer."
+        },
+        {
+          "lat": 20.38559,
+          "lng": 79.434492,
+          "time": 1791639122944,
+          "heading": 120.95,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.379593,
+          "lng": 79.444491,
+          "time": 1791644631489,
+          "heading": 118.55,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.374404,
+          "lng": 79.454028,
+          "time": 1791650140034,
+          "heading": 102.36,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.372,
+          "lng": 79.465,
+          "time": 1791655648579,
+          "heading": 102.36,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-E1",
+          "cameraName": "East Belara Perimeter Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.8,
+          "behavior": "Moving along eastern Belara boundary fence",
+          "notes": "Ghost (Leopard L-1) captured by motion sensor. Moving along eastern Belara boundary fence."
+        }
+      ]
+    },
+    {
+      "id": "L-2",
+      "name": "Scarface (Leopard L-2)",
+      "type": "leopard",
+      "gender": "Male",
+      "age": "7 Years",
+      "territory": "South-West Rocks & Junona Escarpment",
+      "collarId": "VHF-LEO-12",
+      "totalSightings": 4,
+      "sightings": [
+        {
+          "sightingId": "sight-L-2-1",
+          "cameraId": "CT-SW1",
+          "cameraName": "South-West Dewada-Adegaon Camera",
+          "pos": [
+            20.142,
+            79.318
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.4,
+          "behavior": "Creeping through rocky culvert at Dewada-Adegaon",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Scarface (Leopard L-2) captured by motion sensor. Creeping through rocky culvert at Dewada-Adegaon."
+        },
+        {
+          "sightingId": "sight-L-2-2",
+          "cameraId": "CT-S2",
+          "cameraName": "South Junona Forest Camera",
+          "pos": [
+            20.165,
+            79.352
+          ],
+          "time": 1791601726105,
+          "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.0,
+          "behavior": "Ascending mahua tree branch along Junona track",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Scarface (Leopard L-2) captured by motion sensor. Ascending mahua tree branch along Junona track."
+        },
+        {
+          "sightingId": "sight-L-2-3",
+          "cameraId": "CT-S1",
+          "cameraName": "South Mamla Buffer Corner Camera",
+          "pos": [
+            20.062,
+            79.388
+          ],
+          "time": 1791627780026,
+          "image": "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.0,
+          "behavior": "Nocturnal patrol along Mamla southern water channel",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Scarface (Leopard L-2) captured by motion sensor. Nocturnal patrol along Mamla southern water channel."
+        },
+        {
+          "sightingId": "sight-L-2-4",
+          "cameraId": "CT-SW2",
+          "cameraName": "South-West Peth-Zari Border Camera",
+          "pos": [
+            20.105,
+            79.462
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.2,
+          "behavior": "Resting on boulder near Peth-Zari border",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Scarface (Leopard L-2) captured by motion sensor. Resting on boulder near Peth-Zari border."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.142,
+          "lng": 79.318,
+          "time": 1791572848579,
+          "heading": 30.22,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SW1",
+          "cameraName": "South-West Dewada-Adegaon Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.4,
+          "behavior": "Creeping through rocky culvert at Dewada-Adegaon",
+          "notes": "Scarface (Leopard L-2) captured by motion sensor. Creeping through rocky culvert at Dewada-Adegaon."
+        },
+        {
+          "lat": 20.152345,
+          "lng": 79.324026,
+          "time": 1791580067960,
+          "heading": 38.65,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.161078,
+          "lng": 79.331011,
+          "time": 1791587287342,
+          "heading": 66.79,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.164803,
+          "lng": 79.339698,
+          "time": 1791594506723,
+          "heading": 89.08,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.165,
+          "lng": 79.352,
+          "time": 1791601726105,
+          "heading": 175.2,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-S2",
+          "cameraName": "South Junona Forest Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.0,
+          "behavior": "Ascending mahua tree branch along Junona track",
+          "notes": "Scarface (Leopard L-2) captured by motion sensor. Ascending mahua tree branch along Junona track."
+        },
+        {
+          "lat": 20.137813,
+          "lng": 79.354282,
+          "time": 1791608239585,
+          "heading": 165.48,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.111087,
+          "lng": 79.361205,
+          "time": 1791614753065,
+          "heading": 154.72,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.085206,
+          "lng": 79.373428,
+          "time": 1791621266545,
+          "heading": 147.87,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.062,
+          "lng": 79.388,
+          "time": 1791627780026,
+          "heading": 47.23,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-S1",
+          "cameraName": "South Mamla Buffer Corner Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.0,
+          "behavior": "Nocturnal patrol along Mamla southern water channel",
+          "notes": "Scarface (Leopard L-2) captured by motion sensor. Nocturnal patrol along Mamla southern water channel."
+        },
+        {
+          "lat": 20.076214,
+          "lng": 79.403368,
+          "time": 1791634747164,
+          "heading": 53.61,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.089572,
+          "lng": 79.421491,
+          "time": 1791641714302,
+          "heading": 66.82,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.098176,
+          "lng": 79.441589,
+          "time": 1791648681440,
+          "heading": 71.51,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.105,
+          "lng": 79.462,
+          "time": 1791655648579,
+          "heading": 71.51,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SW2",
+          "cameraName": "South-West Peth-Zari Border Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.2,
+          "behavior": "Resting on boulder near Peth-Zari border",
+          "notes": "Scarface (Leopard L-2) captured by motion sensor. Resting on boulder near Peth-Zari border."
+        }
+      ]
+    },
+    {
+      "id": "L-3",
+      "name": "Kolsa Shadow (Leopard L-3)",
+      "type": "leopard",
+      "gender": "Female",
+      "age": "4 Years",
+      "territory": "Central Kolsa to South-East Forests",
+      "collarId": "VHF-LEO-13",
+      "totalSightings": 4,
+      "sightings": [
+        {
+          "sightingId": "sight-L-3-1",
+          "cameraId": "CT-C3",
+          "cameraName": "Central Kolsa Core Range Camera",
+          "pos": [
+            20.222,
+            79.462
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.3,
+          "behavior": "Stealth patrol along Kolsa core dry creek bed",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Stealth patrol along Kolsa core dry creek bed."
+        },
+        {
+          "sightingId": "sight-L-3-2",
+          "cameraId": "CT-C6",
+          "cameraName": "Central Andhari River Gorge Camera",
+          "pos": [
+            20.258,
+            79.432
+          ],
+          "time": 1791600721699,
+          "image": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.8,
+          "behavior": "Leaping across rocks at Andhari River gorge",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Leaping across rocks at Andhari River gorge."
+        },
+        {
+          "sightingId": "sight-L-3-3",
+          "cameraId": "CT-SE3",
+          "cameraName": "South-East Zari Gate Perimeter Camera",
+          "pos": [
+            20.108,
+            79.501
+          ],
+          "time": 1791627661025,
+          "image": "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.3,
+          "behavior": "Passing Zari perimeter camera under moonlight",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Passing Zari perimeter camera under moonlight."
+        },
+        {
+          "sightingId": "sight-L-3-4",
+          "cameraId": "CT-SE2",
+          "cameraName": "South-East Keslaghat Forest Camera",
+          "pos": [
+            20.065,
+            79.562
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.7,
+          "behavior": "Caching kill in high tree near Keslaghat deep forest",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Caching kill in high tree near Keslaghat deep forest."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.222,
+          "lng": 79.462,
+          "time": 1791572848579,
+          "heading": -55.16,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C3",
+          "cameraName": "Central Kolsa Core Range Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.3,
+          "behavior": "Stealth patrol along Kolsa core dry creek bed",
+          "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Stealth patrol along Kolsa core dry creek bed."
+        },
+        {
+          "lat": 20.227319,
+          "lng": 79.454357,
+          "time": 1791578423203,
+          "heading": -52.07,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.233196,
+          "lng": 79.446815,
+          "time": 1791583997827,
+          "heading": -40.3,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.240791,
+          "lng": 79.440373,
+          "time": 1791589572451,
+          "heading": -30.54,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.249203,
+          "lng": 79.43541,
+          "time": 1791595147075,
+          "heading": -21.19,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.258,
+          "lng": 79.432,
+          "time": 1791600721699,
+          "heading": 149.46,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C6",
+          "cameraName": "Central Andhari River Gorge Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.8,
+          "behavior": "Leaping across rocks at Andhari River gorge",
+          "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Leaping across rocks at Andhari River gorge."
+        },
+        {
+          "lat": 20.221468,
+          "lng": 79.453552,
+          "time": 1791607456530,
+          "heading": 153.33,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.185245,
+          "lng": 79.471747,
+          "time": 1791614191362,
+          "heading": 156.2,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.148024,
+          "lng": 79.488163,
+          "time": 1791620926193,
+          "heading": 162.22,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.108,
+          "lng": 79.501,
+          "time": 1791627661025,
+          "heading": 137.08,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SE3",
+          "cameraName": "South-East Zari Gate Perimeter Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.3,
+          "behavior": "Passing Zari perimeter camera under moonlight",
+          "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Passing Zari perimeter camera under moonlight."
+        },
+        {
+          "lat": 20.096933,
+          "lng": 79.511291,
+          "time": 1791633258535,
+          "heading": 135.52,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.085553,
+          "lng": 79.522466,
+          "time": 1791638856046,
+          "heading": 123.63,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.077328,
+          "lng": 79.534832,
+          "time": 1791644453557,
+          "heading": 118.96,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.070086,
+          "lng": 79.547921,
+          "time": 1791650051068,
+          "heading": 109.86,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.065,
+          "lng": 79.562,
+          "time": 1791655648579,
+          "heading": 109.86,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SE2",
+          "cameraName": "South-East Keslaghat Forest Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.7,
+          "behavior": "Caching kill in high tree near Keslaghat deep forest",
+          "notes": "Kolsa Shadow (Leopard L-3) captured by motion sensor. Caching kill in high tree near Keslaghat deep forest."
+        }
+      ]
+    }
+  ],
+  "slothBears": [
+    {
+      "id": "b1",
+      "name": "Baloo (Sloth Bear)",
+      "type": "bear",
+      "gender": "Male",
+      "age": "6 Years",
+      "territory": "Northern Forest & Katezari Spring",
+      "collarId": "ID-BEAR-01",
+      "totalSightings": 4,
+      "sightings": [
+        {
+          "sightingId": "sight-b1-1",
+          "cameraId": "CT-N2",
+          "cameraName": "North Ramdegi Ridge Camera",
+          "pos": [
+            20.441,
+            79.312
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.4,
+          "behavior": "Digging out termite mound at Ramdegi ridge base",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Baloo (Sloth Bear) captured by motion sensor. Digging out termite mound at Ramdegi ridge base."
+        },
+        {
+          "sightingId": "sight-b1-2",
+          "cameraId": "CT-C5",
+          "cameraName": "Central Katezari Waterhole Camera",
+          "pos": [
+            20.312,
+            79.398
+          ],
+          "time": 1791601053228,
+          "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.4,
+          "behavior": "Snuffling along Katezari wet spring bank",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Baloo (Sloth Bear) captured by motion sensor. Snuffling along Katezari wet spring bank."
+        },
+        {
+          "sightingId": "sight-b1-3",
+          "cameraId": "CT-C4",
+          "cameraName": "Central Pandharpauni Grasslands Camera",
+          "pos": [
+            20.285,
+            79.362
+          ],
+          "time": 1791626860798,
+          "image": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.5,
+          "behavior": "Foraging for mahua flowers near Pandharpauni",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Baloo (Sloth Bear) captured by motion sensor. Foraging for mahua flowers near Pandharpauni."
+        },
+        {
+          "sightingId": "sight-b1-4",
+          "cameraId": "CT-C1",
+          "cameraName": "Central Tadoba Lake North Camera",
+          "pos": [
+            20.252,
+            79.385
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.0,
+          "behavior": "Drinking at northern shallows of Tadoba Lake",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Baloo (Sloth Bear) captured by motion sensor. Drinking at northern shallows of Tadoba Lake."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.441,
+          "lng": 79.312,
+          "time": 1791572848579,
+          "heading": 153.17,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-N2",
+          "cameraName": "North Ramdegi Ridge Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.4,
+          "behavior": "Digging out termite mound at Ramdegi ridge base",
+          "notes": "Baloo (Sloth Bear) captured by motion sensor. Digging out termite mound at Ramdegi ridge base."
+        },
+        {
+          "lat": 20.413383,
+          "lng": 79.32597,
+          "time": 1791578489508,
+          "heading": 149.12,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.386479,
+          "lng": 79.342057,
+          "time": 1791584130438,
+          "heading": 147.36,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.360563,
+          "lng": 79.358655,
+          "time": 1791589771368,
+          "heading": 142.85,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.335199,
+          "lng": 79.377875,
+          "time": 1791595412298,
+          "heading": 139.06,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.312,
+          "lng": 79.398,
+          "time": 1791601053228,
+          "heading": -152.41,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C5",
+          "cameraName": "Central Katezari Waterhole Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.4,
+          "behavior": "Snuffling along Katezari wet spring bank",
+          "notes": "Baloo (Sloth Bear) captured by motion sensor. Snuffling along Katezari wet spring bank."
+        },
+        {
+          "lat": 20.300153,
+          "lng": 79.391808,
+          "time": 1791607505120,
+          "heading": -140.32,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.291119,
+          "lng": 79.384312,
+          "time": 1791613957013,
+          "heading": -113.31,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.287154,
+          "lng": 79.375109,
+          "time": 1791620408905,
+          "heading": -99.33,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.285,
+          "lng": 79.362,
+          "time": 1791626860798,
+          "heading": 115.66,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C4",
+          "cameraName": "Central Pandharpauni Grasslands Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.5,
+          "behavior": "Foraging for mahua flowers near Pandharpauni",
+          "notes": "Baloo (Sloth Bear) captured by motion sensor. Foraging for mahua flowers near Pandharpauni."
+        },
+        {
+          "lat": 20.280961,
+          "lng": 79.370407,
+          "time": 1791632618354,
+          "heading": 124.94,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.275614,
+          "lng": 79.378059,
+          "time": 1791638375910,
+          "heading": 135.93,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.270504,
+          "lng": 79.383005,
+          "time": 1791644133466,
+          "heading": 166.78,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.262164,
+          "lng": 79.384964,
+          "time": 1791649891022,
+          "heading": 179.8,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.252,
+          "lng": 79.385,
+          "time": 1791655648579,
+          "heading": 179.8,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C1",
+          "cameraName": "Central Tadoba Lake North Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.0,
+          "behavior": "Drinking at northern shallows of Tadoba Lake",
+          "notes": "Baloo (Sloth Bear) captured by motion sensor. Drinking at northern shallows of Tadoba Lake."
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "name": "Karwa Bear (Sloth Bear)",
+      "type": "bear",
+      "gender": "Female & Cub",
+      "age": "5 Years",
+      "territory": "Southern Ridge & Keslaghat",
+      "collarId": "ID-BEAR-02",
+      "totalSightings": 4,
+      "sightings": [
+        {
+          "sightingId": "sight-b2-1",
+          "cameraId": "CT-SW2",
+          "cameraName": "South-West Peth-Zari Border Camera",
+          "pos": [
+            20.105,
+            79.462
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.5,
+          "behavior": "Carrying cub on back past Peth-Zari rocks",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Carrying cub on back past Peth-Zari rocks."
+        },
+        {
+          "sightingId": "sight-b2-2",
+          "cameraId": "CT-S1",
+          "cameraName": "South Mamla Buffer Corner Camera",
+          "pos": [
+            20.062,
+            79.388
+          ],
+          "time": 1791601523673,
+          "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.1,
+          "behavior": "Excavating ant nest in Mamla buffer woods",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Excavating ant nest in Mamla buffer woods."
+        },
+        {
+          "sightingId": "sight-b2-3",
+          "cameraId": "CT-SE3",
+          "cameraName": "South-East Zari Gate Perimeter Camera",
+          "pos": [
+            20.108,
+            79.501
+          ],
+          "time": 1791627166038,
+          "image": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.2,
+          "behavior": "Crossing dirt track near Zari perimeter",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Crossing dirt track near Zari perimeter."
+        },
+        {
+          "sightingId": "sight-b2-4",
+          "cameraId": "CT-SE2",
+          "cameraName": "South-East Keslaghat Forest Camera",
+          "pos": [
+            20.065,
+            79.562
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.0,
+          "behavior": "Entering rock cavern near Keslaghat ridge",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Entering rock cavern near Keslaghat ridge."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.105,
+          "lng": 79.462,
+          "time": 1791572848579,
+          "heading": -111.38,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SW2",
+          "cameraName": "South-West Peth-Zari Border Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.5,
+          "behavior": "Carrying cub on back past Peth-Zari rocks",
+          "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Carrying cub on back past Peth-Zari rocks."
+        },
+        {
+          "lat": 20.097114,
+          "lng": 79.441857,
+          "time": 1791580017352,
+          "heading": -115.45,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.087768,
+          "lng": 79.422223,
+          "time": 1791587186126,
+          "heading": -123.41,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.076195,
+          "lng": 79.40468,
+          "time": 1791594354899,
+          "heading": -130.4,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.062,
+          "lng": 79.388,
+          "time": 1791601523673,
+          "heading": 80.41,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-S1",
+          "cameraName": "South Mamla Buffer Corner Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.1,
+          "behavior": "Excavating ant nest in Mamla buffer woods",
+          "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Excavating ant nest in Mamla buffer woods."
+        },
+        {
+          "lat": 20.065602,
+          "lng": 79.409321,
+          "time": 1791605797400,
+          "heading": 75.39,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.070615,
+          "lng": 79.428549,
+          "time": 1791610071128,
+          "heading": 73.49,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.076198,
+          "lng": 79.447382,
+          "time": 1791614344855,
+          "heading": 63.84,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.085736,
+          "lng": 79.466798,
+          "time": 1791618618583,
+          "heading": 58.82,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.096216,
+          "lng": 79.484114,
+          "time": 1791622892310,
+          "heading": 55.09,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.108,
+          "lng": 79.501,
+          "time": 1791627166038,
+          "heading": 135.76,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SE3",
+          "cameraName": "South-East Zari Gate Perimeter Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.2,
+          "behavior": "Crossing dirt track near Zari perimeter",
+          "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Crossing dirt track near Zari perimeter."
+        },
+        {
+          "lat": 20.093797,
+          "lng": 79.514833,
+          "time": 1791634286673,
+          "heading": 134.33,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.081242,
+          "lng": 79.527686,
+          "time": 1791641407308,
+          "heading": 118.7,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.072391,
+          "lng": 79.543853,
+          "time": 1791648527943,
+          "heading": 112.16,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.065,
+          "lng": 79.562,
+          "time": 1791655648579,
+          "heading": 112.16,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SE2",
+          "cameraName": "South-East Keslaghat Forest Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.0,
+          "behavior": "Entering rock cavern near Keslaghat ridge",
+          "notes": "Karwa Bear (Sloth Bear) captured by motion sensor. Entering rock cavern near Keslaghat ridge."
+        }
+      ]
+    }
+  ],
+  "wildDogs": [
+    {
+      "id": "d1",
+      "name": "Kolsa Dhole Pack",
+      "type": "dog",
+      "gender": "Pack (8 Adults)",
+      "age": "Multi-generational",
+      "territory": "Central Kolsa & South Plains",
+      "collarId": "PACK-DHOLE-09",
+      "totalSightings": 5,
+      "sightings": [
+        {
+          "sightingId": "sight-d1-1",
+          "cameraId": "CT-C2",
+          "cameraName": "Central Telia Dam Camera",
+          "pos": [
+            20.211,
+            79.345
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.6,
+          "behavior": "Pack resting in shade near Telia Dam spillway",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Kolsa Dhole Pack captured by motion sensor. Pack resting in shade near Telia Dam spillway."
+        },
+        {
+          "sightingId": "sight-d1-2",
+          "cameraId": "CT-S2",
+          "cameraName": "South Junona Forest Camera",
+          "pos": [
+            20.165,
+            79.352
+          ],
+          "time": 1791594605636,
+          "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.4,
+          "behavior": "Coordinated hunting run through Junona scrub",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Kolsa Dhole Pack captured by motion sensor. Coordinated hunting run through Junona scrub."
+        },
+        {
+          "sightingId": "sight-d1-3",
+          "cameraId": "CT-SW2",
+          "cameraName": "South-West Peth-Zari Border Camera",
+          "pos": [
+            20.105,
+            79.462
+          ],
+          "time": 1791614207688,
+          "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.9,
+          "behavior": "Regrouping and social greeting at Peth-Zari edge",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Kolsa Dhole Pack captured by motion sensor. Regrouping and social greeting at Peth-Zari edge."
+        },
+        {
+          "sightingId": "sight-d1-4",
+          "cameraId": "CT-C3",
+          "cameraName": "Central Kolsa Core Range Camera",
+          "pos": [
+            20.222,
+            79.462
+          ],
+          "time": 1791633163297,
+          "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.1,
+          "behavior": "Trotting along main Kolsa core firebreak",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Kolsa Dhole Pack captured by motion sensor. Trotting along main Kolsa core firebreak."
+        },
+        {
+          "sightingId": "sight-d1-5",
+          "cameraId": "CT-C6",
+          "cameraName": "Central Andhari River Gorge Camera",
+          "pos": [
+            20.258,
+            79.432
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.4,
+          "behavior": "Splashing across Andhari river shallows together",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Kolsa Dhole Pack captured by motion sensor. Splashing across Andhari river shallows together."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.211,
+          "lng": 79.345,
+          "time": 1791572848579,
+          "heading": 139.82,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C2",
+          "cameraName": "Central Telia Dam Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.6,
+          "behavior": "Pack resting in shade near Telia Dam spillway",
+          "notes": "Kolsa Dhole Pack captured by motion sensor. Pack resting in shade near Telia Dam spillway."
+        },
+        {
+          "lat": 20.204552,
+          "lng": 79.350446,
+          "time": 1791576474755,
+          "heading": 153.04,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.195869,
+          "lng": 79.354863,
+          "time": 1791580100931,
+          "heading": 150.55,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.189882,
+          "lng": 79.358243,
+          "time": 1791583727107,
+          "heading": -173.01,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.182431,
+          "lng": 79.35733,
+          "time": 1791587353283,
+          "heading": -167.61,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.173849,
+          "lng": 79.355444,
+          "time": 1791590979459,
+          "heading": -158.73,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.165,
+          "lng": 79.352,
+          "time": 1791594605636,
+          "heading": 126.66,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-S2",
+          "cameraName": "South Junona Forest Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.4,
+          "behavior": "Coordinated hunting run through Junona scrub",
+          "notes": "Kolsa Dhole Pack captured by motion sensor. Coordinated hunting run through Junona scrub."
+        },
+        {
+          "lat": 20.146571,
+          "lng": 79.376758,
+          "time": 1791599506149,
+          "heading": 120.56,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.130005,
+          "lng": 79.404812,
+          "time": 1791604406662,
+          "heading": 116.38,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.116508,
+          "lng": 79.43203,
+          "time": 1791609307175,
+          "heading": 111.01,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.105,
+          "lng": 79.462,
+          "time": 1791614207688,
+          "heading": -12.17,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SW2",
+          "cameraName": "South-West Peth-Zari Border Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.9,
+          "behavior": "Regrouping and social greeting at Peth-Zari edge",
+          "notes": "Kolsa Dhole Pack captured by motion sensor. Regrouping and social greeting at Peth-Zari edge."
+        },
+        {
+          "lat": 20.134434,
+          "lng": 79.45565,
+          "time": 1791618946590,
+          "heading": -6.53,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.162668,
+          "lng": 79.452416,
+          "time": 1791623685492,
+          "heading": 4.21,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.193484,
+          "lng": 79.454687,
+          "time": 1791628424394,
+          "heading": 14.38,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.222,
+          "lng": 79.462,
+          "time": 1791633163297,
+          "heading": -62.32,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C3",
+          "cameraName": "Central Kolsa Core Range Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 97.1,
+          "behavior": "Trotting along main Kolsa core firebreak",
+          "notes": "Kolsa Dhole Pack captured by motion sensor. Trotting along main Kolsa core firebreak."
+        },
+        {
+          "lat": 20.226343,
+          "lng": 79.453721,
+          "time": 1791637660353,
+          "heading": -54.5,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.23186,
+          "lng": 79.445987,
+          "time": 1791642157409,
+          "heading": -39.78,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.239347,
+          "lng": 79.439754,
+          "time": 1791646654466,
+          "heading": -25.85,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.248209,
+          "lng": 79.43546,
+          "time": 1791651151522,
+          "heading": -19.46,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.258,
+          "lng": 79.432,
+          "time": 1791655648579,
+          "heading": -19.46,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-C6",
+          "cameraName": "Central Andhari River Gorge Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.4,
+          "behavior": "Splashing across Andhari river shallows together",
+          "notes": "Kolsa Dhole Pack captured by motion sensor. Splashing across Andhari river shallows together."
+        }
+      ]
+    }
+  ],
+  "pangolins": [
+    {
+      "id": "p1",
+      "name": "Mul Pangolin",
+      "type": "pangolin",
+      "gender": "Adult",
+      "age": "Adult",
+      "territory": "South-East Termitaria Belt",
+      "collarId": "PIT-TAG-771",
+      "totalSightings": 4,
+      "sightings": [
+        {
+          "sightingId": "sight-p1-1",
+          "cameraId": "CT-SE3",
+          "cameraName": "South-East Zari Gate Perimeter Camera",
+          "pos": [
+            20.108,
+            79.501
+          ],
+          "time": 1791572848579,
+          "image": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.3,
+          "behavior": "Nocturnal emergence from subterranean burrow near Zari",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Mul Pangolin captured by motion sensor. Nocturnal emergence from subterranean burrow near Zari."
+        },
+        {
+          "sightingId": "sight-p1-2",
+          "cameraId": "CT-SE2",
+          "cameraName": "South-East Keslaghat Forest Camera",
+          "pos": [
+            20.065,
+            79.562
+          ],
+          "time": 1791600957645,
+          "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.7,
+          "behavior": "Feeding on red ants near Keslaghat forest floor",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Mul Pangolin captured by motion sensor. Feeding on red ants near Keslaghat forest floor."
+        },
+        {
+          "sightingId": "sight-p1-3",
+          "cameraId": "CT-SE1",
+          "cameraName": "South-East Somnath Corner Camera",
+          "pos": [
+            20.125,
+            79.61
+          ],
+          "time": 1791626690921,
+          "image": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.5,
+          "behavior": "Curled defensive ball upon sensor flash at Somnath",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Mul Pangolin captured by motion sensor. Curled defensive ball upon sensor flash at Somnath."
+        },
+        {
+          "sightingId": "sight-p1-4",
+          "cameraId": "CT-E4",
+          "cameraName": "Far East Pangadi Sector Camera",
+          "pos": [
+            20.215,
+            79.562
+          ],
+          "time": 1791655648579,
+          "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.1,
+          "behavior": "Foraging along leaf litter at Pangadi sector edge",
+          "sightingType": "Camera Trap Photo Capture",
+          "notes": "Mul Pangolin captured by motion sensor. Foraging along leaf litter at Pangadi sector edge."
+        }
+      ],
+      "waypoints": [
+        {
+          "lat": 20.108,
+          "lng": 79.501,
+          "time": 1791572848579,
+          "heading": 117.57,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SE3",
+          "cameraName": "South-East Zari Gate Perimeter Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 96.3,
+          "behavior": "Nocturnal emergence from subterranean burrow near Zari",
+          "notes": "Mul Pangolin captured by motion sensor. Nocturnal emergence from subterranean burrow near Zari."
+        },
+        {
+          "lat": 20.099294,
+          "lng": 79.517672,
+          "time": 1791579875845,
+          "heading": 118.44,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.089999,
+          "lng": 79.534833,
+          "time": 1791586903112,
+          "heading": 129.54,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.078881,
+          "lng": 79.548303,
+          "time": 1791593930378,
+          "heading": 135.38,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.065,
+          "lng": 79.562,
+          "time": 1791600957645,
+          "heading": 22.55,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SE2",
+          "cameraName": "South-East Keslaghat Forest Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 98.7,
+          "behavior": "Feeding on red ants near Keslaghat forest floor",
+          "notes": "Mul Pangolin captured by motion sensor. Feeding on red ants near Keslaghat forest floor."
+        },
+        {
+          "lat": 20.080731,
+          "lng": 79.568532,
+          "time": 1791606104300,
+          "heading": 25.33,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.094092,
+          "lng": 79.574857,
+          "time": 1791611250955,
+          "heading": 43.31,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.105158,
+          "lng": 79.585287,
+          "time": 1791616397610,
+          "heading": 45.63,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.116661,
+          "lng": 79.597047,
+          "time": 1791621544265,
+          "heading": 57.23,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.125,
+          "lng": 79.61,
+          "time": 1791626690921,
+          "heading": -12.4,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-SE1",
+          "cameraName": "South-East Somnath Corner Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.5,
+          "behavior": "Curled defensive ball upon sensor flash at Somnath",
+          "notes": "Mul Pangolin captured by motion sensor. Curled defensive ball upon sensor flash at Somnath."
+        },
+        {
+          "lat": 20.145066,
+          "lng": 79.605588,
+          "time": 1791632482452,
+          "heading": -19.01,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.16598,
+          "lng": 79.598383,
+          "time": 1791638273984,
+          "heading": -28.14,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.183713,
+          "lng": 79.5889,
+          "time": 1791644065515,
+          "heading": -35.6,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.200037,
+          "lng": 79.577215,
+          "time": 1791649857047,
+          "heading": -45.48,
+          "isInterpolated": true,
+          "isCameraSighting": false
+        },
+        {
+          "lat": 20.215,
+          "lng": 79.562,
+          "time": 1791655648579,
+          "heading": -45.48,
+          "isInterpolated": false,
+          "isCameraSighting": true,
+          "cameraId": "CT-E4",
+          "cameraName": "Far East Pangadi Sector Camera",
+          "capturedImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=600&h=400",
+          "confidence": 99.1,
+          "behavior": "Foraging along leaf litter at Pangadi sector edge",
+          "notes": "Mul Pangolin captured by motion sensor. Foraging along leaf litter at Pangadi sector edge."
+        }
+      ]
+    }
+  ]
+}
